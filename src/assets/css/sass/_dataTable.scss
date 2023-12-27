@@ -1,0 +1,56 @@
+.p-datatable{
+    background-color: $white;
+    border-radius: 7px;
+    box-shadow: $card-shadow;
+    overflow: hidden;
+
+    .p-datatable-table{
+        .p-datatable-thead{
+            th{
+                background-color: #f0f1f2;
+                font-weight: 500;
+                font-family: fontDemi;
+
+                .p-column-header-content{
+                    justify-content: center;
+                    gap: 7px;
+
+                    .p-sortable-column-icon{
+                        max-width: 11px;
+                    }
+                }
+            }
+        }
+
+        .p-datatable-tbody{
+            tr{
+                border-bottom: 1px solid #f0f0f0;
+            }
+        }
+
+        :where(tr, td, th){
+            color: $side-color;
+            text-align: center;
+            font-size: 13px;
+            font-family: fontMed;
+            padding-top: 18px;
+            padding-bottom: 18px;
+            white-space: nowrap;
+        }
+
+        .line {
+            text-decoration: underline;
+            color: $black;
+            font-family: fontDemi;
+        }
+
+        .table_link{
+            color: $main;
+            text-decoration: underline !important;
+        }
+        
+        .col_div:has(.line, .currency) + div{
+            display: none;
+        }
+    }
+}

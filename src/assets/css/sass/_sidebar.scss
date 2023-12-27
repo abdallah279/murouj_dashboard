@@ -1,0 +1,111 @@
+.sidebar-m {
+  width: 250px;
+  height: 100%;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  @include dir-left(0);
+  z-index: 1040;
+  // padding: 0 20px;
+  overflow: hidden;
+  // transition: all 0.8s cubic-bezier(0.68, -0.3, 0.265, 1.3);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: $screen-lg) {
+    @include translate-left(100%);
+  }
+
+  &.active {
+    transform: translateX(0) !important;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    position: relative;
+    flex-shrink: 0;
+    .img {
+      max-width: 135px;
+    }
+  }
+
+  .links {
+    transition: $main-transition;
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: clip;
+    padding: 0;
+    margin: 25px 0 0;
+    padding-bottom: 10px;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: $light2;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 0;
+      background-color: #ddd;
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 22px;
+      position: relative;
+      color: $side-color;
+      font-family: fontDemi;
+      font-size: 13px;
+      margin-bottom: 4px;
+      background-color: transparent;
+      width: 100%;
+      transition: $main-transition;
+
+      @include devices(xs) {
+        font-size: 12px !important;
+      }
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      .side-icon {
+        max-width: 16px;
+        max-height: 15px;
+        color: $light;
+        font-size: 15px;
+        &::before {
+          font-size: 15px;
+        }
+      }
+
+      &:is(.active, .router-link-exact-active) {
+        background-color: $blue;
+        color: $white;
+        @include dir-border-left(4px solid $blue2);
+
+        .side-icon {
+          filter: brightness(0) invert(1);
+        }
+      }
+
+      &:hover:not(.head) {
+        @include translate(5px);
+        color: $sec;
+      }
+    }
+
+    .collapse-content {
+      overflow: hidden;
+      position: relative;
+      display: none;
+      @include dir-padding-left(60px);
+    }
+  }
+}

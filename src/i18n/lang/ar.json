@@ -1,0 +1,561 @@
+{
+  "moreBtn": {
+    "more": "عرض المزيد",
+    "all": "عرض الكل",
+    "detailes": "عرض التفاصيل"
+  },
+  "modals": {
+    "search": {
+      "header": "بحث",
+      "placeholder": "ابحث عما تريد.."
+    },
+    "reason": {
+      "header": "ماهو سبب إلغاء الطلب ؟",
+      "confirmBtn": "تأكيد الالغاء",
+      "btn": "تراجع"
+    },
+    "rate": {
+      "header": "قم بتقييم المتجر",
+      "placeholder": "برجاء ادخال تقييمك علي المتجر",
+      "btn": "ارسل التقييم"
+    },
+    "country": {
+      "header": "الدولة",
+      "btn": "اختيار الدولة"
+    },
+    "city": {
+      "header": "المدينة",
+      "btn": "اختيار المدينة",
+      "noData": "لا يوجد مدن لهذه الدولة",
+      "return": "العودة للدول"
+    },
+    "location": {
+      "header": "موقعي",
+      "btn": "حفظ الموقع"
+    },
+    "address": {
+      "header": "عنوان التوصيل",
+      "btn": "تحديد الموقع"
+    },
+    "done": {
+      "header": "طلب سحب رصيد",
+      "text": "تم ارسال رسالتك بنجاح",
+      "cancelDone": "تم إلغاء الطلب بنجاح",
+      "returnDone": "تم ارسال طلب ارجاع بنجاح",
+      "rateDone": "تم ارسال تقييمك بنجاح",
+      "addDone": "تم إضافة المنتج للسلة بنجاح",
+      "changePhone": "تم تغيير رقم الجوال بنجاح",
+      "changePass": "تم تغيير كلمة المرور بنجاح",
+      "orderDone": "تم اتمام الطلب بنجاح",
+      "btn": "العودة للرئيسية",
+      "orderBtn": "استكمال الطلب",
+      "followBtn": "متابعه الطلب",
+      "scrollBtn": "استكمال التصفح"
+    },
+    "deleteAccount": {
+      "header": "حذف الحساب",
+      "text": "هل انت متاكد من تأكيد حذف الحساب ؟",
+      "returnBtn": "تراجع",
+      "deleteBtn": "تأكيد الحذف"
+    },
+    "bankAccount": {
+      "header": "بيانات الحساب البنكي",
+      "text": "برجاء تعبئة البيانات التالية لسحب الرصيد",
+      "form": {
+        "name": "إسم صاحب الحساب",
+        "bankName": "إسم البنك",
+        "accountNum": "رقم الحساب البنكي",
+        "ibanNum": "رقم الايبان",
+        "amount": "المبلغ"
+      },
+      "btn": "ارسل الطلب"
+    },
+    "chargeModal": {
+      "header": "شحن رصيد",
+      "text": "برجاء أدخال المبلغ لشحن الرصيد"
+    },
+    "rateModal": {
+      "header": "تقييمات سابقة",
+      "text": "مراجعه من",
+      "value": "القيمة",
+      "btn": "رجوع"
+    }
+  },
+  
+  "subscribeMail": {
+    "header": "اشترك في القائمة البريدية",
+    "contactItems": {
+      "location": "الموقع",
+      "phone": "رقم الجوال",
+      "mail": "البريد الآلكتروني"
+    }
+  },
+  "footer": {
+    "storeName": "متجر مروج",
+    "quickLinks": "روابط مهمة",
+    "helpCenter": "مركز المساعدة",
+    "download": "حمل التطبيق",
+    "home": "الرئيسية",
+    "cart": "السلة",
+    "orders": "طلباتي",
+    "fav": "المفضلة",
+    "terms": "الشروط والأحكام",
+    "suggestions": "الشكاوى والمقترحات",
+    "contact": "تواصل معنا",
+    "faqs": "أسئلة متكررة",
+    "joinUs": "إشترك معنا",
+    "joinText": "أدخل عنوان البريد الالكترونى أدناه للاشتراك فى النشرة الاخبارية لدينا",
+    "joinPlaceholder": "من فضلك ادخل البريد الالكترونى",
+    "followUs": "تابعنا",
+    "rightsReserved": "جميع الحقوق محفوظة - مروج ",
+    "designedBy": "تصميم بواسطة ",
+    "aait": " مؤسسة أوامر الشبكة"
+  },
+  "sectionHeader": {
+    "advantages": "مزايا متجر مروج",
+    "opinions": "اراء عملائنا",
+    "partners": "شركاء النجاح"
+  },
+  "sectionTitle": {
+    "categories": "الأقسام",
+    "faqs": "أسئلة متكررة",
+    "terms": "الشروط والأحكام",
+    "suggestions": "الشكاوى والمقترحات",
+    "formatRequest": "طلب تنسيق",
+    "notifications": "الاشعارات",
+    "login": "تسجيل دخول",
+    "createAccount": "انشاء الحساب",
+    "restorePassword": "هل نسيت كلمة المرور",
+    "verificationCode": "كود التفعيل",
+    "changePhone": "تغيير رقم الجوال",
+    "changePassword": "تغيير كلمة المرور"
+  },
+  "sectionDesc": {
+    "codeForm": "برجاء ادخال كود التفعيل المرسل إليك عبر الجوال",
+    "restorePassword": "لارسال كود تفعيل عبر رساله علي رقم الجوال",
+    "changePhone": "قم بادخال كلمة المرور الخاص بك لتغيير رقم الجوال",
+    "newPhone": "قم بادخال رقم جديد لتغيير رقم الجوال",
+    "complaints": "اذا كان لديك أي شكوي او المقترح لا تتردد في مراسلتا"
+  },
+  "contactForm": {
+    "name": "الأسم",
+    "phone": "رقم الجوال",
+    "subject": "الموضوع",
+    "title": "عنوان الرسالة",
+    "message": "الرسالة"
+  },
+  "addComplaintsForm": {
+    "name": "الأسم",
+    "phone": "رقم الجوال",
+    "type": "نوع الطلب",
+    "complaint": "شكوى",
+    "suggestion": "اقتراح",
+    "title": "عنوان الشكوي او المقترح",
+    "message": "تفاصيل الشكوي او المقترح",
+    "img": "إرفاق صور"
+  },
+  "codeForm": {
+    "text": "لم تستلم الكود بعد ؟"
+  },
+  "loginForm": {
+    "phone": {
+      "text": "رقم الجوال",
+      "placeholder": "رقم الجوال"
+    },
+    "password": {
+      "text": "كلمة المرور",
+      "placeholder": "أدخل كلمة المرور"
+    },
+    "forgetPassword": "هل نسيت كلمة المرور ؟",
+    "haveAccount": "او انضم الينا",
+    "createAccount": "قم بإنشاء حساب",
+    "signAddress": "إذا كان لديك حساب ، قم بتسجيل الدخول باستخدام رقم جوالك",
+    "customers": "عملائنا الكرام "
+  },
+  "restorePasswordForm": {
+    "phone": {
+      "text": "رقم الجوال",
+      "placeholder": "أدخل رقم الجوال"
+    },
+    "code": {
+      "text": "رقم الكود"
+    },
+    "newPassword": {
+      "text": "كلمة المرور الجديدة",
+      "placeholder": "ادخل كلمة المرور الجديدة"
+    },
+    "confirmNewPassword": {
+      "text": "تأكيد كلمة المرور الجديدة",
+      "placeholder": "ادخل كلمة المرور الجديدة"
+    }
+  },
+  "createAccountForm": {
+    "photo": "الصورة الشخصية",
+    "name": {
+      "text": "إسم المستخدم",
+      "placeholder": "إسم المستخدم"
+    },
+    "phone": {
+      "text": "رقم الجوال",
+      "placeholder": "رقم الجوال"
+    },
+    "email": {
+      "text": "البريد الإلكتروني",
+      "placeholder": "البريد الإلكتروني"
+    },
+    "country": {
+      "placeholder": "الدولة"
+    },
+    "city": {
+      "placeholder": "المدينة"
+    },
+    "password": {
+      "text": "كلمة المرور",
+      "placeholder": "كلمة المرور"
+    },
+    "confirmPassword": {
+      "text": "تأكيد كلمة المرور",
+      "placeholder": "تأكيد كلمة المرور"
+    },
+    "agree": "بالتسجيل فانت توافق علي",
+    "agree2": "الموافقة علي",
+    "terms": "الشروط والأحكام",
+    "haveAccount": "لديك حساب الفعل ؟",
+    "login": "تسجيل الدخول",
+    "changePhone": "تغيير رقم الجوال"
+  },
+  "changePhoneForm": {
+    "currentPassword": {
+      "text": "كلمة المرور الحالية",
+      "placeholder": "أدخل كلمة المرور الحالية"
+    },
+    "newPhone": {
+      "text": "رقم الجوال الجديد",
+      "placeholder": "أدخل رقم الجوال الجديد"
+    }
+  },
+  "filterForm": {
+    "sortBy": "تصنيف حسب",
+    "priceRanking": "تصنيف السعر",
+    "topRate": "الأعلى تقييما",
+    "discountedProducts": "منتجات ذات خصم",
+    "recentlyAdded": "المضافة حديثا",
+    "highestPrice": "الأعلى سعرا",
+    "lowestPrice": "الأقل سعرا",
+    "filter": "فلتره",
+    "deleteFilter": "حذف الفترة"
+  },
+  "payment": {
+    "cash": {
+      "name": "دفع كاش",
+      "desc": "يمكنك الدفع كاش عند استلام الطلب"
+    },
+    "online": {
+      "name": "دفع اونلايين",
+      "desc": "الدفع بالبطاقة الائتمانية"
+    },
+    "wallet": {
+      "name": "المحفظة",
+      "desc": "يمكنك الدفع عن طريق المحفظة"
+    },
+    "bank": {
+      "name": "التحويل البنكي",
+      "desc": "يمكنك الدفع بالتحويل البنكي"
+    }
+  },
+  "profileSidebar": {
+    "profile": "حسابى",
+    "orders": "طلباتى"
+  },
+  "order": {
+    "tabs": {
+      "purchaseOrders": "طلبات الشراء",
+      "returnOrders": "طلبات الأرجاع",
+      "pendingOrders": "طلبات قيد انتظار",
+      "currentOrders": "طلبات الحالية",
+      "finishedOrders": "طلبات المنتهية",
+      "canceledOrders": "طلبات الملغية"
+    },
+    "card": {
+      "orderNum": "رقم الطلب",
+      "orderPrice": "السعر",
+      "orderDate": "تاريخ الطلب",
+      "orderStatus": "الحالة",
+      "currency": "ر.س"
+    }
+  },
+  "orderDetailes": {
+    "steps": {
+      "step1": "جاري التجهيز",
+      "step2": "تم التجهيز",
+      "step3": "جاري الشحن",
+      "step4": "تم التسليم",
+      "step5": "إنتظار الموافقة",
+      "step6": "في الطريق"
+    },
+    "detailes": "تفاصيل الطلب",
+    "returndetailes": "بيانات طلب ارجاع المنتجات",
+    "products": "قم بتحديد المنتجات المطلوب ارجاعها",
+    "ordertimeDate": "تاريخ و وقت الطلب",
+    "deliverytimeDate": "تاريخ و وقت التوصيل",
+    "orderAddress": "عنوان الطلب",
+    "payWay": "طريقة الدفع",
+    "paymentInfo": "معومات الدفع",
+    "discountPrice": "سعر الخصم",
+    "shippingPrice": "سعر الشحن",
+    "taxPrice": "سعر الضريبة",
+    "productsPrice": "سعر المنتجات",
+    "totalPrice": "السعر الإجمالي",
+    "bankTransfer": "التحويل البنكي",
+    "Cancelled": "تم الغاء الطلب",
+    "cancelledReason": "سبب الألغاء الطلب",
+    "photoReturnOrder": "صورة طلب الأرجاع",
+    "reasonReturn": "سبب الأرجاع",
+    "feedback": "ملاحظاتك",
+    "rateOrder": "برجاء ادخال تقييمك علي المنتج",
+    "buttons": {
+      "cancel": "الغاء الطلب",
+      "received": "تم استلام الطلب",
+      "returnProducts": "ارجاع المنتجات",
+      "addRate": "قم بتقييم المنتج",
+      "returnOrder": "ارسال طلب الأرجاع",
+      "confirm": "تأكيد ",
+      "img": "ارفاق صورة"
+    }
+  },
+  "complaint": {
+    "card": {
+      "complaintNum": "رقم الشكوى أو المقترح",
+      "status": "الحالة"
+    },
+    "detailes": {
+      "date": "تاريخ الشكوى أو المقترح",
+      "info": "تفاصيل الشكوى أو المقترح",
+      "responding": "الرد علي الشكوى أو المقترح",
+      "images": "صور الشكوي أو المقترح"
+    }
+  },
+  "bank": {
+    "name": "رقم الحساب",
+    "iban": "رقم الايبان"
+  },
+  "formBtns": {
+    "send": "ارسال",
+    "sendLoading": "جارى الارسال",
+    "login": "تسجيل الدخول",
+    "create": "انشاء حساب",
+    "agree": "موافقة",
+    "save": "حفظ",
+    "edit": "حفظ التعديلات",
+    "editBtn": "تعديل",
+    "saveLoading": "جارى الحفظ",
+    "confirm": "تأكيد",
+    "confirmProfile": "تأكيد الهوية",
+    "confirming": "جارى التأكيد",
+    "delteLoading": "جارى الحذف",
+    "changePass": "تغيير كلمة المرور",
+    "changePhone": "تغيير رقم الجوال",
+    "logout": "تسجيل خروج",
+    "delete": "حذف الحساب",
+    "activeCode": "تفعيل الحساب",
+    "receiveCode": "أعد إرسال الكود",
+    "addComplaints": "أضافة شكاوى او مقترح"
+  },
+  
+  "wallet": {
+    "currentCredit": "رصيدك الحالى",
+    "currency": "ريال سعودى",
+    "withdrawBtn": "سحب رصيد",
+    "addBtn": "اضافة الرصيد"
+  },
+  "points": {
+    "title": "نقاط الولاء",
+    "point": "نقطة",
+    "text": "نقطة يتم تحويلها الي",
+    "all": "كل",
+    "convertBtn": "تحويل نقاط الولاء الي رصيد"
+  },
+  "validation": {
+    "image": "الصورة مطلوبة",
+    "name": "من فضلك أدخل الاسم",
+    "phone": "من فضلك أدخل رقم الهاتف",
+    "email": "من فضلك أدخل Email صحيح",
+    "password": "من فضلك أدخل كلمة المرور",
+    "confirmPassword": "كلمة المرور غير متطابقة",
+    "search": "كلمة البحث مطلوبة",
+    "newPassword": "من فضلك أدخل كلمة المرور الجديدة",
+    "conditions": "يجب الموافقة على الشروط والأحكام",
+    "code": "من فضلك أدخل كود التفعيل",
+    "title": "من فضلك أدخل عنوان الرسالة ",
+    "content": "من فضلك أدخل الرسالة ",
+    "requiresAuth": "يرجى تسجيل الدخول أولا ",
+    "copy": "تم نسخ الرابط بنجاح",
+    "retrieval_reason": "سبب الارجاع مطلوب",
+    "returnImg": "صور الارجاع مطلوبة",
+    "products": "قم بتحديد المنتجات المطلوب ارجاعها"
+  },
+  "cart": {
+    "products": "المنتجات",
+    "table": {
+      "product": "المنتج",
+      "price": "السعر",
+      "amount": "الكمية",
+      "totalPrice": "السعر الآجمالي"
+    },
+    "sidebar": {
+      "complete": "استكمال الطلب",
+      "discountLable": "هل لديك كوبون ؟",
+      "placeholder": "ادخل كود الخصم او كود المسوق",
+      "orderPrice": "قيمة الطلب",
+      "extraPrice": "قيمة المضافة",
+      "discountPrice": "قيمة الخصم",
+      "drivePrice": "قيمة التوصيل",
+      "total": "المجموع الكلي",
+      "btn": "تأكيد الشراء"
+    },
+    "form": {
+      "city": "المدينة",
+      "location": "موقع التوصيل",
+      "date": "تاريخ التوصيل",
+      "time": "وقت التوصيل",
+      "feedback": "ملاحظاتك",
+      "bank": "اسم البنك",
+      "bankTransfer": "التحويل البنكي",
+      "AddRecipient": "أضافة تفاصيل مستلم اخر",
+      "userName": "اسم المستخدم",
+      "phone": "رقم الجوال"
+    },
+    "choose": "قم باختيار طريقة دفع الطلب",
+    "chooseWay": "طريقة التوصيل"
+  },
+
+
+
+
+
+
+
+
+
+  "sidebar": {
+    "home": "الرئيسية",
+    "orders": "الطلبات",
+    "products": "منتجات",
+    "ourProducts": "منتجاتنا",
+    "wishlist": "طلبات توفير المنتجات",
+    "wallet": "الحسابات المالية",
+    "profile": "بيانات الحساب",
+    "supervisors": "المشرفين",
+    "contact": "اتصل بنا",
+    "reports": "التقارير",
+    "invoices": "الفواتير",
+    "logout": "تسجيل الخروج",
+    "lang": "English",
+    "hi": "اهلا بك",
+    "currency": "ر.س"
+  },
+  "profit": {
+    "total": "الأرباح الكلية",
+    "today": "ارباح اليوم"
+  },
+  "chart": {
+    "title": "إحصائيات الارباح"
+  },
+  "pagesTitle": {
+    "home": "الرئيسية",
+    "orders": "طلبات",
+    "allCategories": "الأقسام",
+    "products": "منتجات",
+    "ourProducts": "منتجاتنا",
+    "about": "من نحن",
+    "contact": "تواصل معنا",
+    "financial": "الحسابات المالية",
+    "privacy": "سياسة الخصوصية",
+    "faqs": "الأسئلة الشائعة",
+    "newlyAdded": "المضاف حديثا",
+    "mostSelling": "الأكثر مبيعا",
+    "terms": "الشروط والاحكام او سياسة الاسترجاع",
+    "suggestions": "الشكاوى والمقترحات",
+    "addComplaints": "أضافة شكاوى او مقترح",
+    "complaintDetailes": "تفاصيل الشكوى او المقترح",
+    "wallet": "المحفظة",
+    "points": "نقاط المكافئات",
+    "favorites": "المفضلة",
+    "done": "تم ارسال طلبك وسيتم مراجعتة من قبل الادارة",
+    "notifications": "الاشعارات",
+    "cart": "السلة",
+    "completeOrder": "اتمام الطلب",
+    "search": "نتائج البحث",
+    "offers": "العروض",
+    "productDetailes": "تفاصيل المنتج",
+    "userAccount": "تعديل بيانات حسابي",
+    "changePhone": "تغيير رقم الجوال",
+    "login": "تسجيل دخول",
+    "createAccount": "تسجيل جديد",
+    "code": "كود التحقق من رقمك",
+    "forgetPass": "استعادة كلمة المرور",
+    "purchaseOrders": "طلبات الشراء",
+    "returnOrders": "طلبات الأرجاع",
+    "orderDetailes": "تفاصيل الطلب",
+    "retUrnOrderDetailes": "تفاصيل طلب الأرجاع",
+    "returnOrder": "عمل طلب الأرجاع",
+    "rateOrder": "تقييم الطلب"
+  },
+  "table": {
+    "noData": "لا يوجد بيانات",
+    "loading": "جارى التحميل",
+    "search": "ابحث عن منتج ...",
+    "filter":{
+      "text": "ترتيب حسب",
+      "option1": "الأحدث",
+      "option2": "الأقدم"
+    },
+    "products":{
+      "number": "رقم",
+      "name": "اسم المنتج",
+      "price": "السعر",
+      "quantity": "العدد في المخزن و الحالة",
+      "category": "القسم",
+      "detailes": "تفاصيل المنتج",
+      "btn": "طلب توفير منتج"
+    }
+  },
+  "products": {
+    "addToCart": "اضف للسلة",
+    "addToFav": "اضف للمفضلة",
+    "removeToFav": "حذف من المفضلة",
+    "amount": "الكمية",
+    "share": "مشاركة",
+    "dailyValue": "القيمة اليومية",
+    "desc": "الوصف",
+    "available": "متوفر في المتجر",
+    "calories": "السعرات الحرارية",
+    "weight": "وزن المنتج",
+    "brand": "الماركة",
+    "unit": "جم",
+    "currency": "ر.س"
+  },
+  "noData": {
+    "bank": "لا يوجد حسابات مالية حاليا",
+    "services": "لا يوجد خدمات حاليا",
+    "products": "لا يوجد منتجات حاليا",
+    "advantages": "لا يوجد مزايا حاليا",
+    "offers": "لا يوجد عروض حاليا",
+    "comments": "لا يوجد اراء حاليا",
+    "search": "لا يوجد نتائج للبحث",
+    "complaint": "لا يوجد شكاوى أو مقترحات",
+    "categories": "لا يوجد أقسام حاليا",
+    "faqs": "لا يوجد أسئلة متكررة حاليا",
+    "terms": "لا يوجد الشروط والأحكام حاليا",
+    "notifications": "لا يوجد اشعارات حاليا",
+    "newOrders": "لا يوجد طلبات جديدة",
+    "waitingOrders": "لا يوجد طلبات قيد الانتظار",
+    "currentOrders": "لا يوجد طلبات حالية",
+    "finishedOrders": "لا يوجد طلبات منتهية",
+    "cancelledOrders": "لا يوجد طلبات ملغيه",
+    "imgs": "لا يوجد صور حاليا",
+    "cart": "السلة فارغة",
+    "orderProduct": "المنتجات المطلوبة لم تعد متوفره",
+    "productRate": "لا يوجد تقييمات لهذا المنتج"
+  }
+}

@@ -1,0 +1,593 @@
+{
+  "nav": {
+    "home": "Home",
+    "orders": "My Orders",
+    "products": "Our products",
+    "wallet": "Wallet",
+    "points": "Rewards points",
+    "about": "About Murooj",
+    "contact": "Contact Us",
+    "search": "Search",
+    "lang": "العربية",
+    "loginBtn": "Login / New",
+    "cart": "My Cart",
+    "currency": "RS",
+    "notifications": "Notifications",
+    "profile": {
+      "profile": "Profile",
+      "financial": "Financial Accounts",
+      "complaints": "Complaints And Suggestions",
+      "about": "About Us",
+      "privacy": "Privacy Policy",
+      "faq": "Faq",
+      "terms": "Terms, Conditions, Return Policy",
+      "rate": "Rate Us",
+      "logout": "Logout"
+    },
+    "shipping": {
+      "text": "free shipping",
+      "text2": "For orders with a value",
+      "text3": "Riyal or more"
+    }
+  },
+  "moreBtn": {
+    "more": "Show More",
+    "all": "Show All",
+    "detailes": "View details"
+  },
+  "modals": {
+    "search": {
+      "header": "Search",
+      "placeholder": "Search for what you want.."
+    },
+    "reason": {
+      "header": "What is the reason for canceling the order?",
+      "confirmBtn": "Confirm cancellation",
+      "btn": "Back off"
+    },
+    "rate": {
+      "header": "Rate the store",
+      "placeholder": "Please enter your rating on the store",
+      "btn": "Send Rate"
+    },
+    "country": {
+      "header": "Country",
+      "btn": "Select Country"
+    },
+    "city": {
+      "header": "City",
+      "btn": "Select City",
+      "noData": "no cities in this country",
+      "return": "Back to countries"
+    },
+    "location": {
+      "header": "My Location",
+      "btn": "Save Location"
+    },
+    "address": {
+      "header": "Delivery Address",
+      "btn": "Determine location"
+    },
+    "done": {
+      "header": "Balance withdrawal request",
+      "text": "Your Message Has Been Successfully Sent",
+      "cancelDone": "Order canceled successfully",
+      "returnDone": "Your return request has been sent successfully",
+      "rateDone": "Your rating has been successfully sent",
+      "addDone": "The product has been successfully added to the cart",
+      "changePhone": "Phone changed successfully",
+      "changePass": "The password has been changed successfully",
+      "orderDone": "The Order was successfully completed",
+      "btn": "Home Page",
+      "orderBtn": "Complete the order",
+      "followBtn": "follow order",
+      "scrollBtn": "Continue browsing"
+    },
+    "deleteAccount": {
+      "header": "Delete Account",
+      "text": "Are you sure you confirmed the account deletion?",
+      "returnBtn": "Back off",
+      "deleteBtn": "Confirm deletion"
+    },
+    "bankAccount": {
+      "header": "Bank account data",
+      "text": "Please fill in the following data to withdraw the balance",
+      "form": {
+        "name": "Account Holder's Name",
+        "bankName": "Bank name",
+        "accountNum": "Bank account number",
+        "ibanNum": "Iban Number",
+        "amount": "Amount"
+      },
+      "btn": "send request"
+    },
+    "chargeModal": {
+      "header": "Recharge balance",
+      "text": "Please enter the amount to top up the balance"
+    },
+    "rateModal": {
+      "header": "Previous Reviews",
+      "text": "Review from",
+      "value": "Rate",
+      "btn": "Back"
+    }
+  },
+  
+  "subscribeMail": {
+    "header": "Subscribe To The Mailing List",
+    "contactItems": {
+      "location": "Location",
+      "phone": "Phone",
+      "mail": "E-mail"
+    }
+  },
+  "footer": {
+    "storeName": "Mourouj Store",
+    "quickLinks": "Quick Links",
+    "helpCenter": "Help Center",
+    "download": "Download App",
+    "home": "Home",
+    "cart": "Cart",
+    "orders": "My Orders",
+    "fav": "Favorite",
+    "faqs": "Faqs",
+    "terms": "Terms and Conditions",
+    "contact": "Contact Us",
+    "suggestions": "Complaints and suggestions",
+    "joinUs": "Join Us",
+    "joinText": "Enter your email address below to subscribe to our newsletter",
+    "joinPlaceholder": "Please Enter Your E-mail",
+    "followUs": "Follow Us",
+    "rightsReserved": "All Rights Reserved - Murooj ",
+    "designedBy": "Designed By",
+    "aait": " aait"
+  },
+  "sectionHeader": {
+    "advantages": "Advantages Of Mourouj Store",
+    "opinions": "Our Customers' Opinions",
+    "partners": "Success Partners"
+  },
+  "sectionTitle": {
+    "categories": "Categories",
+    "faqs": "Faqs",
+    "terms": "Terms and Conditions",
+    "suggestions": "Complaints and suggestions",
+    "formatRequest": "Format Request",
+    "notifications": "Notifications",
+    "login": "Login",
+    "createAccount": "Create Account",
+    "restorePassword": "Did you forget your password?",
+    "verificationCode": "Verification Code",
+    "changePhone": "Change Phone",
+    "changePassword": "Change Password"
+  },
+  "sectionDesc": {
+    "codeForm": "Please enter the activation code sent to you via mobile phone",
+    "restorePassword": "Sending an activation code via message to your mobile number",
+    "changePhone": "Enter your password to change the mobile number",
+    "newPhone": "Enter new mobile number",
+    "complaints": "If you have any complaint or suggestion, do not hesitate to write to us"
+  },
+  "contactForm": {
+    "name": "Name",
+    "phone": "Phone",
+    "subject": "Subject",
+    "title": "Message Title",
+    "message": "Message"
+  },
+  "addComplaintsForm": {
+    "name": "Name",
+    "phone": "Phone",
+    "type": "request type",
+    "complaint": "complaint",
+    "suggestion": "suggestion",
+    "title": "Title of complaint and suggestion",
+    "message": "Details of the complaint or suggestion",
+    "img": "Attach photos"
+  },
+  "codeForm": {
+    "text": "Didn't receive the code yet ?"
+  },
+  "loginForm": {
+    "phone": {
+      "text": "Mobile Number",
+      "placeholder": "Mobile Number"
+    },
+    "password": {
+      "text": "Password",
+      "placeholder": "Enter Password"
+    },
+    "forgetPassword": "Forgot your password ?",
+    "haveAccount": "Or Join Us",
+    "createAccount": "Create Account",
+    "signAddress": "If you have an account, log in using your mobile number.",
+    "customers": "Dear Customers"
+  },
+  "restorePasswordForm": {
+    "phone": {
+      "text": "Phone Number",
+      "placeholder": "Enter Phone Number"
+    },
+    "code": {
+      "text": "Code Number"
+    },
+    "newPassword": {
+      "text": "New Password",
+      "placeholder": "Enter New Password"
+    },
+    "confirmNewPassword": {
+      "text": "Confirm New Password",
+      "placeholder": "Enter New Password"
+    }
+  },
+  "createAccountForm": {
+    "photo": "Personal photo",
+    "name": {
+      "text": "User Name",
+      "placeholder": "Enter User Name"
+    },
+    "phone": {
+      "text": "Phone Number",
+      "placeholder": "Enter Phone Number"
+    },
+    "email": {
+      "text": "Email",
+      "placeholder": "Enter Email"
+    },
+    "country": {
+      "placeholder": "Choose Country"
+    },
+    "city": {
+      "placeholder": "Choose City"
+    },
+    "password": {
+      "text": "Password",
+      "placeholder": "Enter password"
+    },
+    "confirmPassword": {
+      "placeholder": "Confirm Password"
+    },
+    "agree": "By registering you agree to",
+    "agree2": "Approval To",
+    "terms": "Terms and Conditions",
+    "haveAccount": "Have an account ? ",
+    "login": "Login",
+    "changePhone": "Change Phone"
+  },
+  "changePhoneForm": {
+    "currentPassword": {
+      "text": "Current Password",
+      "placeholder": "Enter Current Password"
+    },
+    "newPhone": {
+      "text": "New Phone",
+      "placeholder": "Enter New Phone"
+    }
+  },
+  "filterForm": {
+    "sortBy": "sort By",
+    "priceRanking": "price Ranking",
+    "topRate": "top Rate",
+    "discountedProducts": "discounted Products",
+    "recentlyAdded": "recently Added",
+    "highestPrice": "highest Price",
+    "lowestPrice": "lowest Price",
+    "filter": "filter it",
+    "deleteFilter": "delete Filter"
+  },
+  "payment": {
+    "cash": {
+      "name": "Cash payment",
+      "desc": "You can pay in cash upon receiving the order"
+    },
+    "online": {
+      "name": "Online payment",
+      "desc": "Payment by credit card"
+    },
+    "wallet": {
+      "name": "Wallet",
+      "desc": "You can pay via wallet"
+    },
+    "bank": {
+      "name": "Bank transfer",
+      "desc": "You can pay with bank transfer"
+    }
+  },
+  "profileSidebar": {
+    "profile": "My Account",
+    "orders": "My Orders",
+    "newOrders": "New Orders",
+    "currentOrders": "Current Orders",
+    "oldOrders": "Finished Orders"
+  },
+  "order": {
+    "tabs": {
+      "purchaseOrders": "Purchase Orders",
+      "returnOrders": "Returns Orders",
+      "pendingOrders": "Waiting Orders",
+      "currentOrders": "Current Orders",
+      "finishedOrders": "Finished Orders",
+      "canceledOrders": "Canceled Orders"
+    },
+    "card": {
+      "orderNum": "Order Number",
+      "orderPrice": "Price",
+      "orderDate": "Order Date",
+      "orderStatus": "Status",
+      "currency": "RS"
+    }
+  },
+  "orderDetailes": {
+    "steps": {
+      "step1": "Processing",
+      "step2": "Prepared",
+      "step3": "Charging in progress",
+      "step4": "Delivered",
+      "step5": "Waiting for approval",
+      "step6": "in the way"
+    },
+    "detailes": "Order Detailes",
+    "returndetailes": "Data for requesting return of products",
+    "products": "Select the products to be returned",
+    "ordertimeDate": "Date and time of Order",
+    "deliverytimeDate": "Date and time of delivery",
+    "orderAddress": "Order Address",
+    "payWay": "payment way",
+    "paymentInfo": "payment Info",
+    "discountPrice": "discount Price",
+    "shippingPrice": "shipping Price",
+    "taxPrice": "tax Price",
+    "productsPrice": "products Price",
+    "totalPrice": "total Price",
+    "bankTransfer": "bank Transfer",
+    "Cancelled": "The order has been cancelled",
+    "cancelledReason": "Reason for cancellation of order",
+    "photoReturnOrder": "Photo of return request",
+    "reasonReturn": "Reason for return",
+    "feedback": "Your feedback",
+    "rateOrder": "Please enter your review of the product",
+    "buttons": {
+      "cancel": "Cancel order",
+      "received": "Order has been received",
+      "returnProducts": "Return products",
+      "addRate": "Rate product",
+      "returnOrder": "Send a return request",
+      "confirm": "Confirm",
+      "img": "Upload image"
+    }
+  },
+  "complaint": {
+    "card": {
+      "complaintNum": "complaint or suggestion number",
+      "status": "Status"
+    },
+    "detailes": {
+      "date": "Date of the complaint or suggestion",
+      "info": "Details of the complaint or suggestion",
+      "responding": "Responding to the complaint or suggestion",
+      "images": "Photos of the complaint or suggestion"
+    }
+  },
+  "bank": {
+    "name": "Account Number",
+    "iban": "Iban Number"
+  },
+  "formBtns": {
+    "send": "Send",
+    "sendLoading": "Sending",
+    "login": "Login",
+    "create": "Create Account",
+    "agree": "Agree",
+    "save": "Save",
+    "edit": "Save Edits",
+    "editBtn": "Edit",
+    "saveLoading": "Saving",
+    "confirm": "Confirm",
+    "confirmProfile": "Confirm identity",
+    "confirming": "Confirming",
+    "delteLoading": "Deleting",
+    "changePass": "change Password",
+    "changePhone": "change Phone",
+    "logout": "Logout",
+    "delete": "Delete Account",
+    "activeCode": "Account activation",
+    "receiveCode": "Resend The Code",
+    "addComplaints": "Add complaints or suggestions"
+  },
+  
+  
+  "wallet": {
+    "currentCredit": "Your Current Credit",
+    "currency": "SR",
+    "withdrawBtn": "Withdraw A Balance",
+    "addBtn": "Add Balance"
+  },
+  "points": {
+    "title": "Loyalty Points",
+    "point": "Point",
+    "text": "Point is converted to",
+    "all": "every",
+    "convertBtn": "Convert loyalty points into credit"
+  },
+  "validation": {
+    "image": "Image required",
+    "name": "Name Is required",
+    "phone": "Please enter phone number",
+    "email": "Please enter a valid Email",
+    "password": "Please enter your password",
+    "confirmPassword": "The password does not match",
+    "search": "Search word is required",
+    "newPassword": "Please enter your new password",
+    "conditions": "You must agree to the terms and conditions",
+    "code": "Please enter activation code",
+    "title": "Please enter Message Title",
+    "content": "Please enter Message",
+    "requiresAuth": "Please sign in first",
+    "copy": "The link was copied successfully",
+    "retrieval_reason": "Return reason is required",
+    "returnImg": "Return photos are required",
+    "products": "Select the products to be returned"
+  },
+  "cart": {
+    "products": "products",
+    "table": {
+      "product": "product",
+      "price": "price",
+      "amount": "Quantity",
+      "totalPrice": "Total price"
+    },
+    "sidebar": {
+      "complete": "Complete order",
+      "discountLable": "Do you have coupon ?",
+      "placeholder": "Enter the discount code",
+      "orderPrice": "Order value",
+      "extraPrice": "Added value",
+      "discountPrice": "discount value",
+      "drivePrice": "Delivery cost",
+      "total": "total summation",
+      "btn": "Confirm purchase"
+    },
+    "form": {
+      "city": "City",
+      "location": "Delivery location",
+      "date": "Delivery Date",
+      "time": "Delivery Time",
+      "feedback": "Your feedback",
+      "bank": "bank Name",
+      "bankTransfer": "Bank transfer",
+      "AddRecipient": "Add another recipient's details",
+      "userName": "User Name",
+      "phone": "Phone"
+    },
+    "choose": "Choose the order payment method",
+    "chooseWay": "Delivery way"
+  },
+
+
+
+
+
+
+
+  "sidebar": {
+    "home": "home",
+    "orders": "orders",
+    "products": "products",
+    "ourProducts": "Our products",
+    "wishlist": "Orders provide products",
+    "wallet": "Financial accounts",
+    "profile": "Account",
+    "supervisors": "supervisors",
+    "contact": "contact us",
+    "reports": "reports",
+    "invoices": "invoices",
+    "logout": "Logout",
+    "lang": "العربية",
+    "hi": "Hi",
+    "currency": "RS"
+  },
+  "profit": {
+    "total": "total Profit",
+    "today": "today Profit"
+  },
+  "chart":{
+    "title": "Profits statistics"
+  },
+  "pagesTitle": {
+    "home": "Home",
+    "orders": "Orders",
+    "allCategories": "Categories",
+    "products": "Products",
+    "ourProducts": "Our products",
+    "about": "Who Us",
+    "contact": "Contact Us",
+    "financial": "Financial Accounts",
+    "privacy": "Privacy Policy",
+    "faqs": "Faqs",
+    "newlyAdded": "Newly Added",
+    "mostSelling": "Most Selling",
+    "terms": "Terms and Conditions or Return Policy",
+    "suggestions": "Complaints and Suggestions",
+    "addComplaints": "Add complaints or suggestions",
+    "complaintDetailes": "Details of the complaint or suggestion",
+    "favorites": "Favorites",
+    "wallet": "Wallet",
+    "points": "Rewards points",
+    "done": "Your Request Has Been Sent",
+    "notifications": "Notifications",
+    "cart": "Cart",
+    "completeOrder": "Complete the order",
+    "search": "search results",
+    "offers": "Offers",
+    "productDetailes": "product Detailes",
+    "userAccount": "Edit Account",
+    "login": "Login",
+    "createAccount": "Create Account",
+    "changePhone": "Change Phone",
+    "code": "Verification Code",
+    "forgetPass": "Restore Password",
+    "purchaseOrders": "Purchase Orders",
+    "returnOrders": "Returns Orders",
+    "orderDetailes": "Order Detailes",
+    "retUrnOrderDetailes": "retrieval Order Detailes",
+    "returnOrder": "Return Order",
+    "rateOrder": "Order rating"
+  },
+  "table": {
+    "noData": "No data Found",
+    "loading": "loading",
+    "search": "Search For Products ...",
+    "filter":{
+      "text": "Sort By",
+      "option1": "Latest",
+      "option2": "Oldest"
+    },
+    "products":{
+      "number": "Number",
+      "name": "product Name",
+      "price": "Price",
+      "quantity": "Count in Store And Status",
+      "category": "category",
+      "detailes": "product Detailes",
+      "btn": "Request provide product"
+    }
+  },
+  "products": {
+    "addToCart": "Add To Cart",
+    "addToFav": "Add to favorites",
+    "removeToFav": "Remove from favorites",
+    "amount": "Quantity",
+    "share": "Share",
+    "dailyValue": "Daily Value",
+    "desc": "Description",
+    "available": "Available in store",
+    "calories": "Calories",
+    "weight": "product weight",
+    "brand": "Brand Name",
+    "unit": "gm",
+    "currency": "RS"
+  },
+  "noData": {
+    "bank": "There are no financial accounts currently",
+    "services": "Not Found Services",
+    "products": "Not Found Products",
+    "advantages": "Not Found advantages",
+    "offers": "Not Found offers",
+    "comments": "Not Found Rates",
+    "search": "Not Found search results",
+    "complaint": "Not Found complaint",
+    "categories": "Not Found categories",
+    "faqs": "Not Found Faqs",
+    "terms": "Not Found Trems",
+    "notifications": "Not Found Notifications",
+    "newOrders": "Not Found New Orders",
+    "waitingOrders": "Not Found Waiting Orders",
+    "currentOrders": "Not Found Current Orders",
+    "finishedOrders": "Not Found Finished Orders",
+    "cancelledOrders": "Not Found cancelled Orders",
+    "imgs": "Not Found Images",
+    "cart": "Cart is empty",
+    "orderProduct": "The products you requested are no longer available",
+    "productRate": "No reviews for this product"
+  }
+}

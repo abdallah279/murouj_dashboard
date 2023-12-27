@@ -1,0 +1,240 @@
+.subscribe_mail {
+  background-color: $main;
+  .top {
+    .footer-form {
+      display: flex;
+      align-items: center;
+      border-radius: 45px;
+      padding: 2px;
+      overflow: hidden;
+      position: relative;
+      background-color: $white;
+      .main-input {
+        width: 100%;
+
+        .input-me {
+          background-color: $white;
+          border: none !important;
+          min-height: 40px;
+
+          &::placeholder {
+            color: rgba($color: $dark3, $alpha: 0.7);
+          }
+        }
+      }
+
+      .main-btn {
+        border-radius: 45px;
+        height: 42px;
+        min-width: 120px;
+        font-size: 13px;
+
+        @media screen and (max-width: $screen-xs) {
+        }
+
+        @media screen and (max-width: 400px) {
+          min-width: 110px;
+        }
+      }
+    }
+  }
+
+  .bottom {
+    padding: 12px 0;
+    border-top: 1px solid rgba($color: $white, $alpha: 0.7);
+
+    .contact_items {
+      @include between;
+      flex-wrap: wrap;
+      gap: 25px;
+
+      .contact_item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .icon {
+          @include circle(44px);
+          @include center;
+          border: 1px solid $blue;
+          color: $blue;
+          background-color: $white;
+
+          i {
+            font-size: 16px !important;
+          }
+        }
+
+        .info {
+          .name {
+            font-size: 14px;
+            color: $white;
+            margin-bottom: 5px !important;
+
+            @media screen and (max-width:$screen-xs) {
+              font-size: 13px;
+            }
+          }
+
+          .text {
+            color: $white;
+            font-size: 15px;
+
+            @media screen and (max-width:$screen-xs) {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  padding: 40px 0;
+
+  .foot-content {
+    .footer-head {
+      font-size: 16px;
+      color: $black;
+      width: fit-content;
+      font-family: fontDemi;
+
+      @media screen and (max-width: $screen-xs) {
+        font-size: 14px;
+      }
+    }
+
+    .foot-logo {
+      max-width: 120px;
+      max-height: 75px;
+    }
+
+    .footer-info {
+      line-height: 2;
+      margin-top: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .footer-links {
+      .link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 22px;
+        width: fit-content;
+        color: $black;
+        transition: $main-transition;
+        font-size: 14px;
+        cursor: pointer;
+        background-color: transparent;
+        position: relative;
+
+        &.router-link-exact-active {
+          color: $main;
+        }
+
+        &:hover {
+          #{$ltr} & {
+            transform: translateX(5px);
+          }
+          #{$rtl} & {
+            transform: translateX(-5px);
+          }
+          color: $main;
+        }
+
+        .ic {
+          max-width: 17px;
+          max-height: 17px;
+          color: $black;
+          font-size: 15px;
+        }
+
+        .app-link {
+          width: 160px;
+          height: 52px;
+          border-radius: 7px;
+          // object-fit: cover;
+        }
+      }
+    }
+  }
+
+  .main-btn {
+    width: fit-content;
+  }
+}
+
+.copy_sec {
+  //   padding: 12px 0;
+  background-color: $main;
+
+  .content {
+    @include between;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .logo {
+      max-height: 55px;
+      transition: $main-transition;
+    }
+
+    @media screen and (max-width: $screen-sm) {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+
+  .center {
+    margin: 0 auto;
+    .text {
+      color: $white;
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+
+      .social-ic {
+        @include circle(36px);
+        @include center;
+        background-color: $white;
+        transition: $main-transition;
+
+        @media screen and (max-width: $screen-xs) {
+          @include circle(32px);
+        }
+
+        .ic {
+          max-width: 16px;
+          max-height: 16px;
+
+          @media screen and (max-width: $screen-xs) {
+            max-width: 14px;
+            max-height: 14px;
+          }
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .buy_imgs {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .buy_img {
+      max-width: 40px;
+    }
+  }
+}
