@@ -70,9 +70,10 @@
                 <span class="text">{{ $t('sidebar.invoices') }} </span>
             </router-link>
 
-            <button type="button" class="link">
+            <button type="button" @click="logout" class="link">
                 <img src="@/assets/imgs/icons/sidebar/logout.png" class="side-icon" alt="">
                 <span class="text">{{ $t('sidebar.logout') }} </span>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" v-if="loading"></span>
             </button>
 
         </ul>
@@ -88,6 +89,7 @@ import { ref } from 'vue';
 import axios from 'axios';
 import toastMsg from '@/components/shared/Toaster';
 import responseApi from '@/components/shared/ResponseApi.js';
+import { useRouter } from 'vue-router';
 
 /******************* Data *******************/
 
@@ -96,6 +98,9 @@ const { response } = responseApi();
 
 // loading
 const loading = ref(false);
+
+// router
+const router = useRouter();
 
 // Toast
 const { successToast, errorToast } = toastMsg();
@@ -106,30 +111,37 @@ const { successToast, errorToast } = toastMsg();
 
 // logout
 const logout = async () => {
-
+    loading.value = true;
     const config = {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     };
 
-    await axios.delete('sign-out', config).then(res => {
-        if (response(res) == "success" || response(res) == "blocked") {
+    setTimeout(() => {
+        router.push({
+            name: 'login'
+        });
+        loading.value = false;
+    }, 500);
 
-            let lKeys = ['token', 'user', 'country', 'city'];
+    // await axios.delete('sign-out', config).then(res => {
+    //     if (response(res) == "success" || response(res) == "blocked") {
 
-            lKeys.forEach((key) => {
-                localStorage.removeItem(key);
-            });
+    //         let lKeys = ['token', 'user', 'country', 'city'];
 
-            successToast(res.data.msg);
-            checkAuth();
-            router.push({
-                name: 'home'
-            });
+    //         lKeys.forEach((key) => {
+    //             localStorage.removeItem(key);
+    //         });
 
-        } else {
-            errorToast(res.data.msg);
-        }
-    }).catch(err => console.log(err));
+    //         successToast(res.data.msg);
+    //         checkAuth();
+    //         router.push({
+    //             name: 'home'
+    //         });
+
+    //     } else {
+    //         errorToast(res.data.msg);
+    //     }
+    // }).catch(err => console.log(err));
 }
 
 /******************* Computed *******************/

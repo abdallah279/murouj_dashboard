@@ -36,7 +36,7 @@
         <!--*********** Route To Details ***********-->
         <Column :field="routeTable.header" :header="routeTable.header" v-if="routeTable">
             <template #body="slotProps">
-                <router-link :to="routeTable.path + '/' + slotProps.data.product_id" class="table_link">
+                <router-link :to="routeTable.path + '/' + slotProps.data[routeTable.id]" class="table_link">
                     {{ routeTable.header }}
                 </router-link>
             </template>

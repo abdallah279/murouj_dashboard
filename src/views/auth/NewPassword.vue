@@ -1,57 +1,62 @@
 <template>
-    <main class="password main-padding">
-        <div class="container">
-            <PageHeader :title="$t('sectionTitle.restorePassword')" margin="mb-5" :desc="$t('sectionDesc.codeForm')" />
+    <form action="" ref="newPassForm" @submit.prevent="newPasswordFunc">
+        <h3 class="form-title mb-2">{{ $t('restorePasswordForm.header') }}</h3>
+        <p class="form-info mb-4">{{ $t('restorePasswordForm.desc2') }}</p>
 
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <form action="" ref="newPassForm" @submit.prevent="newPasswordFunc">
-
-                        <div class="input-g">
-                            <div class="main-input">
-                                <input type="number" class="input-me validInputs" name="code" v-model="code"
-                                    :placeholder="$t('restorePasswordForm.code.text')">
-                            </div>
-                        </div>
-
-                        <div class="input-g">
-                            <div class="main-input">
-                                <input type="password" class="input-me validInputs" name="password" v-model="password"
-                                    :placeholder="$t('restorePasswordForm.newPassword.text')">
-                                <i class="pi pi-eye main-icon ic" @click="togglePassword"></i>
-                            </div>
-                        </div>
-
-                        <div class="input-g">
-                            <div class="main-input">
-                                <input type="password" class="input-me" v-model="confirmPassword"
-                                    :placeholder="$t('restorePasswordForm.confirmNewPassword.text')">
-                                <i class="pi pi-eye main-icon ic" @click="togglePassword"></i>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="main-btn up mt-4 mx-auto" :disabled="loading">
-                            <span v-if="!loading">
-                                {{ $t('formBtns.save') }}
-                            </span>
-                            <div v-if="loading">
-                                {{ $t('formBtns.saveLoading') }}
-                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            </div>
-                        </button>
-
-                        <div class="d-flex gap-1 justify-content-center mt-4 c-light">
-                            {{ $t('codeForm.text') }}
-                            <button type="button" @click="resendCode"
-                                class="bg-transparent d-block text-decoration-underline c-main">
-                                {{ $t('formBtns.receiveCode') }}
-                            </button>
-                        </div>
-                    </form>
-                </div>
+        <div class="input-g">
+            <div class="main-input">
+                <input type="number" class="input-me validInputs" name="code" v-model="code"
+                    :placeholder="$t('restorePasswordForm.code.text')">
             </div>
         </div>
-    </main>
+
+        <div class="input-g">
+            <div class="main-input">
+                <input type="password" class="input-me validInputs" name="password" v-model="password"
+                    :placeholder="$t('restorePasswordForm.newPassword.text')">
+                <i class="pi pi-eye main-icon ic" @click="togglePassword"></i>
+            </div>
+        </div>
+
+        <div class="input-g">
+            <div class="main-input">
+                <input type="password" class="input-me" v-model="confirmPassword"
+                    :placeholder="$t('restorePasswordForm.confirmNewPassword.text')">
+                <i class="pi pi-eye main-icon ic" @click="togglePassword"></i>
+            </div>
+        </div>
+
+
+
+        <div class="d-flex-c gap-3 mt-4">
+            <button type="submit" class="main-btn login up" :disabled="loading">
+                <span v-if="!loading">
+                    {{ $t('formBtns.changePass') }}
+                </span>
+                <div v-if="loading">
+                    {{ $t('formBtns.sendLoading') }}
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </div>
+            </button>
+
+            <router-link to="/forget-password" class="main-btn dark_transparent" :disabled="loading">
+                <span v-if="!loading">
+                    {{ $t('formBtns.return') }}
+                </span>
+                <div v-if="loading">
+                    {{ $t('formBtns.sendLoading') }}
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </div>
+            </router-link>
+        </div>
+
+        <div class="d-flex gap-1 justify-content-center mt-4 c-light">
+            {{ $t('codeForm.text') }}
+            <button type="button" @click="resendCode" class="bg-transparent d-block text-decoration-underline c-main">
+                {{ $t('formBtns.receiveCode') }}
+            </button>
+        </div>
+    </form>
 </template>
 
 <script setup>

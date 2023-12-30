@@ -35,83 +35,7 @@
     "all": "Show All",
     "detailes": "View details"
   },
-  "modals": {
-    "search": {
-      "header": "Search",
-      "placeholder": "Search for what you want.."
-    },
-    "reason": {
-      "header": "What is the reason for canceling the order?",
-      "confirmBtn": "Confirm cancellation",
-      "btn": "Back off"
-    },
-    "rate": {
-      "header": "Rate the store",
-      "placeholder": "Please enter your rating on the store",
-      "btn": "Send Rate"
-    },
-    "country": {
-      "header": "Country",
-      "btn": "Select Country"
-    },
-    "city": {
-      "header": "City",
-      "btn": "Select City",
-      "noData": "no cities in this country",
-      "return": "Back to countries"
-    },
-    "location": {
-      "header": "My Location",
-      "btn": "Save Location"
-    },
-    "address": {
-      "header": "Delivery Address",
-      "btn": "Determine location"
-    },
-    "done": {
-      "header": "Balance withdrawal request",
-      "text": "Your Message Has Been Successfully Sent",
-      "cancelDone": "Order canceled successfully",
-      "returnDone": "Your return request has been sent successfully",
-      "rateDone": "Your rating has been successfully sent",
-      "addDone": "The product has been successfully added to the cart",
-      "changePhone": "Phone changed successfully",
-      "changePass": "The password has been changed successfully",
-      "orderDone": "The Order was successfully completed",
-      "btn": "Home Page",
-      "orderBtn": "Complete the order",
-      "followBtn": "follow order",
-      "scrollBtn": "Continue browsing"
-    },
-    "deleteAccount": {
-      "header": "Delete Account",
-      "text": "Are you sure you confirmed the account deletion?",
-      "returnBtn": "Back off",
-      "deleteBtn": "Confirm deletion"
-    },
-    "bankAccount": {
-      "header": "Bank account data",
-      "text": "Please fill in the following data to withdraw the balance",
-      "form": {
-        "name": "Account Holder's Name",
-        "bankName": "Bank name",
-        "accountNum": "Bank account number",
-        "ibanNum": "Iban Number",
-        "amount": "Amount"
-      },
-      "btn": "send request"
-    },
-    "chargeModal": {
-      "header": "Recharge balance",
-      "text": "Please enter the amount to top up the balance"
-    },
-    "rateModal": {
-      "header": "Previous Reviews",
-      "text": "Review from",
-      "value": "Rate",
-      "btn": "Back"
-    }
-  },
+  
   
   "subscribeMail": {
     "header": "Subscribe To The Mailing List",
@@ -161,13 +85,7 @@
     "changePhone": "Change Phone",
     "changePassword": "Change Password"
   },
-  "sectionDesc": {
-    "codeForm": "Please enter the activation code sent to you via mobile phone",
-    "restorePassword": "Sending an activation code via message to your mobile number",
-    "changePhone": "Enter your password to change the mobile number",
-    "newPhone": "Enter new mobile number",
-    "complaints": "If you have any complaint or suggestion, do not hesitate to write to us"
-  },
+  
   "contactForm": {
     "name": "Name",
     "phone": "Phone",
@@ -185,85 +103,11 @@
     "message": "Details of the complaint or suggestion",
     "img": "Attach photos"
   },
-  "codeForm": {
-    "text": "Didn't receive the code yet ?"
-  },
-  "loginForm": {
-    "phone": {
-      "text": "Mobile Number",
-      "placeholder": "Mobile Number"
-    },
-    "password": {
-      "text": "Password",
-      "placeholder": "Enter Password"
-    },
-    "forgetPassword": "Forgot your password ?",
-    "haveAccount": "Or Join Us",
-    "createAccount": "Create Account",
-    "signAddress": "If you have an account, log in using your mobile number.",
-    "customers": "Dear Customers"
-  },
-  "restorePasswordForm": {
-    "phone": {
-      "text": "Phone Number",
-      "placeholder": "Enter Phone Number"
-    },
-    "code": {
-      "text": "Code Number"
-    },
-    "newPassword": {
-      "text": "New Password",
-      "placeholder": "Enter New Password"
-    },
-    "confirmNewPassword": {
-      "text": "Confirm New Password",
-      "placeholder": "Enter New Password"
-    }
-  },
-  "createAccountForm": {
-    "photo": "Personal photo",
-    "name": {
-      "text": "User Name",
-      "placeholder": "Enter User Name"
-    },
-    "phone": {
-      "text": "Phone Number",
-      "placeholder": "Enter Phone Number"
-    },
-    "email": {
-      "text": "Email",
-      "placeholder": "Enter Email"
-    },
-    "country": {
-      "placeholder": "Choose Country"
-    },
-    "city": {
-      "placeholder": "Choose City"
-    },
-    "password": {
-      "text": "Password",
-      "placeholder": "Enter password"
-    },
-    "confirmPassword": {
-      "placeholder": "Confirm Password"
-    },
-    "agree": "By registering you agree to",
-    "agree2": "Approval To",
-    "terms": "Terms and Conditions",
-    "haveAccount": "Have an account ? ",
-    "login": "Login",
-    "changePhone": "Change Phone"
-  },
-  "changePhoneForm": {
-    "currentPassword": {
-      "text": "Current Password",
-      "placeholder": "Enter Current Password"
-    },
-    "newPhone": {
-      "text": "New Phone",
-      "placeholder": "Enter New Phone"
-    }
-  },
+  
+  
+  
+  
+  
   "filterForm": {
     "sortBy": "sort By",
     "priceRanking": "price Ranking",
@@ -300,62 +144,7 @@
     "currentOrders": "Current Orders",
     "oldOrders": "Finished Orders"
   },
-  "order": {
-    "tabs": {
-      "purchaseOrders": "Purchase Orders",
-      "returnOrders": "Returns Orders",
-      "pendingOrders": "Waiting Orders",
-      "currentOrders": "Current Orders",
-      "finishedOrders": "Finished Orders",
-      "canceledOrders": "Canceled Orders"
-    },
-    "card": {
-      "orderNum": "Order Number",
-      "orderPrice": "Price",
-      "orderDate": "Order Date",
-      "orderStatus": "Status",
-      "currency": "RS"
-    }
-  },
-  "orderDetailes": {
-    "steps": {
-      "step1": "Processing",
-      "step2": "Prepared",
-      "step3": "Charging in progress",
-      "step4": "Delivered",
-      "step5": "Waiting for approval",
-      "step6": "in the way"
-    },
-    "detailes": "Order Detailes",
-    "returndetailes": "Data for requesting return of products",
-    "products": "Select the products to be returned",
-    "ordertimeDate": "Date and time of Order",
-    "deliverytimeDate": "Date and time of delivery",
-    "orderAddress": "Order Address",
-    "payWay": "payment way",
-    "paymentInfo": "payment Info",
-    "discountPrice": "discount Price",
-    "shippingPrice": "shipping Price",
-    "taxPrice": "tax Price",
-    "productsPrice": "products Price",
-    "totalPrice": "total Price",
-    "bankTransfer": "bank Transfer",
-    "Cancelled": "The order has been cancelled",
-    "cancelledReason": "Reason for cancellation of order",
-    "photoReturnOrder": "Photo of return request",
-    "reasonReturn": "Reason for return",
-    "feedback": "Your feedback",
-    "rateOrder": "Please enter your review of the product",
-    "buttons": {
-      "cancel": "Cancel order",
-      "received": "Order has been received",
-      "returnProducts": "Return products",
-      "addRate": "Rate product",
-      "returnOrder": "Send a return request",
-      "confirm": "Confirm",
-      "img": "Upload image"
-    }
-  },
+  
   "complaint": {
     "card": {
       "complaintNum": "complaint or suggestion number",
@@ -372,28 +161,7 @@
     "name": "Account Number",
     "iban": "Iban Number"
   },
-  "formBtns": {
-    "send": "Send",
-    "sendLoading": "Sending",
-    "login": "Login",
-    "create": "Create Account",
-    "agree": "Agree",
-    "save": "Save",
-    "edit": "Save Edits",
-    "editBtn": "Edit",
-    "saveLoading": "Saving",
-    "confirm": "Confirm",
-    "confirmProfile": "Confirm identity",
-    "confirming": "Confirming",
-    "delteLoading": "Deleting",
-    "changePass": "change Password",
-    "changePhone": "change Phone",
-    "logout": "Logout",
-    "delete": "Delete Account",
-    "activeCode": "Account activation",
-    "receiveCode": "Resend The Code",
-    "addComplaints": "Add complaints or suggestions"
-  },
+  
   
   
   "wallet": {
@@ -494,6 +262,7 @@
     "title": "Profits statistics"
   },
   "pagesTitle": {
+    "dashboard": "Dashboard",
     "home": "Home",
     "orders": "Orders",
     "allCategories": "Categories",
@@ -520,7 +289,7 @@
     "search": "search results",
     "offers": "Offers",
     "productDetailes": "product Detailes",
-    "userAccount": "Edit Account",
+    "userAccount": "Account",
     "login": "Login",
     "createAccount": "Create Account",
     "changePhone": "Change Phone",
@@ -532,6 +301,14 @@
     "retUrnOrderDetailes": "retrieval Order Detailes",
     "returnOrder": "Return Order",
     "rateOrder": "Order rating"
+  },
+  "sectionDesc": {
+    "codeForm": "Please enter the activation code sent to you via mobile phone",
+    "restorePassword": "Sending an activation code via message to your mobile number",
+    "changePhone": "Enter your password to change the mobile number",
+    "newPhone": "Enter new mobile number",
+    "complaints": "If you have any complaint or suggestion, do not hesitate to write to us",
+    "codePhone": "The code was sent to the mobile number"
   },
   "table": {
     "noData": "No data Found",
@@ -550,6 +327,15 @@
       "category": "category",
       "detailes": "product Detailes",
       "btn": "Request provide product"
+    },
+    "orders": {
+      "number": "order number",
+      "name": "Client name",
+      "time": "order time",
+      "price": "order price",
+      "delivery": "Delivery way",
+      "status": "order status",
+      "detailes": "Order Detailes"
     }
   },
   "products": {
@@ -566,6 +352,69 @@
     "brand": "Brand Name",
     "unit": "gm",
     "currency": "RS"
+  },
+  "order": {
+    "tabs": {
+      "purchaseOrders": "Purchase Orders",
+      "returnOrders": "Returns Orders",
+      "pendingOrders": "Waiting Orders",
+      "currentOrders": "Current Orders",
+      "finishedOrders": "Finished Orders",
+      "canceledOrders": "Canceled Orders"
+    },
+    "card": {
+      "orderNum": "Order Number",
+      "orderPrice": "Price",
+      "orderDate": "Order Date",
+      "orderStatus": "Status",
+      "currency": "RS"
+    }
+  },
+  "orderDetailes": {
+    "steps": {
+      "step1": "Processing",
+      "step2": "Prepared",
+      "step3": "Charging in progress",
+      "step4": "Delivered",
+      "step5": "Waiting for approval",
+      "step6": "in the way"
+    },
+    "detailes": "Order Detailes",
+    "returndetailes": "Data for requesting return of products",
+    "products": "Select the products to be returned",
+    "ordertimeDate": "Date and time of Order",
+    "deliverytimeDate": "Date and time of delivery",
+    "orderAddress": "Order Address",
+    "status": "order status",
+    "deliveryWay": "Delivery way",
+    "payWay": "payment way",
+    "paymentInfo": "payment Info",
+    "discountPrice": "discount Price",
+    "shippingPrice": "shipping Price",
+    "taxPrice": "tax Price",
+    "productsPrice": "products Price",
+    "totalPrice": "total Price",
+    "bankTransfer": "bank Transfer",
+    "Cancelled": "The order has been cancelled",
+    "cancelledReason": "Reason for cancellation of order",
+    "photoReturnOrder": "Photo of return request",
+    "reasonReturn": "Reason for return",
+    "feedback": "Your feedback",
+    "rateOrder": "Please enter your review of the product",
+    "buttons": {
+      "cancel": "reject",
+      "inWay": "in the way",
+      "received": "Order has been received",
+      "prepared": "order has been prepared",
+      "Shipping": "Shipping",
+      "delivered": "Delivered",
+      "accept": "accept",
+      "returnProducts": "Return products",
+      "addRate": "Rate product",
+      "returnOrder": "Send a return request",
+      "confirm": "Confirm and start processing the order",
+      "img": "Upload image"
+    }
   },
   "noData": {
     "bank": "There are no financial accounts currently",
@@ -589,5 +438,176 @@
     "cart": "Cart is empty",
     "orderProduct": "The products you requested are no longer available",
     "productRate": "No reviews for this product"
+  },
+  "loginForm": {
+    "login": "Login",
+    "hello": "Welcome ! Please enter your information",
+    "remember": "Remember me",
+    "phone": {
+      "text": "Mobile Number",
+      "placeholder": "Mobile Number"
+    },
+    "password": {
+      "text": "Password",
+      "placeholder": "Enter Password"
+    },
+    "forgetPassword": "Forgot your password ?",
+    "haveAccount": "Or Join Us",
+    "createAccount": "Create Account",
+    "signAddress": "If you have an account, log in using your mobile number.",
+    "customers": "Dear Customers"
+  },
+  "createAccountForm": {
+    "photo": "Personal photo",
+    "name": {
+      "text": "User Name",
+      "placeholder": "Enter User Name"
+    },
+    "phone": {
+      "text": "Phone Number",
+      "placeholder": "Enter Phone Number"
+    },
+    "email": {
+      "text": "Email",
+      "placeholder": "Enter Email"
+    },
+    "country": {
+      "text": "Country",
+      "placeholder": "Choose Country"
+    },
+    "city": {
+      "text": "City",
+      "placeholder": "Choose City"
+    },
+    "password": {
+      "text": "Password",
+      "placeholder": "Enter password"
+    },
+    "confirmPassword": {
+      "placeholder": "Confirm Password"
+    },
+    "agree": "By registering you agree to",
+    "agree2": "Approval To",
+    "terms": "Terms and Conditions",
+    "haveAccount": "Have an account ? ",
+    "login": "Login",
+    "changePhone": "Change Phone"
+  },
+  "restorePasswordForm": {
+    "header": " Restore password",
+    "desc": "Welcome ! Please enter mobile number to send the activation code",
+    "desc2" : "Welcome ! Please enter activation code and new password",
+    "phone": {
+      "text": "Phone Number",
+      "placeholder": "Enter Phone Number"
+    },
+    "code": {
+      "text": "Activation Code"
+    },
+    "newPassword": {
+      "text": "New Password",
+      "placeholder": "Enter New Password"
+    },
+    "confirmNewPassword": {
+      "text": "Confirm New Password",
+      "placeholder": "Enter New Password"
+    }
+  },
+  "codeForm": {
+    "code" :"Please enter activation code",
+    "text": "Didn't receive the code yet ?"
+  },
+  "changePhoneForm": {
+    "currentPassword": {
+      "text": "Current Password",
+      "placeholder": "Enter Current Password"
+    },
+    "newPhone": {
+      "text": "New Phone",
+      "placeholder": "Enter New Phone"
+    }
+  },
+  "profile":{
+    "profile": "Profile",
+    "editProfile": "edit Profile",
+    "image": "profile Image",
+    "banckAccount" : "Bank Account Details",
+    "nationalId": "national Id Image",
+    "commercial": "Commercial Registry",
+    "form" : {
+      "name":{
+        "text": "Agent name",
+        "placeholder": "Enter Agent name"
+      },
+      "taxNumber":{
+        "text": "Tax Number",
+        "placeholder": "Enter Tax Number"
+      },
+      "address":{
+        "text": "Agent location",
+        "placeholder": "Enter Agent location"
+      },
+      "bankName":{
+        "text": "Bank Name",
+        "placeholder": "Enter Bank Name"
+      },
+      "accountNumber":{
+        "text": "Account Number",
+        "placeholder": "Enter Account Number"
+      },
+      "iban":{
+        "text": "IBAN",
+        "placeholder": "Enter IBAN"
+      }
+    }
+  },
+  "modals": {
+    "reason": {
+      "header": "Reason for rejection of the return order",
+      "text": "rejection reason",
+      "placeholder": "Enter the reason for the rejection",
+      "btn": "Back off"
+    },
+    "done": {
+      "header": "Balance withdrawal request",
+      "editAccount" : "The request was successfully sent to management",
+      "text": "Your Message Has Been Successfully Sent",
+      "cancelDone": "Order canceled successfully",
+      "returnDone": "Your return request has been sent successfully",
+      "rateDone": "Your rating has been successfully sent",
+      "addDone": "The product has been successfully added to the cart",
+      "changePhone": "Phone changed successfully",
+      "changePass": "The password has been changed successfully",
+      "orderDone": "The Order was successfully completed",
+      "btn": "Home Page",
+      "orderBtn": "Complete the order",
+      "followBtn": "follow order",
+      "scrollBtn": "Continue browsing"
+    }
+  },
+  "formBtns": {
+    "send": "Send",
+    "sendCode": "Send activation code",
+    "sendToServer": "Send to administration",
+    "return": "Return",
+    "sendLoading": "Sending",
+    "login": "Login",
+    "create": "Create Account",
+    "agree": "Agree",
+    "save": "Save",
+    "edit": "Save Edits",
+    "editBtn": "Edit",
+    "saveLoading": "Saving",
+    "confirm": "Confirm",
+    "confirmProfile": "Confirm identity",
+    "confirming": "Confirming",
+    "delteLoading": "Deleting",
+    "changePass": "change Password",
+    "changePhone": "change Phone",
+    "logout": "Logout",
+    "delete": "Delete Account",
+    "activeCode": "Account activation",
+    "receiveCode": "Resend The Code",
+    "addComplaints": "Add complaints or suggestions"
   }
 }

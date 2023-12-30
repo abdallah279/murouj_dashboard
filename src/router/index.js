@@ -2,142 +2,260 @@ import { createRouter, createWebHistory } from "vue-router";
 import i18n from "@/i18n";
 
 const routes = [
-  /********************* Home **********************/
+  /********************* Dashboard **********************/
   {
-    path: "/",
-    name: "home",
+    path: "/MainView",
+    name: "MainView",
     meta: {
-      title: "pagesTitle.home",
+      title: "pagesTitle.MainView",
     },
-    component: () => import("@/views/HomeView.vue"),
-  },
+    component: () => import("@/views/Dashboard/DashboardView.vue"),
+    redirect: { path: "/" },
+    children: [
+      /********************* Home **********************/
+      {
+        path: "/",
+        name: "home",
+        meta: {
+          title: "pagesTitle.home",
+        },
+        component: () => import("@/views/Dashboard/HomeView.vue"),
+      },
 
-  /********************* Products **********************/
-  {
-    path: "/products",
-    name: "products",
-    meta: {
-      title: "pagesTitle.products",
-      requiresAuth: true,
-    },
-    component: () => import("@/views/Products/ProductsView.vue"),
-  },
-  {
-    path: "/productDetailes/:id",
-    name: "productDetailes",
-    meta: {
-      title: "pagesTitle.productDetailes",
-    },
-    component: () => import("@/views/Products/ProductDetailes.vue"),
-  },
-  {
-    path: "/ourProducts",
-    name: "ourProducts",
-    meta: {
-      title: "pagesTitle.ourProducts",
-    },
-    component: () => import("@/views/Products/ourProductsView.vue"),
-  },
+      /********************* Products **********************/
+      {
+        path: "/products",
+        name: "products",
+        meta: {
+          title: "pagesTitle.products",
+          requiresAuth: true,
+        },
+        component: () => import("@/views/Dashboard/Products/ProductsView.vue"),
+      },
+      {
+        path: "/productDetailes/:id",
+        name: "productDetailes",
+        meta: {
+          title: "pagesTitle.productDetailes",
+        },
+        component: () =>
+          import("@/views/Dashboard/Products/ProductDetailes.vue"),
+      },
+      {
+        path: "/ourProducts",
+        name: "ourProducts",
+        meta: {
+          title: "pagesTitle.ourProducts",
+        },
+        component: () =>
+          import("@/views/Dashboard/Products/ourProductsView.vue"),
+      },
 
-  /********************* Notifications **********************/
-  {
-    path: "/notifications",
-    name: "notifications",
-    meta: {
-      title: "pagesTitle.notifications",
-      requiresAuth: true,
-    },
-    component: () => import("@/views/NotificationsView.vue"),
-  },
+      /********************* Orders **********************/
+      {
+        path: "/orders",
+        name: "orders",
+        meta: {
+          title: "pagesTitle.orders",
+          requiresAuth: true,
+        },
+        component: () => import("@/views/Dashboard/Orders/OrdersView.vue"),
+        redirect: { path: "/purchaseCurrent" },
+        children: [
+          /******* طلبات الشراء ********/
+          {
+            path: "/purchaseOrders",
+            name: "purchaseOrders",
+            meta: {
+              title: "pagesTitle.purchaseOrders",
+            },
+            component: () => import("@/components/Orders/Purchase Orders/View.vue"),
+            redirect: { path: "/purchaseCurrent" },
 
-  /********************* Contact **********************/
-  {
-    path: "/contact",
-    name: "contact",
-    meta: {
-      title: "pagesTitle.contact",
-    },
-    component: () => import("@/views/ContactUs.vue"),
+            children: [
+
+              /**** طلبات الحالية *****/
+              {
+                path: "/purchaseCurrent",
+                name: "purchaseCurrent",
+                component: () => import("@/components/Orders/Purchase Orders/CurrentOrders.vue"),
+              },
+
+              /**** طلبات المنتهية *****/
+              {
+                path: "/purchaseFinished",
+                name: "purchaseFinished",
+                component: () => import("@/components/Orders/Purchase Orders/FinishedOrders.vue"),
+              },
+
+              /**** طلبات الملغية *****/
+              {
+                path: "/purchaseCanceled",
+                name: "purchaseCanceled",
+                component: () => import("@/components/Orders/Purchase Orders/CanceledOrders.vue"),
+              },
+            ],
+          },
+
+          /******* طلبات الأرجاع ********/
+          {
+            path: "/returnOrders",
+            name: "returnOrders",
+            meta: {
+              title: "pagesTitle.returnOrders",
+            },
+            component: () =>
+              import("@/components/Orders/Return Orders/View.vue"),
+            redirect: { path: "/returnCurrent" },
+
+            children: [
+
+              /**** طلبات الحالية *****/
+              {
+                path: "/returnCurrent",
+                name: "returnCurrent",
+                component: () =>
+                  import("@/components/Orders/Return Orders/CurrentOrders.vue"),
+              },
+
+              /**** طلبات المنتهية *****/
+              {
+                path: "/returnFinished",
+                name: "returnFinished",
+                component: () =>
+                  import(
+                    "@/components/Orders/Return Orders/FinishedOrders.vue"
+                  ),
+              },
+
+              /**** طلبات الملغية *****/
+              {
+                path: "/returnCanceled",
+                name: "returnCanceled",
+                component: () =>
+                  import(
+                    "@/components/Orders/Return Orders/CanceledOrders.vue"
+                  ),
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: "/orderDetailes/:id",
+        name: "orderDetailes",
+        meta: {
+          title: "pagesTitle.orderDetailes",
+          requiresAuth: true,
+        },
+        component: () => import("@/views/Dashboard/Orders/OrderDetailes.vue"),
+      },
+
+      /********************* Notifications **********************/
+      {
+        path: "/notifications",
+        name: "notifications",
+        meta: {
+          title: "pagesTitle.notifications",
+          requiresAuth: true,
+        },
+        component: () => import("@/views//Dashboard/NotificationsView.vue"),
+      },
+
+      /********************* Contact **********************/
+      {
+        path: "/contact",
+        name: "contact",
+        meta: {
+          title: "pagesTitle.contact",
+        },
+        component: () => import("@/views//Dashboard/ContactUs.vue"),
+      },
+
+      /********************* Profile **********************/
+      {
+        path: "/profile",
+        name: "profile",
+        meta: {
+          title: "pagesTitle.userAccount",
+          requiresAuth: true,
+        },
+        component: () => import("@/views//Dashboard/Profile/UserAccount.vue"),
+      },
+      {
+        path: "/change-phone",
+        name: "change-phone",
+        meta: {
+          title: "pagesTitle.changePhone",
+          requiresAuth: true,
+        },
+        component: () => import("@/views/Dashboard/Profile/ChangePhone.vue"),
+      },
+      {
+        path: "/newPhone",
+        name: "newPhone",
+        meta: {
+          title: "pagesTitle.changePhone",
+          requiresAuth: true,
+        },
+        component: () => import("@/views/Dashboard/Profile/NewPhone.vue"),
+      },
+      {
+        path: "/code-phone",
+        name: "code-phone",
+        meta: {
+          title: "sectionTitle.verificationCode",
+          requiresAuth: true,
+        },
+        component: () => import("@/views/Dashboard/Profile/CodePhone.vue"),
+      },
+      {
+        path: "/change-password",
+        name: "change-password",
+        meta: {
+          title: "sectionTitle.changePassword",
+          requiresAuth: true,
+        },
+        component: () => import("@/views/Dashboard/Profile/ChangePassword.vue"),
+      },
+    ],
   },
 
   /********************* Auth **********************/
   {
-    path: "/login",
-    name: "login",
+    path: "/auth",
+    name: "auth",
     meta: {
-      title: "pagesTitle.login",
+      title: "pagesTitle.Auth",
     },
-    component: () => import("@/views/auth/LoginView.vue"),
-  },
-  {
-    path: "/create-account",
-    name: "create-account",
-    meta: {
-      title: "pagesTitle.createAccount",
-    },
-    component: () => import("@/views/auth/CreateAccount.vue"),
-  },
-  {
-    path: "/code-account",
-    name: "code-account",
-    meta: {
-      title: "pagesTitle.code",
-    },
-    component: () => import("@/views/auth/CodeAccount.vue"),
-  },
-  {
-    path: "/forget-password",
-    name: "forget-password",
-    meta: {
-      title: "pagesTitle.forgetPass",
-    },
-    component: () => import("@/views/auth/ForgetPassword.vue"),
-  },
-  {
-    path: "/new-password",
-    name: "new-password",
-    meta: {
-      title: "pagesTitle.forgetPass",
-    },
-    component: () => import("@/views/auth/NewPassword.vue"),
-  },
-
-  /********************* Profile **********************/
-  {
-    path: "/userAccount",
-    name: "userAccount",
-    meta: {
-      title: "pagesTitle.userAccount",
-      requiresAuth: true,
-    },
-    component: () => import("@/views/Profile/UserAccount.vue"),
-  },
-  {
-    path: "/change-phone",
-    name: "change-phone",
-    meta: {
-      title: "pagesTitle.changePhone",
-      requiresAuth: true,
-    },
-    component: () => import("@/views/Profile/ChangePhone.vue"),
-  },
-  {
-    path: "/newPhone",
-    name: "newPhone",
-    meta: {
-      title: "pagesTitle.changePhone",
-      requiresAuth: true,
-    },
-    component: () => import("@/views/Profile/NewPhone.vue"),
-  },
-  {
-    path: "/code-phone",
-    name: "code-phone",
-    meta: {
-      title: "sectionTitle.verificationCode",
-      requiresAuth: true,
-    },
-    component: () => import("@/views/Profile/CodePhone.vue"),
+    component: () => import("@/views/auth/AuthView.vue"),
+    redirect: { path: "/login" },
+    children: [
+      {
+        path: "/login",
+        name: "login",
+        meta: {
+          title: "pagesTitle.login",
+        },
+        component: () => import("@/views/auth/LoginView.vue"),
+      },
+      {
+        path: "/forget-password",
+        name: "forget-password",
+        meta: {
+          title: "pagesTitle.forgetPass",
+        },
+        component: () => import("@/views/auth/ForgetPassword.vue"),
+      },
+      {
+        path: "/new-password",
+        name: "new-password",
+        meta: {
+          title: "pagesTitle.forgetPass",
+        },
+        component: () => import("@/views/auth/NewPassword.vue"),
+      },
+    ],
   },
 
   /********************* Page Not Found **********************/
@@ -162,7 +280,9 @@ router.afterEach((to) => {
     : "Murouj Dashboard";
 
   document.title = titleText;
-  document.getElementById("page_title").innerHTML = titleText;
+  if (document.getElementById("page_title")) {
+    document.getElementById("page_title").innerHTML = titleText;
+  }
 
   setTimeout(() => {
     window.scrollTo(0, 0);

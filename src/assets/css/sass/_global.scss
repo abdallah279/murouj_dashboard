@@ -41,14 +41,25 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
   height: 3px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background-color: $light2;
 }
 ::-webkit-scrollbar-thumb {
-  // border-radius: 25px;
+  border-radius: 0;
+  background-color: #ddd;
+}
+
+body::-webkit-scrollbar {
+  width: 6px;
+  height: 3px;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
   background-color: $main;
 }
 

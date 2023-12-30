@@ -86,6 +86,7 @@ const config = {
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 };
 
+// columns
 const columns = ref([
     {
         field: 'product_id',
@@ -164,7 +165,8 @@ const products = ref([
 // route Table
 const routeTable = ref({
     header: i18n.global.t('table.products.detailes'),
-    path: 'productDetailes'
+    path: 'productDetailes',
+    id: 'product_id'
 })
 /******************* Provide && Inject *******************/
 

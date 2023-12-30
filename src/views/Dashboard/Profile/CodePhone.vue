@@ -1,48 +1,46 @@
 <template>
-    <main class="CodePage main-padding">
-        <div class="container">
-            <PageHeader :title="$t('sectionTitle.verificationCode')" :logo="true" :src="srcImage" margin="mb-4"
-                :desc="$t('sectionDesc.codeForm')" />
+    <form action="" class="card_style py-4 px-lg-5" @submit.prevent="verificationCode">
+        <div class="row">
+            <div class="col-lg-8">
 
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <form action="" @submit.prevent="verificationCode">
+                <img src="@/assets/imgs/login_logo.png" alt="" class="login_logo sm mb-4 d-block">
 
-                        <div class="d-flex gap-1 justify-content-center c-black ff-d mb-4">
-                            {{ newPhone }}
-                            <router-link :to="{ name: 'newPhone' }"
-                                class="bg-transparent d-block text-decoration-underline c-main">
-                                {{ $t('formBtns.editBtn') }}
-                            </router-link>
-                        </div>
-
-                        <v-otp-input ref="otpInput" dir="ltr" v-model:value="bindModal" class="justify-content-center mb-4"
-                            input-classes="otp-input" separator="" :num-inputs="6" :should-auto-focus="true"
-                            input-type="letter-numeric" />
-
-                        <div class="d-flex gap-1 justify-content-center c-light">
-                            {{ $t('codeForm.text') }}
-                            <button type="button" @click="resendCode"
-                                class="bg-transparent d-block text-decoration-underline c-main">
-                                {{ $t('formBtns.receiveCode') }}
-                            </button>
-                        </div>
-
-                        <button type="submit" class="main-btn up lg mt-4 mx-auto" :disabled="loading">
-                            <span v-if="!loading">
-                                {{ $t('formBtns.changePhone') }}
-                            </span>
-                            <div v-if="loading">
-                                {{ $t('formBtns.confirming') }}
-                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            </div>
-                        </button>
-
-                    </form>
+                <div class="d-flex gap-1 c-side ff-d mb-4">
+                    {{ $t('sectionDesc.codePhone') }}
+                    <span class="bg-transparent d-block text-decoration-underline c-sec">
+                        {{ newPhone }} 250508080680
+                    </span>
                 </div>
+
+                <div class="input-g">
+                    <label for="" class="main-label">{{ $t('codeForm.code') }}</label>
+                    <div class="main-input">
+                        <input type="number" class="input-me validInputs" name="code" v-model="code"
+                            :placeholder="$t('restorePasswordForm.code.text')">
+                    </div>
+                </div>
+
+                <button type="submit" class="main-btn up lg mt-4 login" :disabled="loading">
+                    <span v-if="!loading">
+                        {{ $t('formBtns.save') }}
+                    </span>
+                    <div v-if="loading">
+                        {{ $t('formBtns.saving') }}
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    </div>
+                </button>
+
+                <div class="d-flex gap-1 c-light mt-3">
+                    {{ $t('codeForm.text') }}
+                    <button type="button" @click="resendCode"
+                        class="bg-transparent d-block text-decoration-underline c-sec">
+                        {{ $t('formBtns.receiveCode') }}
+                    </button>
+                </div>
+
             </div>
         </div>
-    </main>
+    </form>
 
     <!-- Done Modal -->
     <Dialog id="done" class="xl" v-model:visible="done" modal>

@@ -4,84 +4,8 @@
     "all": "عرض الكل",
     "detailes": "عرض التفاصيل"
   },
-  "modals": {
-    "search": {
-      "header": "بحث",
-      "placeholder": "ابحث عما تريد.."
-    },
-    "reason": {
-      "header": "ماهو سبب إلغاء الطلب ؟",
-      "confirmBtn": "تأكيد الالغاء",
-      "btn": "تراجع"
-    },
-    "rate": {
-      "header": "قم بتقييم المتجر",
-      "placeholder": "برجاء ادخال تقييمك علي المتجر",
-      "btn": "ارسل التقييم"
-    },
-    "country": {
-      "header": "الدولة",
-      "btn": "اختيار الدولة"
-    },
-    "city": {
-      "header": "المدينة",
-      "btn": "اختيار المدينة",
-      "noData": "لا يوجد مدن لهذه الدولة",
-      "return": "العودة للدول"
-    },
-    "location": {
-      "header": "موقعي",
-      "btn": "حفظ الموقع"
-    },
-    "address": {
-      "header": "عنوان التوصيل",
-      "btn": "تحديد الموقع"
-    },
-    "done": {
-      "header": "طلب سحب رصيد",
-      "text": "تم ارسال رسالتك بنجاح",
-      "cancelDone": "تم إلغاء الطلب بنجاح",
-      "returnDone": "تم ارسال طلب ارجاع بنجاح",
-      "rateDone": "تم ارسال تقييمك بنجاح",
-      "addDone": "تم إضافة المنتج للسلة بنجاح",
-      "changePhone": "تم تغيير رقم الجوال بنجاح",
-      "changePass": "تم تغيير كلمة المرور بنجاح",
-      "orderDone": "تم اتمام الطلب بنجاح",
-      "btn": "العودة للرئيسية",
-      "orderBtn": "استكمال الطلب",
-      "followBtn": "متابعه الطلب",
-      "scrollBtn": "استكمال التصفح"
-    },
-    "deleteAccount": {
-      "header": "حذف الحساب",
-      "text": "هل انت متاكد من تأكيد حذف الحساب ؟",
-      "returnBtn": "تراجع",
-      "deleteBtn": "تأكيد الحذف"
-    },
-    "bankAccount": {
-      "header": "بيانات الحساب البنكي",
-      "text": "برجاء تعبئة البيانات التالية لسحب الرصيد",
-      "form": {
-        "name": "إسم صاحب الحساب",
-        "bankName": "إسم البنك",
-        "accountNum": "رقم الحساب البنكي",
-        "ibanNum": "رقم الايبان",
-        "amount": "المبلغ"
-      },
-      "btn": "ارسل الطلب"
-    },
-    "chargeModal": {
-      "header": "شحن رصيد",
-      "text": "برجاء أدخال المبلغ لشحن الرصيد"
-    },
-    "rateModal": {
-      "header": "تقييمات سابقة",
-      "text": "مراجعه من",
-      "value": "القيمة",
-      "btn": "رجوع"
-    }
-  },
   
+
   "subscribeMail": {
     "header": "اشترك في القائمة البريدية",
     "contactItems": {
@@ -130,13 +54,7 @@
     "changePhone": "تغيير رقم الجوال",
     "changePassword": "تغيير كلمة المرور"
   },
-  "sectionDesc": {
-    "codeForm": "برجاء ادخال كود التفعيل المرسل إليك عبر الجوال",
-    "restorePassword": "لارسال كود تفعيل عبر رساله علي رقم الجوال",
-    "changePhone": "قم بادخال كلمة المرور الخاص بك لتغيير رقم الجوال",
-    "newPhone": "قم بادخال رقم جديد لتغيير رقم الجوال",
-    "complaints": "اذا كان لديك أي شكوي او المقترح لا تتردد في مراسلتا"
-  },
+  
   "contactForm": {
     "name": "الأسم",
     "phone": "رقم الجوال",
@@ -154,86 +72,9 @@
     "message": "تفاصيل الشكوي او المقترح",
     "img": "إرفاق صور"
   },
-  "codeForm": {
-    "text": "لم تستلم الكود بعد ؟"
-  },
-  "loginForm": {
-    "phone": {
-      "text": "رقم الجوال",
-      "placeholder": "رقم الجوال"
-    },
-    "password": {
-      "text": "كلمة المرور",
-      "placeholder": "أدخل كلمة المرور"
-    },
-    "forgetPassword": "هل نسيت كلمة المرور ؟",
-    "haveAccount": "او انضم الينا",
-    "createAccount": "قم بإنشاء حساب",
-    "signAddress": "إذا كان لديك حساب ، قم بتسجيل الدخول باستخدام رقم جوالك",
-    "customers": "عملائنا الكرام "
-  },
-  "restorePasswordForm": {
-    "phone": {
-      "text": "رقم الجوال",
-      "placeholder": "أدخل رقم الجوال"
-    },
-    "code": {
-      "text": "رقم الكود"
-    },
-    "newPassword": {
-      "text": "كلمة المرور الجديدة",
-      "placeholder": "ادخل كلمة المرور الجديدة"
-    },
-    "confirmNewPassword": {
-      "text": "تأكيد كلمة المرور الجديدة",
-      "placeholder": "ادخل كلمة المرور الجديدة"
-    }
-  },
-  "createAccountForm": {
-    "photo": "الصورة الشخصية",
-    "name": {
-      "text": "إسم المستخدم",
-      "placeholder": "إسم المستخدم"
-    },
-    "phone": {
-      "text": "رقم الجوال",
-      "placeholder": "رقم الجوال"
-    },
-    "email": {
-      "text": "البريد الإلكتروني",
-      "placeholder": "البريد الإلكتروني"
-    },
-    "country": {
-      "placeholder": "الدولة"
-    },
-    "city": {
-      "placeholder": "المدينة"
-    },
-    "password": {
-      "text": "كلمة المرور",
-      "placeholder": "كلمة المرور"
-    },
-    "confirmPassword": {
-      "text": "تأكيد كلمة المرور",
-      "placeholder": "تأكيد كلمة المرور"
-    },
-    "agree": "بالتسجيل فانت توافق علي",
-    "agree2": "الموافقة علي",
-    "terms": "الشروط والأحكام",
-    "haveAccount": "لديك حساب الفعل ؟",
-    "login": "تسجيل الدخول",
-    "changePhone": "تغيير رقم الجوال"
-  },
-  "changePhoneForm": {
-    "currentPassword": {
-      "text": "كلمة المرور الحالية",
-      "placeholder": "أدخل كلمة المرور الحالية"
-    },
-    "newPhone": {
-      "text": "رقم الجوال الجديد",
-      "placeholder": "أدخل رقم الجوال الجديد"
-    }
-  },
+  
+
+
   "filterForm": {
     "sortBy": "تصنيف حسب",
     "priceRanking": "تصنيف السعر",
@@ -267,62 +108,7 @@
     "profile": "حسابى",
     "orders": "طلباتى"
   },
-  "order": {
-    "tabs": {
-      "purchaseOrders": "طلبات الشراء",
-      "returnOrders": "طلبات الأرجاع",
-      "pendingOrders": "طلبات قيد انتظار",
-      "currentOrders": "طلبات الحالية",
-      "finishedOrders": "طلبات المنتهية",
-      "canceledOrders": "طلبات الملغية"
-    },
-    "card": {
-      "orderNum": "رقم الطلب",
-      "orderPrice": "السعر",
-      "orderDate": "تاريخ الطلب",
-      "orderStatus": "الحالة",
-      "currency": "ر.س"
-    }
-  },
-  "orderDetailes": {
-    "steps": {
-      "step1": "جاري التجهيز",
-      "step2": "تم التجهيز",
-      "step3": "جاري الشحن",
-      "step4": "تم التسليم",
-      "step5": "إنتظار الموافقة",
-      "step6": "في الطريق"
-    },
-    "detailes": "تفاصيل الطلب",
-    "returndetailes": "بيانات طلب ارجاع المنتجات",
-    "products": "قم بتحديد المنتجات المطلوب ارجاعها",
-    "ordertimeDate": "تاريخ و وقت الطلب",
-    "deliverytimeDate": "تاريخ و وقت التوصيل",
-    "orderAddress": "عنوان الطلب",
-    "payWay": "طريقة الدفع",
-    "paymentInfo": "معومات الدفع",
-    "discountPrice": "سعر الخصم",
-    "shippingPrice": "سعر الشحن",
-    "taxPrice": "سعر الضريبة",
-    "productsPrice": "سعر المنتجات",
-    "totalPrice": "السعر الإجمالي",
-    "bankTransfer": "التحويل البنكي",
-    "Cancelled": "تم الغاء الطلب",
-    "cancelledReason": "سبب الألغاء الطلب",
-    "photoReturnOrder": "صورة طلب الأرجاع",
-    "reasonReturn": "سبب الأرجاع",
-    "feedback": "ملاحظاتك",
-    "rateOrder": "برجاء ادخال تقييمك علي المنتج",
-    "buttons": {
-      "cancel": "الغاء الطلب",
-      "received": "تم استلام الطلب",
-      "returnProducts": "ارجاع المنتجات",
-      "addRate": "قم بتقييم المنتج",
-      "returnOrder": "ارسال طلب الأرجاع",
-      "confirm": "تأكيد ",
-      "img": "ارفاق صورة"
-    }
-  },
+  
   "complaint": {
     "card": {
       "complaintNum": "رقم الشكوى أو المقترح",
@@ -339,29 +125,7 @@
     "name": "رقم الحساب",
     "iban": "رقم الايبان"
   },
-  "formBtns": {
-    "send": "ارسال",
-    "sendLoading": "جارى الارسال",
-    "login": "تسجيل الدخول",
-    "create": "انشاء حساب",
-    "agree": "موافقة",
-    "save": "حفظ",
-    "edit": "حفظ التعديلات",
-    "editBtn": "تعديل",
-    "saveLoading": "جارى الحفظ",
-    "confirm": "تأكيد",
-    "confirmProfile": "تأكيد الهوية",
-    "confirming": "جارى التأكيد",
-    "delteLoading": "جارى الحذف",
-    "changePass": "تغيير كلمة المرور",
-    "changePhone": "تغيير رقم الجوال",
-    "logout": "تسجيل خروج",
-    "delete": "حذف الحساب",
-    "activeCode": "تفعيل الحساب",
-    "receiveCode": "أعد إرسال الكود",
-    "addComplaints": "أضافة شكاوى او مقترح"
-  },
-  
+
   "wallet": {
     "currentCredit": "رصيدك الحالى",
     "currency": "ريال سعودى",
@@ -429,14 +193,6 @@
     "chooseWay": "طريقة التوصيل"
   },
 
-
-
-
-
-
-
-
-
   "sidebar": {
     "home": "الرئيسية",
     "orders": "الطلبات",
@@ -462,6 +218,7 @@
     "title": "إحصائيات الارباح"
   },
   "pagesTitle": {
+    "dashboard": "لوحة التحكم",
     "home": "الرئيسية",
     "orders": "طلبات",
     "allCategories": "الأقسام",
@@ -488,7 +245,7 @@
     "search": "نتائج البحث",
     "offers": "العروض",
     "productDetailes": "تفاصيل المنتج",
-    "userAccount": "تعديل بيانات حسابي",
+    "userAccount": "بيانات الحساب",
     "changePhone": "تغيير رقم الجوال",
     "login": "تسجيل دخول",
     "createAccount": "تسجيل جديد",
@@ -501,23 +258,40 @@
     "returnOrder": "عمل طلب الأرجاع",
     "rateOrder": "تقييم الطلب"
   },
+  "sectionDesc": {
+    "codeForm": "برجاء ادخال كود التفعيل المرسل إليك عبر الجوال",
+    "restorePassword": "لارسال كود تفعيل عبر رساله علي رقم الجوال",
+    "changePhone": "قم بادخال كلمة المرور الخاص بك لتغيير رقم الجوال",
+    "newPhone": "قم بادخال رقم جديد لتغيير رقم الجوال",
+    "codePhone": "تم ارسال رقم الكود علي رقم الجوال",
+    "complaints": "اذا كان لديك أي شكوي او المقترح لا تتردد في مراسلتا"
+  },
   "table": {
     "noData": "لا يوجد بيانات",
     "loading": "جارى التحميل",
     "search": "ابحث عن منتج ...",
-    "filter":{
+    "filter": {
       "text": "ترتيب حسب",
       "option1": "الأحدث",
       "option2": "الأقدم"
     },
-    "products":{
-      "number": "رقم",
+    "products": {
+      "number": "رقم المنتج",
       "name": "اسم المنتج",
       "price": "السعر",
       "quantity": "العدد في المخزن و الحالة",
       "category": "القسم",
       "detailes": "تفاصيل المنتج",
       "btn": "طلب توفير منتج"
+    },
+    "orders": {
+      "number": " رقم الطلب",
+      "name": "اسم العميل",
+      "time": "وقت الطلب",
+      "price": "سعر الطلب",
+      "delivery": "طريقة التوصيل",
+      "status": "حالة الطلب",
+      "detailes": "تفاصيل الطلب"
     }
   },
   "products": {
@@ -534,6 +308,69 @@
     "brand": "الماركة",
     "unit": "جم",
     "currency": "ر.س"
+  },
+  "order": {
+    "tabs": {
+      "purchaseOrders": "طلبات الشراء",
+      "returnOrders": "طلبات الأرجاع",
+      "pendingOrders": "طلبات قيد انتظار",
+      "currentOrders": "طلبات الحالية",
+      "finishedOrders": "طلبات المنتهية",
+      "canceledOrders": "طلبات الملغية"
+    },
+    "card": {
+      "orderNum": "رقم الطلب",
+      "orderPrice": "السعر",
+      "orderDate": "تاريخ الطلب",
+      "orderStatus": "الحالة",
+      "currency": "ر.س"
+    }
+  },
+  "orderDetailes": {
+    "steps": {
+      "step1": "جاري التجهيز",
+      "step2": "تم التجهيز",
+      "step3": "جاري الشحن",
+      "step4": "تم التسليم",
+      "step5": "إنتظار الموافقة",
+      "step6": "في الطريق"
+    },
+    "detailes": "تفاصيل الطلب",
+    "returndetailes": "بيانات طلب ارجاع المنتجات",
+    "products": "قم بتحديد المنتجات المطلوب ارجاعها",
+    "ordertimeDate": "تاريخ الطلب",
+    "deliverytimeDate": "تاريخ و وقت التوصيل",
+    "orderAddress": "عنوان الطلب",
+    "status": "حالة الطلب",
+    "deliveryWay": "طريقة التوصيل",
+    "payWay": "طريقة الدفع",
+    "paymentInfo": "معومات الدفع",
+    "discountPrice": "سعر الخصم",
+    "shippingPrice": "سعر الشحن",
+    "taxPrice": "سعر الضريبة",
+    "productsPrice": "سعر المنتجات",
+    "totalPrice": "السعر الإجمالي",
+    "bankTransfer": "التحويل البنكي",
+    "Cancelled": "تم الغاء الطلب",
+    "cancelledReason": "سبب الألغاء الطلب",
+    "photoReturnOrder": "صورة طلب الأرجاع",
+    "reasonReturn": "سبب الأرجاع",
+    "feedback": "ملاحظاتك",
+    "rateOrder": "برجاء ادخال تقييمك علي المنتج",
+    "buttons": {
+      "cancel": "رفض الطلب",
+      "inWay": "في الطريق",
+      "prepared": "تم تجهيز الطلب",
+      "Shipping": "جاري الشحن",
+      "delivered": "تم التسليم",
+      "accept": "الموافقة علي الطلب",
+      "received": "تم استلام الطلب",
+      "returnProducts": "ارجاع المنتجات",
+      "addRate": "قم بتقييم المنتج",
+      "returnOrder": "ارسال طلب الأرجاع",
+      "confirm": "تأكيد وبدا تجهيز الطلب ",
+      "img": "ارفاق صورة"
+    }
   },
   "noData": {
     "bank": "لا يوجد حسابات مالية حاليا",
@@ -557,5 +394,178 @@
     "cart": "السلة فارغة",
     "orderProduct": "المنتجات المطلوبة لم تعد متوفره",
     "productRate": "لا يوجد تقييمات لهذا المنتج"
+  },
+  "loginForm": {
+    "login": "تسجيل دخول",
+    "hello": "مرحباً بك ! من فضلك ادخل بياناتك",
+    "remember": "تذكرني",
+    "phone": {
+      "text": "رقم الجوال",
+      "placeholder": "من ادخل رقم الجوال"
+    },
+    "password": {
+      "text": "كلمة المرور",
+      "placeholder": "أدخل كلمة المرور"
+    },
+    "forgetPassword": "هل نسيت كلمة المرور ؟",
+    "haveAccount": "او انضم الينا",
+    "createAccount": "قم بإنشاء حساب",
+    "signAddress": "إذا كان لديك حساب ، قم بتسجيل الدخول باستخدام رقم جوالك",
+    "customers": "عملائنا الكرام ",
+    "rememberMe": "تذكرني"
+  },
+  "createAccountForm": {
+    "photo": "الصورة الشخصية",
+    "name": {
+      "text": "إسم المستخدم",
+      "placeholder": "إسم المستخدم"
+    },
+    "phone": {
+      "text": "رقم الجوال",
+      "placeholder": "رقم الجوال"
+    },
+    "email": {
+      "text": "البريد الإلكتروني",
+      "placeholder": "البريد الإلكتروني"
+    },
+    "country": {
+      "text": "الدولة",
+      "placeholder": "اختر الدولة"
+    },
+    "city": {
+      "text": "المدينة",
+      "placeholder": "اختر المدينة"
+    },
+    "password": {
+      "text": "كلمة المرور",
+      "placeholder": "كلمة المرور"
+    },
+    "confirmPassword": {
+      "text": "تأكيد كلمة المرور",
+      "placeholder": "تأكيد كلمة المرور"
+    },
+    "agree": "بالتسجيل فانت توافق علي",
+    "agree2": "الموافقة علي",
+    "terms": "الشروط والأحكام",
+    "haveAccount": "لديك حساب الفعل ؟",
+    "login": "تسجيل الدخول",
+    "changePhone": "تغيير رقم الجوال"
+  },
+  "restorePasswordForm": {
+    "header": " استعادة كلمة المرور",
+    "desc": "مرحباً بك ! من فضلك ادخل رقم الجوال لأرسال كود التفعيل",
+    "desc2": "مرحباً بك ! من فضلك ادخل الكود المرسل لرقم الجوال الخاص بك وكلمة المرور الجديدة",
+    "phone": {
+      "text": "رقم الجوال",
+      "placeholder": "أدخل رقم الجوال"
+    },
+    "code": {
+      "text": "كود التفعيل"
+    },
+    "newPassword": {
+      "text": "كلمة المرور الجديدة",
+      "placeholder": "ادخل كلمة المرور الجديدة"
+    },
+    "confirmNewPassword": {
+      "text": "تأكيد كلمة المرور الجديدة",
+      "placeholder": "ادخل كلمة المرور الجديدة"
+    }
+  },
+  "changePhoneForm": {
+    "currentPassword": {
+      "text": "كلمة المرور الحالية",
+      "placeholder": "أدخل كلمة المرور الحالية"
+    },
+    "newPhone": {
+      "text": "رقم الجوال الجديد",
+      "placeholder": "أدخل رقم الجوال الجديد"
+    }
+  },
+  "codeForm": {
+    "code":"من فضلك أدخل كود التفعيل",
+    "text": "لم تستلم الكود بعد ؟"
+  },
+  "profile":{
+    "profile": "الملف الشخصي",
+    "editProfile": "تعديل الملف الشخصي",
+    "image": "الصورة الشخصية",
+    "banckAccount":"بيانات الحساب البنكي",
+    "nationalId": "صورة الهوية الوطنية",
+    "commercial": "السجل التجاري",
+    "form" : {
+      "name":{
+        "text": "اسم الوكيل",
+        "placeholder": "برجاء ادخال الأسم"
+      },
+      "taxNumber":{
+        "text": "الرقم الضريبي",
+        "placeholder": "برجاء ادخال الرقم الضريبي"
+      },
+      "address":{
+        "text": "موقع الوكيل",
+        "placeholder": "برجاء ادخال موقع الوكيل"
+      },
+      "bankName":{
+        "text": "اسم البنك",
+        "placeholder": "برجاء ادخال اسم البنك"
+      },
+      "accountNumber":{
+        "text": "رقم الحساب",
+        "placeholder": "برجاء ادخال رقم الحساب"
+      },
+      "iban":{
+        "text": "رقم الايبان",
+        "placeholder": "برجاء ادخال رقم الايبان"
+      }
+    }
+  },
+  "modals": {
+    "refuse": {
+      "header": "سبب رفض طلب الأرجاع",
+      "text": "سبب الرفض",
+      "placeholder": "أدخل سبب الرفض",
+      "btn": "تراجع"
+    },
+    "done": {
+      "header": "طلب سحب رصيد",
+      "editAccount": "تم ارسال الطلب بنجاح للأدارة",
+      "text": "تم ارسال رسالتك بنجاح",
+      "cancelDone": "تم إلغاء الطلب بنجاح",
+      "returnDone": "تم ارسال طلب ارجاع بنجاح",
+      "rateDone": "تم ارسال تقييمك بنجاح",
+      "addDone": "تم إضافة المنتج للسلة بنجاح",
+      "changePhone": "تم تغيير رقم الجوال بنجاح",
+      "changePass": "تم تغيير كلمة المرور بنجاح",
+      "orderDone": "تم اتمام الطلب بنجاح",
+      "btn": "العودة للرئيسية",
+      "orderBtn": "استكمال الطلب",
+      "followBtn": "متابعه الطلب",
+      "scrollBtn": "استكمال التصفح"
+    }
+  },
+  "formBtns": {
+    "send": "ارسال",
+    "sendcode": "ارسل كود التفعيل",
+    "sendToServer": "ارسال الطلب للادارة",
+    "return": "رجوع",
+    "sendLoading": "جارى الارسال",
+    "login": "تسجيل الدخول",
+    "create": "انشاء حساب",
+    "agree": "موافقة",
+    "save": "حفظ",
+    "edit": "حفظ التعديلات",
+    "editBtn": "تعديل",
+    "saveLoading": "جارى الحفظ",
+    "confirm": "تأكيد",
+    "confirmProfile": "تأكيد الهوية",
+    "confirming": "جارى التأكيد",
+    "delteLoading": "جارى الحذف",
+    "changePass": "تغيير كلمة المرور",
+    "changePhone": "تغيير رقم الجوال",
+    "logout": "تسجيل خروج",
+    "delete": "حذف الحساب",
+    "activeCode": "تفعيل الحساب",
+    "receiveCode": "أعد إرسال الكود",
+    "addComplaints": "أضافة شكاوى او مقترح"
   }
 }

@@ -323,50 +323,6 @@
   }
 }
 
-.user-img {
-  position: relative;
-  @include circle(100px);
-
-  @media screen and (max-width: $screen-xs) {
-    @include circle(80px);
-  }
-
-  .profile-img {
-    @include circle(100%);
-    overflow: hidden;
-    border: 3px solid $white;
-    outline: 1px solid $sec;
-    @include center;
-
-    img {
-      max-width: 40px;
-
-      &.wid {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        max-width: none;
-      }
-    }
-  }
-
-  .user-camera {
-    position: absolute;
-    top: 50%;
-    @include dir-right(-12px);
-    @include circle(30px);
-    @include center;
-    cursor: pointer;
-    background-color: $sec;
-    border: 1px solid $white;
-    outline: 1px solid $sec;
-
-    img {
-      max-width: 14px;
-      max-height: 15px;
-    }
-  }
-}
 
 .owl-dots {
   @include center;
@@ -1114,14 +1070,30 @@
   }
 
   &.light {
-    background-color: $light;
+    background-color: #EEEEEE;
     color: $black;
-    border-color: $light;
+    border-color: #EEEEEE;
 
     &:hover {
       background-color: $white;
       color: $main;
       border-color: $light !important;
+    }
+  }
+
+  &.login{
+    background-color: $sec;
+    border-color: transparent;
+  }
+
+  &.dark_transparent{
+    background-color: transparent;
+    color: $side-color;
+    border-color: #707070;
+
+    &:hover{
+      background-color: #707070;
+      color: $white;
     }
   }
 
@@ -1285,7 +1257,7 @@
   @include center;
   border-radius: 40px;
   transition: $main-transition;
-  box-shadow: $card-shadow;
+  box-shadow: $side-shadow;
   font-family: fontDemi;
 
   &.transparent {
@@ -1316,6 +1288,10 @@
 
 .c-main {
   color: $main !important;
+}
+
+.c-sec {
+  color: $sec !important;
 }
 
 .c-side {
@@ -1816,7 +1792,7 @@
 .main-label {
   margin-bottom: 10px;
   font-size: 13px;
-  font-family: fontDemi;
+  // font-family: fontDemi;
   color: $black;
   display: flex;
   align-items: center;
@@ -1852,6 +1828,10 @@
     background-color: #fff;
     border: 1px solid $border-color;
     border-radius: 5px;
+
+    &.light{
+      border-color: $light6;
+    }
 
     &.photo-input {
       display: flex;
@@ -2735,6 +2715,11 @@
   &.light {
     background-color: rgba($color: #eeeeee, $alpha: 0.3);
   }
+
+  &.main {
+    border-color: $main;
+    color: $main;
+  }
 }
 
 .hidden-img {
@@ -2954,14 +2939,14 @@
 /********************* Prime Modal *********************/
 .p-dialog {
   font-family: fontMed !important;
-  border-radius: 0 !important;
+  border-radius: 20px !important;
   overflow: hidden;
   background-color: $white;
   min-width: 400px;
   margin: 0 10px;
   max-height: fit-content !important;
-  border-top: 6px solid $main;
-  border-bottom: 6px solid $main;
+  // border-top: 6px solid $main;
+  // border-bottom: 6px solid $main;
   box-shadow: none !important;
 
   &.xl {
@@ -3063,15 +3048,22 @@
     padding-bottom: 15px !important;
     .p-dialog-title {
       font-size: 16px;
-      color: $black;
-      font-family: fontDemi;
+      color: #484D45;
+      // font-family: fontDemi;
+      font-weight: 500;
     }
 
     .p-dialog-header-icon {
       position: absolute;
       top: 20px;
       @include dir-left(20px);
-      color: $red2;
+      color: $white;
+      background-color: $red3;
+      @include circle(26px);
+
+      .p-icon{
+        max-width: 12px !important;
+      }
     }
   }
 
