@@ -1804,13 +1804,9 @@
     font-size: 14px;
   }
 
-  @media screen and (max-width: $screen-sm) {
-    font-size: 15px;
-  }
-
   @media screen and (max-width: $screen-xs) {
     font-family: fontMed;
-    font-size: 15px;
+    font-size: 12px;
   }
 }
 
@@ -2499,8 +2495,14 @@
   }
 
   &.blue {
+
+    .check{
+      background-color: $light3;
+      border-color: $light3;
+    }
     input:checked + .check {
       background-color: $blue !important;
+      border-color: $blue !important;
 
       &::after {
         color: $white;

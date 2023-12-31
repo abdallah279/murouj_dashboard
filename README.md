@@ -1,4 +1,4 @@
-# murouj_site
+# murouj_dashboard
 
 ## Project setup
 ```

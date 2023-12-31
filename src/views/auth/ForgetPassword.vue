@@ -9,7 +9,7 @@
             <div class="main-input">
                 <input type="number" class="input-me validInputs" name="phone" v-model="phone"
                     :placeholder="$t('restorePasswordForm.phone.placeholder')">
-                <Dropdown v-model="selectedCountry" @change="log" :options="countries" optionLabel="name"
+                <Dropdown v-model="selectedCountry" :options="countries" optionLabel="name"
                     class="main-icon selectedCountry">
                     <template #value="slotProps">
                         <div v-if="slotProps.value" class="selected">
@@ -46,14 +46,8 @@
                 </div>
             </button>
 
-            <router-link to="/login" class="main-btn dark_transparent" :disabled="loading">
-                <span v-if="!loading">
-                    {{ $t('formBtns.return') }}
-                </span>
-                <div v-if="loading">
-                    {{ $t('formBtns.sendLoading') }}
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                </div>
+            <router-link to="/login" class="main-btn dark_transparent">
+                {{ $t('formBtns.return') }}
             </router-link>
         </div>
     </form>
@@ -118,40 +112,36 @@ function validate() {
 
 // forgetPassword Function
 const forgetPasswordFunc = async () => {
-    // loading.value = true;
-    // const fd = new FormData(forgetPassword.value);
-    // fd.append('country_code', selectedCountry.value.key);
+    loading.value = true;
+    const fd = new FormData(forgetPassword.value);
+    fd.append('country_code', selectedCountry.value.key);
 
-    router.push({
-        name: 'new-password'
-    });
+    validate();
 
-    // validate();
+    if (errors.value.length) {
+        errorToast(errors.value[0]);
+        loading.value = false;
+        errors.value = [];
+    } else {
 
-    // if (errors.value.length) {
-    //     errorToast(errors.value[0]);
-    //     loading.value = false;
-    //     errors.value = [];
-    // } else {
+        await axios.post('providers/forget-password-send-code', fd).then(res => {
+            if (response(res) == "success") {
+                localStorage.setItem('country_code', selectedCountry.value.key);
+                localStorage.setItem('phone', phone.value);
 
-    //     await axios.post('forget-password-send-code', fd).then(res => {
-    //         if (response(res) == "success") {
-    //             localStorage.setItem('country_code', selectedCountry.value.key);
-    //             localStorage.setItem('phone', phone.value);
+                successToast(res.data.msg);
 
-    //             successToast(res.data.msg);
+                router.push({
+                    name: 'new-password'
+                });
 
-    //             router.push({
-    //                 name: 'new-password'
-    //             });
+            } else {
+                errorToast(res.data.msg);
+            }
+            loading.value = false;
+        }).catch(err => console.log(err));
 
-    //         } else {
-    //             errorToast(res.data.msg);
-    //         }
-    //         loading.value = false;
-    //     }).catch(err => console.log(err));
-
-    // }
+    }
 }
 
 /******************* Computed *******************/

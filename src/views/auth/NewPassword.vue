@@ -5,7 +5,7 @@
 
         <div class="input-g">
             <div class="main-input">
-                <input type="number" class="input-me validInputs" name="code" v-model="code"
+                <input type="number" class="input-me validInputs" name="code"
                     :placeholder="$t('restorePasswordForm.code.text')">
             </div>
         </div>
@@ -20,7 +20,7 @@
 
         <div class="input-g">
             <div class="main-input">
-                <input type="password" class="input-me" v-model="confirmPassword"
+                <input type="password" class="input-me" name="password_confirmation" v-model="confirmPassword"
                     :placeholder="$t('restorePasswordForm.confirmNewPassword.text')">
                 <i class="pi pi-eye main-icon ic" @click="togglePassword"></i>
             </div>
@@ -39,15 +39,9 @@
                 </div>
             </button>
 
-            <router-link to="/forget-password" class="main-btn dark_transparent" :disabled="loading">
-                <span v-if="!loading">
-                    {{ $t('formBtns.return') }}
-                </span>
-                <div v-if="loading">
-                    {{ $t('formBtns.sendLoading') }}
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                </div>
-            </router-link>
+            <button type="button" @click="returnFunc" class="main-btn dark_transparent">
+                {{ $t('formBtns.return') }}
+            </button>
         </div>
 
         <div class="d-flex gap-1 justify-content-center mt-4 c-light">
@@ -66,7 +60,6 @@ import { useRouter } from "vue-router";
 import axios from 'axios'
 import toastMsg from '@/components/shared/Toaster';
 import i18n from "@/i18n";
-import PageHeader from '@/components/shared/PageHeader.vue';
 import responseApi from '@/components/shared/ResponseApi.js';
 
 /******************* Data *******************/
@@ -80,6 +73,9 @@ const confirmPassword = ref('');
 const loading = ref(false);
 const router = useRouter();
 const errors = ref([]);
+
+let phone = ref(localStorage.getItem('phone'));
+let country_code = ref(localStorage.getItem('country_code'));
 
 // Toast
 const { successToast, errorToast } = toastMsg();
@@ -113,15 +109,11 @@ function validate() {
     }
 }
 
-let phone = ref(localStorage.getItem('phone'));
-let country_code = ref(localStorage.getItem('country_code'));
-
 // forgetPasswordCode Function
 const newPasswordFunc = async () => {
     loading.value = true;
     const fd = new FormData(newPassForm.value);
     fd.append('phone', phone.value);
-    fd.append('confirmPassword', confirmPassword.value);
     fd.append('country_code', country_code.value);
 
     validate();
@@ -132,7 +124,7 @@ const newPasswordFunc = async () => {
         errors.value = [];
     } else {
 
-        await axios.post('reset-password', fd).then(res => {
+        await axios.post('providers/reset-password', fd).then(res => {
             if (response(res) == "success") {
                 localStorage.removeItem("phone");
                 localStorage.removeItem('country_code');
@@ -157,6 +149,16 @@ const resendCode = async () => {
             errorToast(res.data.msg);
         }
     }).catch(err => console.log(err));
+}
+
+// returnFunc
+const returnFunc = () => {
+    router.go(-1);
+    let lKeys = ['phone', 'country_code'];
+
+    lKeys.forEach((key) => {
+        localStorage.removeItem(key);
+    });
 }
 /******************* Computed *******************/
 

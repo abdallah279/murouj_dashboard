@@ -14,7 +14,7 @@
       <!--***** Filter Select *****-->
       <div class="main-input filter">
 
-        <Dropdown v-model="filter" :placeholder="$t('table.filter.text')" :options="filterOptions" optionLabel="name"
+        <Dropdown v-model="filter" @change="filterProducts" :placeholder="$t('table.filter.text')" :options="filterOptions" optionLabel="name"
           class="input-me">
           <template #value="slotProps">
             <div v-if="slotProps.value" class="selected">
@@ -92,58 +92,19 @@ const { response } = responseApi();
 const filter = ref('');
 const filterOptions = ref([
   {
+    id: 1,
     name: i18n.global.t('table.filter.option1'),
-    id: 1
+    text: "desc",
   },
   {
+    id: 2,
     name: i18n.global.t('table.filter.option2'),
-    id: 2
+    text: "asc",
   },
 ]);
 
 // Products
-const products = ref([
-  {
-    id: 1,
-    product_name: 'test',
-    product_image: 'https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  },
-  {
-    id: 1,
-    product_name: 'photos',
-    product_image: 'https://images.pexels.com/photos/341523/pexels-photo-341523.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-  {
-    id: 1,
-    product_name: 'pexels',
-    product_image: 'https://images.pexels.com/photos/4465124/pexels-photo-4465124.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-  {
-    id: 1,
-    product_name: 'compress',
-    product_image: 'https://images.pexels.com/photos/3373740/pexels-photo-3373740.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-  {
-    id: 1,
-    product_name: 'pexels',
-    product_image: 'https://images.pexels.com/photos/4465124/pexels-photo-4465124.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-  {
-    id: 1,
-    product_name: 'compress',
-    product_image: 'https://images.pexels.com/photos/3373740/pexels-photo-3373740.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-  {
-    id: 1,
-    product_name: 'test',
-    product_image: 'https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  },
-  {
-    id: 1,
-    product_name: 'photos',
-    product_image: 'https://images.pexels.com/photos/341523/pexels-photo-341523.jpeg?auto=compress&cs=tinysrgb&w=600',
-  },
-]);
+const products = ref([]);
 
 // Loading
 const loading = ref(false);
@@ -152,6 +113,11 @@ const loading = ref(false);
 const currentPage = ref(1);
 const pageLimit = ref();
 const totalPage = ref();
+
+// config
+const config = {
+  headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+};
 
 /******************* Provide && Inject *******************/
 provide('view', true);
@@ -162,11 +128,22 @@ provide('view', true);
 // getData
 const getData = async () => {
   loading.value = true;
-  await axios.get(`providers/provider-products?page=${currentPage.value}`, config.value).then(res => {
+  await axios.get(`providers/products?page=${currentPage.value}`, config).then(res => {
     if (response(res) == "success") {
       products.value = res.data.data.data;
       totalPage.value = res.data.data.pagination.total_items;
       pageLimit.value = res.data.data.pagination.per_page;
+    }
+    loading.value = false;
+  }).catch(err => console.log(err));
+}
+
+// Filter Function
+const filterProducts = async () => {
+  loading.value = true;
+  await axios.get(`providers/filter-products?arrangemant=${filter.value.text}`, config).then(res => {
+    if (response(res) == "success") {
+      products.value = res.data.data.data;
     }
     loading.value = false;
   }).catch(err => console.log(err));
@@ -181,11 +158,6 @@ const onPaginate = (e) => {
 };
 
 /******************* Computed *******************/
-const config = computed(() => {
-  return localStorage.getItem('token') ? {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-  } : {}
-});
 
 let showPaginate = computed(() => {
   return totalPage.value > pageLimit.value

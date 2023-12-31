@@ -1,5 +1,4 @@
 <template>
-
     <!--***** Page Top *****  -->
     <div class="page_top">
         <div class="page_filter">
@@ -38,13 +37,13 @@
 
             </div>
         </div>
-        <router-link to="/" class="main-btn up">{{ $t('table.products.btn') }}</router-link>
+        <router-link to="/" class="main-btn up">{{ $t('table.provideProducts.btn') }}</router-link>
 
     </div>
 
     <!--***** DataTable *****-->
-    <DataTable :columns="columns" :products="products" :filters="filters" :loading="loading" :routeTable="routeTable"
-        :tableSkeleton="new Array(columns.length)">
+    <DataTable :columns="columns" :products="orders" :filters="filters" :loading="loading" :routeTable="routeTable"
+        :tableSkeleton="new Array(columns.length + 1)">
     </DataTable>
 </template>
 
@@ -52,10 +51,11 @@
 /******************* Import *******************/
 import { onMounted, ref } from "vue";
 import DataTable from "@/components/shared/DataTable.vue";
-import responseApi from '@/components/shared/ResponseApi.js';
+import axios from "axios";
 import Dropdown from 'primevue/dropdown';
 import i18n from "@/i18n";
-import axios from "axios";
+import toastMsg from '@/components/shared/Toaster';
+import responseApi from '@/components/shared/ResponseApi.js';
 import { FilterMatchMode } from 'primevue/api';
 
 /******************* Data *******************/
@@ -66,8 +66,8 @@ const filters = ref({
 // success response
 const { response } = responseApi();
 
-// loading
-const loading = ref(false);
+// Toast
+const { errorToast } = toastMsg();
 
 // Filter
 const filter = ref('');
@@ -87,62 +87,66 @@ const config = {
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 };
 
+// loading
+const loading = ref(false);
+
 // columns
 const columns = ref([
     {
-        field: 'product_id',
-        header: i18n.global.t('table.products.number')
+        field: 'id',
+        header: i18n.global.t('table.provideProducts.number')
     },
     {
-        field: ['product_image', 'product_name'],
-        header: i18n.global.t('table.products.name')
+        field: 'product_request_type',
+        header: i18n.global.t('table.provideProducts.type')
     },
     {
-        field: ['product_price_after_discount', 'product_price', 'currency'],
-        header: i18n.global.t('table.products.price')
+        field: 'sub_category',
+        header: i18n.global.t('table.provideProducts.sub_category')
     },
     {
-        field: 'product_category',
-        header: i18n.global.t('table.products.category')
+        field: 'status_text',
+        header: i18n.global.t('table.provideProducts.status_text')
     },
-    {
-        field: ['quantity', 'is_available', 'line'],
-        header: i18n.global.t('table.products.quantity')
-    }
 ]);
 
 // products
-const products = ref([]);
+const orders = ref([]);
 
 // route Table
 const routeTable = ref({
-    header: i18n.global.t('table.products.detailes'),
-    path: 'productDetailes',
-    id: 'product_id'
-})
+    header: i18n.global.t('table.orders.detailes'),
+    path: 'orderDetailes',
+    id: 'id'
+});
+
 /******************* Provide && Inject *******************/
 
 /******************* Props *******************/
 
 /******************* Methods *******************/
-// getData
-const getData = async () => {
-  loading.value = true;
-  await axios.get('providers/provider-products', config).then(res => {
-    if (response(res) == "success") {
-        products.value = res.data.data.data;
-    }
-    loading.value = false;
-  }).catch(err => console.log(err));
-}
 
+// getOrders
+const getOrders = async () => {
+    loading.value = true;
+    await axios.get(`providers/provider-product-requests`, config).then(res => {
+        if (response(res) == "success") {
+            orders.value = res.data.data;
+        } else {
+            errorToast(res.data.msg);
+        }
+        loading.value = false;
+    }).catch(err => {
+        console.error(err);
+    });
+}
 /******************* Computed *******************/
 
 /******************* Watch *******************/
 
 /******************* Mounted *******************/
 onMounted(async () => {
-  await getData();
+    await getOrders();
 });
 
 </script>

@@ -1,242 +1,4 @@
 {
-  "nav": {
-    "home": "Home",
-    "orders": "My Orders",
-    "products": "Our products",
-    "wallet": "Wallet",
-    "points": "Rewards points",
-    "about": "About Murooj",
-    "contact": "Contact Us",
-    "search": "Search",
-    "lang": "العربية",
-    "loginBtn": "Login / New",
-    "cart": "My Cart",
-    "currency": "RS",
-    "notifications": "Notifications",
-    "profile": {
-      "profile": "Profile",
-      "financial": "Financial Accounts",
-      "complaints": "Complaints And Suggestions",
-      "about": "About Us",
-      "privacy": "Privacy Policy",
-      "faq": "Faq",
-      "terms": "Terms, Conditions, Return Policy",
-      "rate": "Rate Us",
-      "logout": "Logout"
-    },
-    "shipping": {
-      "text": "free shipping",
-      "text2": "For orders with a value",
-      "text3": "Riyal or more"
-    }
-  },
-  "moreBtn": {
-    "more": "Show More",
-    "all": "Show All",
-    "detailes": "View details"
-  },
-  
-  
-  "subscribeMail": {
-    "header": "Subscribe To The Mailing List",
-    "contactItems": {
-      "location": "Location",
-      "phone": "Phone",
-      "mail": "E-mail"
-    }
-  },
-  "footer": {
-    "storeName": "Mourouj Store",
-    "quickLinks": "Quick Links",
-    "helpCenter": "Help Center",
-    "download": "Download App",
-    "home": "Home",
-    "cart": "Cart",
-    "orders": "My Orders",
-    "fav": "Favorite",
-    "faqs": "Faqs",
-    "terms": "Terms and Conditions",
-    "contact": "Contact Us",
-    "suggestions": "Complaints and suggestions",
-    "joinUs": "Join Us",
-    "joinText": "Enter your email address below to subscribe to our newsletter",
-    "joinPlaceholder": "Please Enter Your E-mail",
-    "followUs": "Follow Us",
-    "rightsReserved": "All Rights Reserved - Murooj ",
-    "designedBy": "Designed By",
-    "aait": " aait"
-  },
-  "sectionHeader": {
-    "advantages": "Advantages Of Mourouj Store",
-    "opinions": "Our Customers' Opinions",
-    "partners": "Success Partners"
-  },
-  "sectionTitle": {
-    "categories": "Categories",
-    "faqs": "Faqs",
-    "terms": "Terms and Conditions",
-    "suggestions": "Complaints and suggestions",
-    "formatRequest": "Format Request",
-    "notifications": "Notifications",
-    "login": "Login",
-    "createAccount": "Create Account",
-    "restorePassword": "Did you forget your password?",
-    "verificationCode": "Verification Code",
-    "changePhone": "Change Phone",
-    "changePassword": "Change Password"
-  },
-  
-  "contactForm": {
-    "name": "Name",
-    "phone": "Phone",
-    "subject": "Subject",
-    "title": "Message Title",
-    "message": "Message"
-  },
-  "addComplaintsForm": {
-    "name": "Name",
-    "phone": "Phone",
-    "type": "request type",
-    "complaint": "complaint",
-    "suggestion": "suggestion",
-    "title": "Title of complaint and suggestion",
-    "message": "Details of the complaint or suggestion",
-    "img": "Attach photos"
-  },
-  
-  
-  
-  
-  
-  "filterForm": {
-    "sortBy": "sort By",
-    "priceRanking": "price Ranking",
-    "topRate": "top Rate",
-    "discountedProducts": "discounted Products",
-    "recentlyAdded": "recently Added",
-    "highestPrice": "highest Price",
-    "lowestPrice": "lowest Price",
-    "filter": "filter it",
-    "deleteFilter": "delete Filter"
-  },
-  "payment": {
-    "cash": {
-      "name": "Cash payment",
-      "desc": "You can pay in cash upon receiving the order"
-    },
-    "online": {
-      "name": "Online payment",
-      "desc": "Payment by credit card"
-    },
-    "wallet": {
-      "name": "Wallet",
-      "desc": "You can pay via wallet"
-    },
-    "bank": {
-      "name": "Bank transfer",
-      "desc": "You can pay with bank transfer"
-    }
-  },
-  "profileSidebar": {
-    "profile": "My Account",
-    "orders": "My Orders",
-    "newOrders": "New Orders",
-    "currentOrders": "Current Orders",
-    "oldOrders": "Finished Orders"
-  },
-  
-  "complaint": {
-    "card": {
-      "complaintNum": "complaint or suggestion number",
-      "status": "Status"
-    },
-    "detailes": {
-      "date": "Date of the complaint or suggestion",
-      "info": "Details of the complaint or suggestion",
-      "responding": "Responding to the complaint or suggestion",
-      "images": "Photos of the complaint or suggestion"
-    }
-  },
-  "bank": {
-    "name": "Account Number",
-    "iban": "Iban Number"
-  },
-  
-  
-  
-  "wallet": {
-    "currentCredit": "Your Current Credit",
-    "currency": "SR",
-    "withdrawBtn": "Withdraw A Balance",
-    "addBtn": "Add Balance"
-  },
-  "points": {
-    "title": "Loyalty Points",
-    "point": "Point",
-    "text": "Point is converted to",
-    "all": "every",
-    "convertBtn": "Convert loyalty points into credit"
-  },
-  "validation": {
-    "image": "Image required",
-    "name": "Name Is required",
-    "phone": "Please enter phone number",
-    "email": "Please enter a valid Email",
-    "password": "Please enter your password",
-    "confirmPassword": "The password does not match",
-    "search": "Search word is required",
-    "newPassword": "Please enter your new password",
-    "conditions": "You must agree to the terms and conditions",
-    "code": "Please enter activation code",
-    "title": "Please enter Message Title",
-    "content": "Please enter Message",
-    "requiresAuth": "Please sign in first",
-    "copy": "The link was copied successfully",
-    "retrieval_reason": "Return reason is required",
-    "returnImg": "Return photos are required",
-    "products": "Select the products to be returned"
-  },
-  "cart": {
-    "products": "products",
-    "table": {
-      "product": "product",
-      "price": "price",
-      "amount": "Quantity",
-      "totalPrice": "Total price"
-    },
-    "sidebar": {
-      "complete": "Complete order",
-      "discountLable": "Do you have coupon ?",
-      "placeholder": "Enter the discount code",
-      "orderPrice": "Order value",
-      "extraPrice": "Added value",
-      "discountPrice": "discount value",
-      "drivePrice": "Delivery cost",
-      "total": "total summation",
-      "btn": "Confirm purchase"
-    },
-    "form": {
-      "city": "City",
-      "location": "Delivery location",
-      "date": "Delivery Date",
-      "time": "Delivery Time",
-      "feedback": "Your feedback",
-      "bank": "bank Name",
-      "bankTransfer": "Bank transfer",
-      "AddRecipient": "Add another recipient's details",
-      "userName": "User Name",
-      "phone": "Phone"
-    },
-    "choose": "Choose the order payment method",
-    "chooseWay": "Delivery way"
-  },
-
-
-
-
-
-
-
   "sidebar": {
     "home": "home",
     "orders": "orders",
@@ -258,7 +20,7 @@
     "total": "total Profit",
     "today": "today Profit"
   },
-  "chart":{
+  "chart": {
     "title": "Profits statistics"
   },
   "pagesTitle": {
@@ -268,7 +30,10 @@
     "allCategories": "Categories",
     "products": "Products",
     "ourProducts": "Our products",
+    "ProvideOrders": "Orders provide products",
     "supervisors": "supervisors",
+    "addSupervisors": "add supervisors",
+    "editSupervisors": "edit supervisors",
     "about": "Who Us",
     "contact": "Contact Us",
     "financial": "Financial Accounts",
@@ -317,12 +82,12 @@
     "noData": "No data Found",
     "loading": "loading",
     "search": "Search For Products ...",
-    "filter":{
+    "filter": {
       "text": "Sort By",
       "option1": "Latest",
       "option2": "Oldest"
     },
-    "products":{
+    "products": {
       "number": "Number",
       "name": "product Name",
       "price": "Price",
@@ -339,6 +104,22 @@
       "delivery": "Delivery way",
       "status": "order status",
       "detailes": "Order Detailes"
+    },
+    "provideProducts":{
+      "number": "order number",
+      "type": "order type",
+      "sub_category": "sub category",
+      "status_text": "status",
+      "btn": "Orders provide products"
+    }
+  },
+  "cart": {
+    "products": "products",
+    "table": {
+      "product": "product",
+      "price": "price",
+      "amount": "Quantity",
+      "totalPrice": "Total price"
     }
   },
   "products": {
@@ -442,7 +223,7 @@
     "cart": "Cart is empty",
     "orderProduct": "The products you requested are no longer available",
     "productRate": "No reviews for this product",
-    "invoices" : "No invoices"
+    "invoices": "No invoices"
   },
   "loginForm": {
     "login": "Login",
@@ -501,7 +282,7 @@
   "restorePasswordForm": {
     "header": " Restore password",
     "desc": "Welcome ! Please enter mobile number to send the activation code",
-    "desc2" : "Welcome ! Please enter activation code and new password",
+    "desc2": "Welcome ! Please enter activation code and new password",
     "phone": {
       "text": "Phone Number",
       "placeholder": "Enter Phone Number"
@@ -519,7 +300,7 @@
     }
   },
   "codeForm": {
-    "code" :"Please enter activation code",
+    "code": "Please enter activation code",
     "text": "Didn't receive the code yet ?"
   },
   "changePhoneForm": {
@@ -532,42 +313,51 @@
       "placeholder": "Enter New Phone"
     }
   },
-  "profile":{
+  "contactForm": {
+    "name": "Name",
+    "phone": "Phone",
+    "subject": "Subject",
+    "title": "Message Title",
+    "message": "Message",
+    "or": "Or via social media",
+    "or2": "Or by sending a message"
+  },
+  "profile": {
     "profile": "Profile",
     "editProfile": "edit Profile",
     "image": "profile Image",
-    "banckAccount" : "Bank Account Details",
+    "banckAccount": "Bank Account Details",
     "nationalId": "national Id Image",
     "commercial": "Commercial Registry",
-    "form" : {
-      "name":{
+    "form": {
+      "name": {
         "text": "Agent name",
         "placeholder": "Enter Agent name"
       },
-      "taxNumber":{
+      "taxNumber": {
         "text": "Tax Number",
         "placeholder": "Enter Tax Number"
       },
-      "address":{
+      "address": {
         "text": "Agent location",
         "placeholder": "Enter Agent location"
       },
-      "bankName":{
+      "bankName": {
         "text": "Bank Name",
         "placeholder": "Enter Bank Name"
       },
-      "accountNumber":{
+      "accountNumber": {
         "text": "Account Number",
         "placeholder": "Enter Account Number"
       },
-      "iban":{
+      "iban": {
         "text": "IBAN",
         "placeholder": "Enter IBAN"
       }
     }
   },
   "invoices": {
-    "orderDetailes":"Order Detailes",
+    "orderDetailes": "Order Detailes",
     "tax_number": "Tax number",
     "invoiceNumber": "invoice number",
     "invoiceDate": "order date",
@@ -581,21 +371,40 @@
   },
   "supervisors": {
     "supervisors": "supervisors",
+    "title": "Supervisors Data",
     "addSupervisor": "add supervisor",
     "editSupervisor": "edit supervisor",
     "deleteSupervisor": "delete supervisor",
-    "permissions": "permissions"
+    "permissions": "permissions",
+    "form": {
+      "name": {
+        "text": "Supervisor name",
+        "placeholder": "please enter supervisor name"
+      },
+      "privileges": {
+        "text": "Defines permissions"
+      },
+      "btn": "add supervisor",
+      "editBtn": "Edit supervisor",
+      "deleteBtn": "Delete supervisor"
+    }
   },
   "modals": {
-    "reason": {
+    "refuse": {
       "header": "Reason for rejection of the return order",
       "text": "rejection reason",
       "placeholder": "Enter the reason for the rejection",
       "btn": "Back off"
     },
+    "address": {
+      "header": "Please locate a dealer",
+      "btn": "Determine"
+    },
     "done": {
       "header": "Balance withdrawal request",
-      "editAccount" : "The request was successfully sent to management",
+      "editAccount": "The request was successfully sent to management",
+      "addSupervisor": "Supervisor added successfully",
+      "editSupervisor": "Supervisor edited successfully",
       "text": "Your Message Has Been Successfully Sent",
       "cancelDone": "Order canceled successfully",
       "returnDone": "Your return request has been sent successfully",
@@ -607,8 +416,28 @@
       "btn": "Home Page",
       "orderBtn": "Complete the order",
       "followBtn": "follow order",
-      "scrollBtn": "Continue browsing"
+      "scrollBtn": "Continue browsing",
+      "supervisors": "supervisors"
     }
+  },
+  "validation": {
+    "image": "Image required",
+    "name": "Name Is required",
+    "phone": "Please enter phone number",
+    "email": "Please enter a valid Email",
+    "password": "Please enter your password",
+    "confirmPassword": "The password does not match",
+    "search": "Search word is required",
+    "newPassword": "Please enter your new password",
+    "conditions": "You must agree to the terms and conditions",
+    "code": "Please enter activation code",
+    "title": "Please enter Message Title",
+    "content": "Please enter Message",
+    "requiresAuth": "Please sign in first",
+    "copy": "The link was copied successfully",
+    "retrieval_reason": "Return reason is required",
+    "returnImg": "Return photos are required",
+    "products": "Select the products to be returned"
   },
   "formBtns": {
     "send": "Send",

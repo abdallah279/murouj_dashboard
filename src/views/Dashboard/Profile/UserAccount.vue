@@ -130,7 +130,7 @@
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('profile.form.taxNumber.text') }}</label>
                     <div class="main-input">
-                        <input type="number" class="input-me validInputs" name="tax_number"
+                        <input type="number" class="input-me validInputs" name="tax_number" v-model="tax_number"
                             :placeholder="$t('profile.form.taxNumber.placeholder')">
                     </div>
                 </div>
@@ -150,40 +150,12 @@
 
                     <div class="input_image">
                         <label for="" class="main-label">{{ $t('profile.nationalId') }}</label>
-                        <div class="d-flex gap-3 flex-wrap align-items-end">
-                            <label for="uploadImgs" class="upload-label main">
-                                <input id="uploadImgs" name="bank_transfer_image" type="file" accept="image/*"
-                                    class="hidden-input" @change="uploadImgs">
-                                <i class="pi pi-image"></i>
-                            </label>
-
-                            <div class='hidden-img' v-for="(img, i) in images" :key="img.name">
-                                <img src='' :class="`img${i}`" :alt="img.name" />
-
-                                <span class='remove-img' @click="removeImage(i)">
-                                    <i class="pi pi-times"></i>
-                                </span>
-                            </div>
-                        </div>
+                        <UploadImages @update="updatedImages" />
                     </div>
 
                     <div class="input_image">
                         <label for="" class="main-label">{{ $t('profile.commercial') }}</label>
-                        <div class="d-flex gap-3 flex-wrap align-items-end">
-                            <label for="uploadImgs1" class="upload-label main">
-                                <input id="uploadImgs1" name="bank_transfer_image" type="file" accept="image/*"
-                                    class="hidden-input" @change="uploadImgs">
-                                <i class="pi pi-image"></i>
-                            </label>
-
-                            <div class='hidden-img' v-for="(img, i) in images" :key="img.name">
-                                <img src='' :class="`img${i}`" :alt="img.name" />
-
-                                <span class='remove-img' @click="removeImage(i)">
-                                    <i class="pi pi-times"></i>
-                                </span>
-                            </div>
-                        </div>
+                        <UploadImages @update="updatedImages2" />
                     </div>
 
                 </div>
@@ -197,16 +169,16 @@
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('profile.form.accountNumber.text') }} </label>
                     <div class="main-input">
-                        <input type="text" class="input-me validInputs" name="account_number"
-                            :placeholder="$t('profile.form.accountNumber.placeholder')">
+                        <input type="text" class="input-me validInputs" v-model="bank_account_number"
+                            name="bank_account_number" :placeholder="$t('profile.form.accountNumber.placeholder')">
                     </div>
                 </div>
 
-                <!-- Account Name -->
+                <!-- Bank Name -->
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('profile.form.bankName.text') }} </label>
                     <div class="main-input">
-                        <input type="text" class="input-me validInputs" name="account_name"
+                        <input type="text" class="input-me validInputs" v-model="bank_name" name="bank_name"
                             :placeholder="$t('profile.form.bankName.placeholder')">
                     </div>
                 </div>
@@ -215,7 +187,7 @@
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('profile.form.iban.text') }} </label>
                     <div class="main-input">
-                        <input type="text" class="input-me validInputs" name="account_name"
+                        <input type="text" class="input-me validInputs" v-model="iban_number" name="iban_number"
                             :placeholder="$t('profile.form.iban.placeholder')">
                     </div>
                 </div>
@@ -259,7 +231,9 @@
                     <img src="@/assets/imgs/right_img.gif" alt="" class="right_img mx-auto">
                     <p class="fs14 c-black text-center mb-4">{{ $t('modals.done.editAccount') }}</p>
                     <div class="buttons justify-content-center">
-                        <router-link to="/" class="main-btn modal_btn up rounded-0">{{ $t('modals.done.btn') }}</router-link>
+                        <router-link to="/" class="main-btn modal_btn up rounded-0">
+                            {{ $t('modals.done.btn') }}
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -270,14 +244,13 @@
 <script setup>
 /******************* Import *******************/
 
-import { computed, onMounted, ref } from "vue";
-import { useRouter } from 'vue-router';
+import { onMounted, ref } from "vue";
 import axios from 'axios';
-import i18n from "@/i18n";
 import Dropdown from 'primevue/dropdown';
 import toastMsg from '@/components/shared/Toaster';
 import Dialog from 'primevue/dialog';
 import responseApi from '@/components/shared/ResponseApi.js';
+import UploadImages from "@/components/shared/UploadImages.vue";
 
 /******************* Data *******************/
 
@@ -287,47 +260,36 @@ const { response } = responseApi();
 // Toast
 const { successToast, errorToast } = toastMsg();
 
-// Router
-const router = useRouter();
-
 // Forms Ref
 const editAccountForm = ref(null);
-const changePasswordForm = ref(null);
 
 const loading = ref(false);
-const errors = ref([]);
 
 // images
 const images = ref([]);
+const images2 = ref([]);
 
 // Profile data
 const image = ref(require('@/assets/imgs/profile.png'));
 const name = ref('');
 const phone = ref('');
-const email = ref('');
+const tax_number = ref('');
+const bank_account_number = ref('');
+const bank_name = ref('');
+const iban_number = ref('');
 
 // Modal
-const deleteAcc = ref(false);
-
-// Change Password
-const passwordModal = ref(false);
-const oldPassword = ref('');
-const password = ref('');
-const confirmPassword = ref('');
 const done = ref(false);
 
 // Country
 const country = ref(null);
 const country_id = ref(null);
+const countries = ref([]);
+const selectedCountry = ref({});
 
 // City
 const city = ref(null);
-const city_id = ref(null);
 const cities = ref([]);
-
-// countries
-const countries = ref([]);
-const selectedCountry = ref({});
 
 // map
 const mapModal = ref(false);
@@ -341,27 +303,16 @@ const addressLng = ref('');
 
 /******************* Methods *******************/
 
-// Upload Imgs
-const uploadImgs = (e) => {
-    images.value = [];
-    var selectedImgs = e.target.files;
-    for (let i = 0; i < selectedImgs.length; i++) {
-        images.value.push(selectedImgs[i]);
-    }
-
-    for (let i = 0; i < images.value.length; i++) {
-        let reader = new FileReader();
-        reader.addEventListener('load', function () {
-            document.querySelector(`.img${i}`).src = reader.result
-        }.bind(this), false);
-
-        reader.readAsDataURL(images.value[i]);
-    }
+// uploadedImages
+const updatedImages = (data) => {
+    images.value = data;
+    console.log(images.value);
 }
 
-// Remove Img
-function removeImage(index) {
-    images.value.splice(index, 1);
+// uploadedImages2
+const updatedImages2 = (data) => {
+    images2.value = data;
+    console.log(images2.value);
 }
 
 // uploadImage Function
@@ -375,20 +326,6 @@ function uploadImage(e) {
         };
     } else {
         image.value = require('@/assets/imgs/profile.png');
-    }
-}
-
-// Validation Function
-function validate() {
-    let allInputs = document.querySelectorAll('.validInputsPassword');
-    for (let i = 0; i < allInputs.length; i++) {
-        if (allInputs[i].value === '') {
-            errors.value.push(i18n.global.t(`validation.${allInputs[i].name}`));
-        }
-    }
-
-    if (password.value !== confirmPassword.value) {
-        errors.value.push(i18n.global.t(`validation.confirmPassword`));
     }
 }
 
@@ -413,16 +350,13 @@ const getCountries = async () => {
 }
 
 // Get All Cities
-const getCities = async () => {
+const getCities = async (first) => {
     await axios.get(`country/${country.value.id}/cities`).then(res => {
         if (response(res) == "success") {
+            if(first){
+                city.value = null;
+            }  
             cities.value = res.data.data;
-            city.value = null;
-            for (let i = 0; i < cities.value.length; i++) {
-                if (cities.value[i].id == city_id.value) {
-                    city.value = cities.value[i];
-                }
-            }
         }
     }).catch(err => console.log(err));
 }
@@ -434,128 +368,52 @@ const changeAddress = (evt) => {
     addressLng.value = evt.info.geometry.location.lng();
 }
 
-// saveLocation
-const saveLocation = (country, city) => {
-    for (let i = 0; i < countries.value.length; i++) {
-        if (countries.value[i].id == country) {
-            localStorage.setItem('country', JSON.stringify(countries.value[i]));
-        }
-    }
-
-    for (let i = 0; i < cities.value.length; i++) {
-        if (cities.value[i].id == city) {
-            localStorage.setItem('city', JSON.stringify(cities.value[i]));
-        }
-    }
-}
-
 // profile Function
-const profile = async () => {
-    await axios.get('profile', config).then(res => {
+const getProfile = async () => {
+    await axios.get('providers/profile', config).then(res => {
         image.value = res.data.data.image;
         name.value = res.data.data.name;
         phone.value = res.data.data.phone;
-        email.value = res.data.data.email;
-        country_id.value = res.data.data.country_id;
-        city_id.value = res.data.data.city_id;
+        address.value = res.data.data.map_desc;
+        bank_account_number.value = res.data.data.bank_account_number;
+        bank_name.value = res.data.data.bank_name;
+        iban_number.value = res.data.data.iban_number;
+        country.value = res.data.data.country;
+        city.value = res.data.data.city;
     }).catch(err => console.log(err));
 }
 
 // editAccount Function
 const editAccount = async () => {
     done.value = true;
-    // loading.value = true;
-    // const fd = new FormData(editAccountForm.value);
-    // fd.append('country_code', selectedCountry.value.key);
-    // fd.append('country_id', country.value.id);
-    // fd.append('city_id', city.value.id);
-
-    // await axios.post('update-profile?_method=put', fd, config).then(res => {
-    //     if (response(res) == "success") {
-    //         localStorage.setItem('user', JSON.stringify(res.data.data));
-    //         // document.querySelector('.drop-text.profile').innerHTML = res.data.data.name;
-
-    //         saveLocation(res.data.data.country_id, res.data.data.city_id);
-    //         successToast(res.data.msg);
-    //     } else {
-    //         errorToast(res.data.msg);
-    //     }
-    //     loading.value = false;
-    // }).catch(err => console.log(err));
-
-}
-
-// Delete Account
-const deleteAccount = async () => {
     loading.value = true;
-    await axios.delete('delete-account', config).then(res => {
-        deleteAcc.value = false;
+    const fd = new FormData(editAccountForm.value);
+    fd.append('country_code', selectedCountry.value.key);
+    fd.append('country_id', country.value.id);
+    fd.append('city_id', city.value.id);
+
+    await axios.post('providers/update-profile?_method=put', fd, config).then(res => {
         if (response(res) == "success") {
-
-            let lKeys = ['token', 'user', 'country', 'city'];
-
-            lKeys.forEach((key) => {
-                localStorage.removeItem(key);
-            });
-
+            localStorage.setItem('user', JSON.stringify(res.data.data));
             successToast(res.data.msg);
-
-            router.push({
-                name: 'home'
-            });
-
         } else {
             errorToast(res.data.msg);
         }
         loading.value = false;
     }).catch(err => console.log(err));
-}
 
-// changePassword
-const changePassword = async () => {
-    loading.value = true;
-    const fd = new FormData(changePasswordForm.value);
-
-    validate();
-
-    if (errors.value.length) {
-        errorToast(errors.value[0]);
-        loading.value = false;
-        errors.value = [];
-    } else {
-        await axios.post('update-passward?_method=patch', fd, config).then(res => {
-            if (response(res) == "success") {
-
-                passwordModal.value = false;
-                done.value = true;
-                oldPassword.value = '';
-                password.value = '';
-                confirmPassword.value = '';
-
-            } else {
-                errorToast(res.data.msg);
-            }
-            loading.value = false;
-        }).catch(err => console.log(err));
-    }
 }
 
 /******************* Computed *******************/
-
-const lang = computed(() => {
-    return localStorage.getItem('lang') ? localStorage.getItem('lang') : 'ar'
-});
 
 /******************* Watch *******************/
 
 /******************* Mounted *******************/
 onMounted(async () => {
-    // await profile();
     await getCountries();
-    // if(country.value.id){
-    //     await getCities();
-    // }
-})
+    await getProfile();
+    if(country.value) await getCities();
+});
 
 </script>
 

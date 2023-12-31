@@ -1,212 +1,4 @@
 {
-  "moreBtn": {
-    "more": "عرض المزيد",
-    "all": "عرض الكل",
-    "detailes": "عرض التفاصيل"
-  },
-  
-
-  "subscribeMail": {
-    "header": "اشترك في القائمة البريدية",
-    "contactItems": {
-      "location": "الموقع",
-      "phone": "رقم الجوال",
-      "mail": "البريد الآلكتروني"
-    }
-  },
-  "footer": {
-    "storeName": "متجر مروج",
-    "quickLinks": "روابط مهمة",
-    "helpCenter": "مركز المساعدة",
-    "download": "حمل التطبيق",
-    "home": "الرئيسية",
-    "cart": "السلة",
-    "orders": "طلباتي",
-    "fav": "المفضلة",
-    "terms": "الشروط والأحكام",
-    "suggestions": "الشكاوى والمقترحات",
-    "contact": "تواصل معنا",
-    "faqs": "أسئلة متكررة",
-    "joinUs": "إشترك معنا",
-    "joinText": "أدخل عنوان البريد الالكترونى أدناه للاشتراك فى النشرة الاخبارية لدينا",
-    "joinPlaceholder": "من فضلك ادخل البريد الالكترونى",
-    "followUs": "تابعنا",
-    "rightsReserved": "جميع الحقوق محفوظة - مروج ",
-    "designedBy": "تصميم بواسطة ",
-    "aait": " مؤسسة أوامر الشبكة"
-  },
-  "sectionHeader": {
-    "advantages": "مزايا متجر مروج",
-    "opinions": "اراء عملائنا",
-    "partners": "شركاء النجاح"
-  },
-  "sectionTitle": {
-    "categories": "الأقسام",
-    "faqs": "أسئلة متكررة",
-    "terms": "الشروط والأحكام",
-    "suggestions": "الشكاوى والمقترحات",
-    "formatRequest": "طلب تنسيق",
-    "notifications": "الاشعارات",
-    "login": "تسجيل دخول",
-    "createAccount": "انشاء الحساب",
-    "restorePassword": "هل نسيت كلمة المرور",
-    "verificationCode": "كود التفعيل",
-    "changePhone": "تغيير رقم الجوال",
-    "changePassword": "تغيير كلمة المرور"
-  },
-  
-  "contactForm": {
-    "name": "الأسم",
-    "phone": "رقم الجوال",
-    "subject": "الموضوع",
-    "title": "عنوان الرسالة",
-    "message": "الرسالة"
-  },
-  "addComplaintsForm": {
-    "name": "الأسم",
-    "phone": "رقم الجوال",
-    "type": "نوع الطلب",
-    "complaint": "شكوى",
-    "suggestion": "اقتراح",
-    "title": "عنوان الشكوي او المقترح",
-    "message": "تفاصيل الشكوي او المقترح",
-    "img": "إرفاق صور"
-  },
-  
-
-
-  "filterForm": {
-    "sortBy": "تصنيف حسب",
-    "priceRanking": "تصنيف السعر",
-    "topRate": "الأعلى تقييما",
-    "discountedProducts": "منتجات ذات خصم",
-    "recentlyAdded": "المضافة حديثا",
-    "highestPrice": "الأعلى سعرا",
-    "lowestPrice": "الأقل سعرا",
-    "filter": "فلتره",
-    "deleteFilter": "حذف الفترة"
-  },
-  "payment": {
-    "cash": {
-      "name": "دفع كاش",
-      "desc": "يمكنك الدفع كاش عند استلام الطلب"
-    },
-    "online": {
-      "name": "دفع اونلايين",
-      "desc": "الدفع بالبطاقة الائتمانية"
-    },
-    "wallet": {
-      "name": "المحفظة",
-      "desc": "يمكنك الدفع عن طريق المحفظة"
-    },
-    "bank": {
-      "name": "التحويل البنكي",
-      "desc": "يمكنك الدفع بالتحويل البنكي"
-    }
-  },
-  "profileSidebar": {
-    "profile": "حسابى",
-    "orders": "طلباتى"
-  },
-  
-  "complaint": {
-    "card": {
-      "complaintNum": "رقم الشكوى أو المقترح",
-      "status": "الحالة"
-    },
-    "detailes": {
-      "date": "تاريخ الشكوى أو المقترح",
-      "info": "تفاصيل الشكوى أو المقترح",
-      "responding": "الرد علي الشكوى أو المقترح",
-      "images": "صور الشكوي أو المقترح"
-    }
-  },
-  "bank": {
-    "name": "رقم الحساب",
-    "iban": "رقم الايبان"
-  },
-
-  "wallet": {
-    "currentCredit": "رصيدك الحالى",
-    "currency": "ريال سعودى",
-    "withdrawBtn": "سحب رصيد",
-    "addBtn": "اضافة الرصيد"
-  },
-  "points": {
-    "title": "نقاط الولاء",
-    "point": "نقطة",
-    "text": "نقطة يتم تحويلها الي",
-    "all": "كل",
-    "convertBtn": "تحويل نقاط الولاء الي رصيد"
-  },
-  "validation": {
-    "image": "الصورة مطلوبة",
-    "name": "من فضلك أدخل الاسم",
-    "phone": "من فضلك أدخل رقم الهاتف",
-    "email": "من فضلك أدخل Email صحيح",
-    "password": "من فضلك أدخل كلمة المرور",
-    "confirmPassword": "كلمة المرور غير متطابقة",
-    "search": "كلمة البحث مطلوبة",
-    "newPassword": "من فضلك أدخل كلمة المرور الجديدة",
-    "conditions": "يجب الموافقة على الشروط والأحكام",
-    "code": "من فضلك أدخل كود التفعيل",
-    "title": "من فضلك أدخل عنوان الرسالة ",
-    "content": "من فضلك أدخل الرسالة ",
-    "requiresAuth": "يرجى تسجيل الدخول أولا ",
-    "copy": "تم نسخ الرابط بنجاح",
-    "retrieval_reason": "سبب الارجاع مطلوب",
-    "returnImg": "صور الارجاع مطلوبة",
-    "products": "قم بتحديد المنتجات المطلوب ارجاعها"
-  },
-  "cart": {
-    "products": "المنتجات",
-    "table": {
-      "product": "المنتج",
-      "price": "السعر",
-      "amount": "الكمية",
-      "totalPrice": "السعر الآجمالي"
-    },
-    "sidebar": {
-      "complete": "استكمال الطلب",
-      "discountLable": "هل لديك كوبون ؟",
-      "placeholder": "ادخل كود الخصم او كود المسوق",
-      "orderPrice": "قيمة الطلب",
-      "extraPrice": "قيمة المضافة",
-      "discountPrice": "قيمة الخصم",
-      "drivePrice": "قيمة التوصيل",
-      "total": "المجموع الكلي",
-      "btn": "تأكيد الشراء"
-    },
-    "form": {
-      "city": "المدينة",
-      "location": "موقع التوصيل",
-      "date": "تاريخ التوصيل",
-      "time": "وقت التوصيل",
-      "feedback": "ملاحظاتك",
-      "bank": "اسم البنك",
-      "bankTransfer": "التحويل البنكي",
-      "AddRecipient": "أضافة تفاصيل مستلم اخر",
-      "userName": "اسم المستخدم",
-      "phone": "رقم الجوال"
-    },
-    "choose": "قم باختيار طريقة دفع الطلب",
-    "chooseWay": "طريقة التوصيل"
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   "sidebar": {
     "home": "الرئيسية",
     "orders": "الطلبات",
@@ -239,6 +31,9 @@
     "products": "منتجات",
     "ourProducts": "منتجاتنا",
     "supervisors": "المشرفين",
+    "addSupervisors": "إضافة مشرف",
+    "editSupervisors": "تعديل مشرف",
+    "ProvideOrders": "طلبات توفير المنتجات",
     "about": "من نحن",
     "contact": "تواصل معنا",
     "financial": "الحسابات المالية",
@@ -309,6 +104,22 @@
       "delivery": "طريقة التوصيل",
       "status": "حالة الطلب",
       "detailes": "تفاصيل الطلب"
+    },
+    "provideProducts":{
+      "number": " رقم الطلب",
+      "type": "نوع الطلب",
+      "sub_category": "القسم الفرعي",
+      "status_text": "الحالة",
+      "btn": "طلب توفير المنتجات"
+    }
+  },
+  "cart": {
+    "products": "المنتجات",
+    "table": {
+      "product": "المنتج",
+      "price": "السعر",
+      "amount": "الكمية",
+      "totalPrice": "السعر الآجمالي"
     }
   },
   "products": {
@@ -501,45 +312,54 @@
     }
   },
   "codeForm": {
-    "code":"من فضلك أدخل كود التفعيل",
+    "code": "من فضلك أدخل كود التفعيل",
     "text": "لم تستلم الكود بعد ؟"
   },
-  "profile":{
+  "contactForm": {
+    "name": "الأسم",
+    "phone": "رقم الجوال",
+    "subject": "الموضوع",
+    "title": "عنوان الرسالة",
+    "message": "الرسالة",
+    "or": "او عبر التواصل الاجتماعي",
+    "or2": "او عبر ارسال رسالة"
+  },
+  "profile": {
     "profile": "الملف الشخصي",
     "editProfile": "تعديل الملف الشخصي",
     "image": "الصورة الشخصية",
-    "banckAccount":"بيانات الحساب البنكي",
+    "banckAccount": "بيانات الحساب البنكي",
     "nationalId": "صورة الهوية الوطنية",
     "commercial": "السجل التجاري",
-    "form" : {
-      "name":{
+    "form": {
+      "name": {
         "text": "اسم الوكيل",
         "placeholder": "برجاء ادخال الأسم"
       },
-      "taxNumber":{
+      "taxNumber": {
         "text": "الرقم الضريبي",
         "placeholder": "برجاء ادخال الرقم الضريبي"
       },
-      "address":{
+      "address": {
         "text": "موقع الوكيل",
         "placeholder": "برجاء ادخال موقع الوكيل"
       },
-      "bankName":{
+      "bankName": {
         "text": "اسم البنك",
         "placeholder": "برجاء ادخال اسم البنك"
       },
-      "accountNumber":{
+      "accountNumber": {
         "text": "رقم الحساب",
         "placeholder": "برجاء ادخال رقم الحساب"
       },
-      "iban":{
+      "iban": {
         "text": "رقم الايبان",
         "placeholder": "برجاء ادخال رقم الايبان"
       }
     }
   },
   "invoices": {
-    "orderDetailes":"تفاصيل الطلب",
+    "orderDetailes": "تفاصيل الطلب",
     "tax_number": "الرقم الضريبي",
     "invoiceNumber": "رقم الفاتورة ",
     "invoiceDate": "تاريخ الطلب",
@@ -553,10 +373,23 @@
   },
   "supervisors": {
     "supervisors": "المشرفين",
+    "title": "بيانات المشرف",
     "addSupervisor": "اضافة مشرف جديد",
     "editSupervisor": "تعديل المشرف",
     "deleteSupervisor": "حذف المشرف",
-    "permissions": "الصلاحيات"
+    "permissions": "الصلاحيات",
+    "form": {
+      "name": {
+        "text": "اسم المشرف",
+        "placeholder": "برجاء ادخال اسم المشرف"
+      },
+      "privileges": {
+        "text": "تحدد الصلاحيات"
+      },
+      "btn": "اضافة مشرف",
+      "editBtn": "تعديل المشرف",
+      "deleteBtn": "حذف المشرف"
+    }
   },
   "modals": {
     "refuse": {
@@ -565,9 +398,15 @@
       "placeholder": "أدخل سبب الرفض",
       "btn": "تراجع"
     },
+    "address": {
+      "header": "برجاء تحديد موقع الوكيل",
+      "btn": "تحديد"
+    },
     "done": {
       "header": "طلب سحب رصيد",
       "editAccount": "تم ارسال الطلب بنجاح للأدارة",
+      "addSupervisor": "تم اضافة المشرف بنجاح",
+      "editSupervisor": "تم تعديل المشرف بنجاح",
       "text": "تم ارسال رسالتك بنجاح",
       "cancelDone": "تم إلغاء الطلب بنجاح",
       "returnDone": "تم ارسال طلب ارجاع بنجاح",
@@ -579,8 +418,28 @@
       "btn": "العودة للرئيسية",
       "orderBtn": "استكمال الطلب",
       "followBtn": "متابعه الطلب",
-      "scrollBtn": "استكمال التصفح"
+      "scrollBtn": "استكمال التصفح",
+      "supervisors": "المشرفين"
     }
+  },
+  "validation": {
+    "image": "الصورة مطلوبة",
+    "name": "من فضلك أدخل الاسم",
+    "phone": "من فضلك أدخل رقم الهاتف",
+    "email": "من فضلك أدخل Email صحيح",
+    "password": "من فضلك أدخل كلمة المرور",
+    "confirmPassword": "كلمة المرور غير متطابقة",
+    "search": "كلمة البحث مطلوبة",
+    "newPassword": "من فضلك أدخل كلمة المرور الجديدة",
+    "conditions": "يجب الموافقة على الشروط والأحكام",
+    "code": "من فضلك أدخل كود التفعيل",
+    "title": "من فضلك أدخل عنوان الرسالة ",
+    "content": "من فضلك أدخل الرسالة ",
+    "requiresAuth": "يرجى تسجيل الدخول أولا ",
+    "copy": "تم نسخ الرابط بنجاح",
+    "retrieval_reason": "سبب الارجاع مطلوب",
+    "returnImg": "صور الارجاع مطلوبة",
+    "products": "قم بتحديد المنتجات المطلوب ارجاعها"
   },
   "formBtns": {
     "send": "ارسال",

@@ -12,7 +12,7 @@
                     </router-link>
 
                     <router-link to="/profile" class="profile-drop">
-                        <img src="@/assets/imgs/profile_img.jpg" class="profile-img" alt="">
+                        <img :src="image" class="profile-img" alt="">
                         <span class="profile-name">{{ $t('sidebar.hi') }}</span>
                     </router-link>
 
@@ -70,6 +70,9 @@ const loading = ref(false);
 
 // Router
 const router = useRouter();
+
+// image
+const image = ref(localStorage.getItem("image"));
 
 // Route
 const route = useRoute();

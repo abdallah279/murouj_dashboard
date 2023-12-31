@@ -1,5 +1,5 @@
 {
-  "name": "murouj_site",
+  "name": "murouj_dashboard",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
+    "@zakerxa/vue-multiple-image-upload": "^1.0.8",
     "apexcharts": "^3.45.1",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
@@ -25,6 +26,7 @@
     "vue-carousel-card": "^2.0.0",
     "vue-google-maps-ui": "^1.0.0",
     "vue-i18n": "^9.2.2",
+    "vue-media-upload": "^2.1.2",
     "vue-router": "^4.0.3",
     "vue3-apexcharts": "^1.4.4",
     "vue3-otp-input": "^0.4.1",

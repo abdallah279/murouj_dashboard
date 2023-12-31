@@ -6,7 +6,7 @@
         <div class="input-g">
             <label for="" class="main-label">{{ $t('loginForm.phone.text') }}</label>
             <div class="main-input">
-                <input type="number" class="input-me validInputs" valid="phone" name="phone" v-model="account"
+                <input type="number" class="input-me validInputs" valid="phone" name="phone"
                     :placeholder="$t('loginForm.phone.placeholder')">
 
                 <Dropdown v-model="selectedCountry" :options="countries" optionLabel="name"
@@ -37,7 +37,7 @@
         <div class="input-g">
             <label for="" class="main-label">{{ $t('loginForm.password.text') }}</label>
             <div class="main-input">
-                <input :type="passwordType" class="input-me validInputs" valid="password" name="password" v-model="password"
+                <input :type="passwordType" class="input-me validInputs" valid="password" name="password"
                     :placeholder="$t('loginForm.password.placeholder')">
                 <i class="pi main-icon ic" :class="classPassword" @click="togglePassword"></i>
             </div>
@@ -83,13 +83,14 @@ import responseApi from '@/components/shared/ResponseApi.js';
 // success response
 const { response } = responseApi();
 
-const account = ref('');
 const loginForm = ref(null);
-const password = ref('');
 const passwordType = ref('password');
 const loading = ref(false);
 const router = useRouter();
 const errors = ref([]);
+
+// remember
+const remember = ref(false);
 
 // countries
 const selectedCountry = ref({})
@@ -134,39 +135,37 @@ function validate() {
 
 // login Function
 const login = async () => {
-    router.push({
-        name: 'home'
-    });
-    // loading.value = true;
-    // const fd = new FormData(loginForm.value);
-    // fd.append('country_code', selectedCountry.value.key);
-    // // fd.append('device_id', localStorage.getItem('notificationToken'));
-    // fd.append('device_id', 111);
-    // fd.append('device_type', 'web');
+    loading.value = true;
+    const fd = new FormData(loginForm.value);
+    fd.append('country_code', selectedCountry.value.key);
+    // fd.append('device_id', localStorage.getItem('notificationToken'));
+    fd.append('device_id', 111);
+    fd.append('device_type', 'web');
 
-    // validate();
+    validate();
 
-    // if (errors.value.length) {
-    //     errorToast(errors.value[0]);
-    //     loading.value = false;
-    //     errors.value = [];
-    // } else {
-    //     await axios.post('sign-in?count_notifications', fd).then(res => {
-    //         if (response(res) == "success") {
-    //             localStorage.setItem('token', res.data.data.token);
-    //             localStorage.setItem('user', JSON.stringify(res.data.data));
-    //             successToast(res.data.msg);
+    if (errors.value.length) {
+        errorToast(errors.value[0]);
+        loading.value = false;
+        errors.value = [];
+    } else {
+        await axios.post('providers/sign-in?count_notifications', fd).then(res => {
+            if (response(res) == "success") {
+                localStorage.setItem('token', res.data.data.token);
+                localStorage.setItem('image', res.data.data.image);
+                localStorage.setItem('name', res.data.data.name);
+                successToast(res.data.msg);
 
-    //             router.push({
-    //                 name: 'home'
-    //             });
+                router.push({
+                    name: 'home'
+                });
 
-    //         } else {
-    //             errorToast(res.data.msg);
-    //         }
-    //         loading.value = false;
-    //     }).catch(err => console.log(err));
-    // }
+            } else {
+                errorToast(res.data.msg);
+            }
+            loading.value = false;
+        }).catch(err => console.log(err));
+    }
 }
 
 /******************* Computed *******************/

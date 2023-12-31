@@ -13,13 +13,13 @@
                 </div>
             </div>
 
-            <router-link to="/" class="main-btn sm up blue">{{ $t('supervisors.editSupervisor') }}</router-link>
+            <router-link to="/editSupervisors" class="main-btn sm up blue">{{ $t('supervisors.editSupervisor') }}</router-link>
 
         </div>
         <div class="admin_bottom">
             <h5 class="c-black ff-d fs13 mb-3">{{ $t('supervisors.permissions') }}</h5>
             <div class="permissions">
-                <span class="permission_item" v-for="permission in admin.permissions" :key="permission.id">
+                <span class="permission_item" v-for="permission in admin.privileges" :key="permission.id">
                     {{ permission.name }}
                 </span>
             </div>

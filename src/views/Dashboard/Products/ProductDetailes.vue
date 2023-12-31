@@ -10,8 +10,8 @@
                         <div class="text mb-2 c-black" v-if="product.is_available">{{ $t('products.available') }}
                         </div>
                         <div class="text mb-2 ff-d fs16 c-black">{{ product.name }}</div>
-                        <div class="d-flex align-items-center mb-2 gap-3 c-dark3 cu-pointer" @click="rateModal = true">
-                            <Rating v-model="product.avg_rate" class="small gap-1 cu-pointer" readonly :cancel="false" />
+                        <div class="d-flex align-items-center mb-2 gap-3 c-dark3">
+                            <Rating v-model="product.avg_rate" class="small gap-1" readonly :cancel="false" />
                             ( {{ product.avg_rate }} )
                             {{ product.rates_count }}
                         </div>
@@ -110,45 +110,6 @@
 
     </div>
 
-    <!-- Rate Modal -->
-    <Dialog id="rateModal" class="xl" v-model:visible="rateModal" modal>
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-                <div class="right_sec">
-                    <p class="fs16 mt-sm-0 mt-3 c-black mb-4 ff-d">{{ $t('modals.rateModal.header') }}</p>
-
-                    <div v-if="productRating.length">
-                        <div class="rate_item mb-4" v-for="rateItem in productRating" :key="rateItem.id">
-                            <div class="d-flex align-items-center gap-3 mb-2">
-                                <div class="d-flex gap-1">
-                                    <p class="c-dark3 fs13"> {{ $t('modals.rateModal.text') }}</p>
-                                    <p class="c-black fs13">{{ rateItem.user_name }}</p>
-                                </div>
-                                <div class="c-black fs13">{{ rateItem.date }}</div>
-                            </div>
-                            <div class="d-flex gap-3 mb-2">
-                                <span class="c-dark3 fs13"> {{ $t('modals.rateModal.value') }}</span>
-                                <Rating v-model="rateItem.stars" class="small gap-1 cu-pointer" readonly :cancel="false" />
-                            </div>
-                            <p class="fs14 c-black">{{ rateItem.comment }}</p>
-                        </div>
-                    </div>
-
-                    <div class="no-data sm" v-else>
-                        <img src="@/assets/imgs/no_data.avif" alt="" class="no-data-img">
-                        <div class="no-data-text">{{ $t('noData.productRate') }}</div>
-                    </div>
-
-                    <div class="buttons justify-content-center mt-5">
-                        <button type="button" class="main-btn modal_btn transparent" @click="rateModal = false">
-                            {{ $t('modals.rateModal.btn') }}
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </Dialog>
-
     <!-- Done Modal -->
     <Dialog id="done" class="xl" v-model:visible="done" modal>
         <div class="row">
@@ -200,100 +161,26 @@ const loading = ref(false);
 
 // Product Detailes
 const product = ref({
-    "id": 6,
-    "name": "Quinn Barker",
-    "is_available": true,
-    "avg_rate": 4,
-    "calories": "74",
-    "weight": "26",
-    "brand": "سينابون",
-    "description": "Aute quis corporis d",
-    "images": [
-        {
-            "id": 5,
-            "file": "https://murouj.com/public/storage/images/attachments/1702548471_5492.png"
-        },
-        {
-            "id": 6,
-            "file": "https://murouj.com/public/storage/images/attachments/1702548471_9182.png"
-        },
-        {
-            "id": 7,
-            "file": "https://murouj.com/public/storage/images/attachments/1702548471_8322.png"
-        },
-        {
-            "id": 8,
-            "file": "https://murouj.com/public/storage/images/attachments/1702548471_5848.png"
-        },
-        {
-            "id": 9,
-            "file": "https://murouj.com/public/storage/images/attachments/1702548471_3466.png"
-        }
-    ],
-    "nutrition_values": [
-        {
-            "id": 46,
-            "attribute": "دهون مشبعة",
-            "weight_value": "92",
-            "daily_percentage": "9"
-        },
-        {
-            "id": 47,
-            "attribute": "دهون متحولة",
-            "weight_value": "66",
-            "daily_percentage": "75"
-        },
-        {
-            "id": 48,
-            "attribute": "كوليسترول",
-            "weight_value": "34",
-            "daily_percentage": "45"
-        },
-        {
-            "id": 49,
-            "attribute": "صوديوم",
-            "weight_value": "75",
-            "daily_percentage": "3"
-        },
-        {
-            "id": 50,
-            "attribute": "كربوهيدرات",
-            "weight_value": "36",
-            "daily_percentage": "45"
-        },
-        {
-            "id": 51,
-            "attribute": "الألياف الغذائية",
-            "weight_value": "37",
-            "daily_percentage": "91"
-        },
-        {
-            "id": 52,
-            "attribute": "سكريات كلية",
-            "weight_value": "28",
-            "daily_percentage": "7"
-        },
-        {
-            "id": 53,
-            "attribute": "يتضمن سكر مضاف",
-            "weight_value": "73",
-            "daily_percentage": "5"
-        },
-        {
-            "id": 54,
-            "attribute": "بروتين",
-            "weight_value": "47",
-            "daily_percentage": "99"
-        }
-    ],
-    "product_price": "609.00",
-    "product_price_after_discount": "566.00",
-    "has_discount": true,
-    "currency": "ر.س "
+    id: 6,
+    name: "",
+    is_available: false,
+    avg_rate: 0,
+    calories: "",
+    weight: "",
+    brand: "",
+    description: '',
+    images: [],
+    nutrition_values: [],
+    product_price: "",
+    product_price_after_discount:'',
+    has_discount: '',
+    currency: ''
 });
 
-// Product Rating
-const productRating = ref([]);
+// config
+const config = {
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+};
 
 /******************* Provide && Inject *******************/
 
@@ -304,7 +191,7 @@ const productRating = ref([]);
 // getData
 const getData = async () => {
     loading.value = true;
-    await axios.get(`providers/product-details/${productId.value}`, config.value).then(res => {
+    await axios.get(`providers/product-details/${productId.value}`, config).then(res => {
         if (response(res) == "success") {
             product.value.is_available = res.data.data.is_available;
             product.value.name = res.data.data.name;
@@ -325,27 +212,9 @@ const getData = async () => {
     }).catch(err => console.log(err));
 }
 
-// get Order
-const getProductRate = async () => {
-    await axios.get(`get-product-rates/${productId.value}`, config.value).then(res => {
-        if (response(res) == "success") {
-            productRating.value = res.data.data.data;
-        }
-    }).catch(err => {
-        console.error(err);
-    });
-}
-
-
 /******************* Computed *******************/
 const productId = computed(() => {
     return route.params.id
-});
-
-const config = computed(() => {
-    return localStorage.getItem('token') ? {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-    } : {}
 });
 
 /******************* Watch *******************/
@@ -353,7 +222,6 @@ const config = computed(() => {
 /******************* Mounted *******************/
 onMounted(async () => {
     await getData();
-    await getProductRate();
 });
 
 </script>

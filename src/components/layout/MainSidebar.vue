@@ -35,7 +35,7 @@
                 <span class="text">{{ $t('sidebar.orders') }} <span class="c-light ff-m">( 58 )</span> </span>
             </router-link>
 
-            <router-link to="/orders" class="link">
+            <router-link to="/ProvideOrders" class="link">
                 <img src="@/assets/imgs/icons/sidebar/wishlist.png" class="side-icon" alt="">
                 <span class="text">{{ $t('sidebar.wishlist') }} </span>
             </router-link>
@@ -116,32 +116,25 @@ const logout = async () => {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     };
 
-    setTimeout(() => {
-        router.push({
-            name: 'login'
-        });
+    await axios.delete('sign-out', config).then(res => {
+        if (response(res) == "success" || response(res) == "blocked") {
+
+            let lKeys = ['token', 'image', 'name'];
+
+            lKeys.forEach((key) => {
+                localStorage.removeItem(key);
+            });
+
+            successToast(res.data.msg);
+            router.push({
+                name: 'login'
+            });
+            
+        } else {
+            errorToast(res.data.msg);
+        }
         loading.value = false;
-    }, 500);
-
-    // await axios.delete('sign-out', config).then(res => {
-    //     if (response(res) == "success" || response(res) == "blocked") {
-
-    //         let lKeys = ['token', 'user', 'country', 'city'];
-
-    //         lKeys.forEach((key) => {
-    //             localStorage.removeItem(key);
-    //         });
-
-    //         successToast(res.data.msg);
-    //         checkAuth();
-    //         router.push({
-    //             name: 'home'
-    //         });
-
-    //     } else {
-    //         errorToast(res.data.msg);
-    //     }
-    // }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
 }
 
 /******************* Computed *******************/

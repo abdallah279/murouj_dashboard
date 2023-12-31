@@ -2,7 +2,7 @@
     <div class="invoice_card">
         <div class="invoice_card_header">
             <img src="@/assets/imgs/icons/file.png" alt="" class="icon">
-            <h5 class="c-black fs15">{{ $t('invoices.invoiceNumber') }} #{{ invoice.invoice_num }}</h5>
+            <h5 class="c-black fs14">{{ $t('invoices.invoiceNumber') }} #{{ invoice.invoice_num }}</h5>
         </div>
         <div class="invoice_card_body">
 

@@ -1,5 +1,4 @@
 <template>
-
     <!--*********** Data Table ***********-->
     <DataTable v-if="!loading" :value="products" removableSort :filters="filters" :paginator="paginator" :sortOrder="-1"
         :rows="8">
@@ -15,7 +14,7 @@
             <template #body="slotProps" v-if="typeof col.field == 'object'">
                 <div class="d-flex-c gap-3">
                     <div v-for="(fieldItem, i) of col.field" :key="fieldItem" class="col_div"
-                        :class="{ old_price: col.field[i] == 'product_price_after_discount' }">
+                        :class="{ old_price: col.field[i - 1] == 'product_price_after_discount' }">
 
                         <!--*********** If Field Item Is Image ***********-->
                         <img alt="image" :src="slotProps.data[fieldItem]" v-if="fieldItem == 'product_image'"

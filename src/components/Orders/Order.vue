@@ -59,80 +59,7 @@ const columns = ref([
 ]);
 
 // products
-const orders = ref([
-    {
-        "id": 40,
-        "order_num": "202340",
-        "user_name": "salem3",
-        "date_and_time": "2023/12/30 - 01:10 am",
-        "final_total": "145.70",
-        "status": 8,
-        "status_text": "بدأ التجهيز",
-        "order_type": "طلب شراء",
-        "delivery_type": "city_delegate",
-        "currency": "ر.س "
-    },
-    {
-        "id": 30,
-        "order_num": "202330",
-        "user_name": "عبدالله زكريا",
-        "date_and_time": "2023/12/30 - 01:10 am",
-        "final_total": "660.90",
-        "status": 12,
-        "status_text": "تم استلام الطلب",
-        "order_type": "طلب شراء",
-        "delivery_type": "city_delegate",
-        "currency": "ر.س "
-    },
-    {
-        "id": 29,
-        "order_num": "202329",
-        "user_name": "عبدالله زكريا",
-        "date_and_time": "2023/12/30 - 01:10 am",
-        "final_total": "660.90",
-        "status": 2,
-        "status_text": "تم تأكيد الحواله البنكيه",
-        "order_type": "طلب شراء",
-        "delivery_type": "city_delegate",
-        "currency": "ر.س "
-    },
-    {
-        "id": 26,
-        "order_num": "202326",
-        "user_name": "عبدالله زكريا",
-        "date_and_time": "2023/12/30 - 01:10 am",
-        "final_total": "718.40",
-        "status": 8,
-        "status_text": "بدأ التجهيز",
-        "order_type": "طلب شراء",
-        "delivery_type": "city_delegate",
-        "currency": "ر.س "
-    },
-    {
-        "id": 23,
-        "order_num": "202323",
-        "user_name": "عبدالله زكريا",
-        "date_and_time": "2023/12/30 - 01:10 am",
-        "final_total": "2250.20",
-        "status": 8,
-        "status_text": "بدأ التجهيز",
-        "order_type": "طلب شراء",
-        "delivery_type": "city_delegate",
-        "currency": "ر.س "
-    },
-    {
-        "id": 21,
-        "order_num": "202321",
-        "user_name": "عبدالله زكريا",
-        "date_and_time": "2023/12/30 - 01:10 am",
-        "final_total": "1311.80",
-        "status": 8,
-        "status_text": "بدأ التجهيز",
-        "order_type": "طلب شراء",
-        "delivery_type": "city_delegate",
-        "currency": "ر.س "
-    }
-]);
+const orders = ref([]);
 
 // route Table
 const routeTable = ref({
@@ -184,7 +111,7 @@ const showDelivery = () => {
 
 /******************* Mounted *******************/
 onMounted(async () => {
-    // await getOrders();
+    await getOrders();
     showDelivery();
 });
 

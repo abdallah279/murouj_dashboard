@@ -3,7 +3,7 @@
         <div class="profit_card card_style">
             <h5 class="profit_name">{{ title }}</h5>
             <div class="profit_bottom">
-                <span class="num">{{ number }} <span class="fs15">ر.س</span></span>
+                <span class="num">{{ number.toFixed(2) }} <span class="fs15">{{ currency }}</span></span>
                 <img :src="chart" alt="" class="chart_img">
             </div>
         </div>
@@ -30,6 +30,9 @@ import Skeleton from 'primevue/skeleton';
 /******************* Props *******************/
 const props = defineProps({
     title: {
+        type: String
+    },
+    currency: {
         type: String
     },
     number: {

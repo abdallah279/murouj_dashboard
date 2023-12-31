@@ -5,13 +5,13 @@
 
       <!--***** Total Profit *****-->
       <div class="col-lg-4 col-sm-6">
-        <HomeProfit :title="$t('profit.total')" :number="home.total_profit"
+        <HomeProfit :title="$t('profit.total')" :number="home.total_profit" :loading="loading" :currency="home.currency"
           :chart="require('@/assets/imgs/icons/bar_chart1.png')" />
       </div>
 
       <!--***** Today Profit *****-->
       <div class="col-lg-4 col-sm-6">
-        <HomeProfit :title="$t('profit.today')" :number="home.today_profit"
+        <HomeProfit :title="$t('profit.today')" :number="home.today_profit" :loading="loading" :currency="home.currency"
           :chart="require('@/assets/imgs/icons/bar_chart2.png')" />
       </div>
 
@@ -27,10 +27,8 @@
 <script setup>
 
 /******************* Import *******************/
-import { computed, onMounted, ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { onMounted, ref, watch } from 'vue';
 import axios from 'axios';
-import i18n from "@/i18n";
 import HomeProfit from '@/components/Home/HomeProfit.vue';
 import HomeChart from '@/components/Home/HomeChart.vue';
 import responseApi from '@/components/shared/ResponseApi.js';
@@ -40,12 +38,6 @@ import responseApi from '@/components/shared/ResponseApi.js';
 // success response
 const { response } = responseApi();
 
-// Route
-const route = useRoute();
-
-// authed
-const authed = ref(false);
-
 // Loading
 const loading = ref(false);
 
@@ -53,6 +45,8 @@ const loading = ref(false);
 const home = ref({
   total_profit: 39.000,
   today_profit: 39.000,
+  month_profit:[],
+  currency: ''
 });
 
 // config
@@ -65,11 +59,6 @@ const config = {
 /******************* Props *******************/
 
 /******************* Methods *******************/
-// checkAuth
-const checkAuth = () => {
-  localStorage.getItem('token') ? authed.value = true : authed.value = false;
-}
-
 // getData
 const getData = async () => {
   loading.value = true;
@@ -83,23 +72,13 @@ const getData = async () => {
 
 /******************* Computed *******************/
 
-// const config = computed(() => {
-//   return localStorage.getItem('token') ? {
-//     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-//   } : {}
-// });
-
 /******************* Watch *******************/
-
-// watch(route, () => {
-//   checkAuth();
-// });
 
 /******************* Mounted *******************/
 
-// onMounted(async () => {
-//   await getData();
-// });
+onMounted(async () => {
+  await getData();
+});
 
 </script>
 

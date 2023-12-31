@@ -8,6 +8,7 @@ const routes = [
     name: "MainView",
     meta: {
       title: "pagesTitle.MainView",
+      requiresAuth: true,
     },
     component: () => import("@/views/Dashboard/DashboardView.vue"),
     redirect: { path: "/" },
@@ -28,7 +29,6 @@ const routes = [
         name: "products",
         meta: {
           title: "pagesTitle.products",
-          requiresAuth: true,
         },
         component: () => import("@/views/Dashboard/Products/ProductsView.vue"),
       },
@@ -57,7 +57,6 @@ const routes = [
         name: "orders",
         meta: {
           title: "pagesTitle.orders",
-          requiresAuth: true,
         },
         component: () => import("@/views/Dashboard/Orders/OrdersView.vue"),
         redirect: { path: "/purchaseCurrent" },
@@ -137,10 +136,27 @@ const routes = [
         name: "orderDetailes",
         meta: {
           title: "pagesTitle.orderDetailes",
-          requiresAuth: true,
         },
         component: () => import("@/views/Dashboard/Orders/OrderDetailes.vue"),
       },
+
+      /********************* ProvideOrders **********************/
+      {
+        path: "/ProvideOrders",
+        name: "ProvideOrders",
+        meta: {
+          title: "pagesTitle.ProvideOrders",
+        },
+        component: () => import("@/views/Dashboard/Orders/ProvideOrders.vue"),
+      },
+      // {
+      //   path: "/invoiceDetailes/:id",
+      //   name: "invoiceDetailes",
+      //   meta: {
+      //     title: "pagesTitle.invoiceDetailes",
+      //   },
+      //   component: () => import("@/views/Dashboard/Invoices/InvoiceDetailes.vue"),
+      // },
 
       /********************* Invoices **********************/
       {
@@ -148,7 +164,6 @@ const routes = [
         name: "invoices",
         meta: {
           title: "pagesTitle.invoices",
-          requiresAuth: true,
         },
         component: () => import("@/views/Dashboard/Invoices/InvoicesView.vue"),
       },
@@ -157,20 +172,34 @@ const routes = [
         name: "invoiceDetailes",
         meta: {
           title: "pagesTitle.invoiceDetailes",
-          requiresAuth: true,
         },
         component: () => import("@/views/Dashboard/Invoices/InvoiceDetailes.vue"),
       },
 
-      /********************* Invoices **********************/
+      /********************* supervisors **********************/
       {
         path: "/supervisors",
         name: "supervisors",
         meta: {
           title: "pagesTitle.supervisors",
-          requiresAuth: true,
         },
         component: () => import("@/views/Dashboard/Supervisors/SupervisorsView.vue"),
+      },
+      {
+        path: "/addSupervisors",
+        name: "addSupervisors",
+        meta: {
+          title: "pagesTitle.addSupervisors",
+        },
+        component: () => import("@/views/Dashboard/Supervisors/AddSupervisors.vue"),
+      },
+      {
+        path: "/editSupervisors",
+        name: "editSupervisors",
+        meta: {
+          title: "pagesTitle.editSupervisors",
+        },
+        component: () => import("@/views/Dashboard/Supervisors/EditSupervisors.vue"),
       },
 
       /********************* Notifications **********************/
@@ -179,7 +208,6 @@ const routes = [
         name: "notifications",
         meta: {
           title: "pagesTitle.notifications",
-          requiresAuth: true,
         },
         component: () => import("@/views//Dashboard/NotificationsView.vue"),
       },
@@ -200,7 +228,6 @@ const routes = [
         name: "profile",
         meta: {
           title: "pagesTitle.userAccount",
-          requiresAuth: true,
         },
         component: () => import("@/views//Dashboard/Profile/UserAccount.vue"),
       },
@@ -209,7 +236,6 @@ const routes = [
         name: "change-phone",
         meta: {
           title: "pagesTitle.changePhone",
-          requiresAuth: true,
         },
         component: () => import("@/views/Dashboard/Profile/ChangePhone.vue"),
       },
@@ -218,7 +244,6 @@ const routes = [
         name: "newPhone",
         meta: {
           title: "pagesTitle.changePhone",
-          requiresAuth: true,
         },
         component: () => import("@/views/Dashboard/Profile/NewPhone.vue"),
       },
@@ -227,7 +252,6 @@ const routes = [
         name: "code-phone",
         meta: {
           title: "sectionTitle.verificationCode",
-          requiresAuth: true,
         },
         component: () => import("@/views/Dashboard/Profile/CodePhone.vue"),
       },
@@ -236,7 +260,6 @@ const routes = [
         name: "change-password",
         meta: {
           title: "sectionTitle.changePassword",
-          requiresAuth: true,
         },
         component: () => import("@/views/Dashboard/Profile/ChangePassword.vue"),
       },
@@ -296,6 +319,18 @@ const router = createRouter({
   routes,
 });
 
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some((record) => record.meta.requiresAuth)) {
+//       if (!localStorage.getItem("token")) {
+//           next({ name: "login" });
+//       } else {
+//           next();
+//       }
+//   } else {
+//       next();
+//   }
+// });
+
 router.afterEach((to) => {
   const titleText = to.meta.title
     ? i18n.global.t(`${to.meta.title}`)
@@ -310,5 +345,6 @@ router.afterEach((to) => {
     window.scrollTo(0, 0);
   }, 300);
 });
+
 
 export default router;

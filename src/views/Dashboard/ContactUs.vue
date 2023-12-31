@@ -40,7 +40,7 @@
     
             <!-- ***** Contact Social ***** -->
             <div class="col-lg-4">
-                <span class="c-dark3 text-center d-block">او عبر التواصل الاجتماعي</span>
+                <span class="c-dark3 text-center d-block">{{ $t('contactForm.or') }}</span>
                 <div class="socials mt-4">
                     <a :href="social.url" v-for="social in socials" :key="social.id" target="_blank">
                         <img :src="social.icon" class="ic" alt="">
@@ -56,7 +56,7 @@
             <div class="row mt-5">
                 <div class="col-lg-8">
 
-                    <div class="c-dark3 fs13 mb-4">او عبر ارسال رسالة</div>
+                    <div class="c-dark3 fs13 mb-4">{{ $t('contactForm.or2') }}</div>
                     <div class="input-g">
                         <div class="main-input">
                             <input type="text" class="input-me validInputs" valid="name" name="name" v-model="name"
