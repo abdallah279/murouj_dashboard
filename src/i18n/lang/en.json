@@ -268,10 +268,13 @@
     "allCategories": "Categories",
     "products": "Products",
     "ourProducts": "Our products",
+    "supervisors": "supervisors",
     "about": "Who Us",
     "contact": "Contact Us",
     "financial": "Financial Accounts",
     "privacy": "Privacy Policy",
+    "invoices": "invoices",
+    "invoiceDetailes": "invoice Detailes",
     "faqs": "Faqs",
     "newlyAdded": "Newly Added",
     "mostSelling": "Most Selling",
@@ -422,6 +425,7 @@
     "products": "Not Found Products",
     "advantages": "Not Found advantages",
     "offers": "Not Found offers",
+    "supervisors": "There are currently no moderators",
     "comments": "Not Found Rates",
     "search": "Not Found search results",
     "complaint": "Not Found complaint",
@@ -437,7 +441,8 @@
     "imgs": "Not Found Images",
     "cart": "Cart is empty",
     "orderProduct": "The products you requested are no longer available",
-    "productRate": "No reviews for this product"
+    "productRate": "No reviews for this product",
+    "invoices" : "No invoices"
   },
   "loginForm": {
     "login": "Login",
@@ -560,6 +565,26 @@
         "placeholder": "Enter IBAN"
       }
     }
+  },
+  "invoices": {
+    "orderDetailes":"Order Detailes",
+    "tax_number": "Tax number",
+    "invoiceNumber": "invoice number",
+    "invoiceDate": "order date",
+    "invoiceTime": "order time",
+    "ordernumber": "order number",
+    "invoiceVat": "vat amount",
+    "orderVat": "order vat",
+    "payType": "pay type",
+    "totalProduct": "Total amount of products",
+    "showBtn": "View invoice"
+  },
+  "supervisors": {
+    "supervisors": "supervisors",
+    "addSupervisor": "add supervisor",
+    "editSupervisor": "edit supervisor",
+    "deleteSupervisor": "delete supervisor",
+    "permissions": "permissions"
   },
   "modals": {
     "reason": {

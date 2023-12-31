@@ -193,6 +193,20 @@
     "chooseWay": "طريقة التوصيل"
   },
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   "sidebar": {
     "home": "الرئيسية",
     "orders": "الطلبات",
@@ -224,10 +238,13 @@
     "allCategories": "الأقسام",
     "products": "منتجات",
     "ourProducts": "منتجاتنا",
+    "supervisors": "المشرفين",
     "about": "من نحن",
     "contact": "تواصل معنا",
     "financial": "الحسابات المالية",
     "privacy": "سياسة الخصوصية",
+    "invoices": "الفواتير",
+    "invoiceDetailes": "تفاصيل الفاتورة",
     "faqs": "الأسئلة الشائعة",
     "newlyAdded": "المضاف حديثا",
     "mostSelling": "الأكثر مبيعا",
@@ -378,6 +395,7 @@
     "products": "لا يوجد منتجات حاليا",
     "advantages": "لا يوجد مزايا حاليا",
     "offers": "لا يوجد عروض حاليا",
+    "supervisors": "لا يوجد مشرفين حاليا",
     "comments": "لا يوجد اراء حاليا",
     "search": "لا يوجد نتائج للبحث",
     "complaint": "لا يوجد شكاوى أو مقترحات",
@@ -393,7 +411,8 @@
     "imgs": "لا يوجد صور حاليا",
     "cart": "السلة فارغة",
     "orderProduct": "المنتجات المطلوبة لم تعد متوفره",
-    "productRate": "لا يوجد تقييمات لهذا المنتج"
+    "productRate": "لا يوجد تقييمات لهذا المنتج",
+    "invoices": "لا يوجد فواتير"
   },
   "loginForm": {
     "login": "تسجيل دخول",
@@ -518,6 +537,26 @@
         "placeholder": "برجاء ادخال رقم الايبان"
       }
     }
+  },
+  "invoices": {
+    "orderDetailes":"تفاصيل الطلب",
+    "tax_number": "الرقم الضريبي",
+    "invoiceNumber": "رقم الفاتورة ",
+    "invoiceDate": "تاريخ الطلب",
+    "invoiceTime": "وقت الطلب",
+    "ordernumber": "رقم الطلب",
+    "invoiceVat": "تكلفه الضريبه",
+    "orderVat": "تكلفة الطلب",
+    "payType": "طريقة الدفع",
+    "totalProduct": "المبلغ الإجمالي للمنتجات ",
+    "showBtn": "عرض الفاتورة"
+  },
+  "supervisors": {
+    "supervisors": "المشرفين",
+    "addSupervisor": "اضافة مشرف جديد",
+    "editSupervisor": "تعديل المشرف",
+    "deleteSupervisor": "حذف المشرف",
+    "permissions": "الصلاحيات"
   },
   "modals": {
     "refuse": {

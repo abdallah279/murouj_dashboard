@@ -104,38 +104,29 @@ const routes = [
             meta: {
               title: "pagesTitle.returnOrders",
             },
-            component: () =>
-              import("@/components/Orders/Return Orders/View.vue"),
+            component: () => import("@/components/Orders/Return Orders/View.vue"),
             redirect: { path: "/returnCurrent" },
-
             children: [
 
               /**** طلبات الحالية *****/
               {
                 path: "/returnCurrent",
                 name: "returnCurrent",
-                component: () =>
-                  import("@/components/Orders/Return Orders/CurrentOrders.vue"),
+                component: () => import("@/components/Orders/Return Orders/CurrentOrders.vue"),
               },
 
               /**** طلبات المنتهية *****/
               {
                 path: "/returnFinished",
                 name: "returnFinished",
-                component: () =>
-                  import(
-                    "@/components/Orders/Return Orders/FinishedOrders.vue"
-                  ),
+                component: () => import("@/components/Orders/Return Orders/FinishedOrders.vue"),
               },
 
               /**** طلبات الملغية *****/
               {
                 path: "/returnCanceled",
                 name: "returnCanceled",
-                component: () =>
-                  import(
-                    "@/components/Orders/Return Orders/CanceledOrders.vue"
-                  ),
+                component: () => import("@/components/Orders/Return Orders/CanceledOrders.vue"),
               },
             ],
           },
@@ -149,6 +140,37 @@ const routes = [
           requiresAuth: true,
         },
         component: () => import("@/views/Dashboard/Orders/OrderDetailes.vue"),
+      },
+
+      /********************* Invoices **********************/
+      {
+        path: "/invoices",
+        name: "invoices",
+        meta: {
+          title: "pagesTitle.invoices",
+          requiresAuth: true,
+        },
+        component: () => import("@/views/Dashboard/Invoices/InvoicesView.vue"),
+      },
+      {
+        path: "/invoiceDetailes/:id",
+        name: "invoiceDetailes",
+        meta: {
+          title: "pagesTitle.invoiceDetailes",
+          requiresAuth: true,
+        },
+        component: () => import("@/views/Dashboard/Invoices/InvoiceDetailes.vue"),
+      },
+
+      /********************* Invoices **********************/
+      {
+        path: "/supervisors",
+        name: "supervisors",
+        meta: {
+          title: "pagesTitle.supervisors",
+          requiresAuth: true,
+        },
+        component: () => import("@/views/Dashboard/Supervisors/SupervisorsView.vue"),
       },
 
       /********************* Notifications **********************/

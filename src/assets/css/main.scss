@@ -588,10 +588,6 @@
 
 /***************** End complaint_item Section *********************/
 
-
-
-
-
 /***************** Start Cart Page *********************/
 
 .discount {
@@ -737,19 +733,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ======================================================== New Css ================================================================ //
 
 
 /********************* Start Main padding Righ section *********************/
@@ -1080,6 +1064,98 @@
 
 /***************** End product_table Section *********************/
 
+/***************** Start invoice_card Section *********************/
+
+.invoice_card {
+  border-radius: 10px;
+  overflow: hidden;
+  .invoice_card_header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #f5f5f5a8;
+    padding: 15px;
+
+    .icon {
+      max-width: 15px;
+    }
+  }
+
+  .invoice_card_body{
+    padding: 15px;
+  }
+
+  .invoice_card_footer{
+    .main-btn{
+      height: 48px;
+    }
+    .pi{
+      @include circle(20px);
+      @include center;
+      background-color: rgba($color: $white, $alpha: .2);
+    }
+  }
+}
+
+.invoice_item{
+  &:not(:last-of-type){
+    border-bottom: 1px dashed rgba($color: $dark3, $alpha: .6);
+  }
+}
+
+.qr_code{
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 25px auto;
+}
+
+/***************** End invoice_card Section *********************/
+
+/***************** Start admin_card Section *********************/
+.admin_card{
+  box-shadow: $main-shadow;
+  border-radius: 15px;
+  padding: 18px 25px;
+  margin-bottom: 35px;
+
+  .admin_top{
+    @include between;
+    margin-bottom: 15px;
+
+    .right{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .admin_img{
+        @include circle(70px);
+      }
+
+      .country_code{
+        @include dir-border-left(1px solid rgba($color: $dark3, $alpha: .3));
+        @include dir-margin-left(5px);
+        @include dir-padding-left(5px);
+      }
+    }
+  }
+
+  .permissions{
+    display: flex;
+    // align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    .permission_item{
+      background-color: rgba($color: #AEA8D5, $alpha: .3);
+      color: $blue;
+      padding: 10px 18px;
+      border-radius: 7px;
+    }
+  }
+}
+/***************** End admin_card Section *********************/
+
 /***************** Start not-item Section *********************/
 
 .not-item {
@@ -1208,7 +1284,7 @@
       height: 50px;
     }
 
-    i{
+    i {
       font-size: 16px !important;
     }
   }
@@ -1227,12 +1303,11 @@
   }
 }
 
-.socials{
+.socials {
   @include center;
   gap: 15px;
 
-
-  .ic{
+  .ic {
     max-width: 26px;
   }
 }
@@ -1244,7 +1319,7 @@
   text-align: center;
   .no-data-img {
     max-width: 220px;
-    margin-bottom: 15px;
+    // margin-bottom: 15px;
 
     @media screen and (max-width: $screen-xs) {
       max-width: 160px;
