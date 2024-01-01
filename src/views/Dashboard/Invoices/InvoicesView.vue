@@ -33,7 +33,7 @@
   
 <script setup>
 /******************* Import *******************/
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import InvoiceCards from "@/components/Invoices/InvoiceCards.vue";
 import InvoiceSkeleton from "@/components/Invoices/InvoiceSkeleton.vue";
 import axios from 'axios';
@@ -46,54 +46,7 @@ import responseApi from '@/components/shared/ResponseApi.js';
 const { response } = responseApi();
 
 // invoices
-const invoices = ref([
-
-    {
-        "id": 38,
-        "invoice_num": "20233838",
-        "order_num": "202338",
-        "date": "30/12/2023",
-        "vat_amount": "0.00",
-        "final_total": "2354.00",
-        "currency": "ر.س "
-    },
-    {
-        "id": 36,
-        "invoice_num": "20233636",
-        "order_num": "202336",
-        "date": "30/12/2023",
-        "vat_amount": "369.60",
-        "final_total": "2843.60",
-        "currency": "ر.س "
-    },
-    {
-        "id": 32,
-        "invoice_num": "20233232",
-        "order_num": "202332",
-        "date": "30/12/2023",
-        "vat_amount": "462.00",
-        "final_total": "3552.00",
-        "currency": "ر.س "
-    },
-    {
-        "id": 28,
-        "invoice_num": "20232828",
-        "order_num": "202328",
-        "date": "30/12/2023",
-        "vat_amount": "84.90",
-        "final_total": "660.90",
-        "currency": "ر.س "
-    },
-    {
-        "id": 22,
-        "invoice_num": "20232222",
-        "order_num": "202322",
-        "date": "30/12/2023",
-        "vat_amount": "92.40",
-        "final_total": "718.40",
-        "currency": "ر.س "
-    }
-]);
+const invoices = ref([]);
 
 // Loading
 const loading = ref(false);
@@ -103,6 +56,11 @@ const currentPage = ref(1);
 const pageLimit = ref();
 const totalPage = ref();
 
+// config
+const config = {
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+};
+
 /******************* Provide && Inject *******************/
 
 /******************* Props *******************/
@@ -111,7 +69,7 @@ const totalPage = ref();
 // getData
 const getData = async () => {
     loading.value = true;
-    await axios.get(`providers/invoices?page=${currentPage.value}`, config.value).then(res => {
+    await axios.get(`providers/invoices?page=${currentPage.value}`, config).then(res => {
         if (response(res) == "success") {
             invoices.value = res.data.data.data;
             totalPage.value = res.data.data.pagination.total_items;
@@ -130,11 +88,6 @@ const onPaginate = (e) => {
 };
 
 /******************* Computed *******************/
-const config = computed(() => {
-    return localStorage.getItem('token') ? {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-    } : {}
-});
 
 let showPaginate = computed(() => {
     return totalPage.value > pageLimit.value
@@ -143,9 +96,9 @@ let showPaginate = computed(() => {
 /******************* Watch *******************/
 
 /******************* Mounted *******************/
-// onMounted(async () => {
-//     await getData();
-// });
+onMounted(async () => {
+    await getData();
+});
 
 </script>
   

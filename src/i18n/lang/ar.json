@@ -6,6 +6,8 @@
     "ourProducts": "منتجاتنا",
     "wishlist": "طلبات توفير المنتجات",
     "wallet": "الحسابات المالية",
+    "financial": "المستحقات المالية",
+    "settlement": "طلبات التسوية",
     "profile": "بيانات الحساب",
     "supervisors": "المشرفين",
     "contact": "اتصل بنا",
@@ -35,8 +37,9 @@
     "editSupervisors": "تعديل مشرف",
     "ProvideOrders": "طلبات توفير المنتجات",
     "about": "من نحن",
+    "verificationCode": "كود التفعيل",
     "contact": "تواصل معنا",
-    "financial": "الحسابات المالية",
+    "financial": "المستحقات المالية",
     "privacy": "سياسة الخصوصية",
     "invoices": "الفواتير",
     "invoiceDetailes": "تفاصيل الفاتورة",
@@ -63,6 +66,7 @@
     "createAccount": "تسجيل جديد",
     "code": "كود التحقق من رقمك",
     "forgetPass": "استعادة كلمة المرور",
+    "changePassword": "تغيير كلمة المرور",
     "purchaseOrders": "طلبات الشراء",
     "returnOrders": "طلبات الأرجاع",
     "orderDetailes": "تفاصيل الطلب",
@@ -111,6 +115,14 @@
       "sub_category": "القسم الفرعي",
       "status_text": "الحالة",
       "btn": "طلب توفير المنتجات"
+    },
+    "financials":{
+      "number": " رقم",
+      "purchases": "قيمة المشتريات",
+      "commission": "العمولة",
+      "vat": "القيمة المضافة",
+      "total": "الاجمالى",
+      "date": "التاريخ"
     }
   },
   "cart": {
@@ -391,6 +403,13 @@
       "deleteBtn": "حذف المشرف"
     }
   },
+  "financails":{
+    "totalOrders": "إجمالي الطلبات",
+    "totalCommission" : "إجمالي العمولة",
+    "totalVat" : "إجمالي القيمة المضافة",
+    "financialDues" : "المستحق لك",
+    "settlementRequest": "طلب تسويه"
+  },
   "modals": {
     "refuse": {
       "header": "سبب رفض طلب الأرجاع",
@@ -427,6 +446,7 @@
     "name": "من فضلك أدخل الاسم",
     "phone": "من فضلك أدخل رقم الهاتف",
     "email": "من فضلك أدخل Email صحيح",
+    "old_password": "أدخل كلمة المرور الحالية",
     "password": "من فضلك أدخل كلمة المرور",
     "confirmPassword": "كلمة المرور غير متطابقة",
     "search": "كلمة البحث مطلوبة",

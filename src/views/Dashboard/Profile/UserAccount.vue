@@ -33,7 +33,7 @@
                 <div class="input-g disabled">
                     <label for="" class="main-label">{{ $t('loginForm.phone.text') }}</label>
                     <div class="main-input">
-                        <input type="number" class="input-me validInputs" valid="phone" name="phone" v-model="phone"
+                        <input type="number" class="input-me validInputs" valid="phone" v-model="phone"
                             :placeholder="$t('loginForm.phone.placeholder')">
 
                         <Dropdown v-model="selectedCountry" :options="countries" optionLabel="name"
@@ -139,7 +139,7 @@
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('profile.form.address.text') }}</label>
                     <div class="main-input">
-                        <input type="text" class="input-me validInputs" name="address" @click="mapModal = true"
+                        <input type="text" class="input-me validInputs" name="map_desc" @click="mapModal = true"
                             v-model="address" :placeholder="$t('profile.form.address.placeholder')">
                         <i class="pi pi-map-marker main-icon"></i>
                     </div>
@@ -150,12 +150,12 @@
 
                     <div class="input_image">
                         <label for="" class="main-label">{{ $t('profile.nationalId') }}</label>
-                        <UploadImages @update="updatedImages" />
+                        <UploadImages @update="updatedImages" :images="images" />
                     </div>
 
                     <div class="input_image">
                         <label for="" class="main-label">{{ $t('profile.commercial') }}</label>
-                        <UploadImages @update="updatedImages2" />
+                        <UploadImages @update="updatedImages2" :images="images2" />
                     </div>
 
                 </div>
@@ -215,8 +215,8 @@
     <Dialog id="map" class="xl address" :header="$t('modals.address.header')" v-model:visible="mapModal" modal>
         <div class="modal-form position-relative">
             <div class="address_text"><i class="pi pi-map-marker"></i> {{ address }} </div>
-            <Googlemap apiKey="AIzaSyBNLoYGrbnQI_GMqHt6m0PSN9yA7Zvq7gA" language="ar" @change-address="changeAddress"
-                height="360px" />
+            <Googlemap apiKey="AIzaSyBNLoYGrbnQI_GMqHt6m0PSN9yA7Zvq7gA" :location="userLocation" language="ar"
+                @change-address="changeAddress" height="360px" />
             <button type="button" @click="mapModal = false" class="main-btn modal_btn up">
                 {{ $t('modals.address.btn') }}
             </button>
@@ -283,7 +283,7 @@ const done = ref(false);
 
 // Country
 const country = ref(null);
-const country_id = ref(null);
+const country_code = ref('');
 const countries = ref([]);
 const selectedCountry = ref({});
 
@@ -297,6 +297,12 @@ const address = ref('');
 const addressLat = ref('');
 const addressLng = ref('');
 
+// user Location
+const userLocation = ref({
+    lat: 31.05845390,
+    lng: 31.3801574
+});
+
 /******************* Provide && Inject *******************/
 
 /******************* Props *******************/
@@ -306,13 +312,11 @@ const addressLng = ref('');
 // uploadedImages
 const updatedImages = (data) => {
     images.value = data;
-    console.log(images.value);
 }
 
 // uploadedImages2
 const updatedImages2 = (data) => {
     images2.value = data;
-    console.log(images2.value);
 }
 
 // uploadImage Function
@@ -340,8 +344,8 @@ const getCountries = async () => {
         if (response(res) == "success") {
             countries.value = res.data.data;
             for (let i = 0; i < countries.value.length; i++) {
-                if (countries.value[i].id == country_id.value) {
-                    country.value = countries.value[i];
+                if (countries.value[i].key == country_code.value) {
+
                     selectedCountry.value = countries.value[i];
                 }
             }
@@ -353,9 +357,9 @@ const getCountries = async () => {
 const getCities = async (first) => {
     await axios.get(`country/${country.value.id}/cities`).then(res => {
         if (response(res) == "success") {
-            if(first){
+            if (first) {
                 city.value = null;
-            }  
+            }
             cities.value = res.data.data;
         }
     }).catch(err => console.log(err));
@@ -371,31 +375,57 @@ const changeAddress = (evt) => {
 // profile Function
 const getProfile = async () => {
     await axios.get('providers/profile', config).then(res => {
-        image.value = res.data.data.image;
-        name.value = res.data.data.name;
-        phone.value = res.data.data.phone;
-        address.value = res.data.data.map_desc;
-        bank_account_number.value = res.data.data.bank_account_number;
-        bank_name.value = res.data.data.bank_name;
-        iban_number.value = res.data.data.iban_number;
-        country.value = res.data.data.country;
-        city.value = res.data.data.city;
+        if(response(res) == "success"){
+            image.value = res.data.data.image;
+            name.value = res.data.data.name;
+            phone.value = res.data.data.phone;
+            address.value = res.data.data.map_desc;
+            bank_account_number.value = res.data.data.bank_account_number;
+            bank_name.value = res.data.data.bank_name;
+            iban_number.value = res.data.data.iban_number;
+            country_code.value = res.data.data.country_code;
+            country.value = res.data.data.country;
+            city.value = res.data.data.city;
+            userLocation.value.lat = Number(res.data.data.lat);
+            userLocation.value.lng = Number(res.data.data.lng);
+            localStorage.setItem('image', res.data.data.image);
+    
+            images.value.push({
+                previewUrl: res.data.data.id_image
+            });
+    
+            images2.value.push({
+                previewUrl: res.data.data.commercial_image
+            });
+        }
+
     }).catch(err => console.log(err));
 }
 
 // editAccount Function
 const editAccount = async () => {
-    done.value = true;
     loading.value = true;
     const fd = new FormData(editAccountForm.value);
     fd.append('country_code', selectedCountry.value.key);
     fd.append('country_id', country.value.id);
     fd.append('city_id', city.value.id);
+    fd.append('lat', addressLat.value);
+    fd.append('lng', addressLng.value);
+
+    if (images.value[0]) {
+        if (images.value[0].file) {
+            fd.append('id_image', images.value[0].file);
+        }
+    }
+    if (images2.value[0]) {
+        if (images2.value[0].file) {
+            fd.append('commercial_image', images2.value[0].file);
+        }
+    }
 
     await axios.post('providers/update-profile?_method=put', fd, config).then(res => {
         if (response(res) == "success") {
-            localStorage.setItem('user', JSON.stringify(res.data.data));
-            successToast(res.data.msg);
+            done.value = true;
         } else {
             errorToast(res.data.msg);
         }
@@ -410,9 +440,9 @@ const editAccount = async () => {
 
 /******************* Mounted *******************/
 onMounted(async () => {
-    await getCountries();
     await getProfile();
-    if(country.value) await getCities();
+    await getCountries();
+    if (country.value) await getCities();
 });
 
 </script>

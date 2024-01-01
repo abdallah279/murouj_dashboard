@@ -111,6 +111,7 @@ function activeFun() {
 watch(route, (newVal) => {
     if(active.value) activeFun();
     newVal.name == 'notifications' ? notCount.value = 0 : '';
+    image.value = localStorage.getItem("image");
 });
 
 /******************* Mounted *******************/

@@ -94,9 +94,10 @@
                         <p class="fs14 c-black mb-3">{{ $t('supervisors.form.privileges.text') }}</p>
 
                         <div class="row gy-3">
-                            <div class="col-6" v-for="privilege in privileges" :key="privilege.id">
+                            <div class="col-6" v-for="(privilege, index) in privileges" :key="privilege.id">
                                 <div class="check-box blue">
-                                    <input type="checkbox" name="privilege" :id="`privilege${privilege.id}`">
+                                    <input type="checkbox" v-model="privilegesChecked['privilege' + index]"
+                                        :id="`privilege${privilege.id}`">
                                     <label class="check" :for="`privilege${privilege.id}`"></label>
                                     <label class="check-anchor fs13 c-black" :for="`privilege${privilege.id}`">
                                         {{ privilege.name }}
@@ -141,8 +142,7 @@
 <script setup>
 /******************* Import *******************/
 
-import { computed, onMounted, ref } from "vue";
-import { useRouter } from 'vue-router';
+import { onMounted, ref } from "vue";
 import axios from 'axios';
 import i18n from "@/i18n";
 import Dropdown from 'primevue/dropdown';
@@ -157,15 +157,15 @@ import UploadImages from "@/components/shared/UploadImages.vue";
 const { response } = responseApi();
 
 // Toast
-const { successToast, errorToast } = toastMsg();
-
-// Router
-const router = useRouter();
+const { errorToast } = toastMsg();
 
 // Forms Ref
 const addSupervisorForm = ref(null);
 
+// loading
 const loading = ref(false);
+
+// errors
 const errors = ref([]);
 
 // images
@@ -175,19 +175,15 @@ const images = ref([]);
 const image = ref(require('@/assets/imgs/profile.png'));
 const name = ref('');
 const phone = ref('');
-const email = ref('');
 
-// Change Password
+// Password
 const password = ref('');
 const confirmPassword = ref('');
 const done = ref(false);
 
 // privileges
 const privileges = ref([]);
-
-// Country
-const country = ref(null);
-const country_id = ref(null);
+const privilegesChecked = ref({});
 
 // countries
 const countries = ref([]);
@@ -209,7 +205,6 @@ const togglePassword = (e) => {
 // uploadedImages
 const updatedImages = (data) => {
     images.value = data;
-    console.log(images.value);
 }
 
 // uploadImage Function
@@ -251,8 +246,7 @@ const getCountries = async () => {
         if (response(res) == "success") {
             countries.value = res.data.data;
             for (let i = 0; i < countries.value.length; i++) {
-                if (countries.value[i].id == country_id.value) {
-                    country.value = countries.value[i];
+                if (countries.value[i].id == 1) {
                     selectedCountry.value = countries.value[i];
                 }
             }
@@ -265,18 +259,31 @@ const addSupervisor = async () => {
     loading.value = true;
     const fd = new FormData(addSupervisorForm.value);
     fd.append('country_code', selectedCountry.value.key);
-    fd.append('country_id', country.value.id);
-    fd.append('city_id', city.value.id);
+    fd.append('id_image', images.value[0].file);
 
-    await axios.post('store-provider-admin', fd, config).then(res => {
-        if (response(res) == "success") {
-            // localStorage.setItem('user', JSON.stringify(res.data.data));
-            done.value = true;
-        } else {
-            errorToast(res.data.msg);
+    for (let i = 0; i < privileges.value.length; i++) {
+        if (privilegesChecked.value['privilege' + i]) {
+            fd.append(`privilege_ids[]`, `${i + 1}`);
         }
+    }
+
+    validate();
+
+    if (errors.value.length) {
+        errorToast(errors.value[0]);
         loading.value = false;
-    }).catch(err => console.log(err));
+        errors.value = [];
+    } else {
+        await axios.post('providers/store-provider-admin', fd, config).then(res => {
+            if (response(res) == "success") {
+                done.value = true;
+                addSupervisorForm.value.reset();
+            } else {
+                errorToast(res.data.msg);
+            }
+            loading.value = false;
+        }).catch(err => console.log(err));
+    }
 
 }
 
@@ -289,18 +296,12 @@ const getPrivileges = async () => {
     }).catch(err => console.log(err));
 }
 
-
 /******************* Computed *******************/
-
-const lang = computed(() => {
-    return localStorage.getItem('lang') ? localStorage.getItem('lang') : 'ar'
-});
 
 /******************* Watch *******************/
 
 /******************* Mounted *******************/
 onMounted(async () => {
-    // await profile();
     await getCountries();
     await getPrivileges();
 })

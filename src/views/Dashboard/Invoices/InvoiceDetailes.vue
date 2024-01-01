@@ -72,12 +72,12 @@
 
                         <div class="d-flex-between gap-3 mb-2">
                             <p class="c-black">القيمة المضافة (VAT) %15</p>
-                            <!-- <p class="c-blue">{{ invoice.vat_amount }} {{ invoice.currency }}</p> -->
+                            <p class="c-blue">{{ invoice.vat_amount }} {{ invoice.currency }}</p>
                         </div>
 
                         <div class="d-flex-between gap-3">
                             <p class="c-black">المبلغ الإجمالي يتضمن الضريبة </p>
-                            <!-- <p class="c-blue">{{ invoice.final_total }} {{ invoice.currency }}</p> -->
+                            <p class="c-blue">{{ invoice.final_total }} {{ invoice.currency }}</p>
                         </div>
 
                     </div>
@@ -108,7 +108,8 @@
   
 <script setup>
 /******************* Import *******************/
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
+import { useRoute } from 'vue-router';
 import axios from 'axios';
 import responseApi from '@/components/shared/ResponseApi.js';
 import Skeleton from "primevue/skeleton";
@@ -118,23 +119,19 @@ import Skeleton from "primevue/skeleton";
 // success response
 const { response } = responseApi();
 
+// route
+const route = useRoute();
+
 // invoices
-const invoice = ref({
-    "id": 38,
-    "tax_number": "0123456789",
-    "invoice_num": "20233838",
-    "time": "17:i م",
-    "date": "6/44/2023",
-    "order_num": "202338",
-    "vat_amount": "0.00",
-    "products_price": "2364.00",
-    "final_total": "2354.00",
-    "pay_type_text": "المحفظة",
-    "currency": "ر.س "
-});
+const invoice = ref({});
 
 // Loading
 const loading = ref(false);
+
+// config
+const config = {
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+};
 
 /******************* Provide && Inject *******************/
 
@@ -144,21 +141,15 @@ const loading = ref(false);
 // getInvoice
 const getInvoice = async () => {
     loading.value = true;
-    await axios.get(`providers/invoice-details/${invoiceId.value}`, config.value).then(res => {
+    await axios.get(`providers/invoice-details/${invoiceId.value}`, config).then(res => {
         if (response(res) == "success") {
-            invoice.value = res.data.data.data;
+            invoice.value = res.data.data;
         }
         loading.value = false;
     }).catch(err => console.log(err));
 }
 
 /******************* Computed *******************/
-const config = computed(() => {
-    return localStorage.getItem('token') ? {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-    } : {}
-});
-
 const invoiceId = computed(() => {
     return route.params.id
 });
@@ -166,9 +157,9 @@ const invoiceId = computed(() => {
 /******************* Watch *******************/
 
 /******************* Mounted *******************/
-// onMounted(async () => {
-//     await getInvoice();
-// });
+onMounted(async () => {
+    await getInvoice();
+});
 
 </script>
   

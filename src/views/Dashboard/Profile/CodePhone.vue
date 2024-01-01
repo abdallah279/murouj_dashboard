@@ -1,5 +1,5 @@
 <template>
-    <form action="" class="card_style py-4 px-lg-5" @submit.prevent="verificationCode">
+    <form action="" class="card_style py-4 px-lg-5" ref="verificationCodeForm" @submit.prevent="verificationCode">
         <div class="row">
             <div class="col-lg-8">
 
@@ -8,14 +8,14 @@
                 <div class="d-flex gap-1 c-side ff-d mb-4">
                     {{ $t('sectionDesc.codePhone') }}
                     <span class="bg-transparent d-block text-decoration-underline c-sec">
-                        {{ newPhone }} 250508080680
+                        {{ newPhone }}
                     </span>
                 </div>
 
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('codeForm.code') }}</label>
                     <div class="main-input">
-                        <input type="number" class="input-me validInputs" name="code" v-model="code"
+                        <input type="number" class="input-me validInputs" name="code"
                             :placeholder="$t('restorePasswordForm.code.text')">
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                         {{ $t('formBtns.save') }}
                     </span>
                     <div v-if="loading">
-                        {{ $t('formBtns.saving') }}
+                        {{ $t('formBtns.saveLoading') }}
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                     </div>
                 </button>
@@ -60,11 +60,9 @@
 
 <script setup>
 /******************* Import *******************/
-import { ref, computed } from "vue";
-import VOtpInput from "vue3-otp-input";
+import { ref } from "vue";
 import axios from 'axios'
 import toastMsg from '@/components/shared/Toaster';
-import PageHeader from '@/components/shared/PageHeader.vue';
 import Dialog from 'primevue/dialog';
 import responseApi from '@/components/shared/ResponseApi.js';
 
@@ -78,16 +76,15 @@ const { successToast, errorToast } = toastMsg();
 
 const loading = ref(false);
 
-const bindModal = ref("");
+// verificationCodeForm
+const verificationCodeForm = ref(null);
+
 // Modal
 const done = ref(false);
 
-// srcImage
-const srcImage = ref(require('@/assets/imgs/code.png'));
-
-let phone = ref(JSON.parse(localStorage.getItem('user')).phone);
+// let phone = ref(JSON.parse(localStorage.getItem('user')).phone);
 let newPhone = ref(localStorage.getItem('newPhone'));
-let country_code = ref(JSON.parse(localStorage.getItem('user')).country_code);
+// let country_code = ref(JSON.parse(localStorage.getItem('user')).country_code);
 
 /******************* Provide && Inject *******************/
 
@@ -103,10 +100,9 @@ const config = {
 // newPhone Function
 const verificationCode = async () => {
     loading.value = true;
-    const fd = new FormData();
-    fd.append('code', bindModal.value);
+    const fd = new FormData(verificationCodeForm.value);
 
-    await axios.post("change-phone-check-code", fd, config).then(res => {
+    await axios.post("providers/change-phone-check-code", fd, config).then(res => {
         if (response(res) == "success") {
             done.value = true;
             localStorage.getItem('newPhone') ? localStorage.removeItem('newPhone') : '';
@@ -119,7 +115,6 @@ const verificationCode = async () => {
 
 // resendCode Function
 const resendCode = async () => {
-    console.log(phone.value, country_code.value);
     await axios.get(`resend-code?country_code=${country_code.value}&phone=${phone.value}`).then(res => {
         if (response(res) == "success") {
             successToast(res.data.msg);

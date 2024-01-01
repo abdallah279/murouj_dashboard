@@ -149,14 +149,16 @@ const routes = [
         },
         component: () => import("@/views/Dashboard/Orders/ProvideOrders.vue"),
       },
-      // {
-      //   path: "/invoiceDetailes/:id",
-      //   name: "invoiceDetailes",
-      //   meta: {
-      //     title: "pagesTitle.invoiceDetailes",
-      //   },
-      //   component: () => import("@/views/Dashboard/Invoices/InvoiceDetailes.vue"),
-      // },
+
+      /********************* Financails **********************/
+      {
+        path: "/financial",
+        name: "financial",
+        meta: {
+          title: "pagesTitle.financial",
+        },
+        component: () => import("@/views/Dashboard/Financails/FinancailsView.vue"),
+      },
 
       /********************* Invoices **********************/
       {
@@ -194,7 +196,7 @@ const routes = [
         component: () => import("@/views/Dashboard/Supervisors/AddSupervisors.vue"),
       },
       {
-        path: "/editSupervisors",
+        path: "/editSupervisors/:id",
         name: "editSupervisors",
         meta: {
           title: "pagesTitle.editSupervisors",
@@ -251,7 +253,7 @@ const routes = [
         path: "/code-phone",
         name: "code-phone",
         meta: {
-          title: "sectionTitle.verificationCode",
+          title: "pagesTitle.verificationCode",
         },
         component: () => import("@/views/Dashboard/Profile/CodePhone.vue"),
       },
@@ -259,7 +261,7 @@ const routes = [
         path: "/change-password",
         name: "change-password",
         meta: {
-          title: "sectionTitle.changePassword",
+          title: "pagesTitle.changePassword",
         },
         component: () => import("@/views/Dashboard/Profile/ChangePassword.vue"),
       },
@@ -319,17 +321,17 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.matched.some((record) => record.meta.requiresAuth)) {
-//       if (!localStorage.getItem("token")) {
-//           next({ name: "login" });
-//       } else {
-//           next();
-//       }
-//   } else {
-//       next();
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+      if (!localStorage.getItem("token")) {
+          next({ name: "login" });
+      } else {
+          next();
+      }
+  } else {
+      next();
+  }
+});
 
 router.afterEach((to) => {
   const titleText = to.meta.title
@@ -337,9 +339,6 @@ router.afterEach((to) => {
     : "Murouj Dashboard";
 
   document.title = titleText;
-  if (document.getElementById("page_title")) {
-    document.getElementById("page_title").innerHTML = titleText;
-  }
 
   setTimeout(() => {
     window.scrollTo(0, 0);

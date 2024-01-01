@@ -6,6 +6,8 @@
     "ourProducts": "Our products",
     "wishlist": "Orders provide products",
     "wallet": "Financial accounts",
+    "financial": "Financial dues",
+    "settlement": "Settlement requests",
     "profile": "Account",
     "supervisors": "supervisors",
     "contact": "contact us",
@@ -35,8 +37,9 @@
     "addSupervisors": "add supervisors",
     "editSupervisors": "edit supervisors",
     "about": "Who Us",
+    "verificationCode": "Verification Code",
     "contact": "Contact Us",
-    "financial": "Financial Accounts",
+    "financial": "Financial dues",
     "privacy": "Privacy Policy",
     "invoices": "invoices",
     "invoiceDetailes": "invoice Detailes",
@@ -63,6 +66,7 @@
     "changePhone": "Change Phone",
     "code": "Verification Code",
     "forgetPass": "Restore Password",
+    "changePassword": "Change Password",
     "purchaseOrders": "Purchase Orders",
     "returnOrders": "Returns Orders",
     "orderDetailes": "Order Detailes",
@@ -111,6 +115,14 @@
       "sub_category": "sub category",
       "status_text": "status",
       "btn": "Orders provide products"
+    },
+    "financials":{
+      "number": "Number",
+      "purchases": "Purchases value",
+      "commission": "Commission",
+      "vat": "Vat amount",
+      "total": "total",
+      "date": "date"
     }
   },
   "cart": {
@@ -389,6 +401,13 @@
       "deleteBtn": "Delete supervisor"
     }
   },
+  "financails":{
+    "totalOrders": "Total orders",
+    "totalCommission" : "Total commission",
+    "totalVat" : "Total value added",
+    "financialDues" : "Due to you",
+    "settlementRequest": "Settlement request"
+  },
   "modals": {
     "refuse": {
       "header": "Reason for rejection of the return order",
@@ -425,6 +444,7 @@
     "name": "Name Is required",
     "phone": "Please enter phone number",
     "email": "Please enter a valid Email",
+    "old_password": "Please enter your current password",
     "password": "Please enter your password",
     "confirmPassword": "The password does not match",
     "search": "Search word is required",

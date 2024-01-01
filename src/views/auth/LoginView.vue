@@ -153,7 +153,6 @@ const login = async () => {
             if (response(res) == "success") {
                 localStorage.setItem('token', res.data.data.token);
                 localStorage.setItem('image', res.data.data.image);
-                localStorage.setItem('name', res.data.data.name);
                 successToast(res.data.msg);
 
                 router.push({

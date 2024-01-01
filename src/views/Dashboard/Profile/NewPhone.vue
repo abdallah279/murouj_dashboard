@@ -116,36 +116,33 @@ const config = {
 
 // newPhone Function
 const newPhone = async () => {
-    router.push({
-        name: 'code-phone'
-    });
-    // loading.value = true;
-    // const fd = new FormData(newPhoneForm.value);
-    // fd.append('country_code', selectedCountry.value.key);
+    loading.value = true;
+    const fd = new FormData(newPhoneForm.value);
+    fd.append('country_code', selectedCountry.value.key);
 
-    // validate();
+    validate();
 
-    // if (errors.value.length) {
-    //     errorToast(errors.value[0]);
-    //     loading.value = false;
-    //     errors.value = [];
-    // } else {
-    //     await axios.post('change-phone-send-code', fd, config).then(res => {
-    //         if (response(res) == "success") {
+    if (errors.value.length) {
+        errorToast(errors.value[0]);
+        loading.value = false;
+        errors.value = [];
+    } else {
+        await axios.post('providers/change-phone-send-code', fd, config).then(res => {
+            if (response(res) == "success") {
 
-    //             localStorage.setItem('newPhone', phone.value);
+                localStorage.setItem('newPhone', phone.value);
 
-    //             successToast(res.data.msg);
-    // router.push({
-    //     name: 'code-phone'
-    // });
+                successToast(res.data.msg);
+                router.push({
+                    name: 'code-phone'
+                });
 
-    //         } else {
-    //             errorToast(res.data.msg);
-    //         }
-    //         loading.value = false;
-    //     }).catch(err => console.log(err));
-    // }
+            } else {
+                errorToast(res.data.msg);
+            }
+            loading.value = false;
+        }).catch(err => console.log(err));
+    }
 }
 
 /******************* Computed *******************/

@@ -2,49 +2,96 @@
     <div class="card_style py-4 px-lg-5">
 
         <img src="@/assets/imgs/login_logo.png" alt="" class="login_logo sm mb-5 mx-auto d-block">
-    
+
         <!-- ***** Contact Top ***** -->
-        <div class="row justify-content-between mb-4">
-    
+        <div class="row justify-content-between mb-4" v-if="!loading">
+
             <!-- ***** Contact Info ***** -->
             <div class="col-lg-4">
-    
+
                 <div class="contact-box">
                     <div class="ic">
                         <i class="pi pi-map-marker"></i>
                     </div>
                     <div class="box-content">
-                        <span class="name">الرياض ، الحسينية ، شارع 2</span>
+                        <span class="name">{{ contactAddress }}</span>
                     </div>
                 </div>
-    
+
                 <div class="contact-box">
                     <div class="ic">
                         <i class="pi pi-envelope"></i>
                     </div>
-                    <a href="mailto:example.info@gmail.com" target="_blank" class="box-content">
-                        <span class="name">example.info@gmail.com</span>
+                    <a :href="`mailto:${contactEmail}`" target="_blank" class="box-content">
+                        <span class="name">{{ contactEmail }}</span>
                     </a>
                 </div>
-    
+
                 <div class="contact-box">
                     <div class="ic">
                         <i class="pi pi-phone"></i>
                     </div>
-                    <a href="tel:+966 556521565" target="_blank" class="box-content">
-                        <span class="name">+966 556521565</span>
+                    <a :href="`tel:${contactPhone}`" class="box-content">
+                        <span class="name">{{ contactPhone }}</span>
                     </a>
                 </div>
-    
+
             </div>
-    
+
             <!-- ***** Contact Social ***** -->
             <div class="col-lg-4">
                 <span class="c-dark3 text-center d-block">{{ $t('contactForm.or') }}</span>
                 <div class="socials mt-4">
-                    <a :href="social.url" v-for="social in socials" :key="social.id" target="_blank">
+                    <a :href="social.link" v-for="social in contactSocials" :key="social.name" target="_blank">
                         <img :src="social.icon" class="ic" alt="">
                     </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ***** Skeleton ***** -->
+        <div class="row justify-content-between mb-4" v-if="loading">
+
+            <!-- ***** Contact Info ***** -->
+            <div class="col-lg-4">
+
+                <div class="contact-box">
+                    <div class="ic">
+                        <i class="pi pi-map-marker"></i>
+                    </div>
+                    <div class="box-content">
+                        <Skeleton height=".6rem" width="9rem"></Skeleton>
+                    </div>
+                </div>
+
+                <div class="contact-box">
+                    <div class="ic">
+                        <i class="pi pi-envelope"></i>
+                    </div>
+                    <div class="box-content">
+                        <Skeleton height=".6rem" width="9rem"></Skeleton>
+                    </div>
+                </div>
+
+                <div class="contact-box">
+                    <div class="ic">
+                        <i class="pi pi-phone"></i>
+                    </div>
+                    <div class="box-content">
+                        <Skeleton height=".6rem" width="9rem"></Skeleton>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ***** Contact Social ***** -->
+            <div class="col-lg-4">
+                <span class="c-dark3 text-center d-block">{{ $t('contactForm.or') }}</span>
+                <div class="socials mt-4">
+                    <div v-for="i in 5" :key="i">
+                        <Skeleton shape="circle" size="1.6rem"></Skeleton>
+                    </div>
                 </div>
             </div>
 
@@ -57,16 +104,19 @@
                 <div class="col-lg-8">
 
                     <div class="c-dark3 fs13 mb-4">{{ $t('contactForm.or2') }}</div>
+
+                    <!-- Name -->
                     <div class="input-g">
                         <div class="main-input">
-                            <input type="text" class="input-me validInputs" valid="name" name="name" v-model="name"
+                            <input type="text" class="input-me validInputs" valid="name" name="name"
                                 :placeholder="$t('contactForm.name')">
                         </div>
                     </div>
 
+                    <!-- Phone -->
                     <div class="input-g">
                         <div class="main-input">
-                            <input type="number" class="input-me validInputs" valid="phone" name="phone" v-model="phone"
+                            <input type="number" class="input-me validInputs" valid="phone" name="phone"
                                 :placeholder="$t('contactForm.phone')">
 
                             <Dropdown v-model="selectedCountry" :options="countries" optionLabel="name"
@@ -95,19 +145,27 @@
                         </div>
                     </div>
 
+                    <!-- Title -->
+                    <div class="input-g">
+                        <div class="main-input">
+                            <input type="text" class="input-me validInputs" valid="title" name="title"
+                                :placeholder="$t('contactForm.title')">
+                        </div>
+                    </div>
+
+                    <!-- Message -->
                     <div class="input-g">
                         <div class="main-input">
                             <textarea class="input-me text-area validInputs" valid="message" name="content"
-                                v-model="message" :placeholder="$t('contactForm.message')">
-                        </textarea>
+                                :placeholder="$t('contactForm.message')"></textarea>
                         </div>
                     </div>
 
                     <button type="submit" class="main-btn up login lg mt-4" :disabled="loading">
-                        <span v-if="!loading">
+                        <span v-if="!loadingBtn">
                             {{ $t('formBtns.send') }}
                         </span>
-                        <div v-if="loading">
+                        <div v-if="loadingBtn">
                             {{ $t('formBtns.sendLoading') }}
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         </div>
@@ -140,13 +198,13 @@
 <script setup>
 /******************* Import *******************/
 import { ref, onMounted } from "vue";
-import PageHeader from '@/components/shared/PageHeader.vue';
 import Dropdown from 'primevue/dropdown';
 import Dialog from 'primevue/dialog';
 import axios from "axios";
 import i18n from "@/i18n";
 import toastMsg from '@/components/shared/Toaster';
 import responseApi from '@/components/shared/ResponseApi.js';
+import Skeleton from 'primevue/skeleton';
 
 /******************* Data *******************/
 
@@ -159,20 +217,15 @@ const { errorToast } = toastMsg();
 // Form
 const contactForm = ref(null);
 
-// Name
-const name = ref('');
-
-// Phone
-const phone = ref('');
-
-// Title
-const title = ref('');
-
-// Mesage
-const message = ref('');
+// Contact Info
+const contactAddress = ref('');
+const contactPhone = ref('');
+const contactEmail = ref('');
+const contactSocials = ref([]);
 
 // Loading
 const loading = ref(false);
+const loadingBtn = ref(false);
 
 // errors
 const errors = ref([]);
@@ -184,35 +237,10 @@ const done = ref(false);
 const selectedCountry = ref({})
 const countries = ref([]);
 
-// socials
-const socials = ref([
-    {
-        id: 1,
-        url: 'https://wa.me/',
-        icon: require('@/assets/imgs/icons/whatsapp.png')
-    },
-    {
-        id: 2,
-        url: 'https://wa.me/',
-        icon: require('@/assets/imgs/icons/telegram.png')
-    },
-    {
-        id: 3,
-        url: 'https://wa.me/',
-        icon: require('@/assets/imgs/icons/youtube.png')
-    },
-    {
-        id: 4,
-        url: 'https://wa.me/',
-        icon: require('@/assets/imgs/icons/twitter.png')
-    },
-    {
-        id: 5,
-        url: 'https://wa.me/',
-        icon: require('@/assets/imgs/icons/facebook.png')
-    },
-
-]);
+// config
+const config = {
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+};
 
 /******************* Provide && Inject *******************/
 
@@ -244,14 +272,9 @@ function validate() {
     }
 }
 
-// config
-const config = {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-};
-
 // contactUs Function
 const contactUs = async () => {
-    loading.value = true;
+    loadingBtn.value = true;
     const fd = new FormData(contactForm.value);
     fd.append('country_code', selectedCountry.value.key);
 
@@ -259,20 +282,34 @@ const contactUs = async () => {
 
     if (errors.value.length) {
         errorToast(errors.value[0]);
-        loading.value = false;
+        loadingBtn.value = false;
         errors.value = [];
     } else {
         await axios.post('contact-us', fd, config).then(res => {
             if (response(res) == "success") {
 
-                done.value = true
+                done.value = true;
+                contactForm.value.reset();
 
             } else {
                 errorToast(res.data.msg);
             }
-            loading.value = false;
+            loadingBtn.value = false;
         }).catch(err => console.log(err));
     }
+}
+
+const getContactInfo = async () => {
+    loading.value = true;
+    await axios.get('providers/contact-data').then(res => {
+        if (response(res) == "success") {
+            contactAddress.value = res.data.data.address;
+            contactEmail.value = res.data.data.email;
+            contactPhone.value = res.data.data.phone;
+            contactSocials.value = res.data.data.socials;
+        }
+        loading.value = false;
+    }).catch(err => console.log(err));
 }
 
 /******************* Computed *******************/
@@ -281,6 +318,7 @@ const contactUs = async () => {
 
 /******************* Mounted *******************/
 onMounted(async () => {
+    await getContactInfo();
     await getCountries();
 })
 

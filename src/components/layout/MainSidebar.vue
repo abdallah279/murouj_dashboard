@@ -40,10 +40,26 @@
                 <span class="text">{{ $t('sidebar.wishlist') }} </span>
             </router-link>
 
-            <router-link to="/wallet" class="link">
-                <img src="@/assets/imgs/icons/sidebar/list.png" class="side-icon" alt="">
-                <span class="text">{{ $t('sidebar.wallet') }} </span>
-            </router-link>
+            <div class="collapse_links">
+                <a class="link collapse_head" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    <img src="@/assets/imgs/icons/sidebar/list.png" class="side-icon" alt="">
+                    <span class="text">{{ $t('sidebar.wallet') }} </span>
+                </a>
+                <div class="links_collapse_content collapse" id="collapseExample">
+                    <router-link to="/financial" class="link">
+                        <i class="pi pi-money-bill side-icon"></i>
+                        <span class="text">{{ $t('sidebar.financial') }}</span>
+                        <i class="pi pi-angle-left sec_ic"></i>
+                    </router-link>
+
+                    <router-link to="/supervisors" class="link">
+                        <i class="pi pi-box side-icon"></i>
+                        <span class="text">{{ $t('sidebar.settlement') }} </span>
+                        <i class="pi pi-angle-left sec_ic"></i>
+                    </router-link>
+                </div>
+            </div>
 
             <router-link to="/profile" class="link">
                 <img src="@/assets/imgs/icons/sidebar/setting.png" class="side-icon" alt="">
@@ -91,6 +107,9 @@ import toastMsg from '@/components/shared/Toaster';
 import responseApi from '@/components/shared/ResponseApi.js';
 import { useRouter } from 'vue-router';
 
+import Panel from 'primevue/panel';
+
+
 /******************* Data *******************/
 
 // success response
@@ -129,7 +148,7 @@ const logout = async () => {
             router.push({
                 name: 'login'
             });
-            
+
         } else {
             errorToast(res.data.msg);
         }

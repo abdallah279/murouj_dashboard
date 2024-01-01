@@ -53,4 +53,21 @@
             display: none;
         }
     }
+
+    &.table_main{
+        .p-datatable-table{
+            .p-datatable-thead{
+                th{
+                    background-color: $main;
+                    color: $white;
+
+                    .p-column-header-content{
+                        .p-sortable-column-icon{
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -1,5 +1,5 @@
 <template>
-    <form action="" class="card_style py-4 px-lg-5" ref="changePhoneForm" @submit.prevent="changePhone">
+    <form action="" class="card_style py-4 px-lg-5" ref="changePasswordForm" @submit.prevent="changePassword">
         <div class="row">
             <div class="col-lg-8">
 
@@ -7,7 +7,7 @@
 
                 <div class="input-g">
                     <div class="main-input">
-                        <input type="password" class="input-me validInputs" name="password"
+                        <input type="password" class="input-me validInputs" name="old_password"
                             :placeholder="$t('changePhoneForm.currentPassword.text')">
                         <i class="pi pi-eye main-icon ic" @click="togglePassword"></i>
                     </div>
@@ -23,7 +23,7 @@
 
                 <div class="input-g">
                     <div class="main-input">
-                        <input type="password" class="input-me" v-model="confirmPassword"
+                        <input type="password" class="input-me" v-model="confirmPassword" name="password_confirmation"
                             :placeholder="$t('restorePasswordForm.confirmNewPassword.text')">
                         <i class="pi pi-eye main-icon ic" @click="togglePassword"></i>
                     </div>
@@ -34,7 +34,7 @@
                         {{ $t('formBtns.save') }}
                     </span>
                     <div v-if="loading">
-                        {{ $t('formBtns.saving') }}
+                        {{ $t('formBtns.saveLoading') }}
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                     </div>
                 </button>
@@ -46,12 +46,11 @@
 
 <script setup>
 /******************* Import *******************/
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from 'axios'
 import toastMsg from '@/components/shared/Toaster';
 import i18n from "@/i18n";
-import PageHeader from '@/components/shared/PageHeader.vue';
 import responseApi from '@/components/shared/ResponseApi.js';
 
 /******************* Data *******************/
@@ -65,11 +64,11 @@ const { successToast, errorToast } = toastMsg();
 const router = useRouter();
 
 // Form
-const changePhoneForm = ref(null);
+const changePasswordForm = ref(null);
 
 // password
-const passwordType = ref('password');
 const password = ref('');
+const confirmPassword = ref('');
 
 // loading
 const loading = ref(false);
@@ -99,6 +98,10 @@ function validate() {
             errors.value.push(i18n.global.t(`validation.${allInputs[i].name}`));
         }
     }
+
+    if (password.value !== confirmPassword.value) {
+        errors.value.push(i18n.global.t(`validation.confirmPassword`));
+    }
 }
 
 // config
@@ -108,34 +111,31 @@ const config = {
 
 
 // changePassword
-const changePhone = async () => {
-    router.push({
-        name: 'profile'
-    });
-    // loading.value = true;
-    // const fd = new FormData(changePhoneForm.value);
+const changePassword = async () => {
+    loading.value = true;
+    const fd = new FormData(changePasswordForm.value);
 
-    // validate();
+    validate();
 
-    // if (errors.value.length) {
-    //     errorToast(errors.value[0]);
-    //     loading.value = false;
-    //     errors.value = [];
-    // } else {
-    //     await axios.post('check-current-password', fd, config).then(res => {
-    //         if (response(res) == "success") {
+    if (errors.value.length) {
+        errorToast(errors.value[0]);
+        loading.value = false;
+        errors.value = [];
+    } else {
+        await axios.post('providers/update-passward?_method=patch', fd, config).then(res => {
+            if (response(res) == "success") {
 
-    //             successToast(res.data.msg);
-    // router.push({
-    //     name: 'newPhone'
-    // });
+                successToast(res.data.msg);
+                router.push({
+                    name: 'profile'
+                });
 
-    //         } else {
-    //             errorToast(res.data.msg);
-    //         }
-    //         loading.value = false;
-    //     }).catch(err => console.log(err));
-    // }
+            } else {
+                errorToast(res.data.msg);
+            }
+            loading.value = false;
+        }).catch(err => console.log(err));
+    }
 }
 
 /******************* Computed *******************/

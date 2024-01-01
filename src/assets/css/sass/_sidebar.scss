@@ -55,6 +55,7 @@
       background-color: transparent;
       width: 100%;
       transition: $main-transition;
+      @include dir-border-left(4px solid transparent);
 
       @include devices(xs) {
         font-size: 12px !important;
@@ -74,27 +75,70 @@
         }
       }
 
-      &:is(.active, .router-link-exact-active) {
+      .sec_ic {
+        // color: $light;
+        font-size: 15px;
+        @include dir-margin-left(auto);
+        &::before {
+          font-size: 15px;
+        }
+      }
+
+      &:is(.active, .router-link-exact-active, &[aria-expanded="true"]) {
         background-color: $blue;
         color: $white;
-        @include dir-border-left(4px solid $blue2);
+        border-color: $blue2;
 
         .side-icon {
           filter: brightness(0) invert(1);
         }
       }
 
-      &:hover:not(.head) {
+      &:hover:not(.router-link-exact-active) {
         @include translate(5px);
         color: $sec;
       }
+
     }
 
-    .collapse-content {
-      overflow: hidden;
-      position: relative;
-      display: none;
-      @include dir-padding-left(60px);
+    .collapse_links:has(.router-link-exact-active) {
+      .collapse_head {
+        background-color: $blue;
+        color: $white;
+        border-color: $blue2;
+
+        .side-icon {
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+
+    .links_collapse_content {
+      padding: 5px 15px;
+
+      .link {
+        font-family: fontMed;
+        color: #8A8A8A;
+        border: none !important;
+        padding: 11px 14px;
+
+        .side-icon {
+          // color: $blue;
+          filter: none !important;
+          max-width: none;
+          max-height: none;
+        }
+
+        &.router-link-exact-active {
+          background-color: #eae9f2 !important;
+          color: $blue !important;
+          border-radius: 8px;
+
+          .side-icon {
+            color: $blue;
+          }
+        }
+      }
     }
   }
 }

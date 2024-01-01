@@ -8,7 +8,7 @@
 
                 <div class="input-g">
                     <div class="main-input">
-                        <input :type="passwordType" class="input-me validInputs" valid="password" name="current_password"
+                        <input :type="passwordType" class="input-me validInputs" valid="password" name="password"
                             v-model="password" :placeholder="$t('changePhoneForm.currentPassword.text')">
                         <i class="pi main-icon ic" :class="classPassword" @click="togglePassword"></i>
                     </div>
@@ -36,7 +36,6 @@ import { useRouter } from "vue-router";
 import axios from 'axios'
 import toastMsg from '@/components/shared/Toaster';
 import i18n from "@/i18n";
-import PageHeader from '@/components/shared/PageHeader.vue';
 import responseApi from '@/components/shared/ResponseApi.js';
 
 /******************* Data *******************/
@@ -94,33 +93,30 @@ const config = {
 
 // changePassword
 const changePhone = async () => {
-    router.push({
-        name: 'newPhone'
-    });
-    // loading.value = true;
-    // const fd = new FormData(changePhoneForm.value);
+    loading.value = true;
+    const fd = new FormData(changePhoneForm.value);
 
-    // validate();
+    validate();
 
-    // if (errors.value.length) {
-    //     errorToast(errors.value[0]);
-    //     loading.value = false;
-    //     errors.value = [];
-    // } else {
-    //     await axios.post('check-current-password', fd, config).then(res => {
-    //         if (response(res) == "success") {
+    if (errors.value.length) {
+        errorToast(errors.value[0]);
+        loading.value = false;
+        errors.value = [];
+    } else {
+        await axios.post('providers/check-current-password', fd, config).then(res => {
+            if (response(res) == "success") {
 
-    //             successToast(res.data.msg);
-    // router.push({
-    //     name: 'newPhone'
-    // });
+                successToast(res.data.msg);
+                router.push({
+                    name: 'newPhone'
+                });
 
-    //         } else {
-    //             errorToast(res.data.msg);
-    //         }
-    //         loading.value = false;
-    //     }).catch(err => console.log(err));
-    // }
+            } else {
+                errorToast(res.data.msg);
+            }
+            loading.value = false;
+        }).catch(err => console.log(err));
+    }
 }
 
 /******************* Computed *******************/

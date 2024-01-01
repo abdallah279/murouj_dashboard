@@ -20,7 +20,7 @@
 
 <script setup>
 /******************* Import *******************/
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 /******************* Data *******************/
 // images
@@ -35,6 +35,10 @@ const props = defineProps({
     multiple: {
         type: Boolean,
         default: false
+    },
+    images: {
+        type: Array,
+        default: () => { return []; }
     }
 });
 
@@ -72,6 +76,10 @@ function removeImage(index) {
 /******************* Watch *******************/
 
 /******************* Mounted *******************/
+onMounted(() => {
+    images.value = props.images;
+    emit('update', images.value);
+});
 
 </script>
 

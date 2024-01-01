@@ -1,5 +1,5 @@
 <template>
-    <form action="" class="card_style py-5 px-lg-5" ref="addSupervisorForm" @submit.prevent="addSupervisor">
+    <form action="" class="card_style py-5 px-lg-5" ref="editSupervisorForm" @submit.prevent="editSupervisor">
 
         <!-- Title -->
         <h3 class="fs15 c-dark mb-4">{{ $t('supervisors.title') }}</h3>
@@ -11,7 +11,7 @@
                     <img :src="image" class="img" alt="">
                 </div>
                 <input type="file" name="image" @change="uploadImage" id="profileImg" accept="image/*"
-                    class="hidden-input validInputs">
+                    class="hidden-input">
                 <label for="profileImg" class="user-camera">
                     <i class="pi pi-images"></i>
                 </label>
@@ -68,23 +68,10 @@
                 <!-- Images -->
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('profile.nationalId') }}</label>
-                    <div class="d-flex gap-3 flex-wrap align-items-end">
-                        <label for="uploadImgs" class="upload-label main">
-                            <input id="uploadImgs" name="bank_transfer_image" type="file" accept="image/*"
-                                class="hidden-input" @change="uploadImgs">
-                            <i class="pi pi-image"></i>
-                        </label>
-
-                        <div class='hidden-img' v-for="(img, i) in images" :key="img.name">
-                            <img src='' :class="`img${i}`" :alt="img.name" />
-
-                            <span class='remove-img' @click="removeImage(i)">
-                                <i class="pi pi-times"></i>
-                            </span>
-                        </div>
-                    </div>
+                    <UploadImages @update="updatedImages" :images="images" />
                 </div>
 
+                <!-- password -->
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('loginForm.password.text') }}</label>
                     <div class="main-input">
@@ -94,6 +81,7 @@
                     </div>
                 </div>
 
+                <!-- confirm password -->
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('loginForm.password.text') }}</label>
                     <div class="main-input">
@@ -108,9 +96,10 @@
                         <p class="fs14 c-black mb-3">{{ $t('supervisors.form.privileges.text') }}</p>
 
                         <div class="row gy-3">
-                            <div class="col-6" v-for="privilege in privileges" :key="privilege.id">
+                            <div class="col-6" v-for="(privilege, index) in privileges" :key="privilege.id">
                                 <div class="check-box blue">
-                                    <input type="checkbox" name="privilege" :id="`privilege${privilege.id}`">
+                                    <input type="checkbox" :checked="myPrivilegesChecked.includes(privilege.id)"
+                                        v-model="privilegesChecked['privilege' + index]" :id="`privilege${privilege.id}`">
                                     <label class="check" :for="`privilege${privilege.id}`"></label>
                                     <label class="check-anchor fs13 c-black" :for="`privilege${privilege.id}`">
                                         {{ privilege.name }}
@@ -134,11 +123,11 @@
                         </div>
                     </button>
 
-                    <button type="submit" class="main-btn red up lg" :disabled="loading">
-                        <span v-if="!loading">
+                    <button type="button" class="main-btn red up lg" @click="deleteSupervisor" :disabled="loading">
+                        <span v-if="!loadingDelete">
                             {{ $t('supervisors.form.deleteBtn') }}
                         </span>
-                        <div v-if="loading">
+                        <div v-if="loadingDelete">
                             {{ $t('formBtns.delteLoading') }}
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         </div>
@@ -169,14 +158,15 @@
 <script setup>
 /******************* Import *******************/
 
-import { computed, onMounted, ref } from "vue";
-import { useRouter } from 'vue-router';
+import { onMounted, ref } from "vue";
+import { useRoute , useRouter } from "vue-router";
 import axios from 'axios';
 import i18n from "@/i18n";
 import Dropdown from 'primevue/dropdown';
 import toastMsg from '@/components/shared/Toaster';
 import Dialog from 'primevue/dialog';
 import responseApi from '@/components/shared/ResponseApi.js';
+import UploadImages from "@/components/shared/UploadImages.vue";
 
 /******************* Data *******************/
 
@@ -188,11 +178,16 @@ const { successToast, errorToast } = toastMsg();
 
 // Router
 const router = useRouter();
+const route = useRoute();
 
 // Forms Ref
-const addSupervisorForm = ref(null);
+const editSupervisorForm = ref(null);
 
+// loading
 const loading = ref(false);
+const loadingDelete = ref(false);
+
+// errors
 const errors = ref([]);
 
 // images
@@ -200,9 +195,9 @@ const images = ref([]);
 
 // Profile data
 const image = ref(require('@/assets/imgs/profile.png'));
+const profileImage = ref(null);
 const name = ref('');
 const phone = ref('');
-const email = ref('');
 
 // Change Password
 const password = ref('');
@@ -210,48 +205,14 @@ const confirmPassword = ref('');
 const done = ref(false);
 
 // privileges
-const privileges = ref([
-    {
-        "id": 1,
-        "name": "الرئيسية"
-    },
-    {
-        "id": 2,
-        "name": "المنتجات"
-    },
-    {
-        "id": 3,
-        "name": "الطلبات"
-    },
-    {
-        "id": 4,
-        "name": "الحسابات المالية"
-    },
-    {
-        "id": 5,
-        "name": "بيانات الحساب"
-    },
-    {
-        "id": 6,
-        "name": "المشرفين"
-    },
-    {
-        "id": 7,
-        "name": "التقارير"
-    },
-    {
-        "id": 8,
-        "name": "الفواتير"
-    }
-]);
-
-// Country
-const country = ref(null);
-const country_id = ref(null);
+const privileges = ref([]);
+const privilegesChecked = ref({});
+const myPrivilegesChecked = ref([]);
 
 // countries
 const countries = ref([]);
 const selectedCountry = ref({});
+const country_code = ref('');
 
 /******************* Provide && Inject *******************/
 
@@ -266,27 +227,10 @@ const togglePassword = (e) => {
     icon.classList.contains('pi-eye') ? icon.classList.replace('pi-eye', 'pi-eye-slash') : icon.classList.replace('pi-eye-slash', 'pi-eye');
 }
 
-// Upload Imgs
-const uploadImgs = (e) => {
-    images.value = [];
-    var selectedImgs = e.target.files;
-    for (let i = 0; i < selectedImgs.length; i++) {
-        images.value.push(selectedImgs[i]);
-    }
-
-    for (let i = 0; i < images.value.length; i++) {
-        let reader = new FileReader();
-        reader.addEventListener('load', function () {
-            document.querySelector(`.img${i}`).src = reader.result
-        }.bind(this), false);
-
-        reader.readAsDataURL(images.value[i]);
-    }
-}
-
-// Remove Img
-function removeImage(index) {
-    images.value.splice(index, 1);
+// uploadedImages
+const updatedImages = (data) => {
+    images.value = data;
+    // console.log(images.value);
 }
 
 // uploadImage Function
@@ -328,8 +272,7 @@ const getCountries = async () => {
         if (response(res) == "success") {
             countries.value = res.data.data;
             for (let i = 0; i < countries.value.length; i++) {
-                if (countries.value[i].id == country_id.value) {
-                    country.value = countries.value[i];
+                if (countries.value[i].key == country_code.value) {
                     selectedCountry.value = countries.value[i];
                 }
             }
@@ -337,53 +280,97 @@ const getCountries = async () => {
     }).catch(err => console.log(err));
 }
 
-// profile Function
-const profile = async () => {
-    await axios.get('profile', config).then(res => {
-        image.value = res.data.data.image;
-        name.value = res.data.data.name;
-        phone.value = res.data.data.phone;
-        email.value = res.data.data.email;
-        country_id.value = res.data.data.country_id;
-        city_id.value = res.data.data.city_id;
+// Edit Supervisor Function
+const editSupervisor = async () => {
+    loading.value = true;
+    const fd = new FormData(editSupervisorForm.value);
+    fd.append('country_code', selectedCountry.value.key);
+    if(images.value[0]){
+        if(images.value[0].file){
+            fd.append('id_image', images.value[0].file);
+        }
+    }
+
+    for (let i = 0; i < privileges.value.length; i++) {
+        if (privilegesChecked.value['privilege' + i] || (myPrivilegesChecked.value.includes(privileges.value[i].id) && privilegesChecked.value['privilege' + i] == undefined)) {
+            fd.append(`privilege_ids[]`, `${i + 1}`);
+        }
+    }
+
+    validate();
+
+    if (errors.value.length) {
+        errorToast(errors.value[0]);
+        loading.value = false;
+        errors.value = [];
+    } else {
+        await axios.post(`providers/update-provider-admin/${route.params.id}?_method=patch`, fd, config).then(res => {
+            if (response(res) == "success") {
+                done.value = true;
+            } else {
+                errorToast(res.data.msg);
+            }
+            loading.value = false;
+        }).catch(err => console.log(err));
+    }
+
+}
+
+// supervisor
+const getSupervisor = async () => {
+    loading.value = true;
+    await axios.get(`providers/provider-admin-details/${route.params.id}`, config).then(res => {
+        if (response(res) == "success") {
+            image.value = res.data.data.image;
+            name.value = res.data.data.name;
+            phone.value = res.data.data.phone;
+            country_code.value = res.data.data.country_code;
+            images.value.push({
+                previewUrl: res.data.data.id_image
+            });
+            password.value = res.data.data.password;
+            confirmPassword.value = res.data.data.password;
+
+            for (let i = 0; i < res.data.data.privileges.length; i++) {
+                myPrivilegesChecked.value.push(res.data.data.privileges[i].id);
+            }
+        }
+        loading.value = false;
     }).catch(err => console.log(err));
 }
 
-// addSupervisor Function
-const addSupervisor = async () => {
-    done.value = true;
-    // loading.value = true;
-    // const fd = new FormData(editAccountForm.value);
-    // fd.append('country_code', selectedCountry.value.key);
-    // fd.append('country_id', country.value.id);
-    // fd.append('city_id', city.value.id);
-
-    // await axios.post('update-profile?_method=put', fd, config).then(res => {
-    //     if (response(res) == "success") {
-    //         localStorage.setItem('user', JSON.stringify(res.data.data));
-    //         // document.querySelector('.drop-text.profile').innerHTML = res.data.data.name;
-
-    //         saveLocation(res.data.data.country_id, res.data.data.city_id);
-    //         successToast(res.data.msg);
-    //     } else {
-    //         errorToast(res.data.msg);
-    //     }
-    //     loading.value = false;
-    // }).catch(err => console.log(err));
-
+// Delete Supervisor Function
+const deleteSupervisor = async () => {
+    loadingDelete.value = true;
+    await axios.delete(`providers/delete-provider-admin/${route.params.id}`, config).then(res => {
+        if (response(res) == "success") {
+            successToast(res.data.msg);
+            router.push({ name: 'supervisors' });
+        } else {
+            errorToast(res.data.msg);
+        }
+        loadingDelete.value = false;
+    }).catch(err => console.log(err));
 }
-/******************* Computed *******************/
 
-const lang = computed(() => {
-    return localStorage.getItem('lang') ? localStorage.getItem('lang') : 'ar'
-});
+// privileges
+const getPrivileges = async () => {
+    await axios.get('providers/privileges').then(res => {
+        if (response(res) == "success") {
+            privileges.value = res.data.data;
+        }
+    }).catch(err => console.log(err));
+}
+
+/******************* Computed *******************/
 
 /******************* Watch *******************/
 
 /******************* Mounted *******************/
 onMounted(async () => {
-    // await profile();
+    await getSupervisor();
     await getCountries();
+    await getPrivileges();
 })
 
 </script>

@@ -1,6 +1,6 @@
 <template>
     <!--*********** Data Table ***********-->
-    <DataTable v-if="!loading" :value="products" removableSort :filters="filters" :paginator="paginator" :sortOrder="-1"
+    <DataTable :class="styleTable" v-if="!loading" :value="products" removableSort :filters="filters" :paginator="paginator" :sortOrder="-1"
         :rows="8">
 
         <!--*********** Empty Table Message ***********-->
@@ -25,7 +25,7 @@
                             :class="{ line: col.field[i + 1] == 'line', currency: col.field[i + 1] == 'currency' }">
                             {{ slotProps.data[fieldItem] }}
                         </span>
-                        <span v-if="col.field.includes('currency')" class="me-1"> {{ slotProps.data.currency }} </span>
+                        <span v-if="col.field.includes('currency')" class="me-1"> <b></b> {{ slotProps.data.currency }} </span>
                     </div>
                 </div>
             </template>
@@ -67,6 +67,10 @@ import Skeleton from 'primevue/skeleton';
 
 /******************* Props *******************/
 const props = defineProps({
+    styleTable: {
+        type: String,
+        default: ''
+    },
     columns: {
         type: Object,
     },

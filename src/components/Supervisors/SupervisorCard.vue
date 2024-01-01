@@ -13,7 +13,7 @@
                 </div>
             </div>
 
-            <router-link to="/editSupervisors" class="main-btn sm up blue">{{ $t('supervisors.editSupervisor') }}</router-link>
+            <router-link :to="{ name: 'editSupervisors', params: { id: admin.id }}" class="main-btn sm up blue">{{ $t('supervisors.editSupervisor') }}</router-link>
 
         </div>
         <div class="admin_bottom">
