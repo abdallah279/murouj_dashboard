@@ -72,7 +72,11 @@
     "orderDetailes": "تفاصيل الطلب",
     "retUrnOrderDetailes": "تفاصيل طلب الأرجاع",
     "returnOrder": "عمل طلب الأرجاع",
-    "rateOrder": "تقييم الطلب"
+    "rateOrder": "تقييم الطلب",
+    "newSettlement": "طلبات تسوية جديدة",
+    "finshedSettlement": "طلبات تسوية منتهية",
+    "settlementDetailes": "تفاصيل طلب تسوية",
+    "reports" : "التقارير"
   },
   "sectionDesc": {
     "codeForm": "برجاء ادخال كود التفعيل المرسل إليك عبر الجوال",
@@ -103,20 +107,21 @@
     "orders": {
       "number": " رقم الطلب",
       "name": "اسم العميل",
+      "type": "نوع الطلب",
       "time": "وقت الطلب",
       "price": "سعر الطلب",
       "delivery": "طريقة التوصيل",
       "status": "حالة الطلب",
       "detailes": "تفاصيل الطلب"
     },
-    "provideProducts":{
+    "provideProducts": {
       "number": " رقم الطلب",
       "type": "نوع الطلب",
       "sub_category": "القسم الفرعي",
       "status_text": "الحالة",
       "btn": "طلب توفير المنتجات"
     },
-    "financials":{
+    "financials": {
       "number": " رقم",
       "purchases": "قيمة المشتريات",
       "commission": "العمولة",
@@ -156,14 +161,15 @@
       "pendingOrders": "طلبات قيد انتظار",
       "currentOrders": "طلبات الحالية",
       "finishedOrders": "طلبات المنتهية",
-      "canceledOrders": "طلبات الملغية"
+      "canceledOrders": "طلبات الملغية",
+      "newSettlement": "طلبات تسوية جديدة",
+      "finshedSettlement": "طلبات تسوية منتهية"
     },
     "card": {
       "orderNum": "رقم الطلب",
-      "orderPrice": "السعر",
+      "orderPrice": "قيمة الطلب ",
       "orderDate": "تاريخ الطلب",
-      "orderStatus": "الحالة",
-      "currency": "ر.س"
+      "orderStatus": "الحالة"
     }
   },
   "orderDetailes": {
@@ -403,11 +409,12 @@
       "deleteBtn": "حذف المشرف"
     }
   },
-  "financails":{
+  "financails": {
+    "financails": "المالية",
     "totalOrders": "إجمالي الطلبات",
-    "totalCommission" : "إجمالي العمولة",
-    "totalVat" : "إجمالي القيمة المضافة",
-    "financialDues" : "المستحق لك",
+    "totalCommission": "إجمالي العمولة",
+    "totalVat": "إجمالي القيمة المضافة",
+    "financialDues": "المستحق لك",
     "settlementRequest": "طلب تسويه"
   },
   "modals": {
@@ -484,6 +491,7 @@
     "delete": "حذف الحساب",
     "activeCode": "تفعيل الحساب",
     "receiveCode": "أعد إرسال الكود",
-    "addComplaints": "أضافة شكاوى او مقترح"
+    "addComplaints": "أضافة شكاوى او مقترح",
+    "more": "عرض المزيد"
   }
 }

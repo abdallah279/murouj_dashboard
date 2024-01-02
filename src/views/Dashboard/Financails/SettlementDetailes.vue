@@ -1,8 +1,5 @@
 <template>
-    <!-- ***** Page description ***** -->
-    <p class="fs12 mt-2 mb-4">يتم عرض الاحصائيات المالية التي تمت في الطلبات</p>
-
-    <FinancailsData routeName="providers/financials" />
+    <FinancailsData :routeName="`providers/settlement-request-details/${$route.params.id}`" />
 </template>
 
 <script setup>

@@ -72,7 +72,11 @@
     "orderDetailes": "Order Detailes",
     "retUrnOrderDetailes": "retrieval Order Detailes",
     "returnOrder": "Return Order",
-    "rateOrder": "Order rating"
+    "rateOrder": "Order rating",
+    "newSettlement": "New settlement requests",
+    "finshedSettlement": "Finished settlement requests",
+    "settlementDetailes": "Settlement request details",
+    "reports": "Reports"
   },
   "sectionDesc": {
     "codeForm": "Please enter the activation code sent to you via mobile phone",
@@ -103,20 +107,21 @@
     "orders": {
       "number": "order number",
       "name": "Client name",
+      "type": "order type",
       "time": "order time",
       "price": "order price",
       "delivery": "Delivery way",
       "status": "order status",
       "detailes": "Order Detailes"
     },
-    "provideProducts":{
+    "provideProducts": {
       "number": "order number",
       "type": "order type",
       "sub_category": "sub category",
       "status_text": "status",
       "btn": "Orders provide products"
     },
-    "financials":{
+    "financials": {
       "number": "Number",
       "purchases": "Purchases value",
       "commission": "Commission",
@@ -156,11 +161,13 @@
       "pendingOrders": "Waiting Orders",
       "currentOrders": "Current Orders",
       "finishedOrders": "Finished Orders",
-      "canceledOrders": "Canceled Orders"
+      "canceledOrders": "Canceled Orders",
+      "newSettlement": "New settlement requests",
+      "finshedSettlement": "Finished settlement requests"
     },
     "card": {
       "orderNum": "Order Number",
-      "orderPrice": "Price",
+      "orderPrice": "Order value",
       "orderDate": "Order Date",
       "orderStatus": "Status",
       "currency": "RS"
@@ -401,11 +408,12 @@
       "deleteBtn": "Delete supervisor"
     }
   },
-  "financails":{
+  "financails": {
+    "financails": "Financial",
     "totalOrders": "Total orders",
-    "totalCommission" : "Total commission",
-    "totalVat" : "Total value added",
-    "financialDues" : "Due to you",
+    "totalCommission": "Total commission",
+    "totalVat": "Total value added",
+    "financialDues": "Due to you",
     "settlementRequest": "Settlement request"
   },
   "modals": {
@@ -482,6 +490,7 @@
     "delete": "Delete Account",
     "activeCode": "Account activation",
     "receiveCode": "Resend The Code",
-    "addComplaints": "Add complaints or suggestions"
+    "addComplaints": "Add complaints or suggestions",
+    "more": "Show more"
   }
 }

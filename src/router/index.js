@@ -68,30 +68,39 @@ const routes = [
             meta: {
               title: "pagesTitle.purchaseOrders",
             },
-            component: () => import("@/components/Orders/Purchase Orders/View.vue"),
+            component: () =>
+              import("@/components/Orders/Purchase Orders/View.vue"),
             redirect: { path: "/purchaseCurrent" },
 
             children: [
-
               /**** طلبات الحالية *****/
               {
                 path: "/purchaseCurrent",
                 name: "purchaseCurrent",
-                component: () => import("@/components/Orders/Purchase Orders/CurrentOrders.vue"),
+                component: () =>
+                  import(
+                    "@/components/Orders/Purchase Orders/CurrentOrders.vue"
+                  ),
               },
 
               /**** طلبات المنتهية *****/
               {
                 path: "/purchaseFinished",
                 name: "purchaseFinished",
-                component: () => import("@/components/Orders/Purchase Orders/FinishedOrders.vue"),
+                component: () =>
+                  import(
+                    "@/components/Orders/Purchase Orders/FinishedOrders.vue"
+                  ),
               },
 
               /**** طلبات الملغية *****/
               {
                 path: "/purchaseCanceled",
                 name: "purchaseCanceled",
-                component: () => import("@/components/Orders/Purchase Orders/CanceledOrders.vue"),
+                component: () =>
+                  import(
+                    "@/components/Orders/Purchase Orders/CanceledOrders.vue"
+                  ),
               },
             ],
           },
@@ -103,29 +112,36 @@ const routes = [
             meta: {
               title: "pagesTitle.returnOrders",
             },
-            component: () => import("@/components/Orders/Return Orders/View.vue"),
+            component: () =>
+              import("@/components/Orders/Return Orders/View.vue"),
             redirect: { path: "/returnCurrent" },
             children: [
-
               /**** طلبات الحالية *****/
               {
                 path: "/returnCurrent",
                 name: "returnCurrent",
-                component: () => import("@/components/Orders/Return Orders/CurrentOrders.vue"),
+                component: () =>
+                  import("@/components/Orders/Return Orders/CurrentOrders.vue"),
               },
 
               /**** طلبات المنتهية *****/
               {
                 path: "/returnFinished",
                 name: "returnFinished",
-                component: () => import("@/components/Orders/Return Orders/FinishedOrders.vue"),
+                component: () =>
+                  import(
+                    "@/components/Orders/Return Orders/FinishedOrders.vue"
+                  ),
               },
 
               /**** طلبات الملغية *****/
               {
                 path: "/returnCanceled",
                 name: "returnCanceled",
-                component: () => import("@/components/Orders/Return Orders/CanceledOrders.vue"),
+                component: () =>
+                  import(
+                    "@/components/Orders/Return Orders/CanceledOrders.vue"
+                  ),
               },
             ],
           },
@@ -157,7 +173,93 @@ const routes = [
         meta: {
           title: "pagesTitle.financial",
         },
-        component: () => import("@/views/Dashboard/Financails/FinancailsView.vue"),
+        component: () =>
+          import("@/views/Dashboard/Financails/FinancailsView.vue"),
+      },
+      {
+        path: "/settlements",
+        name: "settlements",
+        meta: {
+          title: "pagesTitle.settlements",
+        },
+        component: () => import("@/views/Dashboard/Financails/SettlementsView.vue"),
+        redirect: { path: "/newSettlement" },
+        children: [
+
+          /******** New Settlement ********/
+          {
+            path: "/newSettlement",
+            name: "newSettlement",
+            meta: {
+              title: "pagesTitle.newSettlement",
+            },
+            component: () =>
+            import("@/components/Settlements/NewSettlement.vue"),
+          },
+
+          /******** Finshed Settlement ********/
+          {
+            path: "/finshedSettlement",
+            name: "finshedSettlement",
+            meta: {
+              title: "pagesTitle.finshedSettlement",
+            },
+            component: () =>
+            import("@/components/Settlements/FinshedSettlement.vue"),
+          },
+
+          /******** Settlement Detailes ********/
+          {
+            path: "/settlementDetailes/:id",
+            name: "settlementDetailes",
+            meta: {
+              title: "pagesTitle.settlementDetailes",
+            },
+            component: () =>
+            import("@/views/Dashboard/Financails/SettlementDetailes.vue"),
+          },
+        ],
+      },
+
+      /********************* Reports **********************/
+      {
+        path: "/reports",
+        name: "reports",
+        meta: {
+          title: "pagesTitle.reports",
+        },
+        component: () => import("@/views/Dashboard/Reports/ReportsView.vue"),
+        redirect: { path: "/orderReports" },
+        children: [
+
+          /******** Orders Reports ********/
+          {
+            path: "/orderReports",
+            name: "orderReports",
+            component: () => import("@/views/Dashboard/Reports/Tabs/OrderReports.vue"),
+          },
+
+          /******** Products Reports ********/
+          {
+            path: "/productsReports",
+            name: "productsReports",
+            component: () => import("@/views/Dashboard/Reports/Tabs/ProductsReports.vue"),
+          },
+
+          /******** Clients Reports ********/
+          {
+            path: "/clientsReports",
+            name: "clientsReports",
+            component: () => import("@/views/Dashboard/Reports/Tabs/ClientsReports.vue"),
+          },
+
+          /******** Clients Reports ********/
+          {
+            path: "/supervisorsReports",
+            name: "supervisorsReports",
+            component: () => import("@/views/Dashboard/Reports/Tabs/SupervisorsReports.vue"),
+          },
+        ],
       },
 
       /********************* Invoices **********************/
@@ -175,7 +277,8 @@ const routes = [
         meta: {
           title: "pagesTitle.invoiceDetailes",
         },
-        component: () => import("@/views/Dashboard/Invoices/InvoiceDetailes.vue"),
+        component: () =>
+          import("@/views/Dashboard/Invoices/InvoiceDetailes.vue"),
       },
 
       /********************* supervisors **********************/
@@ -185,7 +288,8 @@ const routes = [
         meta: {
           title: "pagesTitle.supervisors",
         },
-        component: () => import("@/views/Dashboard/Supervisors/SupervisorsView.vue"),
+        component: () =>
+          import("@/views/Dashboard/Supervisors/SupervisorsView.vue"),
       },
       {
         path: "/addSupervisors",
@@ -193,7 +297,8 @@ const routes = [
         meta: {
           title: "pagesTitle.addSupervisors",
         },
-        component: () => import("@/views/Dashboard/Supervisors/AddSupervisors.vue"),
+        component: () =>
+          import("@/views/Dashboard/Supervisors/AddSupervisors.vue"),
       },
       {
         path: "/editSupervisors/:id",
@@ -201,7 +306,8 @@ const routes = [
         meta: {
           title: "pagesTitle.editSupervisors",
         },
-        component: () => import("@/views/Dashboard/Supervisors/EditSupervisors.vue"),
+        component: () =>
+          import("@/views/Dashboard/Supervisors/EditSupervisors.vue"),
       },
 
       /********************* Notifications **********************/
@@ -321,17 +427,17 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
-      if (!localStorage.getItem("token")) {
-          next({ name: "login" });
-      } else {
-          next();
-      }
-  } else {
-      next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some((record) => record.meta.requiresAuth)) {
+//       if (!localStorage.getItem("token")) {
+//           next({ name: "login" });
+//       } else {
+//           next();
+//       }
+//   } else {
+//       next();
+//   }
+// });
 
 router.afterEach((to) => {
   const titleText = to.meta.title
@@ -344,6 +450,5 @@ router.afterEach((to) => {
     window.scrollTo(0, 0);
   }, 300);
 });
-
 
 export default router;

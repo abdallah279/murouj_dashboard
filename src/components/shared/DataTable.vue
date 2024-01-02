@@ -14,14 +14,14 @@
             <template #body="slotProps" v-if="typeof col.field == 'object'">
                 <div class="d-flex-c gap-3">
                     <div v-for="(fieldItem, i) of col.field" :key="fieldItem" class="col_div"
-                        :class="{ old_price: col.field[i - 1] == 'product_price_after_discount' }">
+                        :class="{ old_price: col.field[i - 1] == 'product_price_after_discount' || col.field[i - 1] == 'price_after_discount' }">
 
                         <!--*********** If Field Item Is Image ***********-->
-                        <img alt="image" :src="slotProps.data[fieldItem]" v-if="fieldItem == 'product_image'"
+                        <img alt="image" :src="slotProps.data[fieldItem]" v-if="fieldItem == 'product_image' || fieldItem == 'image'"
                             class="circle_img md" />
 
                         <!--*********** If Field Item Is Text ***********-->
-                        <span v-if="fieldItem !== 'product_image' && fieldItem !== 'currency'"
+                        <span v-if="fieldItem !== 'product_image' && fieldItem !== 'image' && fieldItem !== 'currency'"
                             :class="{ line: col.field[i + 1] == 'line', currency: col.field[i + 1] == 'currency' }">
                             {{ slotProps.data[fieldItem] }}
                         </span>

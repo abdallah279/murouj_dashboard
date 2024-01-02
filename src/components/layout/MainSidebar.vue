@@ -42,7 +42,7 @@
 
             <div class="collapse_links">
                 <a class="link collapse_head" data-bs-toggle="collapse" href="#collapseExample" role="button"
-                    aria-expanded="false" aria-controls="collapseExample">
+                    :aria-expanded="false" aria-controls="collapseExample">
                     <img src="@/assets/imgs/icons/sidebar/list.png" class="side-icon" alt="">
                     <span class="text">{{ $t('sidebar.wallet') }} </span>
                 </a>
@@ -53,7 +53,7 @@
                         <i class="pi pi-angle-left sec_ic"></i>
                     </router-link>
 
-                    <router-link to="/supervisors" class="link">
+                    <router-link to="/settlements" class="link">
                         <i class="pi pi-box side-icon"></i>
                         <span class="text">{{ $t('sidebar.settlement') }} </span>
                         <i class="pi pi-angle-left sec_ic"></i>

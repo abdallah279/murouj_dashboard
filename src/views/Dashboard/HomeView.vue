@@ -1,26 +1,22 @@
 <template>
-  <main class="home">
+  <div class="row mb-4 gy-4">
 
-    <div class="row mb-4 gy-4">
-
-      <!--***** Total Profit *****-->
-      <div class="col-lg-4 col-sm-6">
-        <HomeProfit :title="$t('profit.total')" :number="home.total_profit" :loading="loading" :currency="home.currency"
-          :chart="require('@/assets/imgs/icons/bar_chart1.png')" />
-      </div>
-
-      <!--***** Today Profit *****-->
-      <div class="col-lg-4 col-sm-6">
-        <HomeProfit :title="$t('profit.today')" :number="home.today_profit" :loading="loading" :currency="home.currency"
-          :chart="require('@/assets/imgs/icons/bar_chart2.png')" />
-      </div>
-
+    <!--***** Total Profit *****-->
+    <div class="col-lg-4 col-sm-6">
+      <HomeProfit :title="$t('profit.total')" :number="home.total_profit" :loading="loading" :currency="home.currency"
+        :chart="require('@/assets/imgs/icons/bar_chart1.png')" />
     </div>
 
-    <!--***** Chart *****-->
-    <HomeChart />
+    <!--***** Today Profit *****-->
+    <div class="col-lg-4 col-sm-6">
+      <HomeProfit :title="$t('profit.today')" :number="home.today_profit" :loading="loading" :currency="home.currency"
+        :chart="require('@/assets/imgs/icons/bar_chart2.png')" />
+    </div>
 
-  </main>
+  </div>
+
+  <!--***** Chart *****-->
+  <HomeChart />
 </template>
 
 
@@ -43,8 +39,8 @@ const loading = ref(false);
 
 // home
 const home = ref({
-  total_profit: 39.000,
-  today_profit: 39.000,
+  total_profit: 0,
+  today_profit: 0,
   month_profit:[],
   currency: ''
 });

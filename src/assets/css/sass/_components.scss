@@ -1129,6 +1129,17 @@
     }
   }
 
+  &.white_red {
+    background-color: $white;
+    color: $main;
+    border-color: $main;
+
+    &:hover {
+      background-color: $white;
+      color: $main;
+    }
+  }
+
   &.blue {
     background-color: $blue;
     color: $white;

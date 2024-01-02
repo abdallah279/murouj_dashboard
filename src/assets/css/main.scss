@@ -714,27 +714,7 @@
 
 /************* End payment Section *************/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ======================================================== New Css ================================================================ //
-
 
 /********************* Start Main padding Righ section *********************/
 .main-padding-right {
@@ -1084,29 +1064,29 @@
     }
   }
 
-  .invoice_card_body{
+  .invoice_card_body {
     padding: 15px;
   }
 
-  .invoice_card_footer{
-    .main-btn{
+  .invoice_card_footer {
+    .main-btn {
       height: 48px;
     }
-    .pi{
+    .pi {
       @include circle(20px);
       @include center;
-      background-color: rgba($color: $white, $alpha: .2);
+      background-color: rgba($color: $white, $alpha: 0.2);
     }
   }
 }
 
-.invoice_item{
-  &:not(:last-of-type){
-    border-bottom: 1px dashed rgba($color: $dark3, $alpha: .6);
+.invoice_item {
+  &:not(:last-of-type) {
+    border-bottom: 1px dashed rgba($color: $dark3, $alpha: 0.6);
   }
 }
 
-.qr_code{
+.qr_code {
   width: 100px;
   height: 100px;
   display: block;
@@ -1116,48 +1096,96 @@
 /***************** End invoice_card Section *********************/
 
 /***************** Start admin_card Section *********************/
-.admin_card{
+
+.admin_card {
   box-shadow: $main-shadow;
   border-radius: 15px;
   padding: 18px 25px;
   margin-bottom: 35px;
 
-  .admin_top{
+  .admin_top {
     @include between;
     margin-bottom: 15px;
 
-    .right{
+    .right {
       display: flex;
       align-items: center;
       gap: 12px;
 
-      .admin_img{
+      .admin_img {
         @include circle(70px);
       }
 
-      .country_code{
-        @include dir-border-left(1px solid rgba($color: $dark3, $alpha: .3));
+      .country_code {
+        @include dir-border-left(1px solid rgba($color: $dark3, $alpha: 0.3));
         @include dir-margin-left(5px);
         @include dir-padding-left(5px);
       }
     }
   }
 
-  .permissions{
+  .permissions {
     display: flex;
     // align-items: center;
     gap: 12px;
     flex-wrap: wrap;
 
-    .permission_item{
-      background-color: rgba($color: #AEA8D5, $alpha: .3);
+    .permission_item {
+      background-color: rgba($color: #aea8d5, $alpha: 0.3);
       color: $blue;
       padding: 10px 18px;
       border-radius: 7px;
     }
   }
 }
+
 /***************** End admin_card Section *********************/
+
+/***************** Start Settlement Order Section *********************/
+
+.settlement_card {
+  padding-top: 15px;
+  @include dir-padding-left(15px);
+  border: 1px solid $light2;
+  background-color: $white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: $main-shadow;
+
+  .settlement_img {
+    display: block;
+    // margin: 0 20px;
+    max-width: 100px;
+  }
+  
+  .left-sec {
+    padding: 0px 24px;
+    width: 100%;
+
+    @media screen and (max-width: $screen-sm) {
+      padding: 0 10px;
+    }
+
+    .left-item {
+      @include between;
+      gap: 8px 4px;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .settlement_footer{
+      border-top: 1px solid $light2;
+      padding: 12px 0;
+
+      .ic{
+        max-width: 15px;
+      }
+    }
+  }
+}
 
 /***************** Start not-item Section *********************/
 

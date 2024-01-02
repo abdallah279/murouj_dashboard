@@ -1,19 +1,23 @@
 <template>
-    <!-- ***** Page description ***** -->
-    <p class="fs12 mt-2 mb-4">يتم عرض الاحصائيات المالية التي تمت في الطلبات</p>
-
-    <FinancailsData routeName="providers/financials" />
+    <div class="order_cards">
+        <RequestCard v-for="request in requests" :key="request.id" :request="request" />
+    </div>
 </template>
 
 <script setup>
 /******************* Import *******************/
-import FinancailsData from '@/components/Settlements/FinancailsData.vue';
+import RequestCard from "@/components/Settlements/OrderCard.vue";
 
 /******************* Data *******************/
 
 /******************* Provide && Inject *******************/
 
 /******************* Props *******************/
+const props = defineProps({
+    requests: {
+        type: Object
+    }
+})
 
 /******************* Methods *******************/
 

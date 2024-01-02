@@ -4,7 +4,7 @@
     <main class="main-padding-right py-4">
         <div class="container">
 
-            <h1 class="page_title fs14 c-light mb-4" id="page_title">{{ pageTitle }}</h1>
+            <h1 class="page_title fs14 c-black" :class="{ 'mb-4': !(['financial', 'newSettlement', 'finshedSettlement', 'settlementDetailes']).includes(route.name) }" id="page_title">{{ pageTitle }}</h1>
 
             <router-view v-slot="{ Component, route }">
                 <Transition name="slide-fade" mode="out-in">
