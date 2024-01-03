@@ -1,32 +1,41 @@
 <template>
-    <!--***** Current Orders *****-->
-    <div class="report_products mt-4">
-        <h3 class="fs15 c-black mb-4">{{ $t('reports.products') }} (30)</h3>
-        <DataTable :columns="columns" :products="products" :loading="loading" :routeTable="routeTable"
-            :tableSkeleton="new Array(columns.length)">
-        </DataTable>
+    <!--***** Page Top *****  -->
+    <div class="page_top">
+        <div class="page_filter">
+
+            <!--***** Filter Products *****-->
+            <div class="main-input w350">
+
+                <MultiSelect v-model="productSelected" :options="products" filter optionLabel="product_name"
+                    :placeholder="$t('table.filter.text')" display="chip" class="w-100 h50" />
+                <i class="pi pi-angle-down main-icon"></i>
+
+            </div>
+        </div>
+
     </div>
+
+    <!--***** DataTable *****-->
+    <DataTable :columns="columns" :products="productSelected" :loading="loading" :selectTable="selectTable"
+        :tableSkeleton="new Array(columns.length)">
+    </DataTable>
 </template>
 
 <script setup>
-
 /******************* Import *******************/
-import { onMounted, ref } from 'vue';
-import axios from 'axios';
-import i18n from "@/i18n";
-import responseApi from '@/components/shared/ResponseApi.js';
+import { onMounted, ref } from "vue";
 import DataTable from "@/components/shared/DataTable.vue";
+import responseApi from '@/components/shared/ResponseApi.js';
+import MultiSelect from 'primevue/multiselect';
+import i18n from "@/i18n";
+import axios from "axios";
 
 /******************* Data *******************/
-
 // success response
 const { response } = responseApi();
 
-// Loading
+// loading
 const loading = ref(false);
-
-// products
-const products = ref([]);
 
 // config
 const config = {
@@ -36,38 +45,33 @@ const config = {
 // columns
 const columns = ref([
     {
-        field: 'id',
+        field: 'product_id',
         header: i18n.global.t('table.products.number')
     },
     {
-        field: ['image', 'name'],
+        field: ['product_image', 'product_name'],
         header: i18n.global.t('table.products.name')
     },
     {
-        field: ['price_after_discount', 'price', 'currency'],
+        field: ['product_price_after_discount', 'product_price', 'currency'],
         header: i18n.global.t('table.products.price')
     },
     {
-        field: 'category',
+        field: 'product_category',
         header: i18n.global.t('table.products.category')
-    },
-    {
-        field: 'count_selling',
-        header: i18n.global.t('table.products.count_selling')
-    },
-    {
-        field: ['total_selling', 'currency'],
-        header: i18n.global.t('table.products.total_selling')
     }
 ]);
 
-// route Table
-const routeTable = ref({
-    header: i18n.global.t('table.products.detailes'),
-    path: 'productDetailes',
-    id: 'id'
-})
+// products
+const productSelected = ref([]);
+const products = ref([]);
 
+// route Table
+const selectTable = ref({
+    header: 'نوع الكمية',
+    path: 'productDetailes',
+    id: 'product_id'
+})
 /******************* Provide && Inject *******************/
 
 /******************* Props *******************/
@@ -76,7 +80,7 @@ const routeTable = ref({
 // getData
 const getData = async () => {
     loading.value = true;
-    await axios.get('providers/most-selling-reports', config).then(res => {
+    await axios.get('providers/provider-products', config).then(res => {
         if (response(res) == "success") {
             products.value = res.data.data.data;
         }
@@ -89,11 +93,10 @@ const getData = async () => {
 /******************* Watch *******************/
 
 /******************* Mounted *******************/
-
 onMounted(async () => {
     await getData();
 });
 
 </script>
-  
-<style></style>
+
+<style lang="scss"></style>

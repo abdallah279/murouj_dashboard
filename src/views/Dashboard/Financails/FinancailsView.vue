@@ -1,6 +1,6 @@
 <template>
     <!-- ***** Page description ***** -->
-    <p class="fs12 mt-2 mb-4">يتم عرض الاحصائيات المالية التي تمت في الطلبات</p>
+    <p class="fs12 mt-2 mb-4">{{ $t('financails.financailDesc') }}</p>
 
     <FinancailsData routeName="providers/financials" />
 </template>

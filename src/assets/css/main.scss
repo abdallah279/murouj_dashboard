@@ -1114,6 +1114,7 @@
 
       .admin_img {
         @include circle(70px);
+        object-fit: cover;
       }
 
       .country_code {
@@ -1349,8 +1350,8 @@
 .no-data {
   text-align: center;
   .no-data-img {
-    max-width: 220px;
-    // margin-bottom: 15px;
+    max-width: 200px;
+    margin-bottom: 15px;
 
     @media screen and (max-width: $screen-xs) {
       max-width: 160px;
@@ -1358,7 +1359,7 @@
   }
 
   .no-data-text {
-    color: $red;
+    color: $side-color;
     font-size: 14px;
   }
 

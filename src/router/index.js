@@ -163,7 +163,23 @@ const routes = [
         meta: {
           title: "pagesTitle.ProvideOrders",
         },
-        component: () => import("@/views/Dashboard/Orders/ProvideOrders.vue"),
+        component: () => import("@/views/Dashboard/Orders/ProvideRequests/ProvideOrders.vue"),
+      },
+      {
+        path: "/createProvideOrders",
+        name: "createProvideOrders",
+        meta: {
+          title: "pagesTitle.createProvideOrders",
+        },
+        component: () => import("@/views/Dashboard/Orders/ProvideRequests/createProvideOrders.vue"),
+      },
+      {
+        path: "/addingProducts",
+        name: "addingProducts",
+        meta: {
+          title: "pagesTitle.addingProducts",
+        },
+        component: () => import("@/views/Dashboard/Orders/ProvideRequests/AddingProducts.vue"),
       },
 
       /********************* Financails **********************/
@@ -408,6 +424,14 @@ const routes = [
         },
         component: () => import("@/views/auth/NewPassword.vue"),
       },
+      {
+        path: "/activeAccount",
+        name: "activeAccount",
+        meta: {
+          title: "pagesTitle.activeAccount",
+        },
+        component: () => import("@/views/auth/ActiveAccount.vue"),
+      },
     ],
   },
 
@@ -427,17 +451,17 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.matched.some((record) => record.meta.requiresAuth)) {
-//       if (!localStorage.getItem("token")) {
-//           next({ name: "login" });
-//       } else {
-//           next();
-//       }
-//   } else {
-//       next();
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+      if (!localStorage.getItem("token")) {
+          next({ name: "login" });
+      } else {
+          next();
+      }
+  } else {
+      next();
+  }
+});
 
 router.afterEach((to) => {
   const titleText = to.meta.title

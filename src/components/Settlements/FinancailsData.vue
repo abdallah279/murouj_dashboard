@@ -134,28 +134,7 @@ const columns = ref([
 ]);
 
 // orders
-const orders = ref([
-    {
-        "id": 3,
-        "order_num": "20233",
-        "products_price": "705.52",
-        "admin_commission": "15.00",
-        "vat_amount": "50.00",
-        "final_total": "805.52",
-        "date": "03 December 2023",
-        "currency": "KWD"
-    },
-    {
-        "id": 10,
-        "order_num": "20235",
-        "products_price": "7875.71",
-        "admin_commission": "20.00",
-        "vat_amount": "100.00",
-        "final_total": "7975.71",
-        "date": "03 December 2023",
-        "currency": "KWD"
-    }
-]);
+const orders = ref([]);
 
 const total_orders = ref(0);
 const total_commission = ref(0);
@@ -203,8 +182,7 @@ const settlementRequest = async () => {
 
 /******************* Mounted *******************/
 onMounted(async () => {
-    console.log(props.routeName);
-    // await getData();
+    await getData();
 });
 
 </script>

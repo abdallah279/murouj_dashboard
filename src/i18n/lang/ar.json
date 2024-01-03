@@ -36,6 +36,8 @@
     "addSupervisors": "إضافة مشرف",
     "editSupervisors": "تعديل مشرف",
     "ProvideOrders": "طلبات توفير المنتجات",
+    "createProvideOrders": " طلب توفير المنتجات",
+    "addingProducts": "اضافة منتجات للطلب",
     "about": "من نحن",
     "verificationCode": "كود التفعيل",
     "contact": "تواصل معنا",
@@ -65,6 +67,7 @@
     "login": "تسجيل دخول",
     "createAccount": "تسجيل جديد",
     "code": "كود التحقق من رقمك",
+    "activeAccount": "تفعيل الحساب",
     "forgetPass": "استعادة كلمة المرور",
     "changePassword": "تغيير كلمة المرور",
     "purchaseOrders": "طلبات الشراء",
@@ -101,6 +104,8 @@
       "price": "السعر",
       "quantity": "العدد في المخزن و الحالة",
       "category": "القسم",
+      "count_selling": "عدد مرات البيع",
+      "total_selling": "اجمالي بيع المنتج",
       "detailes": "تفاصيل المنتج",
       "btn": "طلب توفير منتج"
     },
@@ -128,6 +133,19 @@
       "vat": "القيمة المضافة",
       "total": "الاجمالى",
       "date": "التاريخ"
+    },
+    "clients": {
+      "number": "رقم العميل",
+      "name": "اسم العميل",
+      "full_phone": "رقم الجوال",
+      "total": "اجمالي المبلغ",
+      "selling_count": "عدد مرات الشراء"
+    },
+    "supervisors": {
+      "number": "رقم المشرف",
+      "name": "اسم المشرف",
+      "time": "الوقت",
+      "operation": "العملية"
     }
   },
   "cart": {
@@ -170,6 +188,36 @@
       "orderPrice": "قيمة الطلب ",
       "orderDate": "تاريخ الطلب",
       "orderStatus": "الحالة"
+    }
+  },
+  "addProvideProducts": {
+    "form":{
+      "type":{
+        "text":"نوع الطلب",
+        "placeholder":"برجاء اختيار نوع الطلب"
+      },
+      "quantity":{
+        "text": "نوع الكمية",
+        "placeholder": "برجاء ادخال الكمية"
+      },
+      "sub_category":{
+        "text":"القسم الفرعي",
+        "placeholder":"برجاء اختيار القسم الفرعي"
+      },
+      "products":{
+        "text":"المنتجات",
+        "placeholder":"برجاء اختيار المنتجات المطلوبة"
+      },
+      "duration":{
+        "text":"المدة",
+        "placeholder":"برجاء ادخال المدة",
+        "hours":"ساعة"
+      },
+      "receving_time":{
+        "text":"وقت الاستلام",
+        "placeholder":"برجاء ادخال وقت الاستلام"
+      },
+      "btn":"ارسال الطلب"
     }
   },
   "orderDetailes": {
@@ -241,7 +289,8 @@
     "cart": "السلة فارغة",
     "orderProduct": "المنتجات المطلوبة لم تعد متوفره",
     "productRate": "لا يوجد تقييمات لهذا المنتج",
-    "invoices": "لا يوجد فواتير"
+    "invoices": "لا يوجد فواتير",
+    "requests": "لا يوجد طلبات تسوية"
   },
   "loginForm": {
     "login": "تسجيل دخول",
@@ -411,11 +460,28 @@
   },
   "financails": {
     "financails": "المالية",
+    "financailDesc": "يتم عرض الاحصائيات المالية التي تمت في الطلبات",
     "totalOrders": "إجمالي الطلبات",
     "totalCommission": "إجمالي العمولة",
     "totalVat": "إجمالي القيمة المضافة",
     "financialDues": "المستحق لك",
     "settlementRequest": "طلب تسويه"
+  },
+  "reports":{
+    "reports": "التقارير",
+    "tabs":{
+      "orders":"الطلبات",
+      "products":"المنتجات",
+      "clients":"العملاء",
+      "supervisors":"المشرفين"
+    },
+    "orders":{
+      "current": "الطلبات الحالية",
+      "finished": "الطلبات المنتهية",
+      "canceled": "الطلبات الملغية"
+    },
+    "products": "المنتجات الأكثر مبيعا",
+    "clients": "العملاء"
   },
   "modals": {
     "refuse": {

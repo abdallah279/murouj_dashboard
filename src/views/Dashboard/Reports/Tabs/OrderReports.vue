@@ -20,7 +20,7 @@
 
     <!--***** Current Orders *****-->
     <div class="current_orders mt-4">
-        <h3 class="fs15 c-black mb-4">الطلبات الحالية (30)</h3>
+        <h3 class="fs15 c-black mb-4">{{ $t('reports.orders.current') }} (30)</h3>
         <DataTable :columns="columns" :products="currentOrders" :loading="loading" :routeTable="routeTable"
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
@@ -28,7 +28,7 @@
 
     <!--***** Finished Orders *****-->
     <div class="finished_orders mt-4">
-        <h3 class="fs15 c-black mb-4">الطلبات المنتهية (30)</h3>
+        <h3 class="fs15 c-black mb-4">{{ $t('reports.orders.finished') }} (30)</h3>
         <DataTable :columns="columns" :products="finishedOrders" :loading="loading" :routeTable="routeTable"
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
@@ -36,7 +36,7 @@
 
     <!--***** Cancelled Orders *****-->
     <div class="cancelled_orders mt-4">
-        <h3 class="fs15 c-black mb-4">الطلبات الملغاه (30)</h3>
+        <h3 class="fs15 c-black mb-4">{{ $t('reports.orders.canceled') }} (30)</h3>
         <DataTable :columns="newColumns" :products="cancelledOrders" :loading="loading" :routeTable="routeTable"
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
@@ -72,148 +72,13 @@ const home = ref({
 });
 
 // current
-const currentOrders = ref([
-    {
-        "id": 8,
-        "order_num": "20233",
-        "user_name": "Lila Wehner",
-        "date_and_time": "2023/11/07 - 02:20 am",
-        "final_total": 3106.9,
-        "status": 0,
-        "status_text": "فى الانتظار",
-        "order_type": "طلب ارجاع",
-        "currency": "ر.س "
-    },
-    {
-        "id": 10,
-        "order_num": "20235",
-        "user_name": "Lila Wehner",
-        "date_and_time": "2023/11/07 - 02:20 am",
-        "final_total": 3005.28,
-        "status": 0,
-        "status_text": "فى الانتظار",
-        "order_type": "طلب شراء",
-        "currency": "ر.س "
-    },
-    {
-        "id": 9,
-        "order_num": "20234",
-        "user_name": "Vada Armstrong",
-        "date_and_time": "2023/11/07 - 02:20 am",
-        "final_total": 7776.47,
-        "status": 0,
-        "status_text": "فى الانتظار",
-        "order_type": "طلب شراء",
-        "currency": "ر.س "
-    },
-    {
-        "id": 1,
-        "order_num": "20231",
-        "user_name": "Mrs. Lorna Moen DDS",
-        "date_and_time": "2023/11/07 - 02:20 am",
-        "final_total": 7009.18,
-        "status": 0,
-        "status_text": "فى الانتظار",
-        "order_type": "طلب ارجاع",
-        "currency": "ر.س "
-    }
-]);
+const currentOrders = ref([]);
 
-// current
-const finishedOrders = ref([
-    {
-        "id": 8,
-        "order_num": "20233",
-        "user_name": "Lila Wehner",
-        "date_and_time": "2023/11/07 - 02:20 am",
-        "final_total": 3106.9,
-        "status": 0,
-        "status_text": "فى الانتظار",
-        "order_type": "طلب ارجاع",
-        "currency": "ر.س "
-    },
-    {
-        "id": 10,
-        "order_num": "20235",
-        "user_name": "Lila Wehner",
-        "date_and_time": "2023/11/07 - 02:20 am",
-        "final_total": 3005.28,
-        "status": 0,
-        "status_text": "فى الانتظار",
-        "order_type": "طلب شراء",
-        "currency": "ر.س "
-    },
-    {
-        "id": 9,
-        "order_num": "20234",
-        "user_name": "Vada Armstrong",
-        "date_and_time": "2023/11/07 - 02:20 am",
-        "final_total": 7776.47,
-        "status": 0,
-        "status_text": "فى الانتظار",
-        "order_type": "طلب شراء",
-        "currency": "ر.س "
-    },
-    {
-        "id": 1,
-        "order_num": "20231",
-        "user_name": "Mrs. Lorna Moen DDS",
-        "date_and_time": "2023/11/07 - 02:20 am",
-        "final_total": 7009.18,
-        "status": 0,
-        "status_text": "فى الانتظار",
-        "order_type": "طلب ارجاع",
-        "currency": "ر.س "
-    }
-]);
+// finished
+const finishedOrders = ref([]);
 
-// current
-const cancelledOrders = ref([
-    {
-        "id": 8,
-        "order_num": "20233",
-        "user_name": "Lila Wehner",
-        "date_and_time": "2023/11/07 - 02:20 am",
-        "final_total": 3106.9,
-        "status": 0,
-        "status_text": "فى الانتظار",
-        "order_type": "طلب ارجاع",
-        "currency": "ر.س "
-    },
-    {
-        "id": 10,
-        "order_num": "20235",
-        "user_name": "Lila Wehner",
-        "date_and_time": "2023/11/07 - 02:20 am",
-        "final_total": 3005.28,
-        "status": 0,
-        "status_text": "فى الانتظار",
-        "order_type": "طلب شراء",
-        "currency": "ر.س "
-    },
-    {
-        "id": 9,
-        "order_num": "20234",
-        "user_name": "Vada Armstrong",
-        "date_and_time": "2023/11/07 - 02:20 am",
-        "final_total": 7776.47,
-        "status": 0,
-        "status_text": "فى الانتظار",
-        "order_type": "طلب شراء",
-        "currency": "ر.س "
-    },
-    {
-        "id": 1,
-        "order_num": "20231",
-        "user_name": "Mrs. Lorna Moen DDS",
-        "date_and_time": "2023/11/07 - 02:20 am",
-        "final_total": 7009.18,
-        "status": 0,
-        "status_text": "فى الانتظار",
-        "order_type": "طلب ارجاع",
-        "currency": "ر.س "
-    }
-]);
+// cancelled
+const cancelledOrders = ref([]);
 
 // config
 const config = {
@@ -286,8 +151,7 @@ const newColumns = computed(() => {
 /******************* Mounted *******************/
 
 onMounted(async () => {
-    // await getData();
-    // console.log(columns.value.splice(2, 1));
+    await getData();
 });
 
 </script>

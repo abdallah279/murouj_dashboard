@@ -323,7 +323,6 @@
   }
 }
 
-
 .owl-dots {
   @include center;
   gap: 7px;
@@ -519,6 +518,7 @@
   gap: 6px;
   .profile-img {
     @include circle(40px);
+    object-fit: cover;
   }
 
   .profile-name {
@@ -790,19 +790,19 @@
   }
 }
 
-.card_style{
+.card_style {
   background-color: $white;
   padding: 20px;
   box-shadow: $card-shadow;
   overflow: hidden;
 
-  &.with_head{
+  &.with_head {
     padding: 0;
     border-radius: 7px;
   }
 
-  &.res{
-    @include devices(sm){
+  &.res {
+    @include devices(sm) {
       padding: 0;
     }
   }
@@ -941,14 +941,14 @@
   font-size: 14px;
   color: $blue;
   font-family: fontDemi;
-  
+
   &.old {
     color: rgba($color: $blue, $alpha: 0.5);
     text-decoration: line-through;
   }
 }
 
-.old_price{
+.old_price {
   font-size: 14px;
   color: $blue;
   font-family: fontDemi;
@@ -1070,9 +1070,9 @@
   }
 
   &.light {
-    background-color: #EEEEEE;
+    background-color: #eeeeee;
     color: $black;
-    border-color: #EEEEEE;
+    border-color: #eeeeee;
 
     &:hover {
       background-color: $white;
@@ -1081,17 +1081,27 @@
     }
   }
 
-  &.login{
+  &.light_op {
+    background-color: #a8a8a8;
+    color: $white;
+
+    &:hover {
+      color: #a8a8a8;
+      border-color: #a8a8a8;
+    }
+  }
+
+  &.login {
     background-color: $sec;
     border-color: transparent;
   }
 
-  &.dark_transparent{
+  &.dark_transparent {
     background-color: transparent;
     color: $side-color;
     border-color: #707070;
 
-    &:hover{
+    &:hover {
       background-color: #707070;
       color: $white;
     }
@@ -1509,6 +1519,20 @@
   }
 }
 
+/************ Width ***********/
+@for $i from 1 through 1000 {
+  .w#{$i} {
+    width: $i + px !important;
+  }
+}
+
+/************ Height ***********/
+@for $i from 1 through 1000 {
+  .h#{$i} {
+    height: $i + px !important;
+  }
+}
+
 /************ Line Height ***********/
 .lh {
   line-height: 1.7;
@@ -1837,7 +1861,7 @@
     border: 1px solid $border-color;
     border-radius: 5px;
 
-    &.light{
+    &.light {
       border-color: $light6;
     }
 
@@ -1857,6 +1881,10 @@
       @media screen and (max-width: 400px) {
         font-size: 12px !important;
       }
+    }
+
+    .p-inputtext {
+      box-shadow: none !important;
     }
 
     &:focus {
@@ -2003,11 +2031,11 @@
     }
   }
 
-  &.search{
+  &.search {
     width: 240px;
   }
 
-  &.filter{
+  &.filter {
     width: 150px;
   }
 }
@@ -2113,6 +2141,25 @@
   direction: ltr;
   width: 460px !important;
   min-width: 320px !important;
+  padding: 0;
+
+  .p-timepicker {
+    border-top: 1px solid $light2 !important;
+  }
+
+  .p-icon {
+    font-size: 12px;
+    max-width: 12px;
+  }
+
+  span {
+    font-size: 15px;
+  }
+
+  th {
+    font-size: 13px;
+    text-align: center;
+  }
 
   @media screen and (max-width: $screen-sm) {
     width: auto !important;
@@ -2126,7 +2173,8 @@
 
 /********************* Dropdown *********************/
 
-.p-dropdown {
+.p-dropdown,
+.p-multiselect {
   position: relative;
   border-radius: 0;
 
@@ -2154,26 +2202,42 @@
         font-size: 11px;
       }
     }
-
-    &.p-placeholder {
-      color: #969696 !important;
-      font-size: 12px !important;
-      display: flex;
-      align-items: center;
-    }
   }
 
-  
+  .p-multiselect-label{
+    height: 100%;
+  }
+
+  .p-placeholder, .p-multiselect-label {
+    color: #969696 !important;
+    font-size: 12px !important;
+    display: flex;
+    align-items: center;
+    font-family: fontMed !important;
+  }
+
   .p-icon {
     display: none;
   }
+
+  .p-multiselect-label{
+    gap: 7px;
+  }
+  
+  .p-multiselect-token{
+    gap: 10px;
+    .p-multiselect-token-icon{
+      display: block;
+    }
+  }
 }
 
-.p-dropdown-panel {
+.p-dropdown-panel,
+.p-multiselect-panel {
   border-radius: 0 !important;
-  
+
   .p-dropdown-items-wrapper {
-    .p-dropdown-empty-message{
+    .p-dropdown-empty-message {
       font-size: 13px !important;
     }
     &::-webkit-scrollbar-thumb {
@@ -2212,6 +2276,96 @@
     // &.country_option{
     //   width: 400px !important;
     // }
+  }
+
+  .p-multiselect-header {
+    gap: 10px;
+    padding: 7px 12px;
+
+    .p-checkbox {
+      .p-checkbox-box {
+        background-color: $light2;
+        box-shadow: none !important;
+
+        &.p-highlight{
+          background-color: $main !important;
+        }
+      }
+    }
+
+
+    .p-multiselect-filter-container {
+      position: relative;
+      
+      .p-multiselect-filter-icon {
+        position: absolute;
+        top: calc(50% + 1px);
+        transform: translateY(-50%);
+        @include dir-left(unset);
+        @include dir-right(12px);
+        color: $dark4;
+        font-size: 13px !important;
+        cursor: pointer;
+        pointer-events: none;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+      }
+
+      .p-multiselect-filter {
+        padding: 7px 0 !important;
+        @include dir-padding-left(12px !important);
+        height: 40px;
+        border-radius: 0;
+      }
+    }
+
+    .p-multiselect-close{
+      display: none;
+    }
+
+    .p-icon, .p-multiselect-close-icon{
+      max-width: 12px;
+      font-size: 12px;
+    }
+  }
+
+  .p-multiselect-items {
+    padding: 0 !important;
+
+    .p-multiselect-empty-message {
+      font-size: 13px !important;
+    }
+
+    .p-multiselect-item {
+      font-family: fontMed !important;
+      font-size: 13px;
+      gap: 10px;
+      margin-bottom: 3px;
+      transition: $main-transition;
+
+      &.p-highlight, &:hover {
+        background-color: rgba($color: $light2, $alpha: 1) !important;
+        color: $main !important;
+        .p-checkbox {
+          .p-checkbox-box {
+            background-color: $light3;
+          }
+        }
+      }
+
+      .p-checkbox {
+        .p-checkbox-box {
+          background-color: $light2;
+          box-shadow: none !important;
+
+          &.p-highlight{
+            background-color: $main !important;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -2506,8 +2660,7 @@
   }
 
   &.blue {
-
-    .check{
+    .check {
       background-color: $light3;
       border-color: $light3;
     }
@@ -3062,7 +3215,7 @@
     padding-bottom: 15px !important;
     .p-dialog-title {
       font-size: 16px;
-      color: #484D45;
+      color: #484d45;
       // font-family: fontDemi;
       font-weight: 500;
     }
@@ -3075,7 +3228,7 @@
       background-color: $red3;
       @include circle(26px);
 
-      .p-icon{
+      .p-icon {
         max-width: 12px !important;
       }
     }
@@ -3183,10 +3336,15 @@
 /********************* Prime paginator *********************/
 
 /********************* Prime paginator *********************/
-.p-paginator-bottom{
+.p-paginator-bottom {
   padding: 7px 0;
 
-  :where(.p-paginator-first, .p-paginator-prev, .p-paginator-next, .p-paginator-last) {
+  :where(
+      .p-paginator-first,
+      .p-paginator-prev,
+      .p-paginator-next,
+      .p-paginator-last
+    ) {
     #{$rtl} & {
       transform: scalex(-1);
     }
@@ -3213,7 +3371,7 @@
     background-color: $white;
     margin-inline: 5px;
 
-    .p-paginator-icon{
+    .p-paginator-icon {
       max-width: 13px;
     }
 

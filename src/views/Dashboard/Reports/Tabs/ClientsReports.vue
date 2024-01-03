@@ -1,7 +1,7 @@
 <template>
     <!--***** Current Orders *****-->
     <div class="report_products mt-4">
-        <h3 class="fs15 c-black mb-4">العملاء (30)</h3>
+        <h3 class="fs15 c-black mb-4">{{ $t('reports.clients') }} (30)</h3>
         <DataTable :columns="columns" :products="clients" :loading="loading"
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
@@ -26,32 +26,7 @@ const { response } = responseApi();
 const loading = ref(false);
 
 // clients
-const clients = ref([
-    {
-        "id": 44,
-        "name": "Lila Wehner",
-        "full_phone": "CK5111111143",
-        "selling_count": 2,
-        "total": 6112.18,
-        "currency": "ر.س "
-    },
-    {
-        "id": 61,
-        "name": "Vada Armstrong",
-        "full_phone": "SH5111111160",
-        "selling_count": 1,
-        "total": 7776.47,
-        "currency": "ر.س "
-    },
-    {
-        "id": 99,
-        "name": "Mrs. Lorna Moen DDS",
-        "full_phone": "HU5111111198",
-        "selling_count": 1,
-        "total": 7009.18,
-        "currency": "ر.س "
-    }
-]);
+const clients = ref([]);
 
 // config
 const config = {
@@ -62,23 +37,23 @@ const config = {
 const columns = ref([
     {
         field: 'id',
-        header: i18n.global.t('table.products.number')
+        header: i18n.global.t('table.clients.number')
     },
     {
         field: ['image', 'name'],
-        header: 'اسم العميل'
+        header: i18n.global.t('table.clients.name')
     },
     {
         field: ['total', 'currency'],
-        header: 'اجمالي المبلغ'
+        header: i18n.global.t('table.clients.total')
     },
     {
         field: 'selling_count',
-        header: 'عدد مرات الشراء'
+        header: i18n.global.t('table.clients.selling_count')
     },
     {
         field: 'full_phone',
-        header: 'رقم الجوال'
+        header: i18n.global.t('table.clients.full_phone')
     }
 ]);
 
@@ -105,7 +80,7 @@ const getData = async () => {
 /******************* Mounted *******************/
 
 onMounted(async () => {
-    // await getData();
+    await getData();
 });
 
 </script>

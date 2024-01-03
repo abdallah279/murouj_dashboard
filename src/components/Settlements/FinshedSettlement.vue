@@ -1,5 +1,13 @@
 <template>
-    <OrderCards :requests="requests" v-if="!loading" />
+    <div v-if="!loading">
+        <OrderCards :requests="requests" v-if="requests.length" />
+
+        <div class="no-data" v-if="!requests.length">
+            <img src="@/assets/imgs/no_data.png" alt="" class="no-data-img">
+            <div class="no-data-text">{{ $t('noData.requests') }}</div>
+        </div>
+    </div>
+
 
     <OrderCardSkeleton v-if="loading" />
 </template>
@@ -25,24 +33,7 @@ const config = {
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 };
 
-const requests = ref([
-    {
-        "id": 4,
-        "number": "20234",
-        "created_at": "منذ 6 ساعات",
-        "amount": 17600.92,
-        "status": "انتظار الموافقة",
-        "currency": "ر.س "
-    },
-    {
-        "id": 4,
-        "number": "20234",
-        "created_at": "منذ 6 ساعات",
-        "amount": 17600.92,
-        "status": "انتظار الموافقة",
-        "currency": "ر.س "
-    },
-]);
+const requests = ref([]);
 
 /******************* Provide && Inject *******************/
 
@@ -65,7 +56,7 @@ const getData = async () => {
 
 /******************* Mounted *******************/
 onMounted(async () => {
-    // await getData();
+    await getData();
 });
 
 </script>

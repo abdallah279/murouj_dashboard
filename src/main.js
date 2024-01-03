@@ -23,7 +23,7 @@ import Uploader from 'vue-media-upload';
 
 // Add BaseUrl
 import axios from "axios";
-axios.defaults.baseURL = "https://murouj.com/api/";
+axios.defaults.baseURL = "https://murouj.aait-sa.com/api/";
 axios.defaults.headers.lang = localStorage.getItem("lang") || "ar";
 
 // Add fontawesome

@@ -33,6 +33,8 @@
     "products": "Products",
     "ourProducts": "Our products",
     "ProvideOrders": "Orders provide products",
+    "createProvideOrders": "Create Orders provide products",
+    "addingProducts": "Add products to the order",
     "supervisors": "supervisors",
     "addSupervisors": "add supervisors",
     "editSupervisors": "edit supervisors",
@@ -65,6 +67,7 @@
     "createAccount": "Create Account",
     "changePhone": "Change Phone",
     "code": "Verification Code",
+    "activeAccount": "Active Account",
     "forgetPass": "Restore Password",
     "changePassword": "Change Password",
     "purchaseOrders": "Purchase Orders",
@@ -101,6 +104,8 @@
       "price": "Price",
       "quantity": "Count in Store And Status",
       "category": "category",
+      "count_selling": "Number of sales",
+      "total_selling": "Total sale of the product",
       "detailes": "product Detailes",
       "btn": "Request provide product"
     },
@@ -128,6 +133,19 @@
       "vat": "Vat amount",
       "total": "total",
       "date": "date"
+    },
+    "clients": {
+      "number": "Client number",
+      "name": "Client name",
+      "full_phone": "Client phone",
+      "total": "Total amount",
+      "selling_count": "Number of purchases"
+    },
+    "supervisors": {
+      "number": "Supervisor number",
+      "name": "supervisor name",
+      "time": "Time",
+      "operation": "operation"
     }
   },
   "cart": {
@@ -171,6 +189,36 @@
       "orderDate": "Order Date",
       "orderStatus": "Status",
       "currency": "RS"
+    }
+  },
+  "addProvideProducts": {
+    "form":{
+      "type":{
+        "text":" Request type",
+        "placeholder":" Please select Request type"
+      },
+      "quantity":{
+        "text": " Quantity type",
+        "placeholder": "Please select Quantity type"
+      },
+      "sub_category":{
+        "text":" Sub category",
+        "placeholder":" Please select sub category"
+      },
+      "products":{
+        "text":" Products",
+        "placeholder":" Please select Products"
+      },
+      "duration":{
+        "text":" Duration",
+        "placeholder":" Please Select Duration",
+        "hours":" hours"
+      },
+      "receving_time":{
+        "text":" Receiving time",
+        "placeholder":" Please Select Receiving time"
+      },
+      "btn":" Send Request"
     }
   },
   "orderDetailes": {
@@ -242,7 +290,8 @@
     "cart": "Cart is empty",
     "orderProduct": "The products you requested are no longer available",
     "productRate": "No reviews for this product",
-    "invoices": "No invoices"
+    "invoices": "No invoices",
+    "requests": "Not Found settlement requests"
   },
   "loginForm": {
     "login": "Login",
@@ -410,11 +459,28 @@
   },
   "financails": {
     "financails": "Financial",
+    "financailDesc": "View financial statistics of your orders",
     "totalOrders": "Total orders",
     "totalCommission": "Total commission",
     "totalVat": "Total value added",
     "financialDues": "Due to you",
     "settlementRequest": "Settlement request"
+  },
+  "reports":{
+    "reports": "Reports",
+    "tabs":{
+      "orders":"orders",
+      "products":"products",
+      "clients":"clients",
+      "supervisors":"supervisors"
+    },
+    "orders":{
+      "current": "current orders",
+      "finished": "Finished orders",
+      "canceled": "canceled Orders"
+    },
+    "products": "Best selling products",
+    "clients": "clients"
   },
   "modals": {
     "refuse": {

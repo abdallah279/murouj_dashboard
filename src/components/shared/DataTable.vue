@@ -1,7 +1,7 @@
 <template>
     <!--*********** Data Table ***********-->
-    <DataTable :class="styleTable" v-if="!loading" :value="products" removableSort :filters="filters" :paginator="paginator" :sortOrder="-1"
-        :rows="8">
+    <DataTable :class="styleTable" v-if="!loading" :value="products" removableSort :filters="filters" :paginator="paginator"
+        :sortOrder="-1" :rows="8">
 
         <!--*********** Empty Table Message ***********-->
         <template #empty>
@@ -17,15 +17,16 @@
                         :class="{ old_price: col.field[i - 1] == 'product_price_after_discount' || col.field[i - 1] == 'price_after_discount' }">
 
                         <!--*********** If Field Item Is Image ***********-->
-                        <img alt="image" :src="slotProps.data[fieldItem]" v-if="fieldItem == 'product_image' || fieldItem == 'image'"
-                            class="circle_img md" />
+                        <img alt="image" :src="slotProps.data[fieldItem]"
+                            v-if="fieldItem == 'product_image' || fieldItem == 'image'" class="circle_img md" />
 
                         <!--*********** If Field Item Is Text ***********-->
                         <span v-if="fieldItem !== 'product_image' && fieldItem !== 'image' && fieldItem !== 'currency'"
                             :class="{ line: col.field[i + 1] == 'line', currency: col.field[i + 1] == 'currency' }">
                             {{ slotProps.data[fieldItem] }}
                         </span>
-                        <span v-if="col.field.includes('currency')" class="me-1"> <b></b> {{ slotProps.data.currency }} </span>
+                        <span v-if="col.field.includes('currency')" class="me-1"> <b></b> {{ slotProps.data.currency }}
+                        </span>
                     </div>
                 </div>
             </template>
@@ -38,6 +39,38 @@
                 <router-link :to="routeTable.path + '/' + slotProps.data[routeTable.id]" class="table_link">
                     {{ routeTable.header }}
                 </router-link>
+            </template>
+        </Column>
+
+        <!--*********** Select ***********-->
+        <Column :field="selectTable.header" :header="selectTable.header" v-if="selectTable">
+            <template #body="">
+
+                <!--***** Filter Select *****-->
+                <div class="main-input filter mx-auto">
+
+                    <Dropdown v-model="quantityType" :placeholder="$t('table.filter.text')" :options="quantityTypes"
+                        optionLabel="name" class="input-me">
+                        <template #value="slotProps">
+                            <div v-if="slotProps.value" class="selected">
+                                <div>{{ slotProps.value.name }}</div>
+                            </div>
+                            <span v-else>
+                                {{ slotProps.placeholder }}
+                            </span>
+                        </template>
+                        <template #option="slotProps">
+                            <div class="option">
+                                <div>
+                                    {{ slotProps.option.name }}
+                                </div>
+                            </div>
+                        </template>
+                    </Dropdown>
+
+                    <i class="pi pi-angle-down main-icon"></i>
+
+                </div>
             </template>
         </Column>
 
@@ -60,8 +93,20 @@
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Skeleton from 'primevue/skeleton';
+import Dropdown from 'primevue/dropdown';
+import { onMounted, ref } from 'vue';
+import i18n from '@/i18n';
+import responseApi from '@/components/shared/ResponseApi.js';
+import axios from 'axios';
 
 /******************* Data *******************/
+
+// success response
+const { response } = responseApi();
+
+// Quantity Type
+const quantityType = ref('');
+const quantityTypes = ref([]);
 
 /******************* Provide && Inject *******************/
 
@@ -86,6 +131,9 @@ const props = defineProps({
     routeTable: {
         type: Object,
     },
+    selectTable: {
+        type: Object,
+    },
     paginator: {
         type: Boolean,
         default: true
@@ -98,11 +146,26 @@ const props = defineProps({
 
 /******************* Methods *******************/
 
+// get units
+const getUnits = async () => {
+    await axios.get('units').then(res => {
+        if (response(res) == "success") {
+            quantityTypes.value = res.data.data;
+        }
+    }).catch(err => console.log(err));
+}
+
 /******************* Computed *******************/
 
 /******************* Watch *******************/
 
 /******************* Mounted *******************/
+onMounted(async () => {
+    if(props.selectTable){
+        await getUnits();
+        console.log(quantityTypes.value);
+    }
+});
 
 </script>
 

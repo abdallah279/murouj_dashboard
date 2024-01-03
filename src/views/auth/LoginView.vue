@@ -160,6 +160,13 @@ const login = async () => {
                 });
 
             } else {
+                if (res.data.key == "needActive") {
+                    localStorage.setItem('activePhone', res.data.data.user.phone);
+                    localStorage.setItem('activeCountry_code', res.data.data.user.country_code);
+                    router.push({
+                        name: 'activeAccount'
+                    });
+                }
                 errorToast(res.data.msg);
             }
             loading.value = false;

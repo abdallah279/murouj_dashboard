@@ -54,28 +54,7 @@ const { response } = responseApi();
 const loading = ref(false);
 
 // notifications
-const notifications = ref([
-    {
-        id: 1,
-        created_at: '2022-01-01',
-        body: 'test'
-    },
-    {
-        id: 1,
-        created_at: '2022-01-01',
-        body: 'test'
-    },
-    {
-        id: 1,
-        created_at: '2022-01-01',
-        body: 'test'
-    },
-    {
-        id: 1,
-        created_at: '2022-01-01',
-        body: 'test'
-    },
-]);
+const notifications = ref([]);
 
 // Paginator
 const currentPage = ref(1);

@@ -1,0 +1,302 @@
+<template>
+    <form action="" class="card_style py-4 px-lg-4" ref="requestForm" @submit.prevent="createRequest">
+
+        <div class="row align-items-center position-relative gy-4">
+            <div class="col-lg-8">
+
+                <!-- Type -->
+                <div class="input-g">
+                    <label for="" class="main-label">{{ $t('addProvideProducts.form.type.text') }}</label>
+                    <div class="main-input">
+
+                        <Dropdown v-model="requestType" :placeholder="$t('addProvideProducts.form.type.placeholder')" :options="requestTypes"
+                            optionLabel="name" class="input-me">
+                            <template #value="slotProps">
+                                <div v-if="slotProps.value" class="selected">
+                                    <div>{{ slotProps.value.name }}</div>
+                                </div>
+                                <span v-else>
+                                    {{ slotProps.placeholder }}
+                                </span>
+                            </template>
+                            <template #option="slotProps">
+                                <div class="option">
+                                    <div>
+                                        {{ slotProps.option.name }}
+                                    </div>
+                                </div>
+                            </template>
+                        </Dropdown>
+
+                        <i class="pi pi-angle-down main-icon"></i>
+
+                    </div>
+                </div>
+
+                <!-- quantity Types -->
+                <div class="input-g">
+                    <label for="" class="main-label">{{ $t('addProvideProducts.form.quantity.text') }}</label>
+                    <div class="main-input">
+
+                        <Dropdown v-model="quantityType" :placeholder="$t('addProvideProducts.form.quantity.placeholder')" :options="quantityTypes" optionLabel="name"
+                            class="input-me">
+                            <template #value="slotProps">
+                                <div v-if="slotProps.value" class="selected">
+                                    {{ slotProps.value.name }}
+                                </div>
+                                <span v-else>
+                                    {{ slotProps.placeholder }}
+                                </span>
+                            </template>
+                            <template #option="slotProps">
+                                <div class="option">
+                                    {{ slotProps.option.name }}
+                                </div>
+                            </template>
+                        </Dropdown>
+
+                        <i class="pi pi-angle-down main-icon"></i>
+
+                    </div>
+                </div>
+
+                <!-- Sub Category -->
+                <div class="input-g">
+                    <label for="" class="main-label">{{ $t('addProvideProducts.form.sub_category.text') }}</label>
+                    <div class="main-input">
+
+                        <Dropdown v-model="subCategory" :placeholder="$t('addProvideProducts.form.sub_category.placeholder')" :options="subCategories" optionLabel="name"
+                            class="input-me">
+                            <template #value="slotProps">
+                                <div v-if="slotProps.value" class="selected">
+                                    {{ slotProps.value.name }}
+                                </div>
+                                <span v-else>
+                                    {{ slotProps.placeholder }}
+                                </span>
+                            </template>
+                            <template #option="slotProps">
+                                <div class="option">
+                                    {{ slotProps.option.name }}
+                                </div>
+                            </template>
+                        </Dropdown>
+
+                        <i class="pi pi-angle-down main-icon"></i>
+
+                    </div>
+                </div>
+
+                <!-- Products -->
+                <div class="input-g">
+                    <label for="" class="main-label">{{ $t('addProvideProducts.form.products.text') }}</label>
+                    <div class="main-input">
+                        <router-link to="/addingProducts" class="input-me d-flex align-items-center fs13">{{ $t('addProvideProducts.form.products.placeholder') }}</router-link>
+                        <i class="pi pi-angle-left main-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Duration -->
+                <div class="input-g">
+                    <label for="" class="main-label">{{ $t('addProvideProducts.form.duration.text') }}</label>
+                    <div class="main-input">
+
+                        <Dropdown v-model="duration" :placeholder="$t('addProvideProducts.form.duration.placeholder')" :options="durations" optionLabel="name"
+                            class="input-me">
+                            <template #value="slotProps">
+                                <div v-if="slotProps.value" class="selected">
+                                    {{ slotProps.value.hours_duration }} {{ $t('addProvideProducts.form.duration.hours') }}
+                                </div>
+                                <span v-else>
+                                    {{ slotProps.placeholder }}
+                                </span>
+                            </template>
+                            <template #option="slotProps">
+                                <div class="option">
+                                    {{ slotProps.option.hours_duration }} {{ $t('addProvideProducts.form.duration.hours') }}
+                                </div>
+                            </template>
+                        </Dropdown>
+
+                        <i class="pi pi-angle-down main-icon"></i>
+
+                    </div>
+                </div>
+
+                <!-- Received Time -->
+                <div class="input-g">
+                    <label for="" class="main-label">{{ $t('addProvideProducts.form.receving_time.text') }} </label>
+                    <div class="main-input">
+                        <Calendar v-model="date" hourFormat="12" showTime :placeholder="$t('addProvideProducts.form.receving_time.placeholder')"
+                            class="input-me" />
+                        <i class="pi pi-clock main-icon"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="main-btn mt-3 light_op up lg" :disabled="loading">
+                    <span v-if="!loading">
+                        {{ $t('addProvideProducts.form.btn') }}
+                    </span>
+                    <div v-if="loading">
+                        {{ $t('formBtns.sendLoading') }}
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    </div>
+                </button>
+
+            </div>
+        </div>
+    </form>
+
+    <!-- Done Modal -->
+    <Dialog id="done" class="xl" v-model:visible="done" modal>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="right_sec">
+                    <img src="@/assets/imgs/right_img.gif" alt="" class="right_img mx-auto">
+                    <p class="fs14 c-black text-center mb-4">{{ $t('modals.done.editAccount') }}</p>
+                    <div class="buttons justify-content-center">
+                        <router-link to="/" class="main-btn modal_btn up rounded-0">
+                            {{ $t('modals.done.btn') }}
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Dialog>
+
+</template>
+
+<script setup>
+/******************* Import *******************/
+
+import { onMounted, ref } from "vue";
+import axios from 'axios';
+import Dropdown from 'primevue/dropdown';
+import toastMsg from '@/components/shared/Toaster';
+import Dialog from 'primevue/dialog';
+import responseApi from '@/components/shared/ResponseApi.js';
+import Calendar from 'primevue/calendar';
+
+/******************* Data *******************/
+
+// success response
+const { response } = responseApi();
+
+// Toast
+const { successToast, errorToast } = toastMsg();
+
+// Forms Ref
+const requestForm = ref(null);
+
+// requestType
+const requestType = ref('');
+const requestTypes = ref([]);
+
+// Quantity Type
+const quantityType = ref('');
+const quantityTypes = ref([]);
+
+// subCategory
+const subCategory = ref('');
+const subCategories = ref([
+    { name: 'مخبوزات', value: 1 },
+    { name: 'مقرمشات', value: 2 },
+]);
+
+// duration
+const duration = ref('');
+const durations = ref([]);
+
+// Date
+const date = ref('');
+
+// loading
+const loading = ref(false);
+
+// config
+const config = {
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+};
+
+// Modal
+const done = ref(false);
+
+/******************* Provide && Inject *******************/
+
+/******************* Props *******************/
+
+/******************* Methods *******************/
+
+// get Types
+const getTypes = async () => {
+    await axios.get('product-request-types').then(res => {
+        if (response(res) == "success") {
+            requestTypes.value = res.data.data;
+        }
+    }).catch(err => console.log(err));
+}
+
+// get Durations
+const getDurations = async () => {
+    await axios.get('product-request-durations').then(res => {
+        if (response(res) == "success") {
+            durations.value = res.data.data;
+        }
+    }).catch(err => console.log(err));
+}
+
+// get units
+const getUnits = async () => {
+    await axios.get('units').then(res => {
+        if (response(res) == "success") {
+            quantityTypes.value = res.data.data;
+        }
+    }).catch(err => console.log(err));
+}
+
+// createRequest Function
+const createRequest = async () => {
+    loading.value = true;
+    const fd = new FormData(editAccountForm.value);
+    fd.append('country_code', selectedCountry.value.key);
+    fd.append('country_id', country.value.id);
+    fd.append('city_id', city.value.id);
+    fd.append('lat', addressLat.value);
+    fd.append('lng', addressLng.value);
+
+    if (images.value[0]) {
+        if (images.value[0].file) {
+            fd.append('id_image', images.value[0].file);
+        }
+    }
+    if (images2.value[0]) {
+        if (images2.value[0].file) {
+            fd.append('commercial_image', images2.value[0].file);
+        }
+    }
+
+    await axios.post('providers/update-profile?_method=put', fd, config).then(res => {
+        if (response(res) == "success") {
+            done.value = true;
+        } else {
+            errorToast(res.data.msg);
+        }
+        loading.value = false;
+    }).catch(err => console.log(err));
+
+}
+
+/******************* Computed *******************/
+
+/******************* Watch *******************/
+
+/******************* Mounted *******************/
+onMounted(async () => {
+    await getTypes();
+    await getDurations();
+    await getUnits();
+});
+
+</script>
+
+<style></style>

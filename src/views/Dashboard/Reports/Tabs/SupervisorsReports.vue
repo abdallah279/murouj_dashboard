@@ -1,7 +1,7 @@
 <template>
     <!--***** Current Orders *****-->
     <div class="report_products mt-4">
-        <h3 class="fs15 c-black mb-4">المشرفين (30)</h3>
+        <h3 class="fs15 c-black mb-4">{{ $t('reports.tabs.supervisors') }} (30)</h3>
         <DataTable :columns="columns" :products="supervisors" :loading="loading" :tableSkeleton="new Array(columns.length)">
         </DataTable>
     </div>
@@ -25,26 +25,7 @@ const { response } = responseApi();
 const loading = ref(false);
 
 // supervisors
-const supervisors = ref([
-    {
-        "id": 3,
-        "admin_name": "mohamed",
-        "operation": "المةافقة على طلب الارجاع رقم 1234",
-        "date_and_time": "2023/11/06 - 02:16 am"
-    },
-    {
-        "id": 4,
-        "admin_name": "osama",
-        "operation": "تغيير حالة الطلب رقم 12345",
-        "date_and_time": "2023/10/08 - 02:16 am"
-    },
-    {
-        "id": 2,
-        "admin_name": "admed",
-        "operation": "رفض طلب الارجاع رقم 1234",
-        "date_and_time": "2023/08/06 - 02:16 am"
-    }
-]);
+const supervisors = ref([]);
 
 // config
 const config = {
@@ -55,19 +36,19 @@ const config = {
 const columns = ref([
     {
         field: 'id',
-        header: i18n.global.t('table.products.number')
+        header: i18n.global.t('table.supervisors.number')
     },
     {
         field: ['image', 'admin_name'],
-        header: 'اسم المشرف'
+        header: i18n.global.t('table.supervisors.name')
     },
     {
         field: 'date_and_time',
-        header: 'الوقت'
+        header: i18n.global.t('table.supervisors.time')
     },
     {
         field: 'operation',
-        header: 'العملية'
+        header: i18n.global.t('table.supervisors.operation')
     }
 ]);
 
@@ -94,7 +75,7 @@ const getData = async () => {
 /******************* Mounted *******************/
 
 onMounted(async () => {
-    // await getData();
+    await getData();
 });
 
 </script>

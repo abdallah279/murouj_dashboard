@@ -37,7 +37,7 @@
 
             </div>
         </div>
-        <router-link to="/" class="main-btn up">{{ $t('table.provideProducts.btn') }}</router-link>
+        <router-link to="/createProvideOrders" class="main-btn up">{{ $t('table.provideProducts.btn') }}</router-link>
 
     </div>
 
