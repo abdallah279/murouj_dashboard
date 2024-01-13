@@ -256,7 +256,6 @@
 /******************* Import *******************/
 import { computed, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-import PageHeader from '@/components/shared/PageHeader.vue';
 import OrderCard from "@/components/Orders/OrderProduct.vue";
 import OrderProductSkeleton from "@/components/Orders/OrderProductSkeleton.vue";
 import Image from 'primevue/image';

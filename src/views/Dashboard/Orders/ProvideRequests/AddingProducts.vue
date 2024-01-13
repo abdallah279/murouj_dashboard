@@ -4,10 +4,10 @@
         <div class="page_filter">
 
             <!--***** Filter Products *****-->
-            <div class="main-input w350">
+            <div class="main-input w300">
 
-                <MultiSelect v-model="productSelected" :options="products" filter optionLabel="product_name"
-                    :placeholder="$t('table.filter.text')" display="chip" class="w-100 h50" />
+                <MultiSelect v-model="productSelected" :options="products" filter @change="funcMe($event)" optionLabel="product_name"
+                    :placeholder="$t('table.filter.product')" display="chip" class="w-100 h50" />
                 <i class="pi pi-angle-down main-icon"></i>
 
             </div>
@@ -16,15 +16,19 @@
     </div>
 
     <!--***** DataTable *****-->
-    <DataTable :columns="columns" :products="productSelected" :loading="loading" :selectTable="selectTable"
+    <DataTable @updateType="updateType" @updateProduct="updateProductQuantity" :columns="columns"
+        :products="productSelected" :loading="loading" :selectTable="selectTable" :quantity="true"
         :tableSkeleton="new Array(columns.length)">
     </DataTable>
+
+    <button class="main-btn up login lg mt-4" @click="setProducts">{{ $t('formBtns.confirm') }}</button>
 </template>
 
 <script setup>
 /******************* Import *******************/
 import { onMounted, ref } from "vue";
-import DataTable from "@/components/shared/DataTable.vue";
+import { useRouter } from 'vue-router'; 
+import DataTable from "@/components/shared/DataTable/DataTable.vue";
 import responseApi from '@/components/shared/ResponseApi.js';
 import MultiSelect from 'primevue/multiselect';
 import i18n from "@/i18n";
@@ -36,6 +40,9 @@ const { response } = responseApi();
 
 // loading
 const loading = ref(false);
+
+// router
+const router = useRouter();
 
 // config
 const config = {
@@ -66,12 +73,15 @@ const columns = ref([
 const productSelected = ref([]);
 const products = ref([]);
 
-// route Table
-const selectTable = ref({
-    header: 'نوع الكمية',
-    path: 'productDetailes',
-    id: 'product_id'
-})
+// choosed product
+const choosedProducts = ref([]);
+
+// finished products
+const finishedProducts = ref([]);
+
+// select Table
+const selectTable = ref({ header: i18n.global.t('table.products.select') });
+
 /******************* Provide && Inject *******************/
 
 /******************* Props *******************/
@@ -86,6 +96,44 @@ const getData = async () => {
         }
         loading.value = false;
     }).catch(err => console.log(err));
+}
+
+// updateProductQuantity
+const updateProductQuantity = (data) => {
+    let product = choosedProducts.value.find(product => product.id == data.id);
+    if (product) {
+        choosedProducts.value[choosedProducts.value.indexOf(product)].qty = data.qty
+    } else {
+        choosedProducts.value.push({ ...data, unit_id: 1 })
+    }
+}
+
+// updateType
+const updateType = (data) => {
+    let product = choosedProducts.value.find(product => product.id == data.id);
+    if (product) {
+        choosedProducts.value[choosedProducts.value.indexOf(product)].unit_id = data.unit_id
+    } else {
+        choosedProducts.value.push({ ...data, qty: 1 })
+    }
+}
+
+// setProducts
+const setProducts = () => {
+    finishedProducts.value = [];
+    productSelected.value.forEach(productS => {
+        let founded = choosedProducts.value.find(product => product.id == productS.product_id);
+        if (founded) {
+            finishedProducts.value.push(founded)
+        }
+    })
+    localStorage.setItem('products', JSON.stringify(finishedProducts.value));
+    router.push({ name: 'createProvideOrders' });
+}
+
+// funcMe
+const funcMe = (event) => {
+    console.log(event.value);
 }
 
 /******************* Computed *******************/

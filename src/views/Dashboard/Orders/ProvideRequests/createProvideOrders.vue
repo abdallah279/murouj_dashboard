@@ -9,8 +9,8 @@
                     <label for="" class="main-label">{{ $t('addProvideProducts.form.type.text') }}</label>
                     <div class="main-input">
 
-                        <Dropdown v-model="requestType" :placeholder="$t('addProvideProducts.form.type.placeholder')" :options="requestTypes"
-                            optionLabel="name" class="input-me">
+                        <Dropdown v-model="requestType" :placeholder="$t('addProvideProducts.form.type.placeholder')"
+                            :options="requestTypes" optionLabel="name" class="input-me">
                             <template #value="slotProps">
                                 <div v-if="slotProps.value" class="selected">
                                     <div>{{ slotProps.value.name }}</div>
@@ -33,13 +33,13 @@
                     </div>
                 </div>
 
-                <!-- quantity Types -->
+                <!-- Unit Types -->
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('addProvideProducts.form.quantity.text') }}</label>
                     <div class="main-input">
 
-                        <Dropdown v-model="quantityType" :placeholder="$t('addProvideProducts.form.quantity.placeholder')" :options="quantityTypes" optionLabel="name"
-                            class="input-me">
+                        <Dropdown v-model="quantityType" :placeholder="$t('addProvideProducts.form.quantity.placeholder')"
+                            :options="quantityTypes" optionLabel="name" class="input-me">
                             <template #value="slotProps">
                                 <div v-if="slotProps.value" class="selected">
                                     {{ slotProps.value.name }}
@@ -65,8 +65,9 @@
                     <label for="" class="main-label">{{ $t('addProvideProducts.form.sub_category.text') }}</label>
                     <div class="main-input">
 
-                        <Dropdown v-model="subCategory" :placeholder="$t('addProvideProducts.form.sub_category.placeholder')" :options="subCategories" optionLabel="name"
-                            class="input-me">
+                        <Dropdown v-model="subCategory"
+                            :placeholder="$t('addProvideProducts.form.sub_category.placeholder')" :options="subCategories"
+                            optionLabel="name" class="input-me">
                             <template #value="slotProps">
                                 <div v-if="slotProps.value" class="selected">
                                     {{ slotProps.value.name }}
@@ -91,7 +92,8 @@
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('addProvideProducts.form.products.text') }}</label>
                     <div class="main-input">
-                        <router-link to="/addingProducts" class="input-me d-flex align-items-center fs13">{{ $t('addProvideProducts.form.products.placeholder') }}</router-link>
+                        <router-link to="/addingProducts" class="input-me d-flex align-items-center fs13">{{
+                            $t('addProvideProducts.form.products.placeholder') }}</router-link>
                         <i class="pi pi-angle-left main-icon"></i>
                     </div>
                 </div>
@@ -101,11 +103,12 @@
                     <label for="" class="main-label">{{ $t('addProvideProducts.form.duration.text') }}</label>
                     <div class="main-input">
 
-                        <Dropdown v-model="duration" :placeholder="$t('addProvideProducts.form.duration.placeholder')" :options="durations" optionLabel="name"
-                            class="input-me">
+                        <Dropdown v-model="duration" :placeholder="$t('addProvideProducts.form.duration.placeholder')"
+                            :options="durations" optionLabel="name" class="input-me">
                             <template #value="slotProps">
                                 <div v-if="slotProps.value" class="selected">
-                                    {{ slotProps.value.hours_duration }} {{ $t('addProvideProducts.form.duration.hours') }}
+                                    {{ slotProps.value.hours_duration }} {{ $t('addProvideProducts.form.duration.hours')
+                                    }}
                                 </div>
                                 <span v-else>
                                     {{ slotProps.placeholder }}
@@ -113,7 +116,8 @@
                             </template>
                             <template #option="slotProps">
                                 <div class="option">
-                                    {{ slotProps.option.hours_duration }} {{ $t('addProvideProducts.form.duration.hours') }}
+                                    {{ slotProps.option.hours_duration }} {{
+                                        $t('addProvideProducts.form.duration.hours') }}
                                 </div>
                             </template>
                         </Dropdown>
@@ -127,8 +131,8 @@
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('addProvideProducts.form.receving_time.text') }} </label>
                     <div class="main-input">
-                        <Calendar v-model="date" hourFormat="12" showTime :placeholder="$t('addProvideProducts.form.receving_time.placeholder')"
-                            class="input-me" />
+                        <Calendar v-model="date" hourFormat="12" showTime dateFormat="dd-mm-yy "
+                            :placeholder="$t('addProvideProducts.form.receving_time.placeholder')" class="input-me" />
                         <i class="pi pi-clock main-icon"></i>
                     </div>
                 </div>
@@ -153,17 +157,16 @@
             <div class="col-lg-10 mx-auto">
                 <div class="right_sec">
                     <img src="@/assets/imgs/right_img.gif" alt="" class="right_img mx-auto">
-                    <p class="fs14 c-black text-center mb-4">{{ $t('modals.done.editAccount') }}</p>
+                    <p class="fs14 c-black text-center mb-4">{{ doneText }}</p>
                     <div class="buttons justify-content-center">
-                        <router-link to="/" class="main-btn modal_btn up rounded-0">
-                            {{ $t('modals.done.btn') }}
+                        <router-link to="/ProvideOrders" class="main-btn modal_btn up rounded-0">
+                            {{ $t('pagesTitle.ProvideOrders') }}
                         </router-link>
                     </div>
                 </div>
             </div>
         </div>
     </Dialog>
-
 </template>
 
 <script setup>
@@ -220,6 +223,7 @@ const config = {
 
 // Modal
 const done = ref(false);
+const doneText = ref('');
 
 /******************* Provide && Inject *******************/
 
@@ -254,30 +258,48 @@ const getUnits = async () => {
     }).catch(err => console.log(err));
 }
 
+// Formate Date Function
+const formateDate = () => {
+    let myDate = new Date(date.value);
+    let year = myDate.getFullYear();
+    let month = myDate.getMonth() + 1;
+    let day = myDate.getDate();
+    let hours = myDate.getHours();
+    let minutes = myDate.getMinutes();
+    let seconds = myDate.getSeconds();
+
+    day < 10 ? day = `0${day}` : false;
+    month < 10 ? month = `0${month}` : false;
+    hours < 10 ? hours = `0${hours}` : false;
+    minutes < 10 ? minutes = `0${minutes}` : false;
+    seconds < 10 ? seconds = `0${seconds}` : false;
+
+    let occasion_date = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+    return occasion_date;
+}
+
 // createRequest Function
 const createRequest = async () => {
     loading.value = true;
-    const fd = new FormData(editAccountForm.value);
-    fd.append('country_code', selectedCountry.value.key);
-    fd.append('country_id', country.value.id);
-    fd.append('city_id', city.value.id);
-    fd.append('lat', addressLat.value);
-    fd.append('lng', addressLng.value);
+    const fd = new FormData(requestForm.value);
+    fd.append('product_request_type_id', requestType.value.id);
+    // fd.append('unit_id', quantityType.value.id);
+    // fd.append('quantity', 5);
+    fd.append('sub_category_id', 1);
+    fd.append('product_request_duration_id', duration.value.id);
+    fd.append('receipt_date_time', formateDate());
+    fd.append('products', localStorage.getItem('products') ? localStorage.getItem('products') : '');
 
-    if (images.value[0]) {
-        if (images.value[0].file) {
-            fd.append('id_image', images.value[0].file);
-        }
-    }
-    if (images2.value[0]) {
-        if (images2.value[0].file) {
-            fd.append('commercial_image', images2.value[0].file);
-        }
-    }
-
-    await axios.post('providers/update-profile?_method=put', fd, config).then(res => {
+    await axios.post('providers/create-product-request', fd, config).then(res => {
         if (response(res) == "success") {
             done.value = true;
+            doneText.value = res.data.msg;
+            requestForm.value.reset();
+            duration.value = '';
+            requestType.value = '';
+            quantityType.value = '';
+            subCategory.value = '';
         } else {
             errorToast(res.data.msg);
         }

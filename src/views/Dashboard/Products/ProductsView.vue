@@ -51,7 +51,7 @@
 <script setup>
 /******************* Import *******************/
 import { onMounted, ref } from "vue";
-import DataTable from "@/components/shared/DataTable.vue";
+import DataTable from "@/components/shared/DataTable/DataTable.vue";
 import responseApi from '@/components/shared/ResponseApi.js';
 import Dropdown from 'primevue/dropdown';
 import i18n from "@/i18n";

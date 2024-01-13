@@ -79,7 +79,8 @@
     "newSettlement": "طلبات تسوية جديدة",
     "finshedSettlement": "طلبات تسوية منتهية",
     "settlementDetailes": "تفاصيل طلب تسوية",
-    "reports" : "التقارير"
+    "reports" : "التقارير",
+    "ProvideOrderDetailes": "تفاصيل طلب توفير المنتجات"
   },
   "sectionDesc": {
     "codeForm": "برجاء ادخال كود التفعيل المرسل إليك عبر الجوال",
@@ -96,7 +97,9 @@
     "filter": {
       "text": "ترتيب حسب",
       "option1": "الأحدث",
-      "option2": "الأقدم"
+      "option2": "الأقدم",
+      "product": "اختر المنتجات",
+      "type": "اختر النوع"
     },
     "products": {
       "number": "رقم المنتج",
@@ -107,6 +110,7 @@
       "count_selling": "عدد مرات البيع",
       "total_selling": "اجمالي بيع المنتج",
       "detailes": "تفاصيل المنتج",
+      "select": "نوع الكمية",
       "btn": "طلب توفير منتج"
     },
     "orders": {

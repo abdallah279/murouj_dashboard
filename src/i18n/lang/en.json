@@ -79,7 +79,8 @@
     "newSettlement": "New settlement requests",
     "finshedSettlement": "Finished settlement requests",
     "settlementDetailes": "Settlement request details",
-    "reports": "Reports"
+    "reports": "Reports",
+    "ProvideOrderDetailes": "Details of the request to provide products"
   },
   "sectionDesc": {
     "codeForm": "Please enter the activation code sent to you via mobile phone",
@@ -96,7 +97,9 @@
     "filter": {
       "text": "Sort By",
       "option1": "Latest",
-      "option2": "Oldest"
+      "option2": "Oldest",
+      "product": "choose products",
+      "type": "choose type"
     },
     "products": {
       "number": "Number",
@@ -107,6 +110,7 @@
       "count_selling": "Number of sales",
       "total_selling": "Total sale of the product",
       "detailes": "product Detailes",
+      "select": "Quantity type",
       "btn": "Request provide product"
     },
     "orders": {

@@ -166,6 +166,14 @@ const routes = [
         component: () => import("@/views/Dashboard/Orders/ProvideRequests/ProvideOrders.vue"),
       },
       {
+        path: "/provideOrdersDetailes/:id",
+        name: "provideOrdersDetailes",
+        meta: {
+          title: "pagesTitle.ProvideOrderDetailes",
+        },
+        component: () => import("@/views/Dashboard/Orders/ProvideRequests/ProvideOrderDetailes.vue"),
+      },
+      {
         path: "/createProvideOrders",
         name: "createProvideOrders",
         meta: {

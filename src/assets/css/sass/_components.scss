@@ -2037,6 +2037,19 @@
 
   &.filter {
     width: 150px;
+
+    &.sm{
+      width: 120px;
+
+      .input-me{
+        min-height: 45px;
+        padding: 0 9px;
+      }
+
+      .main-icon{
+        @include dir-right(9px);
+      }
+    }
   }
 }
 
@@ -2091,30 +2104,29 @@
 
   &.sec {
     background-color: #fff;
-    border-radius: 30px;
+    // border-radius: 30px;
     padding: 5px;
-    box-shadow: $card-shadow;
+    // box-shadow: $card-shadow;
     width: fit-content;
 
     input {
       color: $black;
-      width: 30px;
-
-      @media screen and (max-width: $screen-xs) {
-        font-size: 15px;
-        width: 30px;
-      }
+      @include circle(35px);
+      border: 1px solid $light2;
+      font-size: 13px;
+      font-family: fontDemi;
     }
     .btn-num {
       font-size: 13px !important;
       color: $white;
-      @include circle(28px);
+      @include circle(35px);
 
       &.minus {
-        color: $dark3;
-        background-color: $white;
+        color: $white;
+        background-color: #DB6666;
         box-shadow: $card-shadow !important;
       }
+      
     }
   }
 }

@@ -53,7 +53,7 @@ import i18n from "@/i18n";
 import HomeProfit from '@/components/Home/HomeProfit.vue';
 import HomeChart from '@/components/Home/HomeChart.vue';
 import responseApi from '@/components/shared/ResponseApi.js';
-import DataTable from "@/components/shared/DataTable.vue";
+import DataTable from "@/components/shared/DataTable/DataTable.vue";
 
 /******************* Data *******************/
 

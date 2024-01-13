@@ -15,7 +15,7 @@ import { onMounted, ref } from 'vue';
 import axios from 'axios';
 import i18n from "@/i18n";
 import responseApi from '@/components/shared/ResponseApi.js';
-import DataTable from "@/components/shared/DataTable.vue";
+import DataTable from "@/components/shared/DataTable/DataTable.vue";
 
 /******************* Data *******************/
 

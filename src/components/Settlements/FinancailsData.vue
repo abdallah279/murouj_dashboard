@@ -76,7 +76,7 @@ import { useRoute } from 'vue-router';
 import Skeleton from 'primevue/skeleton';
 import i18n from "@/i18n";
 import axios from "axios";
-import DataTable from "@/components/shared/DataTable.vue";
+import DataTable from "@/components/shared/DataTable/DataTable.vue";
 import responseApi from '@/components/shared/ResponseApi.js';
 import toastMsg from '@/components/shared/Toaster';
 
@@ -171,6 +171,8 @@ const settlementRequest = async () => {
     await axios.get('providers/settlement-request', config).then(res => {
         if (response(res) == "success") {
             successToast(res.data.msg);
+        } else{
+            errorToast(res.data.msg);
         }
         loadingBtn.value = false;
     }).catch(err => console.log(err));

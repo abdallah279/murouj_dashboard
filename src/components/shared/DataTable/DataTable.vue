@@ -43,34 +43,17 @@
         </Column>
 
         <!--*********** Select ***********-->
-        <Column :field="selectTable.header" :header="selectTable.header" v-if="selectTable">
-            <template #body="">
+        <Column :header="selectTable.header" v-if="selectTable" :id="`select_${selectTable.id}`">
+            <template #body="slotProps">
+                <DataTableSelect class="mx-auto" :productId="slotProps.data['product_id']" @updateType="updateType" />
+            </template>
+        </Column>
 
-                <!--***** Filter Select *****-->
-                <div class="main-input filter mx-auto">
-
-                    <Dropdown v-model="quantityType" :placeholder="$t('table.filter.text')" :options="quantityTypes"
-                        optionLabel="name" class="input-me">
-                        <template #value="slotProps">
-                            <div v-if="slotProps.value" class="selected">
-                                <div>{{ slotProps.value.name }}</div>
-                            </div>
-                            <span v-else>
-                                {{ slotProps.placeholder }}
-                            </span>
-                        </template>
-                        <template #option="slotProps">
-                            <div class="option">
-                                <div>
-                                    {{ slotProps.option.name }}
-                                </div>
-                            </div>
-                        </template>
-                    </Dropdown>
-
-                    <i class="pi pi-angle-down main-icon"></i>
-
-                </div>
+        <!--*********** quantity ***********-->
+        <Column v-if="quantity">
+            <template #body="slotProps">
+                <DataTableQuantity class="mx-auto" :productId="slotProps.data['product_id']"
+                    @updateProduct="updateProductQuantity" />
             </template>
         </Column>
 
@@ -93,22 +76,16 @@
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Skeleton from 'primevue/skeleton';
-import Dropdown from 'primevue/dropdown';
-import { onMounted, ref } from 'vue';
-import i18n from '@/i18n';
-import responseApi from '@/components/shared/ResponseApi.js';
-import axios from 'axios';
+import DataTableSelect from '@/components/shared/DataTable/DataTableSelect.vue';
+import DataTableQuantity from '@/components/shared/DataTable/DataTableQuantity.vue';
+import { onUpdated, watch } from 'vue';
 
 /******************* Data *******************/
 
-// success response
-const { response } = responseApi();
-
-// Quantity Type
-const quantityType = ref('');
-const quantityTypes = ref([]);
-
 /******************* Provide && Inject *******************/
+
+/******************* Emits *******************/
+const emit = defineEmits(['updateProduct', 'updateType']);
 
 /******************* Props *******************/
 const props = defineProps({
@@ -134,6 +111,10 @@ const props = defineProps({
     selectTable: {
         type: Object,
     },
+    quantity: {
+        type: Boolean,
+        default: false
+    },
     paginator: {
         type: Boolean,
         default: true
@@ -146,26 +127,40 @@ const props = defineProps({
 
 /******************* Methods *******************/
 
-// get units
-const getUnits = async () => {
-    await axios.get('units').then(res => {
-        if (response(res) == "success") {
-            quantityTypes.value = res.data.data;
-        }
-    }).catch(err => console.log(err));
+const updateProductQuantity = (data) => {
+    emit('updateProduct', data);
+}
+
+const updateType = (data) => {
+    emit('updateType', data);
 }
 
 /******************* Computed *******************/
 
 /******************* Watch *******************/
+// watch(props.columns, (newVal, oldVal) => {
+//     if(newVal){
+//         console.log(newVal, 'new');
+//         console.log(oldVal, 'old');
+//     }
+// })
+
+watch(() => props.products, (first, second) => {
+    console.log(
+        "Watch props.selected function called with args:",
+        first,
+        second
+    );
+
+
+});
 
 /******************* Mounted *******************/
-onMounted(async () => {
-    if(props.selectTable){
-        await getUnits();
-        console.log(quantityTypes.value);
-    }
-});
+// onUpdated(() => {
+//     if(props.columns){
+//         console.log(props.columns);
+//     }
+// })
 
 </script>
 

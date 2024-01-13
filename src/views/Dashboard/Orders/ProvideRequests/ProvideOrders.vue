@@ -50,7 +50,7 @@
 <script setup>
 /******************* Import *******************/
 import { onMounted, ref } from "vue";
-import DataTable from "@/components/shared/DataTable.vue";
+import DataTable from "@/components/shared/DataTable/DataTable.vue";
 import axios from "axios";
 import Dropdown from 'primevue/dropdown';
 import i18n from "@/i18n";
@@ -116,7 +116,7 @@ const orders = ref([]);
 // route Table
 const routeTable = ref({
     header: i18n.global.t('table.orders.detailes'),
-    path: 'orderDetailes',
+    path: 'provideOrdersDetailes',
     id: 'id'
 });
 
