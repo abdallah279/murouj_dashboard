@@ -82,6 +82,8 @@
 
                     </div>
 
+                    <!-- <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{route('orderDetailsInvoicePdf',['order_id' => $orderId,'provider_order_id' => $providerOrderId])}}" alt="QR Code"> -->
+
                     <img src="@/assets/imgs/icons/qr_code.png" alt="" class="qr_code">
 
                 </div>

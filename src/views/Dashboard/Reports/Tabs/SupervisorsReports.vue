@@ -1,7 +1,7 @@
 <template>
     <!--***** Current Orders *****-->
     <div class="report_products mt-4">
-        <h3 class="fs15 c-black mb-4">{{ $t('reports.tabs.supervisors') }} (30)</h3>
+        <h3 class="fs15 c-black mb-4">{{ $t('reports.tabs.supervisors') }} ({{ count }})</h3>
         <DataTable :columns="columns" :products="supervisors" :loading="loading" :tableSkeleton="new Array(columns.length)">
         </DataTable>
     </div>
@@ -27,6 +27,9 @@ const loading = ref(false);
 // supervisors
 const supervisors = ref([]);
 
+// count
+const count = ref(0);
+
 // config
 const config = {
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
@@ -39,7 +42,7 @@ const columns = ref([
         header: i18n.global.t('table.supervisors.number')
     },
     {
-        field: ['image', 'admin_name'],
+        field: ['image', 'admin_name'].toString(),
         header: i18n.global.t('table.supervisors.name')
     },
     {
@@ -63,6 +66,7 @@ const getData = async () => {
     await axios.get('providers/provider-admins-reports', config).then(res => {
         if (response(res) == "success") {
             supervisors.value = res.data.data.data;
+            count.value = supervisors.value.length;
         }
         loading.value = false;
     }).catch(err => console.log(err));

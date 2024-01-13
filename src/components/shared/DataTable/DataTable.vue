@@ -11,10 +11,10 @@
         <Column :field="col.field" :header="col.header" :sortable="true" v-for="col of columns" :key="col.field">
 
             <!--*********** If Field Is Array ***********-->
-            <template #body="slotProps" v-if="typeof col.field == 'object'">
+            <template #body="slotProps" v-if="typeof col.field.split(',') == 'object'">
                 <div class="d-flex-c gap-3">
-                    <div v-for="(fieldItem, i) of col.field" :key="fieldItem" class="col_div"
-                        :class="{ old_price: col.field[i - 1] == 'product_price_after_discount' || col.field[i - 1] == 'price_after_discount' }">
+                    <div v-for="(fieldItem, i) of col.field.split(',')" :key="fieldItem" class="col_div"
+                        :class="{ old_price: slotProps.data['has_discount'] && ( col.field.split(',')[i - 1] == 'product_price_after_discount' || col.field.split(',')[i - 1] == 'price_after_discount' )}">
 
                         <!--*********** If Field Item Is Image ***********-->
                         <img alt="image" :src="slotProps.data[fieldItem]"
@@ -22,10 +22,11 @@
 
                         <!--*********** If Field Item Is Text ***********-->
                         <span v-if="fieldItem !== 'product_image' && fieldItem !== 'image' && fieldItem !== 'currency'"
-                            :class="{ line: col.field[i + 1] == 'line', currency: col.field[i + 1] == 'currency' }">
+                            :class="{ line: col.field.split(',')[i + 1] == 'line', currency: col.field.split(',')[i + 1] == 'currency' }">
                             {{ slotProps.data[fieldItem] }}
                         </span>
-                        <span v-if="col.field.includes('currency')" class="me-1"> <b></b> {{ slotProps.data.currency }}
+                        <span v-if="col.field.split(',').includes('currency') && slotProps.data[fieldItem]" class="me-1">
+                            <b></b> {{ slotProps.data.currency }}
                         </span>
                     </div>
                 </div>
@@ -43,7 +44,7 @@
         </Column>
 
         <!--*********** Select ***********-->
-        <Column :header="selectTable.header" v-if="selectTable" :id="`select_${selectTable.id}`">
+        <Column :header="selectTable.header" v-if="selectTable">
             <template #body="slotProps">
                 <DataTableSelect class="mx-auto" :productId="slotProps.data['product_id']" @updateType="updateType" />
             </template>
@@ -138,30 +139,8 @@ const updateType = (data) => {
 /******************* Computed *******************/
 
 /******************* Watch *******************/
-// watch(props.columns, (newVal, oldVal) => {
-//     if(newVal){
-//         console.log(newVal, 'new');
-//         console.log(oldVal, 'old');
-//     }
-// })
-
-watch(() => props.products, (first, second) => {
-    console.log(
-        "Watch props.selected function called with args:",
-        first,
-        second
-    );
-
-
-});
 
 /******************* Mounted *******************/
-// onUpdated(() => {
-//     if(props.columns){
-//         console.log(props.columns);
-//     }
-// })
-
 </script>
 
 <style lang="scss"></style>

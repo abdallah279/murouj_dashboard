@@ -112,19 +112,19 @@ const columns = ref([
         header: i18n.global.t('table.orders.number')
     },
     {
-        field: ['products_price', 'currency'],
+        field: ['products_price', 'currency'].toString(),
         header: i18n.global.t('table.financials.purchases')
     },
     {
-        field: ['admin_commission', 'currency'],
+        field: ['admin_commission', 'currency'].toString(),
         header: i18n.global.t('table.financials.commission')
     },
     {
-        field: ['vat_amount', 'currency'],
+        field: ['vat_amount', 'currency'].toString(),
         header: i18n.global.t('table.financials.vat')
     },
     {
-        field: ['final_total', 'currency'],
+        field: ['final_total', 'currency'].toString(),
         header: i18n.global.t('table.financials.total')
     },
     {

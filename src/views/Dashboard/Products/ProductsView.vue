@@ -94,11 +94,11 @@ const columns = ref([
         header: i18n.global.t('table.products.number')
     },
     {
-        field: ['product_image', 'product_name'],
+        field: ['product_image', 'product_name'].toString(),
         header: i18n.global.t('table.products.name')
     },
     {
-        field: ['product_price_after_discount', 'product_price', 'currency'],
+        field: ['product_price_after_discount', 'product_price', 'currency'].toString(),
         header: i18n.global.t('table.products.price')
     },
     {
@@ -106,7 +106,7 @@ const columns = ref([
         header: i18n.global.t('table.products.category')
     },
     {
-        field: ['quantity', 'is_available', 'line'],
+        field: ['quantity', 'is_available', 'line'].toString(),
         header: i18n.global.t('table.products.quantity')
     }
 ]);

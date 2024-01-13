@@ -20,7 +20,7 @@
 
     <!--***** Current Orders *****-->
     <div class="current_orders mt-4">
-        <h3 class="fs15 c-black mb-4">{{ $t('reports.orders.current') }} (30)</h3>
+        <h3 class="fs15 c-black mb-4">{{ $t('reports.orders.current') }} ({{ currentCount }})</h3>
         <DataTable :columns="columns" :products="currentOrders" :loading="loading" :routeTable="routeTable"
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
@@ -28,7 +28,7 @@
 
     <!--***** Finished Orders *****-->
     <div class="finished_orders mt-4">
-        <h3 class="fs15 c-black mb-4">{{ $t('reports.orders.finished') }} (30)</h3>
+        <h3 class="fs15 c-black mb-4">{{ $t('reports.orders.finished') }} ({{ finishedCount }})</h3>
         <DataTable :columns="columns" :products="finishedOrders" :loading="loading" :routeTable="routeTable"
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
@@ -36,7 +36,7 @@
 
     <!--***** Cancelled Orders *****-->
     <div class="cancelled_orders mt-4">
-        <h3 class="fs15 c-black mb-4">{{ $t('reports.orders.canceled') }} (30)</h3>
+        <h3 class="fs15 c-black mb-4">{{ $t('reports.orders.canceled') }} ({{ cancelledCount }})</h3>
         <DataTable :columns="newColumns" :products="cancelledOrders" :loading="loading" :routeTable="routeTable"
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
@@ -73,12 +73,15 @@ const home = ref({
 
 // current
 const currentOrders = ref([]);
+const currentCount = ref(0);
 
 // finished
 const finishedOrders = ref([]);
+const finishedCount = ref(0);
 
 // cancelled
 const cancelledOrders = ref([]);
+const cancelledCount = ref(0);
 
 // config
 const config = {
@@ -92,7 +95,7 @@ const columns = ref([
         header: i18n.global.t('table.orders.number')
     },
     {
-        field: ['order_type', 'line'],
+        field: ['order_type', 'line'].toString(),
         header: i18n.global.t('table.orders.type')
     },
     {
@@ -104,11 +107,11 @@ const columns = ref([
         header: i18n.global.t('table.orders.time')
     },
     {
-        field: ['final_total', 'currency'],
+        field: ['final_total', 'currency'].toString(),
         header: i18n.global.t('table.orders.price')
     },
     {
-        field: ['status_text', 'line'],
+        field: ['status_text', 'line'].toString(),
         header: i18n.global.t('table.orders.status')
     }
 ]);
@@ -133,9 +136,15 @@ const getData = async () => {
             home.total_profit = res.data.data.total_profit;
             home.today_profit = res.data.data.today_profit;
             home.month_profit = res.data.data.month_profit;
+            home.currency = res.data.data.currency;
             currentOrders.value = res.data.data.current.data;
+            currentCount.value = currentOrders.value.length;
+            
             finishedOrders.value = res.data.data.finished.data;
+            finishedCount.value = finishedOrders.value.length;
+            
             cancelledOrders.value = res.data.data.cancelled.data;
+            cancelledCount.value = cancelledOrders.value.length;
         }
         loading.value = false;
     }).catch(err => console.log(err));

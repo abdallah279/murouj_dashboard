@@ -81,14 +81,14 @@ onMounted(async () => {
     await getUnits();
 });
 
-onUpdated(() => {
-    console.log('updated');
-});
+// onUpdated(() => {
+//     console.log('updated');
+// });
 
-onUnmounted(() => {
-    console.log('unmounted');
-    quantityType.value = '';
-});
+// onUnmounted(() => {
+//     console.log('unmounted');
+//     quantityType.value = '';
+// });
 
 </script>
 

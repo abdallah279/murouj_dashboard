@@ -1,7 +1,7 @@
 <template>
     <!--***** Current Orders *****-->
     <div class="report_products mt-4">
-        <h3 class="fs15 c-black mb-4">{{ $t('reports.products') }} (30)</h3>
+        <h3 class="fs15 c-black mb-4">{{ $t('reports.products') }} ({{ count }})</h3>
         <DataTable :columns="columns" :products="products" :loading="loading" :routeTable="routeTable"
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
@@ -28,6 +28,9 @@ const loading = ref(false);
 // products
 const products = ref([]);
 
+// count
+const count = ref(0);
+
 // config
 const config = {
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
@@ -40,11 +43,11 @@ const columns = ref([
         header: i18n.global.t('table.products.number')
     },
     {
-        field: ['image', 'name'],
+        field: ['image', 'name'].toString(),
         header: i18n.global.t('table.products.name')
     },
     {
-        field: ['price_after_discount', 'price', 'currency'],
+        field: ['price_after_discount', 'price', 'currency'].toString(),
         header: i18n.global.t('table.products.price')
     },
     {
@@ -56,7 +59,7 @@ const columns = ref([
         header: i18n.global.t('table.products.count_selling')
     },
     {
-        field: ['total_selling', 'currency'],
+        field: ['total_selling', 'currency'].toString(),
         header: i18n.global.t('table.products.total_selling')
     }
 ]);
@@ -79,6 +82,7 @@ const getData = async () => {
     await axios.get('providers/most-selling-reports', config).then(res => {
         if (response(res) == "success") {
             products.value = res.data.data.data;
+            count.value = products.value.length;
         }
         loading.value = false;
     }).catch(err => console.log(err));

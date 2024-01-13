@@ -9,6 +9,7 @@
 <script setup>
 
 /******************* Import *******************/
+import i18n from '@/i18n';
 import { ref } from 'vue';
 
 /******************* Data *******************/
@@ -81,7 +82,7 @@ const chartOptions = ref({
 
 const series = ref([
     {
-        name: 'Vue Chart',
+        name: i18n.global.t('chart.title'),
         data: [45, 52, 38, 45, 19, 23]
     }
 ])

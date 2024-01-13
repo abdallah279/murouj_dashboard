@@ -192,7 +192,8 @@
       "orderPrice": "قيمة الطلب ",
       "orderDate": "تاريخ الطلب",
       "orderStatus": "الحالة"
-    }
+    },
+    "noProductSelected": "برجاء اختيار منتجات"
   },
   "addProvideProducts": {
     "form":{

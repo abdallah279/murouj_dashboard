@@ -277,7 +277,7 @@ const route = useRoute();
 
 // config
 const config = {
-    headers: { Authorization: `Bearer 56|aGcc09H3vzu0DIGuK0SGSRuHiG2vKrycemk4WVo1` }
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 };
 
 // cancelForm

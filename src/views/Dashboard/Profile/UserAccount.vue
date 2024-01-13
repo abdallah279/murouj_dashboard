@@ -388,6 +388,8 @@ const getProfile = async () => {
             city.value = res.data.data.city;
             userLocation.value.lat = Number(res.data.data.lat);
             userLocation.value.lng = Number(res.data.data.lng);
+            addressLng.value = res.data.data.lng;
+            addressLat.value = res.data.data.lat;
             localStorage.setItem('image', res.data.data.image);
     
             images.value.push({

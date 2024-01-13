@@ -45,15 +45,15 @@ const columns = ref([
         header: i18n.global.t('table.orders.time')
     },
     {
-        field: ['final_total', 'currency'],
+        field: ['final_total', 'currency'].toString(),
         header: i18n.global.t('table.orders.price')
     },
     {
-        field: ['delivery_type', 'line'],
+        field: ['delivery_type', 'line'].toString(),
         header: i18n.global.t('table.orders.delivery')
     },
     {
-        field: ['status_text', 'line'],
+        field: ['status_text', 'line'].toString(),
         header: i18n.global.t('table.orders.status')
     }
 ]);

@@ -4,20 +4,26 @@
         <div class="page_filter">
 
             <!--***** Filter Products *****-->
-            <div class="main-input w300">
+            <!-- <div class="main-input w300">
 
-                <MultiSelect v-model="productSelected" :options="products" filter @change="funcMe($event)" optionLabel="product_name"
+                <MultiSelect v-model="productSelected" :options="products" filter optionLabel="product_name"
                     :placeholder="$t('table.filter.product')" display="chip" class="w-100 h50" />
                 <i class="pi pi-angle-down main-icon"></i>
 
+            </div> -->
+
+            <!--***** Search Input *****-->
+            <div class="main-input w300">
+                <input type="text" class="input-me" v-model="filters['global'].value" :placeholder="$t('table.search')">
+                <i class="pi pi-search main-icon"></i>
             </div>
         </div>
 
     </div>
 
     <!--***** DataTable *****-->
-    <DataTable @updateType="updateType" @updateProduct="updateProductQuantity" :columns="columns"
-        :products="productSelected" :loading="loading" :selectTable="selectTable" :quantity="true"
+    <DataTable @updateType="updateType" @updateProduct="updateProductQuantity" :columns="columns" :filters="filters"
+        :products="products" :loading="loading" :selectTable="selectTable" :quantity="true"
         :tableSkeleton="new Array(columns.length)">
     </DataTable>
 
@@ -27,16 +33,25 @@
 <script setup>
 /******************* Import *******************/
 import { onMounted, ref } from "vue";
-import { useRouter } from 'vue-router'; 
+import { useRouter } from 'vue-router';
 import DataTable from "@/components/shared/DataTable/DataTable.vue";
 import responseApi from '@/components/shared/ResponseApi.js';
 import MultiSelect from 'primevue/multiselect';
 import i18n from "@/i18n";
 import axios from "axios";
+import { FilterMatchMode } from 'primevue/api';
+import toastMsg from '@/components/shared/Toaster';
 
 /******************* Data *******************/
+const filters = ref({
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+});
+
 // success response
 const { response } = responseApi();
+
+// Toast
+const { errorToast } = toastMsg();
 
 // loading
 const loading = ref(false);
@@ -56,11 +71,11 @@ const columns = ref([
         header: i18n.global.t('table.products.number')
     },
     {
-        field: ['product_image', 'product_name'],
+        field: ['product_image', 'product_name'].toString(),
         header: i18n.global.t('table.products.name')
     },
     {
-        field: ['product_price_after_discount', 'product_price', 'currency'],
+        field: ['product_price_after_discount', 'product_price', 'currency'].toString(),
         header: i18n.global.t('table.products.price')
     },
     {
@@ -80,7 +95,10 @@ const choosedProducts = ref([]);
 const finishedProducts = ref([]);
 
 // select Table
-const selectTable = ref({ header: i18n.global.t('table.products.select') });
+const selectTable = ref({
+    header: i18n.global.t('table.products.select'),
+    id: 'id'
+});
 
 /******************* Provide && Inject *******************/
 
@@ -120,20 +138,19 @@ const updateType = (data) => {
 
 // setProducts
 const setProducts = () => {
-    finishedProducts.value = [];
-    productSelected.value.forEach(productS => {
-        let founded = choosedProducts.value.find(product => product.id == productS.product_id);
-        if (founded) {
-            finishedProducts.value.push(founded)
-        }
-    })
-    localStorage.setItem('products', JSON.stringify(finishedProducts.value));
-    router.push({ name: 'createProvideOrders' });
-}
-
-// funcMe
-const funcMe = (event) => {
-    console.log(event.value);
+    // finishedProducts.value = [];
+    // productSelected.value.forEach(productS => {
+    //     let founded = choosedProducts.value.find(product => product.id == productS.product_id);
+    //     if (founded) {
+    //         finishedProducts.value.push(founded)
+    //     }
+    // })
+    if (choosedProducts.value.length == 0) {
+        errorToast(i18n.global.t('order.noProductSelected'));
+    } else{
+        localStorage.setItem('products', JSON.stringify(choosedProducts.value));
+        router.push({ name: 'createProvideOrders' });
+    }
 }
 
 /******************* Computed *******************/
