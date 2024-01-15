@@ -189,6 +189,10 @@
   box-shadow: $main-shadow;
 }
 
+.card-shadow {
+  box-shadow: $card-shadow;
+}
+
 .shadow-sm {
   box-shadow: 0 0 4px 0 rgba($black2, 0.1);
 }
@@ -1066,7 +1070,9 @@
   z-index: 1;
 
   @media screen and (max-width: $screen-xs) {
-    font-size: 13px;
+    font-size: 12px;
+    height: 46px;
+    width: 150px;
   }
 
   &.light {
@@ -2042,7 +2048,7 @@
       width: 120px;
 
       .input-me{
-        min-height: 45px;
+        min-height: 42px;
         padding: 0 9px;
       }
 
@@ -3244,6 +3250,11 @@
         max-width: 12px !important;
       }
     }
+  }
+
+  .p-dialog-content{
+    overflow-y: auto;
+    max-height: 80vh;
   }
 
   .right_img {

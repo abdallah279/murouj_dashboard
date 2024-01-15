@@ -22,7 +22,7 @@
     </div>
 
     <!--***** DataTable *****-->
-    <DataTable @updateType="updateType" @updateProduct="updateProductQuantity" :columns="columns" :filters="filters"
+    <DataTable :pageLimit="pageLimit" :totalPage="totalPage" @paginateNum="onPaginate" @updateType="updateType" @updateProduct="updateProductQuantity" :columns="columns" :filters="filters"
         :products="products" :loading="loading" :selectTable="selectTable" :quantity="true"
         :tableSkeleton="new Array(columns.length)">
     </DataTable>
@@ -58,6 +58,11 @@ const loading = ref(false);
 
 // router
 const router = useRouter();
+
+// Paginator
+const pageLimit = ref();
+const totalPage = ref();
+
 
 // config
 const config = {
@@ -106,11 +111,13 @@ const selectTable = ref({
 
 /******************* Methods *******************/
 // getData
-const getData = async () => {
+const getData = async (count = 1) => {
     loading.value = true;
-    await axios.get('providers/provider-products', config).then(res => {
+    await axios.get(`providers/provider-products?page=${count}`, config).then(res => {
         if (response(res) == "success") {
             products.value = res.data.data.data;
+            totalPage.value = res.data.data.pagination.total_items;
+            pageLimit.value = res.data.data.pagination.per_page;
         }
         loading.value = false;
     }).catch(err => console.log(err));
@@ -151,6 +158,11 @@ const setProducts = () => {
         localStorage.setItem('products', JSON.stringify(choosedProducts.value));
         router.push({ name: 'createProvideOrders' });
     }
+}
+
+// onPaginate
+const onPaginate = async (value) => {
+    await getData(value);
 }
 
 /******************* Computed *******************/

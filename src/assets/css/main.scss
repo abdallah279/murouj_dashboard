@@ -1103,9 +1103,16 @@
   padding: 18px 25px;
   margin-bottom: 35px;
 
+  @include devices(sm) {
+    padding: 18px 15px;
+    border-radius: 7px;
+  }
+
   .admin_top {
     @include between;
     margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 12px;
 
     .right {
       display: flex;
@@ -1115,12 +1122,24 @@
       .admin_img {
         @include circle(70px);
         object-fit: cover;
+        
+        @include devices(sm) {
+          @include circle(50px);
+        }
       }
 
       .country_code {
         @include dir-border-left(1px solid rgba($color: $dark3, $alpha: 0.3));
         @include dir-margin-left(5px);
         @include dir-padding-left(5px);
+      }
+    }
+
+    @include devices(sm) {
+      .main-btn.sm{
+        width: 95px;
+        font-size: 11px;
+        padding: 10px 7px;
       }
     }
   }
@@ -1136,6 +1155,10 @@
       color: $blue;
       padding: 10px 18px;
       border-radius: 7px;
+
+      @include devices(sm) {
+        padding: 6px 12px;
+      }
     }
   }
 }

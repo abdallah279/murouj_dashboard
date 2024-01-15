@@ -131,6 +131,7 @@ const newPhone = async () => {
             if (response(res) == "success") {
 
                 localStorage.setItem('newPhone', phone.value);
+                localStorage.setItem('newKey', selectedCountry.value.key);
 
                 successToast(res.data.msg);
                 router.push({

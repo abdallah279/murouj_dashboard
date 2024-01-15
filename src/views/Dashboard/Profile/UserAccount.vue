@@ -12,11 +12,11 @@
                 <label for="profileImg" class="user-camera">
                     <i class="pi pi-images"></i>
                 </label>
-                <span class="c-dark3 d-block mt-3">{{ $t('profile.image') }}</span>
             </div>
+            <span class="c-dark3 d-block mt-3">{{ $t('profile.image') }}</span>
         </div>
 
-        <div class="row align-items-center position-relative gy-4 mt-5">
+        <div class="row align-items-center position-relative gy-4">
             <div class="col-lg-8">
 
                 <!-- Name -->
@@ -146,7 +146,7 @@
                 </div>
 
                 <!-- Images -->
-                <div class="d-flex gap-4 input-g">
+                <div class="d-flex gap-4 input-g flex-wrap">
 
                     <div class="input_image">
                         <label for="" class="main-label">{{ $t('profile.nationalId') }}</label>
@@ -391,6 +391,7 @@ const getProfile = async () => {
             addressLng.value = res.data.data.lng;
             addressLat.value = res.data.data.lat;
             localStorage.setItem('image', res.data.data.image);
+            localStorage.setItem('providerName', res.data.data.name);
     
             images.value.push({
                 previewUrl: res.data.data.id_image

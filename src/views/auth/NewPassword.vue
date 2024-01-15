@@ -48,6 +48,7 @@
             {{ $t('codeForm.text') }}
             <button type="button" @click="resendCode" class="bg-transparent d-block text-decoration-underline c-main">
                 {{ $t('formBtns.receiveCode') }}
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" v-if="loadingResend"></span>
             </button>
         </div>
     </form>
@@ -70,9 +71,12 @@ const { response } = responseApi();
 const newPassForm = ref(null);
 const password = ref('');
 const confirmPassword = ref('');
-const loading = ref(false);
 const router = useRouter();
 const errors = ref([]);
+
+// loading
+const loading = ref(false);
+const loadingResend = ref(false);
 
 let phone = ref(localStorage.getItem('phone'));
 let country_code = ref(localStorage.getItem('country_code'));
@@ -142,12 +146,21 @@ const newPasswordFunc = async () => {
 
 // resendCode Function
 const resendCode = async () => {
-    await axios.get(`resend-code?country_code=${country_code.value}&phone=${phone.value}`).then(res => {
+    loadingResend.value = true;
+    const fd = new FormData();
+
+    fd.append('phone', phone.value);
+    fd.append('country_code', country_code.value);
+
+    await axios.post('providers/forget-password-send-code', fd).then(res => {
         if (response(res) == "success") {
+
             successToast(res.data.msg);
+
         } else {
             errorToast(res.data.msg);
         }
+        loadingResend.value = false;
     }).catch(err => console.log(err));
 }
 

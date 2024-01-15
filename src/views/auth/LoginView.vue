@@ -153,6 +153,11 @@ const login = async () => {
             if (response(res) == "success") {
                 localStorage.setItem('token', res.data.data.token);
                 localStorage.setItem('image', res.data.data.image);
+                localStorage.setItem('providerName', res.data.data.name);
+
+                if(res.data.data.privileges){
+                    localStorage.setItem('privileges', JSON.stringify(res.data.data.privileges));
+                }
                 successToast(res.data.msg);
 
                 router.push({

@@ -64,7 +64,7 @@
     <Skeleton height="3.2rem" width="10rem" class="mx-auto mb-4" v-if="loading"></Skeleton>
 
     <!--***** DataTable *****-->
-    <DataTable :columns="columns" styleTable="table_main" :products="orders" :loading="loading"
+    <DataTable :columns="columns" :pageLimit="pageLimit" :totalPage="totalPage" @paginateNum="onPaginate" styleTable="table_main" :products="orders" :loading="loading"
         :tableSkeleton="new Array(columns.length)">
     </DataTable>
 </template>
@@ -136,6 +136,11 @@ const columns = ref([
 // orders
 const orders = ref([]);
 
+// Paginator
+const pageLimit = ref();
+const totalPage = ref();
+
+
 const total_orders = ref(0);
 const total_commission = ref(0);
 const total_vat = ref(0);
@@ -151,15 +156,17 @@ const props = defineProps({
 
 /******************* Methods *******************/
 // getData
-const getData = async () => {
+const getData = async (count = 1) => {
     loading.value = true;
-    await axios.get(`${props.routeName}`, config).then(res => {
+    await axios.get(`${props.routeName}?page=${count}`, config).then(res => {
         if (response(res) == "success") {
             orders.value = res.data.data.orders.data;
             total_orders.value = res.data.data.total_orders;
             total_commission.value = res.data.data.total_commission;
             total_vat.value = res.data.data.total_vat;
             financial_dues.value = res.data.data.financial_dues;
+            totalPage.value = res.data.data.orders.pagination.total_items;
+            pageLimit.value = res.data.data.orders.pagination.per_page;
         }
         loading.value = false;
     }).catch(err => console.log(err));
@@ -176,6 +183,11 @@ const settlementRequest = async () => {
         }
         loadingBtn.value = false;
     }).catch(err => console.log(err));
+}
+
+// onPaginate
+const onPaginate = async (value) => {
+    await getData(value);
 }
 
 /******************* Computed *******************/

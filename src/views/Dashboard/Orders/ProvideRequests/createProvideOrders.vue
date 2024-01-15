@@ -4,6 +4,17 @@
         <div class="row align-items-center position-relative gy-4">
             <div class="col-lg-8">
 
+                <!-- Products -->
+                <div class="input-g">
+                    <label for="" class="main-label">{{ $t('addProvideProducts.form.products.text') }}</label>
+                    <div class="main-input">
+                        <router-link to="/addingProducts" class="input-me d-flex align-items-center fs13">
+                            {{ $t('addProvideProducts.form.products.placeholder') }}
+                        </router-link>
+                        <i class="pi pi-angle-left main-icon"></i>
+                    </div>
+                </div>
+
                 <!-- Type -->
                 <div class="input-g">
                     <label for="" class="main-label">{{ $t('addProvideProducts.form.type.text') }}</label>
@@ -24,33 +35,6 @@
                                     <div>
                                         {{ slotProps.option.name }}
                                     </div>
-                                </div>
-                            </template>
-                        </Dropdown>
-
-                        <i class="pi pi-angle-down main-icon"></i>
-
-                    </div>
-                </div>
-
-                <!-- Unit Types -->
-                <div class="input-g">
-                    <label for="" class="main-label">{{ $t('addProvideProducts.form.quantity.text') }}</label>
-                    <div class="main-input">
-
-                        <Dropdown v-model="quantityType" :placeholder="$t('addProvideProducts.form.quantity.placeholder')"
-                            :options="quantityTypes" optionLabel="name" class="input-me">
-                            <template #value="slotProps">
-                                <div v-if="slotProps.value" class="selected">
-                                    {{ slotProps.value.name }}
-                                </div>
-                                <span v-else>
-                                    {{ slotProps.placeholder }}
-                                </span>
-                            </template>
-                            <template #option="slotProps">
-                                <div class="option">
-                                    {{ slotProps.option.name }}
                                 </div>
                             </template>
                         </Dropdown>
@@ -85,16 +69,6 @@
 
                         <i class="pi pi-angle-down main-icon"></i>
 
-                    </div>
-                </div>
-
-                <!-- Products -->
-                <div class="input-g">
-                    <label for="" class="main-label">{{ $t('addProvideProducts.form.products.text') }}</label>
-                    <div class="main-input">
-                        <router-link to="/addingProducts" class="input-me d-flex align-items-center fs13">{{
-                            $t('addProvideProducts.form.products.placeholder') }}</router-link>
-                        <i class="pi pi-angle-left main-icon"></i>
                     </div>
                 </div>
 
@@ -195,16 +169,9 @@ const requestForm = ref(null);
 const requestType = ref('');
 const requestTypes = ref([]);
 
-// Quantity Type
-const quantityType = ref('');
-const quantityTypes = ref([]);
-
 // subCategory
 const subCategory = ref('');
-const subCategories = ref([
-    { name: 'مخبوزات', value: 1 },
-    { name: 'مقرمشات', value: 2 },
-]);
+const subCategories = ref([]);
 
 // duration
 const duration = ref('');
@@ -249,11 +216,11 @@ const getDurations = async () => {
     }).catch(err => console.log(err));
 }
 
-// get units
-const getUnits = async () => {
-    await axios.get('units').then(res => {
+// get Sub Categories
+const getSubCategories = async () => {
+    await axios.get('sub-categories').then(res => {
         if (response(res) == "success") {
-            quantityTypes.value = res.data.data;
+            subCategories.value = res.data.data;
         }
     }).catch(err => console.log(err));
 }
@@ -284,9 +251,7 @@ const createRequest = async () => {
     loading.value = true;
     const fd = new FormData(requestForm.value);
     fd.append('product_request_type_id', requestType.value.id);
-    // fd.append('unit_id', quantityType.value.id);
-    // fd.append('quantity', 5);
-    fd.append('sub_category_id', 1);
+    fd.append('sub_category_id', subCategory.value.id);
     fd.append('product_request_duration_id', duration.value.id);
     fd.append('receipt_date_time', formateDate());
     fd.append('products', localStorage.getItem('products') ? localStorage.getItem('products') : '');
@@ -298,8 +263,8 @@ const createRequest = async () => {
             requestForm.value.reset();
             duration.value = '';
             requestType.value = '';
-            quantityType.value = '';
             subCategory.value = '';
+            localStorage.removeItem('products');
         } else {
             errorToast(res.data.msg);
         }
@@ -315,8 +280,8 @@ const createRequest = async () => {
 /******************* Mounted *******************/
 onMounted(async () => {
     await getTypes();
+    await getSubCategories();
     await getDurations();
-    await getUnits();
 });
 
 </script>

@@ -4,7 +4,7 @@
         $t('supervisors.addSupervisor') }}</router-link>
 
     <!--****** Card Style *****-->
-    <div class="card_style py-5 px-lg-4">
+    <div class="card_style py-lg-5 py-4 px-lg-4">
 
         <!--***** supervisors *****-->
         <div v-if="!loading">

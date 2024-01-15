@@ -42,7 +42,7 @@
     </div>
 
     <!--***** DataTable *****-->
-    <DataTable :columns="columns" :products="orders" :filters="filters" :loading="loading" :routeTable="routeTable"
+    <DataTable :columns="columns" :products="orders" :paginator="false" :filters="filters" :loading="loading" :routeTable="routeTable"
         :tableSkeleton="new Array(columns.length + 1)">
     </DataTable>
 </template>
@@ -112,6 +112,11 @@ const columns = ref([
 
 // products
 const orders = ref([]);
+
+// Paginator
+const pageLimit = ref();
+const totalPage = ref();
+
 
 // route Table
 const routeTable = ref({

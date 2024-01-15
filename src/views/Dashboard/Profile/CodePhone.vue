@@ -35,6 +35,7 @@
                     <button type="button" @click="resendCode"
                         class="bg-transparent d-block text-decoration-underline c-sec">
                         {{ $t('formBtns.receiveCode') }}
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" v-if="loadingResend"></span>
                     </button>
                 </div>
 
@@ -50,7 +51,7 @@
                     <img src="@/assets/imgs/right_img.gif" alt="" class="right_img mx-auto">
                     <p class="fs14 c-black text-center mb-4">{{ $t('modals.done.changePhone') }}</p>
                     <div class="buttons justify-content-center">
-                        <router-link to="/" class="main-btn modal_btn up">{{ $t('modals.done.btn') }}</router-link>
+                        <router-link to="/profile" class="main-btn modal_btn up">{{ $t('modals.done.profileBtn') }}</router-link>
                     </div>
                 </div>
             </div>
@@ -74,7 +75,9 @@ const { response } = responseApi();
 // Toast
 const { successToast, errorToast } = toastMsg();
 
+// Loading
 const loading = ref(false);
+const loadingResend = ref(false);
 
 // verificationCodeForm
 const verificationCodeForm = ref(null);
@@ -82,9 +85,7 @@ const verificationCodeForm = ref(null);
 // Modal
 const done = ref(false);
 
-// let phone = ref(JSON.parse(localStorage.getItem('user')).phone);
 let newPhone = ref(localStorage.getItem('newPhone'));
-// let country_code = ref(JSON.parse(localStorage.getItem('user')).country_code);
 
 /******************* Provide && Inject *******************/
 
@@ -106,6 +107,7 @@ const verificationCode = async () => {
         if (response(res) == "success") {
             done.value = true;
             localStorage.getItem('newPhone') ? localStorage.removeItem('newPhone') : '';
+            localStorage.getItem('newKey') ? localStorage.removeItem('newKey') : '';
         } else {
             errorToast(res.data.msg)
         }
@@ -115,12 +117,20 @@ const verificationCode = async () => {
 
 // resendCode Function
 const resendCode = async () => {
-    await axios.get(`resend-code?country_code=${country_code.value}&phone=${phone.value}`).then(res => {
+    const fd = new FormData();
+    fd.append('phone', localStorage.getItem('newPhone'));
+    fd.append('country_code', localStorage.getItem('newKey'));
+    loadingResend.value = true;
+    
+    await axios.post('providers/change-phone-send-code', fd, config).then(res => {
         if (response(res) == "success") {
+            
             successToast(res.data.msg);
+            
         } else {
             errorToast(res.data.msg);
         }
+        loadingResend.value = false;
     }).catch(err => console.log(err));
 }
 

@@ -99,7 +99,11 @@
       "option1": "Latest",
       "option2": "Oldest",
       "product": "choose products",
-      "type": "choose type"
+      "type": "choose type",
+      "3Dates": " latest 3 months",
+      "6Dates": " latest 6 months",
+      "9Dates": " latest 9 months",
+      "12Dates": " latest 12 months"
     },
     "products": {
       "number": "Number",
@@ -236,6 +240,7 @@
       "step6": "in the way"
     },
     "detailes": "Order Detailes",
+    "returnDetailes": "Return Order Detailes",
     "returndetailes": "Data for requesting return of products",
     "products": "Select the products to be returned",
     "ordertimeDate": "Date and time of Order",
@@ -255,6 +260,7 @@
     "cancelledReason": "Reason for cancellation of order",
     "photoReturnOrder": "Photo of return request",
     "reasonReturn": "Reason for return",
+    "rejectReturn": "rejected Reason",
     "feedback": "Your feedback",
     "rateOrder": "Please enter your review of the product",
     "buttons": {
@@ -506,6 +512,7 @@
       "text": "Your Message Has Been Successfully Sent",
       "cancelDone": "Order canceled successfully",
       "returnDone": "Your return request has been sent successfully",
+      "refuseDone": "Order rejected successfully",
       "rateDone": "Your rating has been successfully sent",
       "addDone": "The product has been successfully added to the cart",
       "changePhone": "Phone changed successfully",
@@ -515,7 +522,8 @@
       "orderBtn": "Complete the order",
       "followBtn": "follow order",
       "scrollBtn": "Continue browsing",
-      "supervisors": "supervisors"
+      "supervisors": "supervisors",
+      "profileBtn": "Profile"
     }
   },
   "validation": {

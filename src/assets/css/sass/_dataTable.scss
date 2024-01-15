@@ -1,8 +1,11 @@
-.p-datatable {
+.main_table{
   background-color: $white;
   border-radius: 7px;
   box-shadow: $card-shadow;
   overflow: hidden;
+}
+
+.p-datatable {
 
   .p-datatable-table {
     .p-datatable-thead {

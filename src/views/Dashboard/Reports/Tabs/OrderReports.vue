@@ -3,20 +3,20 @@
 
         <!--***** Total Profit *****-->
         <div class="col-lg-4 col-sm-6">
-            <HomeProfit :title="$t('profit.total')" :number="home.total_profit" :loading="loading" :currency="home.currency"
+            <HomeProfit :title="$t('profit.total')" :number="total_profit" :loading="loading" :currency="currency"
                 :chart="require('@/assets/imgs/icons/bar_chart1.png')" />
         </div>
 
         <!--***** Today Profit *****-->
         <div class="col-lg-4 col-sm-6">
-            <HomeProfit :title="$t('profit.today')" :number="home.today_profit" :loading="loading" :currency="home.currency"
+            <HomeProfit :title="$t('profit.today')" :number="today_profit" :loading="loading" :currency="currency"
                 :chart="require('@/assets/imgs/icons/bar_chart2.png')" />
         </div>
 
     </div>
 
     <!--***** Chart *****-->
-    <HomeChart />
+    <HomeChart :chartData="month_profit" :loading="loading" @updateFilter="updateFilter" />
 
     <!--***** Current Orders *****-->
     <div class="current_orders mt-4">
@@ -41,7 +41,6 @@
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
     </div>
-
 </template>
 
 <script setup>
@@ -64,12 +63,11 @@ const { response } = responseApi();
 const loading = ref(false);
 
 // home
-const home = ref({
-    total_profit: 0,
-    today_profit: 0,
-    month_profit: [],
-    currency: ''
-});
+const total_profit = ref(0);
+const today_profit = ref(0);
+const month_profit = ref([]);
+const currency = ref('');
+
 
 // current
 const currentOrders = ref([]);
@@ -129,25 +127,37 @@ const routeTable = ref({
 
 /******************* Methods *******************/
 // getData
-const getData = async () => {
+const getData = async (date) => {
     loading.value = true;
-    await axios.get('providers/order-reports', config).then(res => {
+
+    let url = 'providers/order-reports';
+    if (date) {
+        url += `?month=${date}`;
+    }
+
+    await axios.get(url, config).then(res => {
         if (response(res) == "success") {
-            home.total_profit = res.data.data.total_profit;
-            home.today_profit = res.data.data.today_profit;
-            home.month_profit = res.data.data.month_profit;
-            home.currency = res.data.data.currency;
+            total_profit.value = res.data.data.total_profit;
+            today_profit.value = res.data.data.today_profit;
+            month_profit.value = res.data.data.month_profit;
+            currency.value = res.data.data.currency;
+
             currentOrders.value = res.data.data.current.data;
             currentCount.value = currentOrders.value.length;
-            
+
             finishedOrders.value = res.data.data.finished.data;
             finishedCount.value = finishedOrders.value.length;
-            
+
             cancelledOrders.value = res.data.data.cancelled.data;
             cancelledCount.value = cancelledOrders.value.length;
         }
         loading.value = false;
     }).catch(err => console.log(err));
+}
+
+// updateFilter
+const updateFilter = async (date) => {
+  await getData(date);
 }
 
 /******************* Computed *******************/

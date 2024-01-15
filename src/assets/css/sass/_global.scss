@@ -70,7 +70,7 @@ body {
   background-color: $body-bg !important;
 
   @media screen and (max-width: $screen-xs) {
-    font-style: 12px !important;
+    font-size: 12px !important;
   }
 
   #{$ltr} & {

@@ -7,8 +7,8 @@
                     <div class="right">
                         <Skeleton size="4.6rem" shape="circle"></Skeleton>
                         <div class="admin_info">
-                            <Skeleton width="7rem" height=".7rem" class="mb-3"></Skeleton>
-                            <Skeleton width="7rem" height=".7rem"></Skeleton>
+                            <Skeleton width="6rem" height=".7rem" class="mb-3"></Skeleton>
+                            <Skeleton width="6rem" height=".7rem"></Skeleton>
                         </div>
                     </div>
 

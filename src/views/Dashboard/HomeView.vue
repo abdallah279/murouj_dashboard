@@ -3,20 +3,20 @@
 
     <!--***** Total Profit *****-->
     <div class="col-lg-4 col-sm-6">
-      <HomeProfit :title="$t('profit.total')" :number="home.total_profit" :loading="loading" :currency="home.currency"
+      <HomeProfit :title="$t('profit.total')" :number="total_profit" :loading="loading" :currency="currency"
         :chart="require('@/assets/imgs/icons/bar_chart1.png')" />
     </div>
 
     <!--***** Today Profit *****-->
     <div class="col-lg-4 col-sm-6">
-      <HomeProfit :title="$t('profit.today')" :number="home.today_profit" :loading="loading" :currency="home.currency"
+      <HomeProfit :title="$t('profit.today')" :number="today_profit" :loading="loading" :currency="currency"
         :chart="require('@/assets/imgs/icons/bar_chart2.png')" />
     </div>
 
   </div>
 
   <!--***** Chart *****-->
-  <HomeChart />
+  <HomeChart :chartData="month_profit" :loading="loading" @updateFilter="updateFilter" />
 </template>
 
 
@@ -37,13 +37,13 @@ const { response } = responseApi();
 // Loading
 const loading = ref(false);
 
-// home
-const home = ref({
-  total_profit: 0,
-  today_profit: 0,
-  month_profit:[],
-  currency: ''
-});
+// Data
+const total_profit = ref(0);
+const today_profit = ref(0);
+const currency = ref('');
+
+// month_profit
+const month_profit = ref([]);
 
 // config
 const config = {
@@ -56,14 +56,28 @@ const config = {
 
 /******************* Methods *******************/
 // getData
-const getData = async () => {
+const getData = async (date) => {
   loading.value = true;
-  await axios.get('providers/home', config).then(res => {
+
+  let url = 'providers/home';
+  if (date) {
+    url += `?month=${date}`;
+  }
+
+  await axios.get(url, config).then(res => {
     if (response(res) == "success") {
-      home.value = res.data.data;
+      total_profit.value = res.data.data.total_profit;
+      today_profit.value = res.data.data.today_profit;
+      currency.value = res.data.data.currency;
+      month_profit.value = res.data.data.month_profit;
     }
     loading.value = false;
   }).catch(err => console.log(err));
+}
+
+// updateFilter
+const updateFilter = async (date) => {
+  await getData(date);
 }
 
 /******************* Computed *******************/

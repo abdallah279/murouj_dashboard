@@ -1,6 +1,6 @@
 <template>
     <!--***** DataTable *****-->
-    <DataTable :columns="columns" :products="orders" :loading="loading" :routeTable="routeTable"
+    <DataTable :columns="columns" :products="orders" :pageLimit="pageLimit" :totalPage="totalPage" @paginateNum="onPaginate" :loading="loading" :routeTable="routeTable"
         :tableSkeleton="new Array(columns.length)">
     </DataTable>
 </template>
@@ -61,6 +61,11 @@ const columns = ref([
 // products
 const orders = ref([]);
 
+// Paginator
+const pageLimit = ref();
+const totalPage = ref();
+
+
 // route Table
 const routeTable = ref({
     header: i18n.global.t('table.orders.detailes'),
@@ -86,11 +91,13 @@ const props = defineProps({
 /******************* Methods *******************/
 
 // getOrders
-const getOrders = async () => {
+const getOrders = async (count = 1) => {
     loading.value = true;
-    await axios.get(`providers/${props.ordersName}`, config).then(res => {
+    await axios.get(`providers/${props.ordersName}?page=${count}`, config).then(res => {
         if (response(res) == "success") {
             orders.value = res.data.data.orders.data;
+            totalPage.value = res.data.data.orders.pagination.total_items;
+            pageLimit.value = res.data.data.orders.pagination.per_page;
         } else {
             errorToast(res.data.msg);
         }
@@ -103,6 +110,11 @@ const getOrders = async () => {
 // Show Delevery
 const showDelivery = () => {
     !props.showDelivery ? columns.value.splice(4, 1) : false;
+}
+
+// onPaginate
+const onPaginate = async (value) => {
+    await getOrders(value);
 }
 
 /******************* Computed *******************/

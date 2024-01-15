@@ -1,5 +1,4 @@
 <template>
-
     <!--***** Page Top *****  -->
     <div class="page_top">
         <div class="page_filter">
@@ -15,8 +14,8 @@
             <!--***** Filter Select *****-->
             <div class="main-input filter">
 
-                <Dropdown v-model="filter" :placeholder="$t('table.filter.text')" :options="filterOptions"
-                    optionLabel="name" class="input-me">
+                <Dropdown v-model="filter" :placeholder="$t('table.filter.text')" @change="filterProducts"
+                    :options="filterOptions" optionLabel="name" class="input-me">
                     <template #value="slotProps">
                         <div v-if="slotProps.value" class="selected">
                             <div>{{ slotProps.value.name }}</div>
@@ -43,7 +42,7 @@
     </div>
 
     <!--***** DataTable *****-->
-    <DataTable :columns="columns" :products="products" :filters="filters" :loading="loading" :routeTable="routeTable"
+    <DataTable :columns="columns" :pageLimit="pageLimit" :totalPage="totalPage" @paginateNum="onPaginate" :products="products" :filters="filters" :loading="loading" :routeTable="routeTable"
         :tableSkeleton="new Array(columns.length)">
     </DataTable>
 </template>
@@ -74,13 +73,19 @@ const filter = ref('');
 const filterOptions = ref([
     {
         name: i18n.global.t('table.filter.option1'),
-        id: 1
+        id: 1,
+        text: "desc"
     },
     {
         name: i18n.global.t('table.filter.option2'),
-        id: 2
+        id: 2,
+        text: "asc"
     },
 ]);
+
+// Paginator
+const pageLimit = ref();
+const totalPage = ref();
 
 // config
 const config = {
@@ -106,7 +111,7 @@ const columns = ref([
         header: i18n.global.t('table.products.category')
     },
     {
-        field: ['quantity', 'is_available', 'line'].toString(),
+        field: ['quantity', 'is_available_text', 'line'].toString(),
         header: i18n.global.t('table.products.quantity')
     }
 ]);
@@ -126,14 +131,32 @@ const routeTable = ref({
 
 /******************* Methods *******************/
 // getData
-const getData = async () => {
-  loading.value = true;
-  await axios.get('providers/provider-products', config).then(res => {
-    if (response(res) == "success") {
-        products.value = res.data.data.data;
-    }
-    loading.value = false;
-  }).catch(err => console.log(err));
+const getData = async (count = 1) => {
+    loading.value = true;
+    await axios.get(`providers/provider-products?page=${count}`, config).then(res => {
+        if (response(res) == "success") {
+            products.value = res.data.data.data;
+            totalPage.value = res.data.data.pagination.total_items;
+            pageLimit.value = res.data.data.pagination.per_page;
+        }
+        loading.value = false;
+    }).catch(err => console.log(err));
+}
+
+// filterProducts
+const filterProducts = async () => {
+    loading.value = true;
+    await axios.get(`providers/provider-products?arrangemant=${filter.value.text}`, config).then(res => {
+        if (response(res) == "success") {
+            products.value = res.data.data.data;
+        }
+        loading.value = false;
+    }).catch(err => console.log(err));
+}
+
+// onPaginate
+const onPaginate = async (value) => {
+    await getData(value);
 }
 
 /******************* Computed *******************/
@@ -142,7 +165,7 @@ const getData = async () => {
 
 /******************* Mounted *******************/
 onMounted(async () => {
-  await getData();
+    await getData();
 });
 
 </script>

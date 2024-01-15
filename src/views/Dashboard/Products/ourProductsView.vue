@@ -5,7 +5,7 @@
 
       <!--***** Search Input *****-->
       <div class="main-input search">
-        <input type="text" class="input-me" :placeholder="$t('table.search')">
+        <input type="text" class="input-me" @keyup="searchProducts" v-model="searchText" :placeholder="$t('table.search')">
         <i class="pi pi-search main-icon"></i>
       </div>
 
@@ -109,6 +109,9 @@ const products = ref([]);
 // Loading
 const loading = ref(false);
 
+// searchText
+const searchText = ref('');
+
 // Paginator
 const currentPage = ref(1);
 const pageLimit = ref();
@@ -135,6 +138,17 @@ const getData = async () => {
       pageLimit.value = res.data.data.pagination.per_page;
     }
     loading.value = false;
+  }).catch(err => console.log(err));
+}
+
+// search Function
+const searchProducts = async () => {
+  // loading.value = true;
+  await axios.get(`providers/filter-products?name=${searchText.value}`, config).then(res => {
+    if (response(res) == "success") {
+      products.value = res.data.data.data;
+    }
+    // loading.value = false;
   }).catch(err => console.log(err));
 }
 
