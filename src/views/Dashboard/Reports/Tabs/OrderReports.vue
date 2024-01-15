@@ -21,23 +21,23 @@
     <!--***** Current Orders *****-->
     <div class="current_orders mt-4">
         <h3 class="fs15 c-black mb-4">{{ $t('reports.orders.current') }} ({{ currentCount }})</h3>
-        <DataTable :columns="columns" :products="currentOrders" :loading="loading" :routeTable="routeTable"
+        <DataTable :columns="columns" :paginator="false" :products="currentOrders" :loading="loading" :routeTable="routeTable"
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
     </div>
 
     <!--***** Finished Orders *****-->
-    <div class="finished_orders mt-4">
+    <div class="finished_orders mt-5">
         <h3 class="fs15 c-black mb-4">{{ $t('reports.orders.finished') }} ({{ finishedCount }})</h3>
-        <DataTable :columns="columns" :products="finishedOrders" :loading="loading" :routeTable="routeTable"
+        <DataTable :columns="columns" :paginator="false" :products="finishedOrders" :loading="loading" :routeTable="routeTable"
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
     </div>
 
     <!--***** Cancelled Orders *****-->
-    <div class="cancelled_orders mt-4">
+    <div class="cancelled_orders mt-5">
         <h3 class="fs15 c-black mb-4">{{ $t('reports.orders.canceled') }} ({{ cancelledCount }})</h3>
-        <DataTable :columns="newColumns" :products="cancelledOrders" :loading="loading" :routeTable="routeTable"
+        <DataTable :columns="newColumns" :paginator="false" :products="cancelledOrders" :loading="loading" :routeTable="routeTable"
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
     </div>

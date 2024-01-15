@@ -4,7 +4,7 @@
         
         <!--***** Page Top *****  -->
         <div class="page_top">
-            <h3 class="fs15 c-black">{{ $t('reports.products') }} ({{ count }})</h3>
+            <h3 class="fs15 c-black">{{ $t('reports.products') }} ({{ productsCount }})</h3>
 
             <!--***** Filter Select *****-->
             <div class="main-input filter sm card-shadow">
@@ -35,7 +35,7 @@
         </div>
 
         <!--***** DataTable *****-->
-        <DataTable :columns="columns" :products="products" :loading="loading" :routeTable="routeTable"
+        <DataTable :columns="columns" :products="products" :pageLimit="pageLimit" :totalPage="totalPage" @paginateNum="onPaginate" :loading="loading" :routeTable="routeTable"
             :tableSkeleton="new Array(columns.length)">
         </DataTable>
     </div>
@@ -87,8 +87,12 @@ const loading = ref(false);
 // products
 const products = ref([]);
 
-// count
-const count = ref(0);
+// Paginator
+const pageLimit = ref();
+const totalPage = ref();
+
+// productsCount
+const productsCount = ref(0);
 
 // config
 const config = {
@@ -136,7 +140,7 @@ const routeTable = ref({
 
 /******************* Methods *******************/
 // getData
-const getData = async (date) => {
+const getData = async (date, count = 1) => {
     loading.value = true;
 
     let url = 'providers/most-selling-reports';
@@ -144,10 +148,16 @@ const getData = async (date) => {
         url += `?month=${date}`;
     }
 
+    if (count) {
+        url += `?page=${count}`;
+    }
+
     await axios.get(url, config).then(res => {
         if (response(res) == "success") {
             products.value = res.data.data.data;
-            count.value = products.value.length;
+            productsCount.value = products.value.length;
+            totalPage.value = res.data.data.pagination.total_items;
+            pageLimit.value = res.data.data.pagination.per_page;
         }
         loading.value = false;
     }).catch(err => console.log(err));
@@ -156,6 +166,11 @@ const getData = async (date) => {
 // updateFilter
 const updateFilter = async () => {
   await getData(filter.value.number);
+}
+
+// onPaginate
+const onPaginate = async (value) => {
+    await getData(filter.value.number , value);
 }
 
 /******************* Computed *******************/

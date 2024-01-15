@@ -4,7 +4,7 @@
 
         <!--***** Page Top *****  -->
         <div class="page_top">
-            <h3 class="fs15 c-black">{{ $t('reports.clients') }} ({{ count }})</h3>
+            <h3 class="fs15 c-black">{{ $t('reports.clients') }} ({{ clientsCount }})</h3>
 
             <!--***** Filter Select *****-->
             <div class="main-input filter sm card-shadow">
@@ -34,7 +34,7 @@
 
         </div>
 
-        <DataTable :columns="columns" :products="clients" :loading="loading" :tableSkeleton="new Array(columns.length)">
+        <DataTable :columns="columns" :products="clients" :loading="loading" :pageLimit="pageLimit" :totalPage="totalPage" @paginateNum="onPaginate" :tableSkeleton="new Array(columns.length)">
         </DataTable>
     </div>
 </template>
@@ -86,8 +86,12 @@ const loading = ref(false);
 // clients
 const clients = ref([]);
 
-// count
-const count = ref(0);
+// Paginator
+const pageLimit = ref();
+const totalPage = ref();
+
+// clientsCount
+const clientsCount = ref(0);
 
 // config
 const config = {
@@ -124,7 +128,7 @@ const columns = ref([
 
 /******************* Methods *******************/
 // getData
-const getData = async (date) => {
+const getData = async (date, count = 1) => {
     loading.value = true;
 
     let url = 'providers/clients-reports';
@@ -132,10 +136,16 @@ const getData = async (date) => {
         url += `?month=${date}`;
     }
 
+    if (count) {
+        url += `?page=${count}`;
+    }
+
     await axios.get(url, config).then(res => {
         if (response(res) == "success") {
             clients.value = res.data.data.data;
-            count.value = clients.value.length;
+            clientsCount.value = clients.value.length;
+            totalPage.value = res.data.data.pagination.total_items;
+            pageLimit.value = res.data.data.pagination.per_page;
         }
         loading.value = false;
     }).catch(err => console.log(err));
@@ -144,6 +154,11 @@ const getData = async (date) => {
 // updateFilter
 const updateFilter = async () => {
     await getData(filter.value.number);
+}
+
+// onPaginate
+const onPaginate = async (value) => {
+    await getData(filter.value.number , value);
 }
 
 /******************* Computed *******************/

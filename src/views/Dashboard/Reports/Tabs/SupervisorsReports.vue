@@ -5,7 +5,7 @@
         <!--***** Page Top *****  -->
         <div class="page_top">
 
-            <h3 class="fs15 c-black">{{ $t('reports.tabs.supervisors') }} ({{ count }})</h3>
+            <h3 class="fs15 c-black">{{ $t('reports.tabs.supervisors') }} ({{ supervisorsCount }})</h3>
 
             <!--***** Filter Select *****-->
             <div class="main-input filter sm card-shadow">
@@ -35,7 +35,7 @@
 
         </div>
 
-        <DataTable :columns="columns" :products="supervisors" :loading="loading" :tableSkeleton="new Array(columns.length)">
+        <DataTable :columns="columns" :pageLimit="pageLimit" :totalPage="totalPage" @paginateNum="onPaginate" :products="supervisors" :loading="loading" :tableSkeleton="new Array(columns.length)">
         </DataTable>
     </div>
 </template>
@@ -87,8 +87,12 @@ const loading = ref(false);
 // supervisors
 const supervisors = ref([]);
 
-// count
-const count = ref(0);
+// Paginator
+const pageLimit = ref();
+const totalPage = ref();
+
+// supervisorsCount
+const supervisorsCount = ref(0);
 
 // config
 const config = {
@@ -121,7 +125,7 @@ const columns = ref([
 
 /******************* Methods *******************/
 // getData
-const getData = async (date) => {
+const getData = async (date, count = 1) => {
     loading.value = true;
 
     let url = 'providers/provider-admins-reports';
@@ -129,10 +133,18 @@ const getData = async (date) => {
         url += `?month=${date}`;
     }
 
+    if (count && date) {
+        url += `&page=${count}`;
+    } 
+
+    count && !date ? url += `?page=${count}` : '';
+
     await axios.get(url, config).then(res => {
         if (response(res) == "success") {
             supervisors.value = res.data.data.data;
-            count.value = supervisors.value.length;
+            supervisorsCount.value = supervisors.value.length;
+            totalPage.value = res.data.data.pagination.total_items;
+            pageLimit.value = res.data.data.pagination.per_page;
         }
         loading.value = false;
     }).catch(err => console.log(err));
@@ -142,6 +154,12 @@ const getData = async (date) => {
 const updateFilter = async () => {
     await getData(filter.value.number);
 }
+
+// onPaginate
+const onPaginate = async (value) => {
+    await getData(filter.value.number , value);
+}
+
 
 /******************* Computed *******************/
 
