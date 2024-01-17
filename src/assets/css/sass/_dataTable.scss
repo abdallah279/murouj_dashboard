@@ -39,6 +39,10 @@
       padding-top: 18px;
       padding-bottom: 18px;
       white-space: nowrap;
+
+      @include devices(xs) {
+        font-size: 12px;
+      }
     }
 
     // td:has(img) {

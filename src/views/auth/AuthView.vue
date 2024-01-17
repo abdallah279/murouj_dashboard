@@ -1,5 +1,5 @@
 <template>
-    <main class="auth_layout py-5 px-4">
+    <main class="auth_layout py-5">
         <img src="@/assets/imgs/auth_bg.png" alt="" class="auth_bg">
         <div class="container">
 

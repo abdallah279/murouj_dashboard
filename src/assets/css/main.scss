@@ -20,6 +20,10 @@
     font-size: 15px;
     margin-bottom: 28px !important;
     color: $black;
+
+    @include devices(xs) {
+      font-size: 13px;
+    }
   }
 
   .profit_bottom {
@@ -30,6 +34,10 @@
     .num {
       font-size: 19px;
       color: $side-color;
+
+      @include devices(xs) {
+        font-size: 15px;
+      }
     }
 
     .chart_img {
@@ -374,10 +382,15 @@
 }
 
 .qr_code {
-  width: 100px;
-  height: 100px;
+  width: 140px !important;
+  height: 140px !important;
   display: block;
-  margin: 25px auto;
+  margin: 0 auto;
+
+  @include devices(sm) {
+    width: 110px !important;
+    height: 110px !important;
+  }
 }
 
 /***************** End invoice_card Section *********************/
@@ -409,7 +422,7 @@
       .admin_img {
         @include circle(70px);
         object-fit: cover;
-        
+
         @include devices(sm) {
           @include circle(50px);
         }
@@ -423,7 +436,7 @@
     }
 
     @include devices(sm) {
-      .main-btn.sm{
+      .main-btn.sm {
         width: 95px;
         font-size: 11px;
         padding: 10px 7px;
@@ -469,7 +482,7 @@
     // margin: 0 20px;
     max-width: 100px;
   }
-  
+
   .left-sec {
     padding: 0px 24px;
     width: 100%;
@@ -486,11 +499,11 @@
       }
     }
 
-    .settlement_footer{
+    .settlement_footer {
       border-top: 1px solid $light2;
       padding: 12px 0;
 
-      .ic{
+      .ic {
         max-width: 15px;
       }
     }
@@ -620,13 +633,16 @@
     @include center;
     flex-shrink: 0;
 
-    @media screen and (max-width: $screen-sm) {
-      width: 50px;
-      height: 50px;
+    @include devices(xs) {
+      @include circle(40px);
     }
 
     i {
       font-size: 16px !important;
+      
+      @include devices(xs) {
+        font-size: 14px !important;
+      }
     }
   }
 
@@ -637,9 +653,8 @@
     line-height: 1.4;
     color: $side-color;
 
-    @media screen and (max-width: $screen-xs) {
-      font-size: 16px;
-      margin-bottom: 6px;
+    @include devices(xs) {
+      font-size: 13px;
     }
   }
 }
@@ -670,6 +685,10 @@
   .no-data-text {
     color: $side-color;
     font-size: 14px;
+
+    @include devices(xs) {
+      font-size: 12px;
+    }
   }
 
   &.lg {

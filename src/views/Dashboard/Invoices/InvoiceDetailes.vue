@@ -82,9 +82,8 @@
 
                     </div>
 
-                    <!-- <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{route('orderDetailsInvoicePdf',['order_id' => $orderId,'provider_order_id' => $providerOrderId])}}" alt="QR Code"> -->
+                    <qrcode-vue v-if="qrValue" :value="qrValue" class=" qr_code" level="H" />
 
-                    <img src="@/assets/imgs/icons/qr_code.png" alt="" class="qr_code">
 
                 </div>
 
@@ -115,6 +114,7 @@ import { useRoute } from 'vue-router';
 import axios from 'axios';
 import responseApi from '@/components/shared/ResponseApi.js';
 import Skeleton from "primevue/skeleton";
+import QrcodeVue from '@chenfengyuan/vue-qrcode';
 
 /******************* Data *******************/
 
@@ -129,6 +129,10 @@ const invoice = ref({});
 
 // Loading
 const loading = ref(false);
+
+// Qr
+const qrValue = ref(window.location.href);
+const Qrsize = ref(300);
 
 // config
 const config = {

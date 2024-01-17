@@ -18,9 +18,6 @@ import "bootstrap/dist/js/bootstrap.js";
 // Prime vue
 import "primevue/resources/themes/lara-light-indigo/theme.css";
 
-// Uploader
-import Uploader from 'vue-media-upload';
-
 // Add BaseUrl
 import axios from "axios";
 axios.defaults.baseURL = "https://murouj.aait-sa.com/api/";
@@ -48,5 +45,4 @@ createApp(App)
     .component("v-otp-input", VOtpInput)
     .component("font-awesome-icon", FontAwesomeIcon)
     .component('Googlemap', GoogleMap)
-    .component('Uploader', Uploader)
     .mount("#app");

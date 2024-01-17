@@ -1273,6 +1273,13 @@
   &.lg {
     gap: 10px 23px;
   }
+
+  .main-btn{
+    @include devices(xs) {
+      width: 130px !important;
+      font-size: 11px;
+    }
+  }
 }
 
 .sm_btn {
@@ -1452,6 +1459,10 @@
   margin-bottom: 40px;
   text-align: center;
   font-family: fontDemi;
+
+  @include devices(xs) {
+    font-size: 14px;
+  }
 }
 
 .form-img {
@@ -1867,6 +1878,10 @@
     border: 1px solid $border-color;
     border-radius: 5px;
 
+    @include devices(xs){
+      font-size: 12px;
+    }
+
     &.light {
       border-color: $light6;
     }
@@ -1885,7 +1900,7 @@
       transition: $main-transition;
 
       @media screen and (max-width: 400px) {
-        font-size: 12px !important;
+        font-size: 11px !important;
       }
     }
 
@@ -3236,6 +3251,10 @@
       color: #484d45;
       // font-family: fontDemi;
       font-weight: 500;
+      
+      @include devices(xs) {
+        font-size: 14px;
+      }
     }
 
     .p-dialog-header-icon {
@@ -3399,8 +3418,13 @@
     }
 
     @media screen and (max-width: $screen-sm) {
-      min-width: 42px !important;
-      height: 42px !important;
+      min-width: 37px !important;
+      height: 37px !important;
+      font-size: 12px;
+
+      .p-paginator-icon {
+        max-width: 11px;
+      }
     }
   }
 
@@ -3577,7 +3601,7 @@
 
         .p-toast-summary {
           @media screen and (max-width: $screen-xs) {
-            font-size: 15px !important;
+            font-size: 11px !important;
           }
         }
 

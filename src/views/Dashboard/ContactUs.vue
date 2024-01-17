@@ -4,7 +4,7 @@
         <img src="@/assets/imgs/login_logo.png" alt="" class="login_logo sm mb-5 mx-auto d-block">
 
         <!-- ***** Contact Top ***** -->
-        <div class="row justify-content-between mb-4" v-if="!loading">
+        <div class="row justify-content-between mb-4 gy-4" v-if="!loading">
 
             <!-- ***** Contact Info ***** -->
             <div class="col-lg-4">
@@ -51,7 +51,7 @@
         </div>
 
         <!-- ***** Skeleton ***** -->
-        <div class="row justify-content-between mb-4" v-if="loading">
+        <div class="row justify-content-between mb-4 gy-4" v-if="loading">
 
             <!-- ***** Contact Info ***** -->
             <div class="col-lg-4">

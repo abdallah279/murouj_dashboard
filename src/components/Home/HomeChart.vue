@@ -2,7 +2,7 @@
     <div class="card_style" v-if="!loading">
 
         <!--***** Top *****  -->
-        <div class="page_top align-items-start">
+        <div class="page_top align-items-center align-items-lg-start">
             <h3 class="fs15 c-black">{{ $t('chart.title') }}</h3>
 
             <!--***** Filter Select *****-->
