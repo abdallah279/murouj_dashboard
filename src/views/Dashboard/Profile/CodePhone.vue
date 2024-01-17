@@ -95,7 +95,7 @@ let newPhone = ref(localStorage.getItem('newPhone'));
 
 // config
 const config = {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    headers: { Authorization: `Bearer ${localStorage.getItem('muroujDashToken')}` }
 };
 
 // newPhone Function

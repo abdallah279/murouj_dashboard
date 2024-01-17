@@ -138,8 +138,7 @@ const login = async () => {
     loading.value = true;
     const fd = new FormData(loginForm.value);
     fd.append('country_code', selectedCountry.value.key);
-    // fd.append('device_id', localStorage.getItem('notificationToken'));
-    fd.append('device_id', 111);
+    fd.append('device_id', localStorage.getItem('notificationToken'));
     fd.append('device_type', 'web');
 
     validate();
@@ -151,7 +150,7 @@ const login = async () => {
     } else {
         await axios.post('providers/sign-in?count_notifications', fd).then(res => {
             if (response(res) == "success") {
-                localStorage.setItem('token', res.data.data.token);
+                localStorage.setItem('muroujDashToken', res.data.data.token);
                 localStorage.setItem('image', res.data.data.image);
                 localStorage.setItem('providerName', res.data.data.name);
 

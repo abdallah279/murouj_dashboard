@@ -84,7 +84,7 @@ const filterOptions = ref([
 
 // config
 const config = {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    headers: { Authorization: `Bearer ${localStorage.getItem('muroujDashToken')}` }
 };
 
 // loading

@@ -24,7 +24,7 @@ const { errorToast } = toastMsg();
 
 // config
 const config = {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    headers: { Authorization: `Bearer ${localStorage.getItem('muroujDashToken')}` }
 };
 
 // loading

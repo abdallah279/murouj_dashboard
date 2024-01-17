@@ -67,10 +67,6 @@ const activeAccount = async () => {
     const fd = new FormData(codeForm.value);
     fd.append('phone', phone.value);
     fd.append('country_code', country_code.value);
-    // fd.append('country_code', selectedCountry.value.key);
-    // fd.append('device_id', localStorage.getItem('notificationToken'));
-    // fd.append('device_id', 111);
-    // fd.append('device_type', 'web');
 
     validate();
 

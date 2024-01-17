@@ -237,7 +237,7 @@ function validate() {
 
 // config
 const config = {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    headers: { Authorization: `Bearer ${localStorage.getItem('muroujDashToken')}` }
 };
 
 // Get All countries

@@ -314,7 +314,7 @@ const route = useRoute();
 
 // config
 const config = {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    headers: { Authorization: `Bearer ${localStorage.getItem('muroujDashToken')}` }
 };
 
 // cancelForm

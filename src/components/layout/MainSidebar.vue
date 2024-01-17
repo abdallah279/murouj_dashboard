@@ -131,7 +131,7 @@ const name = ref(localStorage.getItem("providerName"));
 
 // config
 const config = {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    headers: { Authorization: `Bearer ${localStorage.getItem('muroujDashToken')}` }
 };
 
 // Toast
@@ -158,7 +158,7 @@ const logout = async () => {
     await axios.delete('sign-out', config).then(res => {
         if (response(res) == "success" || response(res) == "blocked") {
 
-            let lKeys = ['token', 'image', 'name', 'providerName', 'privileges'];
+            let lKeys = ['muroujDashToken', 'image', 'name', 'providerName', 'privileges'];
 
             lKeys.forEach((key) => {
                 localStorage.removeItem(key);

@@ -67,7 +67,7 @@
     
             <Column v-for="col in tableSkeleton" :key="col" :header="$t('table.loading')">
                 <template #body>
-                    <Skeleton height=".7rem"></Skeleton>
+                    <Skeleton height=".5rem"></Skeleton>
                 </template>
             </Column>
     
