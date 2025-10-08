@@ -3,15 +3,6 @@
     <div class="page_top">
         <div class="page_filter">
 
-            <!--***** Filter Products *****-->
-            <!-- <div class="main-input w300">
-
-                <MultiSelect v-model="productSelected" :options="products" filter optionLabel="product_name"
-                    :placeholder="$t('table.filter.product')" display="chip" class="w-100 h50" />
-                <i class="pi pi-angle-down main-icon"></i>
-
-            </div> -->
-
             <!--***** Search Input *****-->
             <div class="main-input w300">
                 <input type="text" class="input-me" v-model="filters['global'].value" :placeholder="$t('table.search')">
@@ -32,17 +23,23 @@
 
 <script setup>
 /******************* Import *******************/
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useRouter } from 'vue-router';
 import DataTable from "@/components/shared/DataTable/DataTable.vue";
 import responseApi from '@/components/shared/ResponseApi.js';
-import MultiSelect from 'primevue/multiselect';
 import i18n from "@/i18n";
 import axios from "axios";
 import { FilterMatchMode } from 'primevue/api';
 import toastMsg from '@/components/shared/Toaster';
+import { useStore } from 'vuex';
+
 
 /******************* Data *******************/
+
+// Store
+const store = useStore();
+
+// Filter
 const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
 });
@@ -72,11 +69,11 @@ const config = {
 // columns
 const columns = ref([
     {
-        field: 'product_id',
+        field: 'id',
         header: i18n.global.t('table.products.number')
     },
     {
-        field: ['product_image', 'product_name'].toString(),
+        field: ['image', 'name'].toString(),
         header: i18n.global.t('table.products.name')
     },
     {
@@ -90,14 +87,10 @@ const columns = ref([
 ]);
 
 // products
-const productSelected = ref([]);
 const products = ref([]);
 
 // choosed product
 const choosedProducts = ref([]);
-
-// finished products
-const finishedProducts = ref([]);
 
 // select Table
 const selectTable = ref({
@@ -110,10 +103,11 @@ const selectTable = ref({
 /******************* Props *******************/
 
 /******************* Methods *******************/
+
 // getData
 const getData = async (count = 1) => {
     loading.value = true;
-    await axios.get(`providers/provider-products?page=${count}`, config).then(res => {
+    await axios.get(`providers/products?sub_category_id=${sub_category.value}&page=${count}`, config).then(res => {
         if (response(res) == "success") {
             products.value = res.data.data.data;
             totalPage.value = res.data.data.pagination.total_items;
@@ -145,13 +139,6 @@ const updateType = (data) => {
 
 // setProducts
 const setProducts = () => {
-    // finishedProducts.value = [];
-    // productSelected.value.forEach(productS => {
-    //     let founded = choosedProducts.value.find(product => product.id == productS.product_id);
-    //     if (founded) {
-    //         finishedProducts.value.push(founded)
-    //     }
-    // })
     if (choosedProducts.value.length == 0) {
         errorToast(i18n.global.t('order.noProductSelected'));
     } else{
@@ -166,6 +153,13 @@ const onPaginate = async (value) => {
 }
 
 /******************* Computed *******************/
+const sub_category = computed(() => {
+    if(store.state.proSubCategory){
+        return store.state.proSubCategory.id
+    } else{
+        return ''
+    }
+});
 
 /******************* Watch *******************/
 

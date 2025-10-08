@@ -175,9 +175,10 @@ const getData = async (count = 1) => {
 // settlementRequest
 const settlementRequest = async () => {
     loadingBtn.value = true;
-    await axios.get('providers/settlement-request', config).then(res => {
+    await axios.post('providers/settlement-request', '' , config).then(res => {
         if (response(res) == "success") {
             successToast(res.data.msg);
+            getData();
         } else{
             errorToast(res.data.msg);
         }

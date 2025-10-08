@@ -116,7 +116,7 @@
                     <!-- Phone -->
                     <div class="input-g">
                         <div class="main-input">
-                            <input type="number" class="input-me validInputs" valid="phone" name="phone"
+                            <input type="number" class="input-me validInputs" onkeydown="return ( event.keyCode !== 69 && event.keyCode !== 110 )" valid="phone" name="phone"
                                 :placeholder="$t('contactForm.phone')">
 
                             <Dropdown v-model="selectedCountry" :options="countries" optionLabel="name"

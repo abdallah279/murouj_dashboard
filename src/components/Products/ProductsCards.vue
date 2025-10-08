@@ -1,6 +1,6 @@
 <template>
     <div class="grid-4 grid-res">
-        <productItem v-for="product in products" @toggleFavId="removeFromFav" :key="product.id" :product="product" />
+        <productItem v-for="product in products" :key="product.id" :product="product" />
     </div>
 </template>
 
@@ -23,11 +23,6 @@ const props = defineProps({
 });
 
 /******************* Methods *******************/
-
-// Send Product Id To Favourite Page
-const removeFromFav = (e)=>{
-    emit('remove', e);
-}
 
 /******************* Computed *******************/
 

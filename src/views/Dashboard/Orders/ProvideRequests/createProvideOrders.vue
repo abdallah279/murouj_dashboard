@@ -4,20 +4,9 @@
         <div class="row align-items-center position-relative gy-4">
             <div class="col-lg-8">
 
-                <!-- Products -->
-                <div class="input-g">
-                    <label for="" class="main-label">{{ $t('addProvideProducts.form.products.text') }}</label>
-                    <div class="main-input">
-                        <router-link to="/addingProducts" class="input-me d-flex align-items-center fs13">
-                            {{ $t('addProvideProducts.form.products.placeholder') }}
-                        </router-link>
-                        <i class="pi pi-angle-left main-icon"></i>
-                    </div>
-                </div>
-
                 <!-- Type -->
                 <div class="input-g">
-                    <label for="" class="main-label">{{ $t('addProvideProducts.form.type.text') }}</label>
+                    <p class="main-label">{{ $t('addProvideProducts.form.type.text') }}</p>
                     <div class="main-input">
 
                         <Dropdown v-model="requestType" :placeholder="$t('addProvideProducts.form.type.placeholder')"
@@ -46,7 +35,7 @@
 
                 <!-- Sub Category -->
                 <div class="input-g">
-                    <label for="" class="main-label">{{ $t('addProvideProducts.form.sub_category.text') }}</label>
+                    <p class="main-label">{{ $t('addProvideProducts.form.sub_category.text') }}</p>
                     <div class="main-input">
 
                         <Dropdown v-model="subCategory"
@@ -72,9 +61,20 @@
                     </div>
                 </div>
 
+                <!-- Products -->
+                <div class="input-g">
+                    <p class="main-label">{{ $t('addProvideProducts.form.products.text') }}</p>
+                    <div class="main-input">
+                        <div @click="openProducts" class="input-me cu-pointer d-flex align-items-center fs13">
+                            {{ $t('addProvideProducts.form.products.placeholder') }}
+                        </div>
+                        <i class="pi pi-angle-left main-icon"></i>
+                    </div>
+                </div>
+
                 <!-- Duration -->
                 <div class="input-g">
-                    <label for="" class="main-label">{{ $t('addProvideProducts.form.duration.text') }}</label>
+                    <p class="main-label">{{ $t('addProvideProducts.form.duration.text') }}</p>
                     <div class="main-input">
 
                         <Dropdown v-model="duration" :placeholder="$t('addProvideProducts.form.duration.placeholder')"
@@ -103,7 +103,7 @@
 
                 <!-- Received Time -->
                 <div class="input-g">
-                    <label for="" class="main-label">{{ $t('addProvideProducts.form.receving_time.text') }} </label>
+                    <p class="main-label">{{ $t('addProvideProducts.form.receving_time.text') }} </p>
                     <div class="main-input">
                         <Calendar v-model="date" hourFormat="12" showTime dateFormat="dd-mm-yy "
                             :placeholder="$t('addProvideProducts.form.receving_time.placeholder')" class="input-me" />
@@ -146,21 +146,31 @@
 <script setup>
 /******************* Import *******************/
 
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import axios from 'axios';
 import Dropdown from 'primevue/dropdown';
 import toastMsg from '@/components/shared/Toaster';
 import Dialog from 'primevue/dialog';
 import responseApi from '@/components/shared/ResponseApi.js';
 import Calendar from 'primevue/calendar';
+import { useStore } from 'vuex';
+import { useRoute } from "vue-router";
+import router from "@/router";
+import i18n from "@/i18n";
 
 /******************* Data *******************/
+
+// Store
+const store = useStore();
 
 // success response
 const { response } = responseApi();
 
 // Toast
-const { successToast, errorToast } = toastMsg();
+const { errorToast } = toastMsg();
+
+// route
+const route = useRoute();
 
 // Forms Ref
 const requestForm = ref(null);
@@ -225,6 +235,12 @@ const getSubCategories = async () => {
     }).catch(err => console.log(err));
 }
 
+// openProducts
+const openProducts = () => {
+    localStorage.removeItem('products'); 
+    subCategory.value ? router.push({ path: '/addingProducts'}) : errorToast(i18n.global.t('addProvideProducts.form.sub_category.placeholder'));
+}
+
 // Formate Date Function
 const formateDate = () => {
     let myDate = new Date(date.value);
@@ -250,7 +266,9 @@ const formateDate = () => {
 const createRequest = async () => {
     loading.value = true;
     const fd = new FormData(requestForm.value);
-    fd.append('product_request_type_id', requestType.value.id);
+
+    
+    requestType.value.id ? fd.append('product_request_type_id', requestType.value.id) : '';
     fd.append('sub_category_id', subCategory.value.id);
     fd.append('product_request_duration_id', duration.value.id);
     fd.append('receipt_date_time', formateDate());
@@ -273,15 +291,31 @@ const createRequest = async () => {
 
 }
 
+// Get all options selected
+const getOptions = () => {
+    store.state.orderType ? requestType.value = store.state.orderType : '';
+    store.state.proSubCategory ? subCategory.value = store.state.proSubCategory : '';
+    store.state.proDuration ? duration.value = store.state.proDuration : '';
+    store.state.proDate ? date.value = store.state.proDate : '';
+}
+
 /******************* Computed *******************/
 
 /******************* Watch *******************/
+
+watch(route, () => {
+    store.commit('setOrderType', requestType.value);
+    store.commit('setSubCategory', subCategory.value);
+    store.commit('setDuration', duration.value);
+    store.commit('setDate', date.value);
+});
 
 /******************* Mounted *******************/
 onMounted(async () => {
     await getTypes();
     await getSubCategories();
     await getDurations();
+    getOptions();
 });
 
 </script>

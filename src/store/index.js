@@ -1,26 +1,27 @@
 import { createStore } from "vuex";
-import axios from "axios";
 
 export default createStore({
-    state: {
-        logo: null,
+  state: {
+    orderType: null,
+    proSubCategory: null,
+    proDuration: null,
+    proDate: null,
+  },
+  getters: {},
+  mutations: {
+    setOrderType(state, type) {
+      state.orderType = type;
     },
-    getters: {},
-    mutations: {
-        getLogo(state, logo) {
-            state.logo = logo;
-        },
+    setSubCategory(state, category) {
+      state.proSubCategory = category;
     },
-    actions: {
-        async getLogoImg({ commit }) {
-            try {
-                await axios.get("main-data").then((res) => {
-                    commit("getLogo", res.data.data.logo);
-                });
-            } catch (error) {
-                console.log(error);
-            }
-        },
+    setDuration(state, duration) {
+      state.proDuration = duration;
     },
-    modules: {},
+    setDate(state, date) {
+      state.proDate = date;
+    }
+  },
+  actions: {},
+  modules: {},
 });

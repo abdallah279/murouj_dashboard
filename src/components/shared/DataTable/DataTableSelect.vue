@@ -28,7 +28,7 @@
 <script setup>
 /******************* Import *******************/
 import Dropdown from 'primevue/dropdown';
-import { onMounted, onUnmounted, onUpdated, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import responseApi from '@/components/shared/ResponseApi.js';
 import axios from 'axios';
 
@@ -80,15 +80,6 @@ const updateType = () => {
 onMounted(async () => {
     await getUnits();
 });
-
-// onUpdated(() => {
-//     console.log('updated');
-// });
-
-// onUnmounted(() => {
-//     console.log('unmounted');
-//     quantityType.value = '';
-// });
 
 </script>
 

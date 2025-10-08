@@ -49,7 +49,7 @@ const columns = ref([
         header: i18n.global.t('table.orders.price')
     },
     {
-        field: ['delivery_type', 'line'].toString(),
+        field: ['delivery_type_name', 'line'].toString(),
         header: i18n.global.t('table.orders.delivery')
     },
     {
@@ -98,6 +98,19 @@ const getOrders = async (count = 1) => {
             orders.value = res.data.data.orders.data;
             totalPage.value = res.data.data.orders.pagination.total_items;
             pageLimit.value = res.data.data.orders.pagination.per_page;
+        } else if (response(res) == "unauthenticated") {
+            
+            let lKeys = ['muroujDashToken', 'image', 'name', 'providerName', 'privileges'];
+
+            lKeys.forEach((key) => {
+                localStorage.removeItem(key);
+            });
+
+            errorToast(res.data.msg);
+            router.push({
+                name: 'login'
+            });
+
         } else {
             errorToast(res.data.msg);
         }

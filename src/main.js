@@ -20,7 +20,7 @@ import "primevue/resources/themes/lara-light-indigo/theme.css";
 
 // Add BaseUrl
 import axios from "axios";
-axios.defaults.baseURL = "https://murouj.aait-sa.com/api/";
+axios.defaults.baseURL = "https://backend.murouj.aait-sa.com/api/";
 axios.defaults.headers.lang = localStorage.getItem("lang") || "ar";
 
 // Add fontawesome

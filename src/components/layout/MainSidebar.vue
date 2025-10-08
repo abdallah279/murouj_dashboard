@@ -156,7 +156,7 @@ const logout = async () => {
     loading.value = true;
 
     await axios.delete('sign-out', config).then(res => {
-        if (response(res) == "success" || response(res) == "blocked") {
+        if (response(res) == "success" || response(res) == "blocked" || response(res) == "unauthenticated") {
 
             let lKeys = ['muroujDashToken', 'image', 'name', 'providerName', 'privileges'];
 

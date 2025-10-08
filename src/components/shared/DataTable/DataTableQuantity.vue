@@ -20,7 +20,7 @@ import { onMounted, onUnmounted, ref } from 'vue';
 
 /******************* Data *******************/
 
-const quantity = ref(1);
+const quantity = ref(0);
 
 /******************* Provide && Inject *******************/
 const props = defineProps({

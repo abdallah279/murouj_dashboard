@@ -46,17 +46,21 @@
 
         <div class="d-flex gap-1 justify-content-center mt-4 c-light">
             {{ $t('codeForm.text') }}
-            <button type="button" @click="resendCode" class="bg-transparent d-block text-decoration-underline c-main">
+            <button type="button" @click="resendCode" :disabled="disabledBtn"
+                class="bg-transparent d-block text-decoration-underline c-main">
                 {{ $t('formBtns.receiveCode') }}
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" v-if="loadingResend"></span>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                    v-if="loadingResend"></span>
             </button>
         </div>
+
+        <div class="mt-3 text-center">{{ counterText }}</div>
     </form>
 </template>
 
 <script setup>
 /******************* Import *******************/
-import { ref } from "vue";
+import { ref , onMounted } from "vue";
 import { useRouter } from "vue-router";
 import axios from 'axios'
 import toastMsg from '@/components/shared/Toaster';
@@ -83,6 +87,13 @@ let country_code = ref(localStorage.getItem('country_code'));
 
 // Toast
 const { successToast, errorToast } = toastMsg();
+
+// counter
+const counterNum = ref(60);
+const counterText = ref('');
+
+// disabledBtn
+const disabledBtn = ref(false);
 
 /******************* Provide && Inject *******************/
 
@@ -147,6 +158,7 @@ const newPasswordFunc = async () => {
 // resendCode Function
 const resendCode = async () => {
     loadingResend.value = true;
+    disabledBtn.value = true;
     const fd = new FormData();
 
     fd.append('phone', phone.value);
@@ -156,6 +168,8 @@ const resendCode = async () => {
         if (response(res) == "success") {
 
             successToast(res.data.msg);
+            counterNum.value = 60;
+            codeCounter();
 
         } else {
             errorToast(res.data.msg);
@@ -173,11 +187,43 @@ const returnFunc = () => {
         localStorage.removeItem(key);
     });
 }
+
+
+let counter;
+function codeCounter() {
+    disabledBtn.value = true;
+
+    counter = setInterval(function () {
+        counterNum.value--;
+        if (counterNum.value < 60) {
+            counterText.value = `${counterNum.value} : 00`;
+        }
+
+        if (counterNum.value > 60) {
+            counterText.value = `00 : ${counterNum.value}`;
+        }
+
+        if (counterNum.value < 10) {
+            counterText.value = `0${counterNum.value} : 00`;
+        }
+
+        if (counterNum.value == 0) {
+            clearInterval(counter);
+            disabledBtn.value = false;
+        }
+    }, 1000);
+}
+
 /******************* Computed *******************/
 
 /******************* Watch *******************/
 
 /******************* Mounted *******************/
+
+onMounted(() => {
+    codeCounter();
+});
+
 </script>
 
 <style></style>
